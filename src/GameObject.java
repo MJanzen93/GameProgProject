@@ -14,10 +14,12 @@ abstract class GameObject {
     int width;
     int height;
     static Physics physics;
+    static World world;
     public boolean hasHP = false;
+    public int maxHP = 1;
     public int hp = 1;
 
-    final Color COLOR  = new Color(96,96,255);
+    public Color COLOR  = new Color(96,96,255);
 
     public GameObject(double startX, double startY, int width, int height) {
         this.x = startX;
@@ -32,5 +34,10 @@ abstract class GameObject {
 
     static void setPhysics(Physics ph) {
         physics = ph;
+    }
+    static void setWorld(World w) { world = w; }
+
+    public void setColor(Color color) {
+        this.COLOR = color;
     }
 }

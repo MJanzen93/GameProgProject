@@ -4,10 +4,11 @@ final class ConstantValues
     static final int WORLD_WIDTH      = 5000;
     static final int WORLD_HEIGHT     = 4000;
     // size of the displayed part of the world
-    static final int WORLDPART_WIDTH  = 1000;
+    static final int WORLDPART_WIDTH  = 1600;
     static final int WORLDPART_HEIGHT = 800;
     // border: when to scroll
-    static final int SCROLL_BOUNDS    =  300;
+    static final int SCROLL_BOUNDS_X    =  600;
+    static final int SCROLL_BOUNDS_Y    =  300;
 
     static final double SPAWN_INTERVAL = 0.2;
     static final double SPAWN_GRENADE  = 10.0;

@@ -3,11 +3,13 @@ import java.util.List;
 
 public class Player extends GameObject {
 
-    public int hp;
 
     public Player(double startX, double startY) {
 
         super(startX, startY, 30, 30);
+        hasHP = true;
+        hp = 10;
+        maxHP = 10;
         isPlayer = true;
     }
 
