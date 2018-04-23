@@ -5,6 +5,9 @@ import Game.GameObjects.MovableObject;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * Enemy
+ */
 public abstract class EnemyObject extends MovableObject {
 
     public double bulletCooldown = 0;

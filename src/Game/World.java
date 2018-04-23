@@ -4,8 +4,7 @@ import Game.GameObjects.*;
 import Game.GameObjects.Enemies.BossObject;
 import Game.GameObjects.Enemies.SimpleEnemyObject;
 import Game.GameObjects.Enemies.StealerObject;
-import Game.GameObjects.Items.RapidFireItem;
-import Game.GameObjects.Items.HealthItem;
+import Game.GameObjects.Items.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +18,11 @@ public class World {
     public Player player;
     public List<GameObject> gameObjects;
     public List<GameObject> fixedObjects;
+
+    //TEST********************************************
+    public List<CollidableObjects> collidableObjects;
+    //************************************************
+
     private Physics physics;
     private InputSystem inputSystem;
     public int enemiesLeft = 4;
@@ -27,8 +31,8 @@ public class World {
     private double secondsPassed;
 
     // top left corner of the displayed pane of the world
-    double worldPartX = 0;
-    double worldPartY = 0;
+    public double worldPartX = 0;
+    public double worldPartY = 0;
 
     private boolean gameOver;
 
@@ -88,7 +92,8 @@ public class World {
         //SupplyDrop Test
         gameObjects.add(new SupplyDropObject(1500, 300, 50, 50));
         gameObjects.add(new HealthItem(1000, 50));
-
+        gameObjects.add(new JumpItem(1200, 50));
+        gameObjects.add(new SpeedUpItem(1300, 50));
     }
 
     void run()
@@ -182,22 +187,20 @@ public class World {
     //todo player.goLeft() ....
     public void processUserInput() {
         if(inputSystem.leftPressed) {
-            player.xSpeed = -300;
+            player.goLeft();
         } else if (inputSystem.rightPressed) {
-            player.xSpeed = 300;
+            player.goRight();
         } else {
-            player.xSpeed = 0;
+            player.stop();
         }
 
         if(inputSystem.upPressed && !player.jumping && player.onGround) {
-            player.jumping = true;
-            player.onGround = false;
-            player.ySpeed = -800;
+            player.jump();
         }
 
         if(inputSystem.mousePressed && bulletCooldown <= 0) {
-            shootBullet();
-            bulletCooldown = player.bulletCooldown;
+            player.shootBullet(inputSystem);
+            bulletCooldown = player.bulletCooldown; //?? in player ??
         }
 
         if(inputSystem.downPressed) {
@@ -224,62 +227,47 @@ public class World {
 
     // adjust the displayed pane of the world according to Avatar and Bounds
     //
-    private final void adjustWorldPart()
-    {
-        final int RIGHT_END  = ConstantValues.WORLD_WIDTH- ConstantValues.WORLDPART_WIDTH;
-        final int BOTTOM_END = ConstantValues.WORLD_HEIGHT- ConstantValues.WORLDPART_HEIGHT;
+    private final void adjustWorldPart() {
+        final int RIGHT_END = ConstantValues.WORLD_WIDTH - ConstantValues.WORLDPART_WIDTH;
+        final int BOTTOM_END = ConstantValues.WORLD_HEIGHT - ConstantValues.WORLDPART_HEIGHT;
 
 
         // if avatar is too much right in display ...
-        if(player.x > worldPartX+ ConstantValues.WORLDPART_WIDTH- ConstantValues.SCROLL_BOUNDS_X)
-        {
+        if (player.x > worldPartX + ConstantValues.WORLDPART_WIDTH - ConstantValues.SCROLL_BOUNDS_X) {
             // ... adjust display
-            worldPartX = player.x+ ConstantValues.SCROLL_BOUNDS_X- ConstantValues.WORLDPART_WIDTH;
-            if(worldPartX >= RIGHT_END)
-            { worldPartX = RIGHT_END;
+            worldPartX = player.x + ConstantValues.SCROLL_BOUNDS_X - ConstantValues.WORLDPART_WIDTH;
+            if (worldPartX >= RIGHT_END) {
+                worldPartX = RIGHT_END;
             }
         }
 
         // same left
-        else if(player.x < worldPartX+ ConstantValues.SCROLL_BOUNDS_X)
-        {
-            worldPartX = player.x- ConstantValues.SCROLL_BOUNDS_X;
-            if(worldPartX <=0)
-            { worldPartX = 0;
+        else if (player.x < worldPartX + ConstantValues.SCROLL_BOUNDS_X) {
+            worldPartX = player.x - ConstantValues.SCROLL_BOUNDS_X;
+            if (worldPartX <= 0) {
+                worldPartX = 0;
             }
         }
 
         // same bottom
-        if(player.y > worldPartY+ ConstantValues.WORLDPART_HEIGHT- ConstantValues.SCROLL_BOUNDS_Y)
-        {
-            worldPartY = player.y+ ConstantValues.SCROLL_BOUNDS_Y- ConstantValues.WORLDPART_HEIGHT;
-            if(worldPartY >= BOTTOM_END)
-            { worldPartY = BOTTOM_END;
+        if (player.y > worldPartY + ConstantValues.WORLDPART_HEIGHT - ConstantValues.SCROLL_BOUNDS_Y) {
+            worldPartY = player.y + ConstantValues.SCROLL_BOUNDS_Y - ConstantValues.WORLDPART_HEIGHT;
+            if (worldPartY >= BOTTOM_END) {
+                worldPartY = BOTTOM_END;
             }
         }
 
         // same top
-        else if(player.y < worldPartY+ ConstantValues.SCROLL_BOUNDS_Y)
-        {
-            worldPartY = player.y- ConstantValues.SCROLL_BOUNDS_Y;
-            if(worldPartY <=0)
-            { worldPartY = 0;
+        else if (player.y < worldPartY + ConstantValues.SCROLL_BOUNDS_Y) {
+            worldPartY = player.y - ConstantValues.SCROLL_BOUNDS_Y;
+            /*
+            if (worldPartY <= 0) {
+                worldPartY = 0;
             }
+            */
         }
-
     }
 
-    //todo in player
-    public void shootBullet() {
-        BulletObject bullet;
-
-        bullet = new BulletObject(player.x+player.width/2, player.y+player.height/2, 5, 5);
-        bullet.alfa  =  Math.atan2(inputSystem.mouseY+worldPartY - player.y-player.width/2, inputSystem.mouseX+worldPartX - player.x-player.height/2);
-        bullet.damage = 2;
-        bullet.setIsPlayerBullet(true);
-
-        gameObjects.add(bullet);
-    }
 
     public Physics getPhysics() { return physics; }
 

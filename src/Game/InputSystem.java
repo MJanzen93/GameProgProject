@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class InputSystem implements KeyListener, MouseListener, MouseMotionListener {
 
     boolean leftPressed, rightPressed, upPressed, downPressed, mousePressed;
-    int mouseX, mouseY;
+    public int mouseX, mouseY;
 
     @Override
     public void keyTyped(KeyEvent e) {

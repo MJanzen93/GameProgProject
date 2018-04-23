@@ -19,6 +19,6 @@ public abstract class ItemObject extends MovableObject {
 
     public static ItemObject createItem(){
         int num = random.nextInt(5);
-        return new RapidFireItem(0,0);
+        return new DoubleDamageItem(0,0);
     }
 }

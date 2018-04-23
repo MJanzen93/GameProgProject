@@ -2,6 +2,7 @@ package Game.GameObjects;
 
 
 import Game.GameObjects.Items.*;
+import Game.InputSystem;
 
 import java.util.List;
 
@@ -11,8 +12,9 @@ public class Player extends MovableObject {
 
     public int jumps = 2;
 
-    public Player(double startX, double startY) {
+    private int damage = 1;
 
+    public Player(double startX, double startY) {
         super(startX, startY, 30, 30);
         hasHP = true;
         hp = 10;
@@ -21,6 +23,10 @@ public class Player extends MovableObject {
         //COLOR = new Color(0, 217, 241);
     }
 
+    /**
+     * Move the player
+     * @param diffSeconds
+     */
     @Override
     public void move(double diffSeconds) {
         double oldX = x;
@@ -41,6 +47,11 @@ public class Player extends MovableObject {
         }
     }
 
+    /**
+     * Check collision for player
+     * @param oldX
+     * @param oldY
+     */
     public void checkCollision(double oldX, double oldY) {
         List<GameObject> collidingObjects = physics.getCollisions(this);
 
@@ -57,13 +68,16 @@ public class Player extends MovableObject {
                     collidingObject.hp = 0;
                     item.setRapidFire(this);
                 }else if(collidingObject instanceof DoubleDamageItem){
-
+                    damage = 10;
+                    collidingObject.hp = 0;
                 }else if(collidingObject instanceof SWATItem){
 
                 }else if(collidingObject instanceof SpeedUpItem){
-
+                    xForce = 500;
+                    collidingObject.hp = 0;
                 }else if(collidingObject instanceof JumpItem){
-
+                    jumpForce = 1000;
+                    collidingObject.hp = 0;
                 }
             }
 
@@ -105,19 +119,48 @@ public class Player extends MovableObject {
         }
         }
 
-        public void goLeft(){
+    /**
+     * Player goes left
+     */
+    public void goLeft(){
+        xSpeed = - xForce;
+    }
 
-        }
+    /**
+     * Player goes right
+     */
+    public void goRight(){
+        xSpeed = xForce;
+    }
 
-        public void goRight(){
+    /**
+     * Player jumps
+     */
+    public void jump(){
+        jumping = true;
+        onGround = false;
+        ySpeed = -jumpForce;
+    }
 
-        }
+    /**
+     * Player stops
+     */
+    public void stop(){
+        xSpeed = 0;
+    }
 
-        public void jump(){
+    /**
+     * Player shoots
+     */
+    public void shootBullet(InputSystem inputSystem){
+        BulletObject bullet;
 
-        }
+        bullet = new BulletObject(x+width/2, y+height/2, 5, 5);
+        bullet.damage = damage;
+        bullet.alfa  =  Math.atan2(inputSystem.mouseY+world.worldPartY - y-width/2, inputSystem.mouseX+world.worldPartX - x-height/2);
+        bullet.setIsPlayerBullet(true);
 
-        public void shoot(){
-            //get selected Weapon: currentWeapon.shoot();
-        }
+        world.gameObjects.add(bullet);
+    }
+
 }

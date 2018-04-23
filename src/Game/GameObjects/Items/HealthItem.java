@@ -5,7 +5,7 @@ import Game.GameObjects.Player;
 
 import java.awt.*;
 
-public class HealthItem extends ItemObject {
+public class HealthItem extends StaticItemObject {
 
     public HealthItem(double startX, double startY) {
         super(startX, startY);
