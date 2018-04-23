@@ -24,8 +24,6 @@ public abstract class GameObject {
     public boolean isSolid = false;
     //Object is player
     public boolean isPlayer = false;
-    //Object is Buff
-    public boolean isBuff = false;
     //??
     public boolean jumping = false;
     //Dimensions of object

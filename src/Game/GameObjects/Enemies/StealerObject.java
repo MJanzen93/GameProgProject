@@ -1,10 +1,15 @@
-package Game.GameObjects;
+package Game.GameObjects.Enemies;
 
+import Game.GameObjects.GameObject;
+import Game.GameObjects.Items.*;
+
+import java.awt.*;
 import java.util.List;
 
-public class SimpleEnemyObject extends EnemyObject{
-    public SimpleEnemyObject(double startX, double startY, int width, int height) {
+public class StealerObject extends EnemyObject {
+    public StealerObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
+        setColor(Color.BLACK);
     }
 
     @Override
@@ -45,6 +50,27 @@ public class SimpleEnemyObject extends EnemyObject{
 
         for(int i = 0; i < collidingObjects.size(); i++) {
             Game.GameObjects.GameObject collidingObject = collidingObjects.get(i);
+
+            if(collidingObject.isItem){
+                if(collidingObject instanceof HealthItem){
+                    HealthItem item = (HealthItem) collidingObject;
+                    hp = maxHP;
+                    collidingObject.hp = 0;
+                }else if(collidingObject instanceof RapidFireItem){
+                    RapidFireItem item = (RapidFireItem) collidingObject;
+                    collidingObject.hp = 0;
+                    bulletCooldown = 0.1;
+                }else if(collidingObject instanceof DoubleDamageItem){
+
+                }else if(collidingObject instanceof SWATItem){
+
+                }else if(collidingObject instanceof SpeedUpItem){
+
+                }else if(collidingObject instanceof JumpItem){
+
+                }
+            }
+
             if(collidingObject.isFixed && collidingObject.isSolid) {
                 //check if Enemy is on Object
                 if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {

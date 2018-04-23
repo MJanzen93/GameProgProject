@@ -1,7 +1,8 @@
 package Game.GameObjects;
 
 
-import java.awt.*;
+import Game.GameObjects.Items.*;
+
 import java.util.List;
 
 public class Player extends MovableObject {
@@ -46,13 +47,24 @@ public class Player extends MovableObject {
         for(int i = 0; i < collidingObjects.size(); i++) {
             GameObject collidingObject = collidingObjects.get(i);
 
-            if(collidingObject.isBuff) {
-                BuffObject buff = (BuffObject) collidingObject;
-                collidingObject.hp = 0;
-                buff.buffPlayer();
-            }else if(collidingObject.isItem){
-                hp = maxHP;
-                collidingObject.hp = 0;
+            if(collidingObject.isItem){
+                if(collidingObject instanceof HealthItem){
+                    HealthItem item = (HealthItem) collidingObject;
+                    item.setHealth(this);
+                    collidingObject.hp = 0;
+                }else if(collidingObject instanceof RapidFireItem){
+                    RapidFireItem item = (RapidFireItem) collidingObject;
+                    collidingObject.hp = 0;
+                    item.setRapidFire(this);
+                }else if(collidingObject instanceof DoubleDamageItem){
+
+                }else if(collidingObject instanceof SWATItem){
+
+                }else if(collidingObject instanceof SpeedUpItem){
+
+                }else if(collidingObject instanceof JumpItem){
+
+                }
             }
 
             if(collidingObject.isFixed && collidingObject.isSolid) {

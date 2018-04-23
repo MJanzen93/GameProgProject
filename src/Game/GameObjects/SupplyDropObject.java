@@ -1,8 +1,6 @@
 package Game.GameObjects;
 
-import javafx.scene.paint.Color;
-
-import java.util.List;
+import Game.GameObjects.Items.ItemObject;
 
 public class SupplyDropObject extends MovableObject {
 
@@ -20,7 +18,10 @@ public class SupplyDropObject extends MovableObject {
     public void move(double diffSeconds) {
         super.move(diffSeconds);
         if(hp <= 0){
-            world.gameObjects.add(new HealthItem(x,y));
+            ItemObject item = ItemObject.createItem();
+            item.x = x;
+            item.y = y;
+            world.gameObjects.add(item);
             world.gameObjects.remove(this);
         }
     }

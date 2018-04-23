@@ -3,7 +3,7 @@ package Game.GameObjects;
 import java.awt.*;
 import java.util.List;
 
-public class BulletObject extends Game.GameObjects.GameObject {
+public class BulletObject extends MovableObject {
 
     public double alfa = 0;
     public double speed = 1000;

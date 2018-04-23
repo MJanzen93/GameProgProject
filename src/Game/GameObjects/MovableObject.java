@@ -1,18 +1,23 @@
 package Game.GameObjects;
 
+import Game.GameObjects.Items.*;
+
 import java.util.List;
 
+//Movable objects: Objects where gravity is applied and collision is checked
 public abstract class MovableObject extends GameObject{
 
     public MovableObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
     }
 
-    //todo check
+
+    //todo check only collision and apply gravity
     @Override
     public void move(double diffSeconds) {
         double oldX = x;
         double oldY = y;
+
 
         x+=xSpeed*diffSeconds;
         y+=ySpeed*diffSeconds;

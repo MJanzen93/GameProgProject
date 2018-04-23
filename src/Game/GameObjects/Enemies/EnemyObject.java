@@ -1,4 +1,6 @@
-package Game.GameObjects;
+package Game.GameObjects.Enemies;
+
+import Game.GameObjects.MovableObject;
 
 import java.awt.*;
 import java.util.List;
@@ -17,11 +19,9 @@ public abstract class EnemyObject extends MovableObject {
 
     @Override
     public void move(double diffSeconds) {
-
     }
 
     public void shootBullet() {
-
     }
 
 }

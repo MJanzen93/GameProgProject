@@ -1,6 +1,11 @@
 package Game;
 
 import Game.GameObjects.*;
+import Game.GameObjects.Enemies.BossObject;
+import Game.GameObjects.Enemies.SimpleEnemyObject;
+import Game.GameObjects.Enemies.StealerObject;
+import Game.GameObjects.Items.RapidFireItem;
+import Game.GameObjects.Items.HealthItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,12 +76,14 @@ public class World {
         gameObjects.add(new SimpleEnemyObject(1100, 200, 30, 30));
         gameObjects.add(new SimpleEnemyObject(1400, 200, 30, 30));
         gameObjects.add(new SimpleEnemyObject(1600, 200, 30, 30));
+        gameObjects.add(new StealerObject(1700, 200, 30, 30));
+
 
         //Boss
         gameObjects.add(new BossObject(2550, 300, 100, 100));
 
-        //BuffObject
-        gameObjects.add(new BuffObject(2610, 280, 30, 30));
+        //RapidFireItem
+        gameObjects.add(new RapidFireItem(2610, 280));
 
         //SupplyDrop Test
         gameObjects.add(new SupplyDropObject(1500, 300, 50, 50));

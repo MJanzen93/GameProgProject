@@ -3,6 +3,7 @@ package Game.GameObjects;
 
 import java.awt.*;
 
+//Fixed objects: no gravity is applied (but they can move)
 public class FixedObject extends GameObject {
 
     public FixedObject(double startX, double startY, int width, int height) {
