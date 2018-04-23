@@ -75,6 +75,9 @@ public class World {
         //BuffObject
         gameObjects.add(new BuffObject(2610, 280, 30, 30));
 
+        //SupplyDrop Test
+        gameObjects.add(new SupplyDropObject(1500, 300, 50, 50));
+
     }
 
     void run()
@@ -124,6 +127,7 @@ public class World {
 
             wViewer.clear();
             physics.applyGravity(diffSeconds);
+
             for(int i = 0; i < gameObjects.size(); i++) {
                 wViewer.draw(gameObjects.get(i));
             }
@@ -262,4 +266,21 @@ public class World {
     }
 
     public Physics getPhysics() { return physics; }
+
+    public ArrayList<GameObject> getVisibleObjects(){
+        ArrayList<GameObject> list = new ArrayList<>();
+        for(int i = 0; i < fixedObjects.size(); i++){
+            //check if obj is not in cameras view
+            //For x
+            if(gameObjects.get(i).x + gameObjects.get(i).width >= worldPartX || gameObjects.get(i).x <= worldPartX + ConstantValues.WORLDPART_WIDTH){
+                list.add(gameObjects.get(i));
+            }
+            //for y
+            if(gameObjects.get(i).y + gameObjects.get(i).height >= worldPartY || gameObjects.get(i).y <= worldPartY + ConstantValues.WORLDPART_HEIGHT){
+                list.add(gameObjects.get(i));
+            }
+
+        }
+        return list;
+    }
 }

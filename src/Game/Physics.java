@@ -36,7 +36,6 @@ public class Physics {
 
         List<GameObject> collidingObjects = new ArrayList<>();
 
-
         for(int i = 0; i < world.fixedObjects.size(); i++) {
 
             GameObject fixedObj = world.fixedObjects.get(i);

@@ -5,6 +5,7 @@ import Game.GameObjects.GameObject;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class WorldViewer extends JPanel
 {
@@ -36,6 +37,17 @@ public class WorldViewer extends JPanel
     public void draw(GameObject gObj)
     {
 
+        //check if obj is not in cameras view
+        //For x
+        if(gObj.x + gObj.width < world.worldPartX ||gObj.x > world.worldPartX + ConstantValues.WORLDPART_WIDTH){
+            return;
+        }
+        //for y
+        if(gObj.y + gObj.height < world.worldPartY ||gObj.y > world.worldPartY + ConstantValues.WORLDPART_HEIGHT){
+            return;
+        }
+
+
         int x = (int) (gObj.x - world.worldPartX);
         int y = (int) (gObj.y - world.worldPartY);
 
@@ -59,6 +71,7 @@ public class WorldViewer extends JPanel
             graphics.drawRect(x+gObj.width/2-maxHP/2, y-30, maxHP, 10);
         }
     }
+
 
     public void redraw()
     { this.getGraphics().drawImage(imageBuffer, 0, 0, this);
