@@ -1,4 +1,7 @@
-import java.awt.*;
+package Game;
+
+import Game.GameObjects.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,11 +14,14 @@ public class World {
     public List<GameObject> fixedObjects;
     private Physics physics;
     private InputSystem inputSystem;
+    public int enemiesLeft = 4;
     private double bulletCooldown = 0;
 
     // top left corner of the displayed pane of the world
     double worldPartX = 0;
     double worldPartY = 0;
+
+    private boolean gameOver;
 
     // defines maximum frame rate
     private static final int FRAME_MINIMUM_MILLIS = 10;
@@ -34,7 +40,7 @@ public class World {
         gameObjects.add(player);
 
         //Ground
-        fixedObjects.add(new FixedObject(0, 750, 10000, 50));
+        fixedObjects.add(new FixedObject(0, 750, 10000, 300));
 
         //Platforms
         fixedObjects.add(new FixedObject(500, 700, 300, 50));
@@ -43,11 +49,27 @@ public class World {
         fixedObjects.add(new FixedObject(0, 250, 600, 20));
         fixedObjects.add(new FixedObject(650, 250, 300, 20));
 
+        //Bossroom
+        fixedObjects.add(new FixedObject(2000, 0, 100, 700));
+        //Door
+        fixedObjects.add(new FixedObject(2000, 700, 100, 50));
+        fixedObjects.add(new FixedObject(3300, 0, 100, 700));
+        fixedObjects.add(new FixedObject(2000, 0, 1300, 100));
+        fixedObjects.add(new FixedObject(2200, 550, 80, 30));
+        fixedObjects.add(new FixedObject(2600, 550, 80, 30));
+        fixedObjects.add(new FixedObject(3000, 550, 80, 30));
+
         //Enemies
         gameObjects.add(new EnemyObject(100, 200, 30, 30));
         gameObjects.add(new EnemyObject(1100, 200, 30, 30));
         gameObjects.add(new EnemyObject(1400, 200, 30, 30));
         gameObjects.add(new EnemyObject(1600, 200, 30, 30));
+
+        //Boss
+        gameObjects.add(new BossObject(2550, 300, 100, 100));
+
+        //BuffObject
+        gameObjects.add(new BuffObject(2610, 280, 30, 30));
 
     }
 
@@ -71,11 +93,24 @@ public class World {
             double diffSeconds  = diffMillis/1000.0;
             lastTick            = currentTick;
 
+            if(gameOver) {
+
+            }
+
+            if(enemiesLeft <= 0) {
+                fixedObjects.remove(7);
+                enemiesLeft=100;
+            }
+
             processUserInput();
             for(int i = 0; i < gameObjects.size(); i++) {
                 gameObjects.get(i).move(diffSeconds);
                 if(gameObjects.get(i).hp <= 0) {
+                    if(gameObjects.get(i).hasHP) {
+                        enemiesLeft--;
+                    }
                     gameObjects.remove(i);
+
                 }
 
             }
@@ -119,7 +154,7 @@ public class World {
 
         if(inputSystem.mousePressed && bulletCooldown <= 0) {
             shootBullet();
-            bulletCooldown = 0.1;
+            bulletCooldown = player.bulletCooldown;
         }
     }
 
@@ -174,7 +209,7 @@ public class World {
         BulletObject bullet;
 
         bullet = new BulletObject(player.x+player.width/2, player.y+player.height/2, 5, 5);
-        bullet.alfa  =  Math.atan2(inputSystem.mouseY+worldPartY - player.y, inputSystem.mouseX+worldPartX - player.x);
+        bullet.alfa  =  Math.atan2(inputSystem.mouseY+worldPartY - player.y-player.width/2, inputSystem.mouseX+worldPartX - player.x-player.height/2);
 
         bullet.setIsPlayerBullet(true);
 

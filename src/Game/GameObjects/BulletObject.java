@@ -1,6 +1,9 @@
+package Game.GameObjects;
+
+import java.awt.*;
 import java.util.List;
 
-public class BulletObject extends GameObject {
+public class BulletObject extends Game.GameObjects.GameObject {
 
     public double alfa = 0;
     public double speed = 1000;
@@ -10,6 +13,9 @@ public class BulletObject extends GameObject {
     public BulletObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
         hp = 1;
+
+        COLOR = new Color(144, 57, 0);
+        hasCollision = false;
     }
 
     public void move(double diffSeconds) {
@@ -18,7 +24,7 @@ public class BulletObject extends GameObject {
             hp = 0;
         }
 
-        List<GameObject> collidingObjects = physics.getCollisions(this, diffSeconds);
+        List<Game.GameObjects.GameObject> collidingObjects = physics.getCollisions(this);
 
         if(collidingObjects.size() > 0 && ((isPlayerBullet && !collidingObjects.get(0).isPlayer) || (!isPlayerBullet && collidingObjects.get(0).isPlayer || collidingObjects.get(0).isFixed))) {
             hp = 0;
@@ -34,5 +40,9 @@ public class BulletObject extends GameObject {
 
     public void setIsPlayerBullet(boolean isPlayerBullet) {
         this.isPlayerBullet = isPlayerBullet;
+        if(isPlayerBullet) {
+            COLOR = new Color(0, 72, 144);
+        }
+
     }
 }

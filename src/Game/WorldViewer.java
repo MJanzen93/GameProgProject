@@ -1,7 +1,9 @@
+package Game;
+
+import Game.GameObjects.GameObject;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 public class WorldViewer extends JPanel
@@ -23,10 +25,11 @@ public class WorldViewer extends JPanel
         this.addKeyListener(inputSystem);
         this.addMouseListener(inputSystem);
         this.addMouseMotionListener(inputSystem);
+
     }
 
     public void clear()
-    { graphics.setColor(Color.WHITE);
+    { graphics.setColor(new Color(192, 253, 255));
         graphics.fillRect(0, 0, ConstantValues.WORLDPART_WIDTH, ConstantValues.WORLD_HEIGHT);
     }
 
@@ -40,6 +43,21 @@ public class WorldViewer extends JPanel
         graphics.fillRect(x, y, gObj.width, gObj.height);
         graphics.setColor(Color.BLACK);
         graphics.drawRect(x, y, gObj.width, gObj.height);
+
+
+        //Quick HP Bar drawing
+        if(gObj.hasHP && gObj.maxHP > gObj.hp) {
+            int hp = gObj.hp;
+            int maxHP = gObj.maxHP;
+            if(gObj.maxHP < 30) {
+                hp = (hp*10/maxHP)*3;
+                maxHP = 30;
+            }
+            graphics.setColor(new Color(201, 0, 0));
+            graphics.fillRect(x+gObj.width/2-maxHP/2, y-30, hp, 10);
+            graphics.setColor(new Color(0, 0, 0));
+            graphics.drawRect(x+gObj.width/2-maxHP/2, y-30, maxHP, 10);
+        }
     }
 
     public void redraw()

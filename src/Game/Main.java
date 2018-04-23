@@ -1,3 +1,7 @@
+package Game;
+
+import Game.GameObjects.GameObject;
+
 import javax.swing.*;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
@@ -6,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        JFrame gameFrame = new JFrame("World");
+        JFrame gameFrame = new JFrame("Game.World");
 
         gameFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         gameFrame.setSize(ConstantValues.WORLDPART_WIDTH,ConstantValues.WORLDPART_HEIGHT);

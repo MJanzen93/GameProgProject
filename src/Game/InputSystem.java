@@ -1,3 +1,5 @@
+package Game;
+
 import java.awt.event.*;
 
 public class InputSystem implements KeyListener, MouseListener, MouseMotionListener {

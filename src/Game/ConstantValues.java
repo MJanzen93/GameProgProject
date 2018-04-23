@@ -1,3 +1,5 @@
+package Game;
+
 final class ConstantValues
 {
     // size of the world

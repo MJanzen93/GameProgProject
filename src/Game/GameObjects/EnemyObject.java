@@ -1,7 +1,9 @@
+package Game.GameObjects;
+
 import java.awt.*;
 import java.util.List;
 
-public class EnemyObject extends GameObject {
+public class EnemyObject extends Game.GameObjects.GameObject {
 
     public double bulletCooldown = 0;
 
@@ -46,12 +48,12 @@ public class EnemyObject extends GameObject {
 
 
 
-        List<GameObject> collidingObjects = physics.getCollisions(this, diffSeconds);
+        List<GameObject> collidingObjects = physics.getCollisions(this);
 
         for(int i = 0; i < collidingObjects.size(); i++) {
-            GameObject collidingObject = collidingObjects.get(i);
+            Game.GameObjects.GameObject collidingObject = collidingObjects.get(i);
             if(collidingObject.isFixed && collidingObject.isSolid) {
-                //check if Player is on Object
+                //check if Enemy is on Object
                 if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
 
                     y = collidingObject.y - height;
@@ -60,7 +62,7 @@ public class EnemyObject extends GameObject {
                     jumping = false;
                 }
 
-                //check if Player is touching bottom side of object
+                //check if Enemy is touching bottom side of object
                 if(y < collidingObject.y + collidingObject.height && oldY >= collidingObject.y + collidingObject.height && ySpeed <= 0) {
 
                     y = collidingObject.y + collidingObject.height;
@@ -96,13 +98,14 @@ public class EnemyObject extends GameObject {
     }
 
     public void shootBullet() {
-        BulletObject bullet;
+        Game.GameObjects.BulletObject bullet;
 
-            bullet = new BulletObject(x + width/2, y + height/2, 5, 5);
+            bullet = new Game.GameObjects.BulletObject(x + width/2, y + height/2, 5, 5);
             bullet.alfa  =  Math.atan2(world.player.y - y, world.player.x - x);
 
         bullet.setIsPlayerBullet(false);
 
         world.gameObjects.add(bullet);
     }
+
 }

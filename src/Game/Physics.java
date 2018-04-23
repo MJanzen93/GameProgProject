@@ -1,3 +1,7 @@
+package Game;
+
+import Game.GameObjects.GameObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,13 +32,18 @@ public class Physics {
         }
     }
 
-    public List<GameObject> getCollisions(GameObject obj, double diffSeconds) {
+    public List<GameObject> getCollisions(GameObject obj) {
 
         List<GameObject> collidingObjects = new ArrayList<>();
+
 
         for(int i = 0; i < world.fixedObjects.size(); i++) {
 
             GameObject fixedObj = world.fixedObjects.get(i);
+
+            if(!fixedObj.hasCollision) {
+                continue;
+            }
 
             //If horizontally overlapping
             if(obj.x + obj.width >= fixedObj.x && obj.x <= fixedObj.x + fixedObj.width) {
@@ -51,7 +60,7 @@ public class Physics {
 
             GameObject gameObj = world.gameObjects.get(i);
 
-            if(gameObj == obj) {
+            if(gameObj == obj || !gameObj.hasCollision) {
                 continue;
             }
 
