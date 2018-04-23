@@ -1,25 +1,14 @@
 package Game.GameObjects;
 
-
-import java.awt.*;
 import java.util.List;
 
-public class Player extends MovableObject {
+public abstract class MovableObject extends GameObject{
 
-    public double bulletCooldown = 0.3;
-
-    public int jumps = 2;
-
-    public Player(double startX, double startY) {
-
-        super(startX, startY, 30, 30);
-        hasHP = true;
-        hp = 10;
-        maxHP = 10;
-        isPlayer = true;
-        //COLOR = new Color(0, 217, 241);
+    public MovableObject(double startX, double startY, int width, int height) {
+        super(startX, startY, width, height);
     }
 
+    //todo check
     @Override
     public void move(double diffSeconds) {
         double oldX = x;
@@ -28,32 +17,10 @@ public class Player extends MovableObject {
         x+=xSpeed*diffSeconds;
         y+=ySpeed*diffSeconds;
 
-        checkCollision(oldX, oldY);
-
-
-
-        if(y + height > 760){
-            y = 760-height;
-            ySpeed = 0;
-            onGround = true;
-            jumping = false;
-        }
-    }
-
-    public void checkCollision(double oldX, double oldY) {
         List<GameObject> collidingObjects = physics.getCollisions(this);
 
         for(int i = 0; i < collidingObjects.size(); i++) {
             GameObject collidingObject = collidingObjects.get(i);
-
-            if(collidingObject.isBuff) {
-                BuffObject buff = (BuffObject) collidingObject;
-                collidingObject.hp = 0;
-                buff.buffPlayer();
-            }else if(collidingObject.isItem){
-                hp = maxHP;
-                collidingObject.hp = 0;
-            }
 
             if(collidingObject.isFixed && collidingObject.isSolid) {
                 //check if Game.GameObjects.Player is on Object
@@ -74,7 +41,7 @@ public class Player extends MovableObject {
 
                 //left side
                 if(x + width > collidingObject.x && oldX + width <= collidingObject.x && xSpeed >= 0) {
-                    x = collidingObject.x - width-1;
+                    x = collidingObject.x - width;
                     xSpeed = 0;
                 }
 
@@ -91,21 +58,12 @@ public class Player extends MovableObject {
             jumping = true;
             onGround = false;
         }
+
+        if(y + height > 760){
+            y = 760-height;
+            ySpeed = 0;
+            onGround = true;
+            jumping = false;
         }
-
-        public void goLeft(){
-
-        }
-
-        public void goRight(){
-
-        }
-
-        public void jump(){
-
-        }
-
-        public void shoot(){
-            //get selected Weapon: currentWeapon.shoot();
-        }
+    }
 }

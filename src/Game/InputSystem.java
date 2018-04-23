@@ -13,18 +13,17 @@ public class InputSystem implements KeyListener, MouseListener, MouseMotionListe
 
     @Override
     public void keyPressed(KeyEvent e) {
-        switch(e.getKeyChar()) {
-            case 'w':
+        switch(e.getKeyCode()) {
+            case KeyEvent.VK_W:
                 upPressed = true;
-
                 break;
-            case 's':
+            case KeyEvent.VK_S:
                 downPressed = true;
                 break;
-            case 'a':
+            case KeyEvent.VK_A:
                 leftPressed = true;
                 break;
-            case 'd':
+            case KeyEvent.VK_D:
                 rightPressed = true;
                 break;
         }
@@ -32,17 +31,17 @@ public class InputSystem implements KeyListener, MouseListener, MouseMotionListe
 
     @Override
     public void keyReleased(KeyEvent e) {
-        switch(e.getKeyChar()) {
-            case 'w':
+        switch(e.getKeyCode()) {
+            case KeyEvent.VK_W:
                 upPressed = false;
                 break;
-            case 's':
+            case KeyEvent.VK_S:
                 downPressed = false;
                 break;
-            case 'a':
+            case KeyEvent.VK_A:
                 leftPressed = false;
                 break;
-            case 'd':
+            case KeyEvent.VK_D:
                 rightPressed = false;
                 break;
         }
@@ -50,7 +49,6 @@ public class InputSystem implements KeyListener, MouseListener, MouseMotionListe
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
     }
 
     @Override
@@ -67,12 +65,10 @@ public class InputSystem implements KeyListener, MouseListener, MouseMotionListe
 
     @Override
     public void mouseEntered(MouseEvent e) {
-
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-
     }
 
     @Override
@@ -83,6 +79,5 @@ public class InputSystem implements KeyListener, MouseListener, MouseMotionListe
 
     @Override
     public void mouseMoved(MouseEvent e) {
-
     }
 }

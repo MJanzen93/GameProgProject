@@ -1,77 +1,27 @@
 package Game.GameObjects;
 
+import javafx.scene.paint.Color;
+
 import java.util.List;
 
-public class SupplyDropObject extends FixedObject {
+public class SupplyDropObject extends MovableObject {
 
     private double fallSpeed = 50;
 
     public SupplyDropObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
+        setColor(java.awt.Color.ORANGE);
+        hasHP = true;
+        hp = 10;
+        maxHP = 10;
     }
 
     @Override
     public void move(double diffSeconds) {
-        double oldX = x;
-        double oldY = y;
-
-        x+=xSpeed*diffSeconds;
-        y+=fallSpeed*diffSeconds;
-
-        List<GameObject> collidingObjects = physics.getCollisions(this);
-
-        for(int i = 0; i < collidingObjects.size(); i++) {
-            GameObject collidingObject = collidingObjects.get(i);
-
-            if(collidingObject.isBuff) {
-                BuffObject buff = (BuffObject) collidingObject;
-                collidingObject.hp = 0;
-                buff.buffPlayer();
-            }
-
-
-            if(collidingObject.isFixed && collidingObject.isSolid) {
-                //check if Game.GameObjects.Player is on Object
-                if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
-
-                    y = collidingObject.y - height;
-                    ySpeed = 0;
-                    onGround = true;
-                    jumping = false;
-                }
-
-                //check if Game.GameObjects.Player is touching bottom side of object
-                if(y < collidingObject.y + collidingObject.height && oldY >= collidingObject.y + collidingObject.height && ySpeed <= 0) {
-
-                    y = collidingObject.y + collidingObject.height;
-                    ySpeed *= 0.99;
-                }
-
-                //left side
-                if(x + width > collidingObject.x && oldX + width <= collidingObject.x && xSpeed >= 0) {
-                    x = collidingObject.x - width;
-                    xSpeed = 0;
-                }
-
-                //right side
-                if(x < collidingObject.x + collidingObject.width && oldX >= collidingObject.x + collidingObject.width && xSpeed <= 0) {
-                    x = collidingObject.x + collidingObject.width;
-                    xSpeed = 0;
-                }
-            }
-
-        }
-
-        if(collidingObjects.size() == 0) {
-            jumping = true;
-            onGround = false;
-        }
-
-        if(y + height > 760){
-            y = 760-height;
-            ySpeed = 0;
-            onGround = true;
-            jumping = false;
+        super.move(diffSeconds);
+        if(hp <= 0){
+            world.gameObjects.add(new HealthItem(x,y));
+            world.gameObjects.remove(this);
         }
     }
 }

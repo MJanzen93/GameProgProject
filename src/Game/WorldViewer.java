@@ -36,17 +36,15 @@ public class WorldViewer extends JPanel
 
     public void draw(GameObject gObj)
     {
-
         //check if obj is not in cameras view
         //For x
-        if(gObj.x + gObj.width < world.worldPartX ||gObj.x > world.worldPartX + ConstantValues.WORLDPART_WIDTH){
+        if(gObj.x + gObj.width < world.worldPartX && gObj.x > world.worldPartX + ConstantValues.WORLDPART_WIDTH){
             return;
         }
         //for y
-        if(gObj.y + gObj.height < world.worldPartY ||gObj.y > world.worldPartY + ConstantValues.WORLDPART_HEIGHT){
+        if(gObj.y + gObj.height < world.worldPartY && gObj.y > world.worldPartY + ConstantValues.WORLDPART_HEIGHT){
             return;
         }
-
 
         int x = (int) (gObj.x - world.worldPartX);
         int y = (int) (gObj.y - world.worldPartY);

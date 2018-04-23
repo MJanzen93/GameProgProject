@@ -36,6 +36,9 @@ public class World {
 
     public void init()
     {
+        //todo
+        //GameObject[] gameObjects = MapParser.getGameObjects("");
+
         gameObjects = new ArrayList<>();
         fixedObjects = new ArrayList<>();
 
@@ -64,10 +67,10 @@ public class World {
         fixedObjects.add(new FixedObject(3000, 550, 80, 30));
 
         //Enemies
-        gameObjects.add(new EnemyObject(100, 200, 30, 30));
-        gameObjects.add(new EnemyObject(1100, 200, 30, 30));
-        gameObjects.add(new EnemyObject(1400, 200, 30, 30));
-        gameObjects.add(new EnemyObject(1600, 200, 30, 30));
+        gameObjects.add(new SimpleEnemyObject(100, 200, 30, 30));
+        gameObjects.add(new SimpleEnemyObject(1100, 200, 30, 30));
+        gameObjects.add(new SimpleEnemyObject(1400, 200, 30, 30));
+        gameObjects.add(new SimpleEnemyObject(1600, 200, 30, 30));
 
         //Boss
         gameObjects.add(new BossObject(2550, 300, 100, 100));
@@ -77,6 +80,7 @@ public class World {
 
         //SupplyDrop Test
         gameObjects.add(new SupplyDropObject(1500, 300, 50, 50));
+        gameObjects.add(new HealthItem(1000, 50));
 
     }
 
@@ -111,6 +115,7 @@ public class World {
             }
 
             processUserInput();
+
             for(int i = 0; i < gameObjects.size(); i++) {
                 gameObjects.get(i).move(diffSeconds);
                 if(gameObjects.get(i).hp <= 0) {
@@ -126,6 +131,8 @@ public class World {
             adjustWorldPart();
 
             wViewer.clear();
+
+
             physics.applyGravity(diffSeconds);
 
             for(int i = 0; i < gameObjects.size(); i++) {
@@ -165,6 +172,7 @@ public class World {
     void setGraphicSystem(WorldViewer wViewer) { this.wViewer = wViewer; }
     void setInputSystem(InputSystem inputSystem) { this.inputSystem = inputSystem; }
 
+    //todo player.goLeft() ....
     public void processUserInput() {
         if(inputSystem.leftPressed) {
             player.xSpeed = -300;
@@ -254,6 +262,7 @@ public class World {
 
     }
 
+    //todo in player
     public void shootBullet() {
         BulletObject bullet;
 
@@ -267,20 +276,4 @@ public class World {
 
     public Physics getPhysics() { return physics; }
 
-    public ArrayList<GameObject> getVisibleObjects(){
-        ArrayList<GameObject> list = new ArrayList<>();
-        for(int i = 0; i < fixedObjects.size(); i++){
-            //check if obj is not in cameras view
-            //For x
-            if(gameObjects.get(i).x + gameObjects.get(i).width >= worldPartX || gameObjects.get(i).x <= worldPartX + ConstantValues.WORLDPART_WIDTH){
-                list.add(gameObjects.get(i));
-            }
-            //for y
-            if(gameObjects.get(i).y + gameObjects.get(i).height >= worldPartY || gameObjects.get(i).y <= worldPartY + ConstantValues.WORLDPART_HEIGHT){
-                list.add(gameObjects.get(i));
-            }
-
-        }
-        return list;
-    }
 }

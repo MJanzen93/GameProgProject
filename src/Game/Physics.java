@@ -73,9 +73,6 @@ public class Physics {
             }
 
         }
-
-
-
         return collidingObjects;
     }
 }
