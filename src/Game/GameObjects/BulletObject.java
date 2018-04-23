@@ -9,6 +9,7 @@ public class BulletObject extends Game.GameObjects.GameObject {
     public double speed = 1000;
     private double lifetime = 3;
     public boolean isPlayerBullet = false;
+    public int damage = 1;
 
     public BulletObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
@@ -29,7 +30,7 @@ public class BulletObject extends Game.GameObjects.GameObject {
         if(collidingObjects.size() > 0 && ((isPlayerBullet && !collidingObjects.get(0).isPlayer) || (!isPlayerBullet && collidingObjects.get(0).isPlayer || collidingObjects.get(0).isFixed))) {
             hp = 0;
             if(collidingObjects.get(0).hasHP) {
-                collidingObjects.get(0).hp -= 1;
+                collidingObjects.get(0).hp -= damage;
             }
 
         }

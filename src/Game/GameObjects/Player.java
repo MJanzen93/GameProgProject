@@ -1,6 +1,7 @@
 package Game.GameObjects;
 
 
+import java.awt.*;
 import java.util.List;
 
 public class Player extends GameObject {
@@ -14,6 +15,7 @@ public class Player extends GameObject {
         hp = 10;
         maxHP = 10;
         isPlayer = true;
+        //COLOR = new Color(0, 217, 241);
     }
 
     @Override
@@ -27,6 +29,19 @@ public class Player extends GameObject {
         x+=xSpeed*diffSeconds;
         y+=ySpeed*diffSeconds;
 
+        checkCollision(oldX, oldY);
+
+
+
+        if(y + height > 760){
+            y = 760-height;
+            ySpeed = 0;
+            onGround = true;
+            jumping = false;
+        }
+    }
+
+    public void checkCollision(double oldX, double oldY) {
         List<GameObject> collidingObjects = physics.getCollisions(this);
 
         for(int i = 0; i < collidingObjects.size(); i++) {
@@ -37,7 +52,6 @@ public class Player extends GameObject {
                 collidingObject.hp = 0;
                 buff.buffPlayer();
             }
-
 
             if(collidingObject.isFixed && collidingObject.isSolid) {
                 //check if Game.GameObjects.Player is on Object
@@ -58,7 +72,7 @@ public class Player extends GameObject {
 
                 //left side
                 if(x + width > collidingObject.x && oldX + width <= collidingObject.x && xSpeed >= 0) {
-                    x = collidingObject.x - width;
+                    x = collidingObject.x - width-1;
                     xSpeed = 0;
                 }
 
@@ -75,12 +89,5 @@ public class Player extends GameObject {
             jumping = true;
             onGround = false;
         }
-
-        if(y + height > 760){
-            y = 760-height;
-            ySpeed = 0;
-            onGround = true;
-            jumping = false;
         }
-    }
 }

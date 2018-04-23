@@ -5,6 +5,8 @@ import Game.GameObjects.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Thread.sleep;
+
 public class World {
 
     private WorldViewer wViewer;
@@ -16,6 +18,8 @@ public class World {
     private InputSystem inputSystem;
     public int enemiesLeft = 4;
     private double bulletCooldown = 0;
+    private double diffSeconds;
+    private double secondsPassed;
 
     // top left corner of the displayed pane of the world
     double worldPartX = 0;
@@ -85,12 +89,13 @@ public class World {
 
             if(diffMillis<FRAME_MINIMUM_MILLIS)
             {
-                try{ Thread.sleep(FRAME_MINIMUM_MILLIS-diffMillis);} catch(Exception ex){}
+                try{ sleep(FRAME_MINIMUM_MILLIS-diffMillis);} catch(Exception ex){}
                 currentTick = System.currentTimeMillis();
                 diffMillis  = currentTick-lastTick;
             }
 
-            double diffSeconds  = diffMillis/1000.0;
+            diffSeconds  = diffMillis/1000.0;
+            secondsPassed+=diffSeconds;
             lastTick            = currentTick;
 
             if(gameOver) {
@@ -130,6 +135,25 @@ public class World {
                 bulletCooldown -= diffSeconds;
             }
 
+            //high ySpeed => get thinner
+            if (Math.abs(player.ySpeed) > 500 && player.width > 20) {
+                double oldX = player.x;
+                double oldY = player.y;
+                player.width--;
+                player.x+=0.5;
+                player.height++;
+                player.y-=0.5;
+                player.checkCollision(oldX, oldY);
+            } else if (player.width < 30) {
+                double oldX = player.x;
+                double oldY = player.y;
+                player.width++;
+                player.x-=0.5;
+                player.height--;
+                player.y+=0.5;
+                player.checkCollision(oldX, oldY);
+            }
+
         }
     }
 
@@ -146,7 +170,7 @@ public class World {
             player.xSpeed = 0;
         }
 
-        if(inputSystem.upPressed && !player.jumping) {
+        if(inputSystem.upPressed && !player.jumping && player.onGround) {
             player.jumping = true;
             player.onGround = false;
             player.ySpeed = -800;
@@ -155,6 +179,27 @@ public class World {
         if(inputSystem.mousePressed && bulletCooldown <= 0) {
             shootBullet();
             bulletCooldown = player.bulletCooldown;
+        }
+
+        if(inputSystem.downPressed) {
+            if (player.width < 40) {
+                double oldX = player.x;
+                double oldY = player.y;
+                player.width++;
+                player.x-=0.5;
+                player.height--;
+                player.y+=0.5;
+                player.checkCollision(oldX, oldY);
+            }
+        } else if (player.width > 30) {
+            double oldX = player.x;
+            double oldY = player.y;
+            player.x+=0.5;
+            player.y-=0.5;
+            player.width--;
+            player.height++;
+            player.y--;
+            player.checkCollision(oldX, oldY);
         }
     }
 
@@ -210,7 +255,7 @@ public class World {
 
         bullet = new BulletObject(player.x+player.width/2, player.y+player.height/2, 5, 5);
         bullet.alfa  =  Math.atan2(inputSystem.mouseY+worldPartY - player.y-player.width/2, inputSystem.mouseX+worldPartX - player.x-player.height/2);
-
+        bullet.damage = 2;
         bullet.setIsPlayerBullet(true);
 
         gameObjects.add(bullet);
