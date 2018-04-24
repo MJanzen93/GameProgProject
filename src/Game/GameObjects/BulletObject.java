@@ -20,6 +20,7 @@ public class BulletObject extends MovableObject {
     }
 
     public void move(double diffSeconds) {
+        //super.move(diffSeconds);    //-->make Bullets apply gravity
         lifetime -= diffSeconds;
         if(lifetime < 0) {
             hp = 0;

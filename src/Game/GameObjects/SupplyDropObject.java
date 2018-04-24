@@ -15,6 +15,7 @@ public class SupplyDropObject extends MovableObject {
         hp = 10;
         maxHP = 10;
         setColor(Color.ORANGE);
+        isSolid  = true;
     }
 
     @Override

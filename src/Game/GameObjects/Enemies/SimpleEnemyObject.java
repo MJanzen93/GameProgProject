@@ -1,7 +1,6 @@
 package Game.GameObjects.Enemies;
 
 import Game.GameObjects.GameObject;
-import Game.GameObjects.Items.*;
 
 import java.util.List;
 
@@ -12,8 +11,6 @@ public class SimpleEnemyObject extends EnemyObject{
 
     @Override
     public void move(double diffSeconds) {
-        super.move(diffSeconds);
-
         double oldX = x;
         double oldY = y;
 
@@ -94,7 +91,6 @@ public class SimpleEnemyObject extends EnemyObject{
         }
     }
 
-    @Override
     public void shootBullet() {
         Game.GameObjects.BulletObject bullet;
 

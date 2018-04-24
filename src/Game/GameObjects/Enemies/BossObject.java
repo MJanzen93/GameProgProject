@@ -112,7 +112,6 @@ public class BossObject extends EnemyObject {
         }
     }
 
-    @Override
     public void shootBullet() {
         Game.GameObjects.BulletObject bullet;
 

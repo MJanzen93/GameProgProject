@@ -6,8 +6,4 @@ public class MimicObject extends EnemyObject {
         super(startX, startY, width, height);
     }
 
-    @Override
-    public void shootBullet() {
-
-    }
 }

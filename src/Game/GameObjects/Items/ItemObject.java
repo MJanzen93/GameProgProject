@@ -1,5 +1,6 @@
 package Game.GameObjects.Items;
 
+import Game.GameObjects.GameObject;
 import Game.GameObjects.MovableObject;
 
 import java.util.Random;

@@ -1,15 +1,13 @@
 package Game.GameObjects.Enemies;
 
 import Game.GameObjects.MovableObject;
-import Game.GameObjects.Shootable;
 
 import java.awt.*;
-import java.util.List;
 
 /**
  * Enemy
  */
-public abstract class EnemyObject extends MovableObject implements Shootable {
+public abstract class EnemyObject extends MovableObject{
 
     public double bulletCooldown = 0;
 
@@ -25,5 +23,6 @@ public abstract class EnemyObject extends MovableObject implements Shootable {
 
     @Override
     public void move(double diffSeconds) {
+
     }
 }

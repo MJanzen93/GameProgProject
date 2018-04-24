@@ -6,7 +6,7 @@ import Game.InputSystem;
 
 import java.util.List;
 
-public class Player extends MovableObject {
+public class Player extends MovableObject{
 
     public double bulletCooldown = 0.3;
 

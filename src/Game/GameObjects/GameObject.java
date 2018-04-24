@@ -54,6 +54,7 @@ public abstract class GameObject {
     public void move(double diffSeconds) {
     }
 
+
     public static void setPhysics(Physics ph) {
         physics = ph;
     }

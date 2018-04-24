@@ -71,7 +71,7 @@ public class StealerObject extends EnemyObject {
                 }
             }
 
-            if(collidingObject.isFixed && collidingObject.isSolid) {
+            if(collidingObject.isSolid) {
                 //check if Enemy is on Object
                 if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
 
@@ -116,7 +116,6 @@ public class StealerObject extends EnemyObject {
         }
     }
 
-    @Override
     public void shootBullet() {
         Game.GameObjects.BulletObject bullet;
 

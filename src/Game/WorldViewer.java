@@ -70,7 +70,6 @@ public class WorldViewer extends JPanel
         }
     }
 
-
     public void redraw()
     { this.getGraphics().drawImage(imageBuffer, 0, 0, this);
     }
