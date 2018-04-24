@@ -18,6 +18,7 @@ public abstract class MovableObject extends GameObject{
     //todo check only collision and apply gravity
     @Override
     public void move(double diffSeconds) {
+        super.move(diffSeconds);
         double oldX = x;
         double oldY = y;
 

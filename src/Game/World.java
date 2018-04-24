@@ -56,7 +56,8 @@ public class World {
         gameObjects.add(player);
 
         //Ground
-        fixedObjects.add(new FixedObject(0, 750, 10000, 300));
+        fixedObjects.add(new FixedObject(0, 750, 2000, 300));
+        fixedObjects.add(new FixedObject(2100, 750, 8000, 300));
 
         //Platforms
         fixedObjects.add(new FixedObject(500, 700, 300, 50));
@@ -122,7 +123,7 @@ public class World {
             }
 
             if(enemiesLeft <= 0) {
-                fixedObjects.remove(7);
+                fixedObjects.remove(8);
                 enemiesLeft=100;
             }
 

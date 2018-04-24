@@ -2,6 +2,7 @@ package Game.GameObjects;
 
 
 import Game.GameObjects.Items.*;
+import Game.GameObjects.Weapons.WeaponObject;
 import Game.InputSystem;
 
 import java.util.List;
@@ -14,6 +15,9 @@ public class Player extends MovableObject{
 
     private int damage = 1;
 
+    public WeaponObject[] weapons;
+    public WeaponObject currentWeapon;
+
     public Player(double startX, double startY) {
         super(startX, startY, 30, 30);
         hasHP = true;
@@ -22,6 +26,8 @@ public class Player extends MovableObject{
         isPlayer = true;
         isSolid = true;
         //COLOR = new Color(0, 217, 241);
+        weapons = new WeaponObject[2];
+        currentWeapon = null;
     }
 
     /**
@@ -166,6 +172,8 @@ public class Player extends MovableObject{
         bullet.setIsPlayerBullet(true);
 
         world.gameObjects.add(bullet);
+
+        //currentWeapon.shootBullet();
     }
 
 }

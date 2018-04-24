@@ -44,6 +44,14 @@ public abstract class GameObject {
     //Color of game object
     public Color COLOR  = new Color(96,96,255);
 
+    /** @Maxim
+     * Mögliche Variablen
+     */
+    boolean isAffectedByGravity;
+    boolean isCollidable;
+    //boolean isFixed;
+    //boolean isSolid
+
     public GameObject(double startX, double startY, int width, int height) {
         this.x = startX;
         this.y = startY;
@@ -54,6 +62,9 @@ public abstract class GameObject {
     public void move(double diffSeconds) {
     }
 
+    public void draw(Graphics graphics){
+
+    }
 
     public static void setPhysics(Physics ph) {
         physics = ph;

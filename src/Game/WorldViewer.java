@@ -46,6 +46,13 @@ public class WorldViewer extends JPanel
             return;
         }
 
+        //For Tests
+        if(gObj.isItem){
+            gObj.draw(graphics);
+            return;
+        }
+        //***+
+
         int x = (int) (gObj.x - world.worldPartX);
         int y = (int) (gObj.y - world.worldPartY);
 
