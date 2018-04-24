@@ -118,7 +118,6 @@ public class StealerObject extends EnemyObject {
 
     @Override
     public void shootBullet() {
-        super.shootBullet();
         Game.GameObjects.BulletObject bullet;
 
         bullet = new Game.GameObjects.BulletObject(x + width/2, y + height/2, 5, 5);

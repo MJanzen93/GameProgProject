@@ -49,7 +49,7 @@ public class SimpleEnemyObject extends EnemyObject{
         for(int i = 0; i < collidingObjects.size(); i++) {
             Game.GameObjects.GameObject collidingObject = collidingObjects.get(i);
 
-            if(collidingObject.isFixed && collidingObject.isSolid) {
+            if(collidingObject.isSolid) {
                 //check if Enemy is on Object
                 if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
 
@@ -96,7 +96,6 @@ public class SimpleEnemyObject extends EnemyObject{
 
     @Override
     public void shootBullet() {
-        super.shootBullet();
         Game.GameObjects.BulletObject bullet;
 
         bullet = new Game.GameObjects.BulletObject(x + width/2, y + height/2, 5, 5);

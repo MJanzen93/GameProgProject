@@ -20,6 +20,7 @@ public class Player extends MovableObject {
         hp = 10;
         maxHP = 10;
         isPlayer = true;
+        isSolid = true;
         //COLOR = new Color(0, 217, 241);
     }
 
@@ -34,6 +35,10 @@ public class Player extends MovableObject {
 
         x+=xSpeed*diffSeconds;
         y+=ySpeed*diffSeconds;
+
+        if(hp <= 0){
+            world.gameObjects.remove(this);
+        }
 
         checkCollision(oldX, oldY);
 
@@ -81,7 +86,7 @@ public class Player extends MovableObject {
                 }
             }
 
-            if(collidingObject.isFixed && collidingObject.isSolid) {
+            if(collidingObject.isSolid) {
                 //check if Game.GameObjects.Player is on Object
                 if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
 

@@ -1,6 +1,9 @@
 package Game.GameObjects;
 
+import Game.GameObjects.Items.CrafteObject;
 import Game.GameObjects.Items.ItemObject;
+
+import java.awt.*;
 
 public class SupplyDropObject extends MovableObject {
 
@@ -8,10 +11,10 @@ public class SupplyDropObject extends MovableObject {
 
     public SupplyDropObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
-        setColor(java.awt.Color.ORANGE);
         hasHP = true;
         hp = 10;
         maxHP = 10;
+        setColor(Color.ORANGE);
     }
 
     @Override
