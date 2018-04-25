@@ -1,5 +1,6 @@
 package Game.GameObjects.Enemies;
 
+import Game.GameObjects.Items.ItemObject;
 import Game.GameObjects.MovableObject;
 
 import java.awt.*;
@@ -23,6 +24,14 @@ public abstract class EnemyObject extends MovableObject{
 
     @Override
     public void move(double diffSeconds) {
-
+        if(dropItem){
+            if(hp <= 0){
+                ItemObject item = ItemObject.createItem();
+                item.x = x;
+                item.y = y;
+                world.gameObjects.add(item);
+                world.gameObjects.remove(this);
+            }
+        }
     }
 }

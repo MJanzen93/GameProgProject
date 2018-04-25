@@ -1,15 +1,11 @@
-package Game;
-
-import Game.GameObjects.GameObject;
-import Game.GameObjects.SupplyDropObject;
+package Game.World_Editor;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
-public class WorldViewer extends JPanel
-{
+public class Camera extends JPanel {
+
     private GraphicsConfiguration graphicsConf =
             GraphicsEnvironment.getLocalGraphicsEnvironment().
                     getDefaultScreenDevice().getDefaultConfiguration();
@@ -18,7 +14,7 @@ public class WorldViewer extends JPanel
     private World world;
 
 
-    public WorldViewer(InputSystem inputSystem)
+    public Camera(InputSystem inputSystem)
     {
         this.setSize(ConstantValues.WORLDPART_WIDTH,ConstantValues.WORLDPART_HEIGHT);
         imageBuffer = graphicsConf.createCompatibleImage(
@@ -27,6 +23,7 @@ public class WorldViewer extends JPanel
         this.addKeyListener(inputSystem);
         this.addMouseListener(inputSystem);
         this.addMouseMotionListener(inputSystem);
+        this.addMouseWheelListener(inputSystem);
 
     }
 
@@ -47,13 +44,9 @@ public class WorldViewer extends JPanel
             return;
         }
 
-        //For Tests
-        if(gObj.isItem || gObj instanceof SupplyDropObject){
-            gObj.draw(graphics);
-            return;
-        }
-        //***+
+        gObj.draw(graphics);
 
+/*
         int x = (int) (gObj.x - world.worldPartX);
         int y = (int) (gObj.y - world.worldPartY);
 
@@ -76,6 +69,7 @@ public class WorldViewer extends JPanel
             graphics.setColor(new Color(0, 0, 0));
             graphics.drawRect(x+gObj.width/2-maxHP/2, y-30, maxHP, 10);
         }
+        */
     }
 
     public void redraw()

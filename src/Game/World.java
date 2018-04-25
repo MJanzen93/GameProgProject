@@ -82,6 +82,7 @@ public class World {
         gameObjects.add(new SimpleEnemyObject(1400, 200, 30, 30));
         gameObjects.add(new SimpleEnemyObject(1600, 200, 30, 30));
         gameObjects.add(new StealerObject(1700, 200, 30, 30));
+        gameObjects.add(new SWATTeamMate(300, 500, 30, 30));
 
 
         //Boss

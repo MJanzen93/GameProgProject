@@ -6,14 +6,17 @@ import Game.GameObjects.Weapons.WeaponObject;
 import Game.InputSystem;
 
 import java.util.List;
+import java.util.Random;
 
-public class Player extends MovableObject{
+public class Player extends CharacterObjects{
 
     public double bulletCooldown = 0.3;
 
     public int jumps = 2;
 
-    private int damage = 1;
+    public int damage = 1;
+    public int jumpForce = 800;
+    public int xForce = 300;
 
     public WeaponObject[] weapons;
     public WeaponObject currentWeapon;
@@ -69,27 +72,10 @@ public class Player extends MovableObject{
         for(int i = 0; i < collidingObjects.size(); i++) {
             GameObject collidingObject = collidingObjects.get(i);
 
+            //apply Item
             if(collidingObject.isItem){
-                if(collidingObject instanceof HealthItem){
-                    HealthItem item = (HealthItem) collidingObject;
-                    item.setHealth(this);
-                    collidingObject.hp = 0;
-                }else if(collidingObject instanceof RapidFireItem){
-                    RapidFireItem item = (RapidFireItem) collidingObject;
-                    collidingObject.hp = 0;
-                    item.setRapidFire(this);
-                }else if(collidingObject instanceof DoubleDamageItem){
-                    damage = 10;
-                    collidingObject.hp = 0;
-                }else if(collidingObject instanceof SWATItem){
-
-                }else if(collidingObject instanceof SpeedUpItem){
-                    xForce = 500;
-                    collidingObject.hp = 0;
-                }else if(collidingObject instanceof JumpItem){
-                    jumpForce = 1000;
-                    collidingObject.hp = 0;
-                }
+                ItemObject item = (ItemObject) collidingObject;
+                item.applyItem(this);
             }
 
             if(collidingObject.isSolid) {

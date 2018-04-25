@@ -1,7 +1,7 @@
 package Game.GameObjects.Items;
 
-import Game.GameObjects.GameObject;
 import Game.GameObjects.MovableObject;
+import Game.GameObjects.Player;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -24,6 +24,18 @@ public abstract class ItemObject extends MovableObject {
 
     public static ItemObject createItem(){
         int num = random.nextInt(5);
+        switch (num){
+            case 0:
+                return new HealthItem(0,0);
+            case 1:
+                return new HealthItem(0,0);
+            case 2:
+                return new HealthItem(0,0);
+            case 3:
+                return new HealthItem(0,0);
+            case 4:
+                return new HealthItem(0,0);
+        }
         return new DoubleDamageItem(0,0);
     }
 
@@ -43,5 +55,9 @@ public abstract class ItemObject extends MovableObject {
             graphics.setColor(Color.BLACK);
             graphics.drawRect(x, y, width, height);
         }
+    }
+
+    public void applyItem(Player player){
+        hp = 0;
     }
 }

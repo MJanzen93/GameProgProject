@@ -14,8 +14,6 @@ public class StealerObject extends EnemyObject {
 
     @Override
     public void move(double diffSeconds) {
-        super.move(diffSeconds);
-
         double oldX = x;
         double oldY = y;
 
@@ -51,6 +49,7 @@ public class StealerObject extends EnemyObject {
         for(int i = 0; i < collidingObjects.size(); i++) {
             Game.GameObjects.GameObject collidingObject = collidingObjects.get(i);
 
+            //todo change to item.applyItem(this);
             if(collidingObject.isItem){
                 if(collidingObject instanceof HealthItem){
                     HealthItem item = (HealthItem) collidingObject;

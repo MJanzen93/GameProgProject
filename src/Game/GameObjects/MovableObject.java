@@ -7,9 +7,6 @@ import java.util.List;
 //Movable objects: Objects where gravity is applied and collision is checked
 public abstract class MovableObject extends GameObject{
 
-    int jumpForce = 800;
-    int xForce = 300;
-
     public MovableObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
     }

@@ -51,6 +51,7 @@ public abstract class GameObject {
     boolean isCollidable;
     //boolean isFixed;
     //boolean isSolid
+    public boolean dropItem = false;
 
     public GameObject(double startX, double startY, int width, int height) {
         this.x = startX;
@@ -63,7 +64,22 @@ public abstract class GameObject {
     }
 
     public void draw(Graphics graphics){
+        if(hasHP && this.maxHP > this.hp){
 
+            int x = (int) (this.x - world.worldPartX);
+            int y = (int) (this.y - world.worldPartY);
+
+            int hp = this.hp;
+            int maxHP = this.maxHP;
+            if(this.maxHP < 30) {
+                hp = (hp*10/maxHP)*3;
+                maxHP = 30;
+            }
+            graphics.setColor(new Color(201, 0, 0));
+            graphics.fillRect((int)x+this.width/2-maxHP/2, (int)y-30, hp, 10);
+            graphics.setColor(new Color(0, 0, 0));
+            graphics.drawRect((int)x+this.width/2-maxHP/2, (int)y-30, maxHP, 10);
+        }
     }
 
     public static void setPhysics(Physics ph) {

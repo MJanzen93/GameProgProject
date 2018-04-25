@@ -11,7 +11,9 @@ public class RapidFireItem extends ItemObject {
         COLOR = new Color(226, 211, 0);
     }
 
-    public void setRapidFire(Player player) {
-        player.bulletCooldown = 0.1;
+    @Override
+    public void applyItem(Player player) {
+        super.applyItem(player);
+        player.bulletCooldown = 0.01;
     }
 }

@@ -1,5 +1,6 @@
 package Game.GameObjects.Enemies;
 
+import Game.GameObjects.BulletObject;
 import Game.GameObjects.GameObject;
 
 import java.awt.*;
@@ -19,12 +20,13 @@ public class BossObject extends EnemyObject {
         hasHP = true;
         hp = 50;
         maxHP = 50;
+        dropItem = true;
         COLOR = new Color(108, 22, 22);
     }
 
     @Override
     public void move(double diffSeconds) {
-
+        super.move(diffSeconds);
         double oldX = x;
         double oldY = y;
 
@@ -113,7 +115,7 @@ public class BossObject extends EnemyObject {
     }
 
     public void shootBullet() {
-        Game.GameObjects.BulletObject bullet;
+        BulletObject bullet;
 
         int randomOffset = rnd.nextInt(101)-50;
 
@@ -123,7 +125,7 @@ public class BossObject extends EnemyObject {
 
         bullet.setIsPlayerBullet(false);
 
-        GameObject.world.gameObjects.add(bullet);
+        world.gameObjects.add(bullet);
     }
 
     public void specialMove() {
