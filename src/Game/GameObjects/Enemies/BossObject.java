@@ -67,7 +67,7 @@ public class BossObject extends EnemyObject {
 
         bullet.setIsPlayerBullet(false);
 
-        world.gameObjects.add(bullet);
+        world.bulletObjects.add(bullet);
     }
 
     public void specialMove() {

@@ -120,18 +120,14 @@ public class Player extends CharacterObjects{
                     }
                 }
 
-                if(collidingObjects.size() == 0) {
-                    jumping = true;
-                    onGround = false;
-                }
 
-                if(y + height > 760){
-                    y = 760-height;
-                    ySpeed = 0;
-                    onGround = true;
-                    jumping = false;
-                }
+            }
 
+            if(y + height > 760){
+                y = 760-height;
+                ySpeed = 0;
+                onGround = true;
+                jumping = false;
             }
 
             if(collidingObjects.size() == 0) {

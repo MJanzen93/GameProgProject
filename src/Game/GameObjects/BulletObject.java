@@ -32,9 +32,10 @@ public class BulletObject extends GameObject {
 
         List<Game.GameObjects.GameObject> collidingObjects = physics.getCollisions(this);
         if(collidingObjects.size() > 0
-                && ((isPlayerBullet && !collidingObjects.get(0).isPlayer) || (!isPlayerBullet && !collidingObjects.get(0).isEnemy
-                && (collidingObjects.get(0).isPlayer || collidingObjects.get(0).isSolid)))
-                && !collidingObjects.get(0).isItem ) {
+                && ((isPlayerBullet && !collidingObjects.get(0).isPlayer)
+                || (!isPlayerBullet && !collidingObjects.get(0).isEnemy && (collidingObjects.get(0).isPlayer
+                || collidingObjects.get(0).isSolid)))
+                && !collidingObjects.get(0).isItem) {
             hp = 0;
             if(collidingObjects.get(0).hasHP) {
                 collidingObjects.get(0).hp -= damage;

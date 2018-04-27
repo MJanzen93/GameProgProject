@@ -97,6 +97,12 @@ public class World {
         gameObjects.add(new JumpItem(1200, 50));
         gameObjects.add(new SpeedUpItem(1300, 50));
 
+        FixedPlattform f = new FixedPlattform(800,400,40,20);
+        f.dropItem = true;
+        f.hasHP = true;
+        f.hp = 10;
+        f.maxHP = 10;
+        gameObjects.add(f);
 
         gameObjects.add(player);
     }
