@@ -108,6 +108,6 @@ public class StealerObject extends EnemyObject {
 
         bullet.setIsPlayerBullet(false);
 
-        world.gameObjects.add(bullet);
+        world.bulletObjects.add(bullet);
     }
 }

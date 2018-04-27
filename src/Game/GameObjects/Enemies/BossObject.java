@@ -85,7 +85,7 @@ public class BossObject extends EnemyObject {
 
         bullet.setIsPlayerBullet(false);
 
-        GameObject.world.gameObjects.add(bullet);
+        GameObject.world.bulletObjects.add(bullet);
 
 
     }

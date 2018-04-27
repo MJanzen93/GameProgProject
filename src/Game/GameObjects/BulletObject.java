@@ -1,5 +1,7 @@
 package Game.GameObjects;
 
+import Game.GameObjects.Enemies.EnemyObject;
+
 import java.awt.*;
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class BulletObject extends GameObject {
 
     public BulletObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
+        hasHP = true;
         hp = 1;
 
         COLOR = new Color(144, 57, 0);
@@ -21,22 +24,22 @@ public class BulletObject extends GameObject {
         isFixed = true;
     }
 
-    //todo bullets can collide to! FIX THAT --> new List in world with bullets
     public void move(double diffSeconds) {
-        //super.move(diffSeconds);    //-->make Bullets apply gravity
         range--;
         if(range < 0) {
             hp = 0;
         }
 
         List<Game.GameObjects.GameObject> collidingObjects = physics.getCollisions(this);
-
-        if(collidingObjects.size() > 0 && ((isPlayerBullet && !collidingObjects.get(0).isPlayer) || (!isPlayerBullet && collidingObjects.get(0).isPlayer || collidingObjects.get(0).isFixed))
-                && !collidingObjects.get(0).isItem) {
+        if(collidingObjects.size() > 0
+                && ((isPlayerBullet && !collidingObjects.get(0).isPlayer) || (!isPlayerBullet && !collidingObjects.get(0).isEnemy
+                && (collidingObjects.get(0).isPlayer || collidingObjects.get(0).isSolid)))
+                && !collidingObjects.get(0).isItem ) {
             hp = 0;
             if(collidingObjects.get(0).hasHP) {
                 collidingObjects.get(0).hp -= damage;
             }
+
         }
 
         x+=Math.cos(alfa)*speed*diffSeconds;

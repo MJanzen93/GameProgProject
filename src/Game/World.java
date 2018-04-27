@@ -49,10 +49,9 @@ public class World {
 
         gameObjects = new ArrayList<>();
         fixedObjects = new ArrayList<>();
+        bulletObjects = new ArrayList<>();
 
         player = new Player(200, 500);
-
-        gameObjects.add(player);
 
         //Ground
         fixedObjects.add(new FixedObject(0, 750, 2000, 300));
@@ -97,6 +96,9 @@ public class World {
         gameObjects.add(new HealthItem(1000, 50));
         gameObjects.add(new JumpItem(1200, 50));
         gameObjects.add(new SpeedUpItem(1300, 50));
+
+
+        gameObjects.add(player);
     }
 
     void run()
@@ -142,6 +144,15 @@ public class World {
                 }
             }
 
+            for (int i = 0; i < bulletObjects.size(); i++) {
+                bulletObjects.get(i).move(diffSeconds);
+                if(bulletObjects.get(i).hp <= 0 && bulletObjects.get(i).hasHP){
+                    bulletObjects.remove(bulletObjects.get(i));
+                }
+            }
+
+
+
             adjustWorldPart();
 
             wViewer.clear();
@@ -154,6 +165,9 @@ public class World {
             }
             for(int i = 0; i < fixedObjects.size(); i++) {
                 wViewer.draw(fixedObjects.get(i));
+            }
+            for(int i = 0; i < bulletObjects.size(); i++) {
+                wViewer.draw(bulletObjects.get(i));
             }
             wViewer.redraw();
             //???
@@ -193,7 +207,7 @@ public class World {
             player.goLeft();
         } else if (inputSystem.rightPressed) {
             player.goRight();
-        } else {
+        } else if((!inputSystem.leftPressed || !inputSystem.rightPressed) && player.xSpeed != 0){
             player.stop();
         }
 

@@ -44,10 +44,6 @@ public class Player extends CharacterObjects{
         x+=xSpeed*diffSeconds;
         y+=ySpeed*diffSeconds;
 
-        if(hp <= 0){
-            world.gameObjects.remove(this);
-        }
-
         checkCollision(oldX, oldY);
 
         if(y + height > 760){
@@ -82,66 +78,68 @@ public class Player extends CharacterObjects{
      */
     public void checkCollision(double oldX, double oldY) {
 
-        List<GameObject> collidingObjects = physics.getCollisions(this);
+        if(isSolid){
+            List<GameObject> collidingObjects = physics.getCollisions(this);
 
-        for(int i = 0; i < collidingObjects.size(); i++) {
-            GameObject collidingObject = collidingObjects.get(i);
+            for(int i = 0; i < collidingObjects.size(); i++) {
+                GameObject collidingObject = collidingObjects.get(i);
 
-            //apply Item
-            if(collidingObject.isItem){
-                ItemObject item = (ItemObject) collidingObject;
-                item.applyItem(this);
-            }
+                //apply Item
+                if(collidingObject.isItem){
+                    ItemObject item = (ItemObject) collidingObject;
+                    item.applyItem(this);
+                }
 
-            if(collidingObject.isSolid && !collidingObject.isItem && !collidingObject.isEnemy) {
-                //check if Game.GameObjects.Player is on Object
-                if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
+                if(collidingObject.isSolid && !collidingObject.isItem && !collidingObject.isEnemy) {
+                    //check if Game.GameObjects.Player is on Object
+                    if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
 
-                    y = collidingObject.y - height;
+                        y = collidingObject.y - height;
+                        ySpeed = 0;
+                        onGround = true;
+                        jumping = false;
+                    }
+
+                    //check if Game.GameObjects.Player is touching bottom side of object
+                    if(y < collidingObject.y + collidingObject.height && oldY >= collidingObject.y + collidingObject.height && ySpeed <= 0) {
+
+                        y = collidingObject.y + collidingObject.height;
+                        ySpeed *= 0.99;
+                    }
+
+                    //left side
+                    if(x + width > collidingObject.x && oldX + width <= collidingObject.x && xSpeed >= 0) {
+                        x = collidingObject.x - width-1;
+                        xSpeed = 0;
+                    }
+
+                    //right side
+                    if(x < collidingObject.x + collidingObject.width && oldX >= collidingObject.x + collidingObject.width && xSpeed <= 0) {
+                        x = collidingObject.x + collidingObject.width;
+                        xSpeed = 0;
+                    }
+                }
+
+                if(collidingObjects.size() == 0) {
+                    jumping = true;
+                    onGround = false;
+                }
+
+                if(y + height > 760){
+                    y = 760-height;
                     ySpeed = 0;
                     onGround = true;
                     jumping = false;
                 }
 
-                //check if Game.GameObjects.Player is touching bottom side of object
-                if(y < collidingObject.y + collidingObject.height && oldY >= collidingObject.y + collidingObject.height && ySpeed <= 0) {
-
-                    y = collidingObject.y + collidingObject.height;
-                    ySpeed *= 0.99;
-                }
-
-                //left side
-                if(x + width > collidingObject.x && oldX + width <= collidingObject.x && xSpeed >= 0) {
-                    x = collidingObject.x - width-1;
-                    xSpeed = 0;
-                }
-
-                //right side
-                if(x < collidingObject.x + collidingObject.width && oldX >= collidingObject.x + collidingObject.width && xSpeed <= 0) {
-                    x = collidingObject.x + collidingObject.width;
-                    xSpeed = 0;
-                }
             }
 
             if(collidingObjects.size() == 0) {
                 jumping = true;
                 onGround = false;
             }
-
-            if(y + height > 760){
-                y = 760-height;
-                ySpeed = 0;
-                onGround = true;
-                jumping = false;
-            }
-
         }
-
-        if(collidingObjects.size() == 0) {
-            jumping = true;
-            onGround = false;
-        }
-        }
+    }
 
     /**
      * Player goes left
@@ -183,7 +181,7 @@ public class Player extends CharacterObjects{
         bullet.damage = damage;
         bullet.alfa  =  Math.atan2(inputSystem.mouseY+world.worldPartY - y-width/2, inputSystem.mouseX+world.worldPartX - x-height/2);
         bullet.setIsPlayerBullet(true);
-        world.gameObjects.add(bullet);
+        world.bulletObjects.add(bullet);
 
         //currentWeapon.shootBullet();
     }
