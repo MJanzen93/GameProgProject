@@ -2,8 +2,6 @@ package Game.GameObjects.Items;
 
 import Game.GameObjects.CharacterObjects;
 import Game.GameObjects.GameObject;
-import Game.GameObjects.MovableObject;
-import Game.GameObjects.Player;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -25,7 +23,7 @@ public abstract class ItemObject extends GameObject {
         isSolid = true;
     }
 
-    public static ItemObject createItem(){
+    public static ItemObject createRandomItem(){
         int num = random.nextInt(5);
         switch (num){
             case 0:
@@ -41,6 +39,12 @@ public abstract class ItemObject extends GameObject {
         }
         return new DoubleDamageItem(0,0);
     }
+
+    public static ItemObject createHealthItem(){
+        return new HealthItem(0,0);
+    }
+
+    //todo create more Items
 
     @Override
     public void move(double diffSeconds) {

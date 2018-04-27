@@ -14,9 +14,7 @@ public abstract class GameObject {
     //Speed of the object
     public double xSpeed = 0;
     public double ySpeed = 0;
-    //Object is moving
-    public boolean isMoving = true;
-    //??
+
     public boolean onGround = false;
     //Object is fixed (no gravity)
     public boolean isFixed = false;
@@ -24,6 +22,7 @@ public abstract class GameObject {
     public boolean isSolid = false;
     //Object is player
     public boolean isPlayer = false;
+    public boolean isEnemy = false;
     //??
     public boolean jumping = false;
     //Dimensions of object
@@ -62,6 +61,7 @@ public abstract class GameObject {
         x+=xSpeed*diffSeconds;
         y+=ySpeed*diffSeconds;
 
+        //todo anpassen
         checkCollision();
     }
 
@@ -90,7 +90,7 @@ public abstract class GameObject {
     }
 
     public void checkCollision(){
-        if(isSolid){
+        if(isSolid){  //-->collision with enemies
             List<GameObject> collidingObjects = physics.getCollisions(this);
 
             for(int i = 0; i < collidingObjects.size(); i++) {

@@ -27,8 +27,6 @@ public class BossObject extends EnemyObject {
     @Override
     public void move(double diffSeconds) {
         super.move(diffSeconds);
-        double oldX = x;
-        double oldY = y;
 
         double distanceToPlayer = GameObject.world.player.x - x;
 
@@ -55,62 +53,6 @@ public class BossObject extends EnemyObject {
             } else {
                 specialMove();
             }
-        }
-
-
-
-        x+=xSpeed*diffSeconds;
-        y+=ySpeed*diffSeconds;
-
-
-
-
-        List<GameObject> collidingObjects = GameObject.physics.getCollisions(this);
-
-        for(int i = 0; i < collidingObjects.size(); i++) {
-            Game.GameObjects.GameObject collidingObject = collidingObjects.get(i);
-            if(collidingObject.isFixed && collidingObject.isSolid) {
-                //check if Boss is on Object
-                if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
-
-                    y = collidingObject.y - height;
-                    ySpeed = 0;
-                    onGround = true;
-                    jumping = false;
-                }
-
-                //check if Boss is touching bottom side of object
-                if(y < collidingObject.y + collidingObject.height && oldY >= collidingObject.y + collidingObject.height && ySpeed <= 0) {
-
-                    y = collidingObject.y + collidingObject.height;
-                    ySpeed *= 0.99;
-                }
-
-                //left side
-                if(x + width > collidingObject.x && oldX + width <= collidingObject.x && xSpeed >= 0) {
-                    x = collidingObject.x - width;
-                    xSpeed = 0;
-                }
-
-                //right side
-                if(x < collidingObject.x + collidingObject.width && oldX >= collidingObject.x + collidingObject.width && xSpeed <= 0) {
-                    x = collidingObject.x + collidingObject.width;
-                    xSpeed = 0;
-                }
-            }
-
-        }
-
-        if(collidingObjects.size() == 0) {
-            jumping = true;
-            onGround = false;
-        }
-
-        if(y + height > 760){
-            y = 760-height;
-            ySpeed = 0;
-            onGround = true;
-            jumping = false;
         }
     }
 

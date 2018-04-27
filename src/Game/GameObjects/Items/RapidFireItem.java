@@ -1,8 +1,6 @@
 package Game.GameObjects.Items;
 
 import Game.GameObjects.CharacterObjects;
-import Game.GameObjects.MovableObject;
-import Game.GameObjects.Player;
 
 import java.awt.*;
 

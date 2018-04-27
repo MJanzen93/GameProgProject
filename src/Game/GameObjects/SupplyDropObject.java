@@ -34,7 +34,7 @@ public class SupplyDropObject extends GameObject {
     public void move(double diffSeconds) {
         super.move(diffSeconds);
         if(hp <= 0){
-            ItemObject item = ItemObject.createItem();
+            ItemObject item = ItemObject.createRandomItem();
             item.x = x;
             item.y = y;
             world.gameObjects.add(item);

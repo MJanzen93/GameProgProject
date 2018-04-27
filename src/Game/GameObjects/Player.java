@@ -93,7 +93,7 @@ public class Player extends CharacterObjects{
                 item.applyItem(this);
             }
 
-            if(collidingObject.isSolid && !collidingObject.isItem) {
+            if(collidingObject.isSolid && !collidingObject.isItem && !collidingObject.isEnemy) {
                 //check if Game.GameObjects.Player is on Object
                 if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
 
@@ -121,6 +121,18 @@ public class Player extends CharacterObjects{
                     x = collidingObject.x + collidingObject.width;
                     xSpeed = 0;
                 }
+            }
+
+            if(collidingObjects.size() == 0) {
+                jumping = true;
+                onGround = false;
+            }
+
+            if(y + height > 760){
+                y = 760-height;
+                ySpeed = 0;
+                onGround = true;
+                jumping = false;
             }
 
         }
