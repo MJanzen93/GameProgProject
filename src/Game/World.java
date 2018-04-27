@@ -1,9 +1,7 @@
 package Game;
 
 import Game.GameObjects.*;
-import Game.GameObjects.Enemies.BossObject;
-import Game.GameObjects.Enemies.SimpleEnemyObject;
-import Game.GameObjects.Enemies.StealerObject;
+import Game.GameObjects.Enemies.*;
 import Game.GameObjects.Items.*;
 
 import java.util.ArrayList;
@@ -20,7 +18,7 @@ public class World {
     public List<GameObject> fixedObjects;
 
     /*LISTS*/
-    public List<BulletObject> bulletObjects;
+    public List<GameObject> bulletObjects;
 
 
     private Physics physics;
@@ -81,6 +79,7 @@ public class World {
         gameObjects.add(new SimpleEnemyObject(1600, 200, 30, 30));
         gameObjects.add(new StealerObject(1700, 200, 30, 30));
         gameObjects.add(new SWATTeamMate(300, 500, 30, 30));
+        gameObjects.add(new Exploder(1000,500,30,30));
 
 
         //Boss

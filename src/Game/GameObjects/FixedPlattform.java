@@ -18,10 +18,14 @@ public class FixedPlattform extends Plattform {
         super.move(diffSeconds);
         if(dropItem){
             if(hp <= 0){
+                /*
                 ItemObject item = ItemObject.createRandomItem();
                 item.x = x;
                 item.y = y;
-                world.gameObjects.add(item);
+                */
+                Explosion explosion = new Explosion(x,y,5,5);
+                explosion.explode();
+                world.gameObjects.add(explosion);
                 world.gameObjects.remove(this);
             }
         }

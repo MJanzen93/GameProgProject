@@ -1,35 +1,33 @@
 package Game.GameObjects;
 
-import Game.GameObjects.Enemies.EnemyObject;
-
 import java.awt.*;
 import java.util.List;
 
-public class BulletObject extends GameObject {
+public class ExplosionBullet extends GameObject{
 
     public double alfa = 0;
     public double speed = 1000;
-    public double range = 200;
+    public double range = 20;
     public boolean isPlayerBullet = false;
     public int damage = 1;
 
 
-    public BulletObject(double startX, double startY, int width, int height) {
+    public ExplosionBullet(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
         hasHP = true;
         hp = 1;
         COLOR = new Color(144, 57, 0);
-        hasCollision = true;
-        isFixed = true;
+        isSolid = false;
+        hasCollision = false;
     }
 
     public void move(double diffSeconds) {
-        range--;
-        if(range < 0) {
+        range-=speed*diffSeconds;
+        if(range <= 0) {
             hp = 0;
         }
 
-        List<Game.GameObjects.GameObject> collidingObjects = physics.getCollisions(this);
+        List<GameObject> collidingObjects = physics.getCollisions(this);
         if(collidingObjects.size() > 0
                 && ((isPlayerBullet && !collidingObjects.get(0).isPlayer)
                 || (!isPlayerBullet && !collidingObjects.get(0).isEnemy && (collidingObjects.get(0).isPlayer
