@@ -21,6 +21,7 @@ public class BulletObject extends MovableObject {
         isFixed = true;
     }
 
+    //todo bullets can collide to! FIX THAT --> new List in world with bullets
     public void move(double diffSeconds) {
         //super.move(diffSeconds);    //-->make Bullets apply gravity
         range--;
@@ -36,7 +37,6 @@ public class BulletObject extends MovableObject {
             if(collidingObjects.get(0).hasHP) {
                 collidingObjects.get(0).hp -= damage;
             }
-
         }
 
         x+=Math.cos(alfa)*speed*diffSeconds;

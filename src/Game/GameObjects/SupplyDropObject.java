@@ -58,4 +58,5 @@ public class SupplyDropObject extends GameObject {
         graphics.setColor(Color.BLACK);
         graphics.drawRect(x, y, width, height);
     }
+
 }

@@ -47,35 +47,7 @@ public class WorldViewer extends JPanel
             return;
         }
 
-        //For Tests
-        if(gObj.isItem || gObj instanceof SupplyDropObject || gObj.isPlayer){
-            gObj.draw(graphics);
-            return;
-        }
-        //***+
-
-        int x = (int) (gObj.x - world.worldPartX);
-        int y = (int) (gObj.y - world.worldPartY);
-
-        graphics.setColor(gObj.COLOR);
-        graphics.fillRect(x, y, gObj.width, gObj.height);
-        graphics.setColor(Color.BLACK);
-        graphics.drawRect(x, y, gObj.width, gObj.height);
-
-
-        //Quick HP Bar drawing
-        if(gObj.hasHP && gObj.maxHP > gObj.hp) {
-            int hp = gObj.hp;
-            int maxHP = gObj.maxHP;
-            if(gObj.maxHP < 30) {
-                hp = (hp*10/maxHP)*3;
-                maxHP = 30;
-            }
-            graphics.setColor(new Color(201, 0, 0));
-            graphics.fillRect(x+gObj.width/2-maxHP/2, y-30, hp, 10);
-            graphics.setColor(new Color(0, 0, 0));
-            graphics.drawRect(x+gObj.width/2-maxHP/2, y-30, maxHP, 10);
-        }
+        gObj.draw(graphics);
     }
 
     public void redraw()
