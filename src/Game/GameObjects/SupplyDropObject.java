@@ -1,6 +1,5 @@
 package Game.GameObjects;
 
-import Game.GameObjects.Items.CrafteObject;
 import Game.GameObjects.Items.ItemObject;
 
 import javax.imageio.ImageIO;
@@ -9,7 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class SupplyDropObject extends MovableObject {
+public class SupplyDropObject extends GameObject {
 
     private double fallSpeed = 50;
 
@@ -41,7 +40,9 @@ public class SupplyDropObject extends MovableObject {
             world.gameObjects.add(item);
             world.gameObjects.remove(this);
         }
-        ySpeed = 5000*diffSeconds;
+        if(hp == maxHP){
+            ySpeed = 5000*diffSeconds;
+        }
     }
 
     @Override
@@ -49,7 +50,7 @@ public class SupplyDropObject extends MovableObject {
         super.draw(graphics);
         int x = (int) (this.x - world.worldPartX);
         int y = (int) (this.y - world.worldPartY);
-        if(!onGround){
+        if(!onGround && hp == maxHP){
             graphics.drawImage(scaled, x-scaled.getWidth(null)/2 + width/2, y-scaled.getHeight(null), null, null);
         }
         graphics.setColor(COLOR);

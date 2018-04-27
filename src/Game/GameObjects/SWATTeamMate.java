@@ -33,10 +33,11 @@ public class SWATTeamMate extends MovableObject {
                 bulletCooldown -= diffSeconds;
             } else {
                 bulletCooldown = 0.5;
+                enemyObject = searchEnemy();
                 if(enemyObject != null){
                     shootBullet();
-                }else
-                    enemyObject = searchEnemy();
+                }
+
             }
         }
 

@@ -1,5 +1,6 @@
 package Game.GameObjects.Enemies;
 
+import Game.GameObjects.CharacterObjects;
 import Game.GameObjects.Items.ItemObject;
 import Game.GameObjects.MovableObject;
 
@@ -8,9 +9,7 @@ import java.awt.*;
 /**
  * Enemy
  */
-public abstract class EnemyObject extends MovableObject{
-
-    public double bulletCooldown = 0;
+public abstract class EnemyObject extends CharacterObjects {
 
     public EnemyObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);

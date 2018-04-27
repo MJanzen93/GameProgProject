@@ -3,17 +3,16 @@ package Game.GameObjects.Items;
 import Game.GameObjects.CharacterObjects;
 import Game.GameObjects.Player;
 
-import java.awt.*;
+public class ShieldItem extends ItemObject {
 
-public class SpeedUpItem extends ItemObject {
-    public SpeedUpItem(double startX, double startY) {
+    public ShieldItem(double startX, double startY) {
         super(startX, startY);
-        setColor(Color.yellow);
     }
 
     @Override
     public void applyItem(CharacterObjects obj) {
         super.applyItem(obj);
-        obj.xForce = 500;
+        //player.hasShield = true;
+        //player.shieldHp = player.width/2;
     }
 }

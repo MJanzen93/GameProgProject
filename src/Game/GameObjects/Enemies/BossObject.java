@@ -121,7 +121,7 @@ public class BossObject extends EnemyObject {
 
         bullet = new Game.GameObjects.BulletObject(x + width/2, y + height/2, 15, 15);
         bullet.alfa  =  Math.atan2(GameObject.world.player.y+randomOffset - y-height/2, GameObject.world.player.x - x-width/2);
-        bullet.speed = 200;
+        bullet.speed = 1000;
 
         bullet.setIsPlayerBullet(false);
 
@@ -139,7 +139,7 @@ public class BossObject extends EnemyObject {
             specialMoveCooldown = 5;
             specialMoveTick = 0;
         }
-        bullet.speed = 200;
+        bullet.speed = 1000;
 
         bullet.setIsPlayerBullet(false);
 

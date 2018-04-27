@@ -35,7 +35,6 @@ public class MapParser {
         }
 
         HealthItem item = new HealthItem(50,50);
-        item.isFixed = true;
         return null;
     }
 

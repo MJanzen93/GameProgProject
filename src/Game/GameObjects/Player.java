@@ -5,21 +5,19 @@ import Game.GameObjects.Items.*;
 import Game.GameObjects.Weapons.WeaponObject;
 import Game.InputSystem;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Random;
 
 public class Player extends CharacterObjects{
 
-    public double bulletCooldown = 0.3;
-
     public int jumps = 2;
-
-    public int damage = 1;
-    public int jumpForce = 800;
-    public int xForce = 300;
 
     public WeaponObject[] weapons;
     public WeaponObject currentWeapon;
+
+    public boolean hasShield = false;
+    public int shieldHp = 0;
 
     public Player(double startX, double startY) {
         super(startX, startY, 30, 30);
@@ -42,6 +40,7 @@ public class Player extends CharacterObjects{
         double oldX = x;
         double oldY = y;
 
+
         x+=xSpeed*diffSeconds;
         y+=ySpeed*diffSeconds;
 
@@ -51,8 +50,6 @@ public class Player extends CharacterObjects{
 
         checkCollision(oldX, oldY);
 
-
-
         if(y + height > 760){
             y = 760-height;
             ySpeed = 0;
@@ -61,12 +58,30 @@ public class Player extends CharacterObjects{
         }
     }
 
+    @Override
+    public void draw(Graphics graphics) {
+        super.draw(graphics);
+        int x = (int) (this.x - world.worldPartX);
+        int y = (int) (this.y - world.worldPartY);
+
+
+        graphics.setColor(COLOR);
+        graphics.fillRect(x, y, width, height);
+        if(hasShield){
+            graphics.setColor(Color.GRAY);
+            graphics.fillRect(x, y+shieldHp, width, height-shieldHp);
+        }
+        graphics.setColor(Color.BLACK);
+        graphics.drawRect(x, y, width, height);
+    }
+
     /**
      * Check collision for player
      * @param oldX
      * @param oldY
      */
     public void checkCollision(double oldX, double oldY) {
+
         List<GameObject> collidingObjects = physics.getCollisions(this);
 
         for(int i = 0; i < collidingObjects.size(); i++) {
@@ -78,7 +93,7 @@ public class Player extends CharacterObjects{
                 item.applyItem(this);
             }
 
-            if(collidingObject.isSolid) {
+            if(collidingObject.isSolid && !collidingObject.isItem) {
                 //check if Game.GameObjects.Player is on Object
                 if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
 
@@ -156,7 +171,6 @@ public class Player extends CharacterObjects{
         bullet.damage = damage;
         bullet.alfa  =  Math.atan2(inputSystem.mouseY+world.worldPartY - y-width/2, inputSystem.mouseX+world.worldPartX - x-height/2);
         bullet.setIsPlayerBullet(true);
-
         world.gameObjects.add(bullet);
 
         //currentWeapon.shootBullet();

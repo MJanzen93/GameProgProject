@@ -7,28 +7,31 @@ public class BulletObject extends MovableObject {
 
     public double alfa = 0;
     public double speed = 1000;
-    private double lifetime = 3;
+    private double range = 20000;
     public boolean isPlayerBullet = false;
     public int damage = 1;
+
 
     public BulletObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
         hp = 1;
 
         COLOR = new Color(144, 57, 0);
-        hasCollision = false;
+        hasCollision = true;
+        isFixed = true;
     }
 
     public void move(double diffSeconds) {
         //super.move(diffSeconds);    //-->make Bullets apply gravity
-        lifetime -= diffSeconds;
-        if(lifetime < 0) {
+        range--;
+        if(range < 0) {
             hp = 0;
         }
 
         List<Game.GameObjects.GameObject> collidingObjects = physics.getCollisions(this);
 
-        if(collidingObjects.size() > 0 && ((isPlayerBullet && !collidingObjects.get(0).isPlayer) || (!isPlayerBullet && collidingObjects.get(0).isPlayer || collidingObjects.get(0).isFixed))) {
+        if(collidingObjects.size() > 0 && ((isPlayerBullet && !collidingObjects.get(0).isPlayer) || (!isPlayerBullet && collidingObjects.get(0).isPlayer || collidingObjects.get(0).isFixed))
+                && !collidingObjects.get(0).isItem) {
             hp = 0;
             if(collidingObjects.get(0).hasHP) {
                 collidingObjects.get(0).hp -= damage;

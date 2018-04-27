@@ -48,7 +48,7 @@ public class WorldViewer extends JPanel
         }
 
         //For Tests
-        if(gObj.isItem || gObj instanceof SupplyDropObject){
+        if(gObj.isItem || gObj instanceof SupplyDropObject || gObj.isPlayer){
             gObj.draw(graphics);
             return;
         }

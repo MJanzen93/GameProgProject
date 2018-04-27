@@ -31,7 +31,7 @@ public class StealerObject extends EnemyObject {
             if(bulletCooldown > 0) {
                 bulletCooldown -= diffSeconds;
             } else {
-                bulletCooldown = 1;
+                bulletCooldown = bulletCooldownfinal;
                 shootBullet();
             }
         }
@@ -49,25 +49,10 @@ public class StealerObject extends EnemyObject {
         for(int i = 0; i < collidingObjects.size(); i++) {
             Game.GameObjects.GameObject collidingObject = collidingObjects.get(i);
 
-            //todo change to item.applyItem(this);
+            //apply Item
             if(collidingObject.isItem){
-                if(collidingObject instanceof HealthItem){
-                    HealthItem item = (HealthItem) collidingObject;
-                    hp = maxHP;
-                    collidingObject.hp = 0;
-                }else if(collidingObject instanceof RapidFireItem){
-                    RapidFireItem item = (RapidFireItem) collidingObject;
-                    collidingObject.hp = 0;
-                    bulletCooldown = 0.1;
-                }else if(collidingObject instanceof DoubleDamageItem){
-
-                }else if(collidingObject instanceof SWATItem){
-
-                }else if(collidingObject instanceof SpeedUpItem){
-
-                }else if(collidingObject instanceof JumpItem){
-
-                }
+                ItemObject item = (ItemObject) collidingObject;
+                item.applyItem(this);
             }
 
             if(collidingObject.isSolid) {

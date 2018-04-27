@@ -1,5 +1,6 @@
 package Game.GameObjects.Items;
 
+import Game.GameObjects.CharacterObjects;
 import Game.GameObjects.Player;
 
 import java.awt.*;
@@ -11,8 +12,8 @@ public class DoubleDamageItem extends ItemObject {
     }
 
     @Override
-    public void applyItem(Player player) {
-        super.applyItem(player);
-        player.damage = 10;
+    public void applyItem(CharacterObjects obj) {
+        super.applyItem(obj);
+        obj.damage = 10;
     }
 }

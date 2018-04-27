@@ -1,10 +1,12 @@
 package Game.GameObjects.Items;
 
+import Game.GameObjects.BulletObject;
+import Game.GameObjects.CharacterObjects;
 import Game.GameObjects.Player;
+import Game.GameObjects.SupplyDropObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -22,9 +24,7 @@ public class HealthItem extends ItemObject{
 
     @Override
     public void move(double diffSeconds) {
-        if(!isFixed){
-            super.move(diffSeconds);
-        }
+        super.move(diffSeconds);
     }
 
     @Override
@@ -36,8 +36,8 @@ public class HealthItem extends ItemObject{
     }
 
     @Override
-    public void applyItem(Player player) {
-        super.applyItem(player);
-        player.hp = player.maxHP;
+    public void applyItem(CharacterObjects obj) {
+        super.applyItem(obj);
+        obj.hp = obj.maxHP;
     }
 }

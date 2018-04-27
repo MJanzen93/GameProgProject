@@ -19,14 +19,13 @@ public class World {
     public List<GameObject> gameObjects;
     public List<GameObject> fixedObjects;
 
-    //TEST********************************************
-    public List<CollidableObjects> collidableObjects;
-    //************************************************
+    /*LISTS*/
+    public List<BulletObject> bulletObjects;
+
 
     private Physics physics;
     private InputSystem inputSystem;
     public int enemiesLeft = 4;
-    private double bulletCooldown = 0;
     private double diffSeconds;
     private double secondsPassed;
 
@@ -90,6 +89,8 @@ public class World {
 
         //RapidFireItem
         gameObjects.add(new RapidFireItem(2610, 280));
+        gameObjects.add(new RapidFireItem(1010, 280));
+        gameObjects.add(new RapidFireItem(1010, 80));
 
         //SupplyDrop Test
         gameObjects.add(new SupplyDropObject(1500, 300, 50, 50));
@@ -139,7 +140,6 @@ public class World {
                     gameObjects.remove(i);
 
                 }
-
             }
 
             adjustWorldPart();
@@ -156,8 +156,9 @@ public class World {
                 wViewer.draw(fixedObjects.get(i));
             }
             wViewer.redraw();
-            if(bulletCooldown > 0) {
-                bulletCooldown -= diffSeconds;
+            //???
+            if(player.bulletCooldown > 0) {
+                player.bulletCooldown -= diffSeconds;
             }
 
             //high ySpeed => get thinner
@@ -200,9 +201,9 @@ public class World {
             player.jump();
         }
 
-        if(inputSystem.mousePressed && bulletCooldown <= 0) {
+        if(inputSystem.mousePressed && player.bulletCooldown <= 0) {
             player.shootBullet(inputSystem);
-            bulletCooldown = player.bulletCooldown; //?? in player ??
+            player.bulletCooldown = player.bulletCooldownfinal; //?? in player ??
         }
 
         if(inputSystem.downPressed) {

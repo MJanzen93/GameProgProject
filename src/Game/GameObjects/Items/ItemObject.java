@@ -1,5 +1,7 @@
 package Game.GameObjects.Items;
 
+import Game.GameObjects.CharacterObjects;
+import Game.GameObjects.GameObject;
 import Game.GameObjects.MovableObject;
 import Game.GameObjects.Player;
 
@@ -7,7 +9,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-public abstract class ItemObject extends MovableObject {
+public abstract class ItemObject extends GameObject {
 
     public static int width = 20;
     public static int height = 20;
@@ -20,6 +22,7 @@ public abstract class ItemObject extends MovableObject {
         super(startX, startY, width, height);
         random = new Random();
         isItem = true;
+        isSolid = true;
     }
 
     public static ItemObject createItem(){
@@ -57,7 +60,7 @@ public abstract class ItemObject extends MovableObject {
         }
     }
 
-    public void applyItem(Player player){
+    public void applyItem(CharacterObjects obj){
         hp = 0;
     }
 }

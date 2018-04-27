@@ -1,5 +1,6 @@
 package Game.GameObjects.Items;
 
+import Game.GameObjects.CharacterObjects;
 import Game.GameObjects.MovableObject;
 import Game.GameObjects.Player;
 
@@ -12,8 +13,8 @@ public class JumpItem extends ItemObject {
     }
 
     @Override
-    public void applyItem(Player player) {
-        super.applyItem(player);
-        player.jumpForce = 1000;
+    public void applyItem(CharacterObjects obj) {
+        super.applyItem(obj);
+        obj.jumpForce = 1000;
     }
 }

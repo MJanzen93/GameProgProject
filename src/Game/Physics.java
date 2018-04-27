@@ -19,11 +19,12 @@ public class Physics {
 
     }
 
+    //todo for all objects
     public void applyGravity(double diffSeconds) {
         for(int i = 0; i < world.gameObjects.size(); i++) {
             GameObject obj = world.gameObjects.get(i);
 
-            if(!obj.onGround)
+            if(!obj.onGround && !obj.isFixed)
                 obj.ySpeed += fallSpeed*diffSeconds;
 
         }
@@ -40,7 +41,7 @@ public class Physics {
 
             GameObject fixedObj = world.fixedObjects.get(i);
 
-            if(!fixedObj.hasCollision) {
+            if(fixedObj == obj || !fixedObj.hasCollision) {
                 continue;
             }
 
