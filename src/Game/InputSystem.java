@@ -5,6 +5,7 @@ import java.awt.event.*;
 public class InputSystem implements KeyListener, MouseListener, MouseMotionListener {
 
     boolean leftPressed, rightPressed, upPressed, downPressed, mousePressed;
+    boolean altPressed;
     public int mouseX, mouseY;
 
     @Override
@@ -26,6 +27,9 @@ public class InputSystem implements KeyListener, MouseListener, MouseMotionListe
             case KeyEvent.VK_D:
                 rightPressed = true;
                 break;
+            case KeyEvent.VK_ALT:
+                altPressed = true;
+                break;
         }
     }
 
@@ -43,6 +47,9 @@ public class InputSystem implements KeyListener, MouseListener, MouseMotionListe
                 break;
             case KeyEvent.VK_D:
                 rightPressed = false;
+                break;
+            case KeyEvent.VK_ALT:
+                altPressed = false;
                 break;
         }
     }

@@ -7,7 +7,6 @@ import Game.InputSystem;
 
 import java.awt.*;
 import java.util.List;
-import java.util.Random;
 
 public class Player extends CharacterObjects{
 
@@ -18,6 +17,8 @@ public class Player extends CharacterObjects{
 
     public boolean hasShield = false;
     public int shieldHp = 0;
+
+    public int missle = 1;
 
     public Player(double startX, double startY) {
         super(startX, startY, 30, 30);
@@ -180,6 +181,15 @@ public class Player extends CharacterObjects{
         world.bulletObjects.add(bullet);
 
         //currentWeapon.shootBullet();
+    }
+
+    public void fireMissels(InputSystem inputSystem){
+        int x = (int) (inputSystem.mouseX + world.worldPartX);
+        System.out.println(x);
+        world.gameObjects.add(new Missile(x-200,-800, 10,10));
+        world.gameObjects.add(new Missile(x-100,-800, 10,10));
+        world.gameObjects.add(new Missile(x+100,-800, 10,10));
+        world.gameObjects.add(new Missile(x+200,-800, 10,10));
     }
 
 }

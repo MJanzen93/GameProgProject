@@ -96,6 +96,7 @@ public class World {
         gameObjects.add(new JumpItem(1200, 50));
         gameObjects.add(new SpeedUpItem(1300, 50));
 
+
         FixedPlattform f = new FixedPlattform(800,400,40,20);
         f.dropItem = true;
         f.hasHP = true;
@@ -220,9 +221,14 @@ public class World {
             player.jump();
         }
 
-        if(inputSystem.mousePressed && player.bulletCooldown <= 0) {
+        if(inputSystem.mousePressed && player.bulletCooldown <= 0 && !inputSystem.altPressed) {
             player.shootBullet(inputSystem);
             player.bulletCooldown = player.bulletCooldownfinal; //?? in player ??
+        }
+
+        if(player.missle > 0 && inputSystem.mousePressed && inputSystem.altPressed){
+            player.fireMissels(inputSystem);
+            player.missle--;
         }
 
         if(inputSystem.downPressed) {

@@ -22,6 +22,7 @@ public class ExplosionBullet extends GameObject{
     }
 
     public void move(double diffSeconds) {
+        super.move(diffSeconds);
         range-=speed*diffSeconds;
         if(range <= 0) {
             hp = 0;

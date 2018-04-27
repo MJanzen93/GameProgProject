@@ -23,7 +23,7 @@ public class FixedPlattform extends Plattform {
                 item.x = x;
                 item.y = y;
                 */
-                Explosion explosion = new Explosion(x,y,5,5);
+                Explosion explosion = new Explosion(x,y,200);
                 explosion.explode();
                 world.gameObjects.add(explosion);
                 world.gameObjects.remove(this);
