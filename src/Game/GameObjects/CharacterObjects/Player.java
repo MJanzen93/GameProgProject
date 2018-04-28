@@ -1,25 +1,23 @@
 package Game.GameObjects.CharacterObjects;
 
-
-import Game.GameObjects.Bullets.BulletObject;
 import Game.GameObjects.Bullets.ShootBullet;
 import Game.GameObjects.GameObject;
 import Game.GameObjects.Items.*;
 import Game.GameObjects.Missile;
 import Game.GameObjects.Weapons.WeaponObject;
 import Game.InputSystem;
+import Game.Physics;
 
 import java.awt.*;
 import java.util.List;
 
-public class Player extends CharacterObjects{
+public class Player extends CharacterObject {
 
     public int jumps = 2;
 
     public WeaponObject[] weapons;
     public WeaponObject currentWeapon;
 
-    public boolean hasShield = false;
     public int shieldHp = 0;
 
     public int missile = 1;
@@ -27,13 +25,14 @@ public class Player extends CharacterObjects{
     public Player(double startX, double startY) {
         super(startX, startY, 30, 30);
         hasHP = true;
-        hp = 10;
+        hp = 1000;
         maxHP = 10;
         isPlayer = true;
         isSolid = true;
         //COLOR = new Color(0, 217, 241);
         weapons = new WeaponObject[2];
         currentWeapon = null;
+        hasShield = false;
     }
 
     /**
@@ -42,21 +41,7 @@ public class Player extends CharacterObjects{
      */
     @Override
     public void move(double diffSeconds) {
-        double oldX = x;
-        double oldY = y;
-
-
-        x+=xSpeed*diffSeconds;
-        y+=ySpeed*diffSeconds;
-
-        checkCollision(oldX, oldY);
-
-        if(y + height > 760){
-            y = 760-height;
-            ySpeed = 0;
-            onGround = true;
-            jumping = false;
-        }
+        super.move(diffSeconds);
     }
 
     @Override
@@ -65,26 +50,22 @@ public class Player extends CharacterObjects{
         int x = (int) (this.x - world.worldPartX);
         int y = (int) (this.y - world.worldPartY);
 
-
+        if(hasShield){
+            for (int i = 0; i < 25; i++){
+                graphics.setColor(new Color(0, 26,255, 200-i*4));
+                graphics.drawOval(x-width/2+i, y-height/2+i, width*2-i*2, height*2-i*2);
+            }
+        }
         graphics.setColor(COLOR);
         graphics.fillRect(x, y, width, height);
-        if(hasShield){
-            graphics.setColor(Color.GRAY);
-            graphics.fillRect(x, y+shieldHp, width, height-shieldHp);
-        }
         graphics.setColor(Color.BLACK);
         graphics.drawRect(x, y, width, height);
     }
 
-    /**
-     * Check collision for player
-     * @param oldX
-     * @param oldY
-     */
-    public void checkCollision(double oldX, double oldY) {
-
+    @Override
+    public void checkCollision() {
         if(isSolid){
-            List<GameObject> collidingObjects = physics.getCollisions(this);
+            List<GameObject> collidingObjects = Physics.getCollisions(this);
 
             for(int i = 0; i < collidingObjects.size(); i++) {
                 GameObject collidingObject = collidingObjects.get(i);
@@ -96,7 +77,7 @@ public class Player extends CharacterObjects{
                 }
 
                 if(collidingObject.isSolid && !collidingObject.isItem && !collidingObject.isEnemy) {
-                    //check if Game.GameObjects.CharacterObjects.Player is on Object
+                    //check if Game.GameObjects.CharacterObject.Player is on Object
                     if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
 
                         y = collidingObject.y - height;
@@ -105,7 +86,7 @@ public class Player extends CharacterObjects{
                         jumping = false;
                     }
 
-                    //check if Game.GameObjects.CharacterObjects.Player is touching bottom side of object
+                    //check if Game.GameObjects.CharacterObject.Player is touching bottom side of object
                     if(y < collidingObject.y + collidingObject.height && oldY >= collidingObject.y + collidingObject.height && ySpeed <= 0) {
 
                         y = collidingObject.y + collidingObject.height;

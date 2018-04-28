@@ -1,8 +1,9 @@
 package Game.GameObjects.CharacterObjects.Enemies;
 
-import Game.GameObjects.CharacterObjects.CharacterObjects;
+import Game.GameObjects.CharacterObjects.CharacterObject;
 import Game.GameObjects.GameObject;
 import Game.GameObjects.Items.ItemObject;
+import Game.Physics;
 
 import java.awt.*;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 /**
  * Enemy
  */
-public abstract class EnemyObject extends CharacterObjects {
+public abstract class EnemyObject extends CharacterObject {
 
     public EnemyObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
@@ -24,9 +25,7 @@ public abstract class EnemyObject extends CharacterObjects {
 
     @Override
     public void move(double diffSeconds) {
-        double oldX = x;
-        double oldY = y;
-
+        super.move(diffSeconds);
         if(dropItem){
             if(hp <= 0){
                 ItemObject item = ItemObject.createRandomItem();
@@ -36,11 +35,11 @@ public abstract class EnemyObject extends CharacterObjects {
                 world.gameObjects.remove(this);
             }
         }
+    }
 
-        x+=xSpeed*diffSeconds;
-        y+=ySpeed*diffSeconds;
-
-        List<GameObject> collidingObjects = physics.getCollisions(this);
+    @Override
+    public void checkCollision() {
+        List<GameObject> collidingObjects = Physics.getCollisions(this);
         for(int i = 0; i < collidingObjects.size(); i++) {
             Game.GameObjects.GameObject collidingObject = collidingObjects.get(i);
 

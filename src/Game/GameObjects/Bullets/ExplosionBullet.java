@@ -11,7 +11,6 @@ public class ExplosionBullet extends BulletObject {
 
     public void move(double diffSeconds) {
         super.move(diffSeconds);
-
     }
 
     public void setIsPlayerBullet(boolean isPlayerBullet) {

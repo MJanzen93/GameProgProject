@@ -1,6 +1,7 @@
 package Game.GameObjects;
 
 import Game.GameObjects.Bullets.Explosion;
+import Game.Physics;
 
 import java.util.List;
 
@@ -14,19 +15,18 @@ public class Missile extends GameObject {
 
     @Override
     public void move(double diffSeconds) {
-        oldX = x;
-        oldY = y;
+        super.move(diffSeconds);
+    }
 
-        x+=xSpeed*diffSeconds;
-        y+=ySpeed*diffSeconds;
-
-        List<GameObject> collidingObjects = physics.getCollisions(this);
+    @Override
+    public void checkCollision() {
+        List<GameObject> collidingObjects = Physics.getCollisions(this);
 
         for (int i = 0; i < collidingObjects.size(); i++) {
             GameObject collidingObject = collidingObjects.get(i);
 
-            if (collidingObject.isSolid) { ;
-                //check if Game.GameObjects.CharacterObjects.Player is on Object
+            if (collidingObject.isSolid) {
+                //check if Game.GameObjects.CharacterObject.Player is on Object
                 if (y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
 
                     y = collidingObject.y - height;
@@ -37,7 +37,7 @@ public class Missile extends GameObject {
                     hp = 0;
                 }
 
-                //check if Game.GameObjects.CharacterObjects.Player is touching bottom side of object
+                //check if Game.GameObjects.CharacterObject.Player is touching bottom side of object
                 if (y < collidingObject.y + collidingObject.height && oldY >= collidingObject.y + collidingObject.height && ySpeed <= 0) {
 
                     y = collidingObject.y + collidingObject.height;
@@ -56,7 +56,6 @@ public class Missile extends GameObject {
                     xSpeed = 0;
                 }
             }
-
         }
     }
 }

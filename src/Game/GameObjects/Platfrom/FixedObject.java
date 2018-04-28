@@ -13,6 +13,7 @@ public class FixedObject extends GameObject {
         super(startX, startY, width, height);
         isFixed = true;
         isSolid = true;
+        hasCollision = true;
         COLOR = new Color(7, 120, 5);
     }
 

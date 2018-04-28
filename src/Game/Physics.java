@@ -7,20 +7,20 @@ import java.util.List;
 
 public class Physics {
 
-    private World world;
+    private static World world;
 
-    private int fallSpeed = 1500;
+    private static int fallSpeed = 1500;
 
-    public Physics(World world) {
-        this.world = world;
+    private Physics(World world) {
     }
 
-    public void applyPhysics() {
-
+    public static void setWorld(World _world){
+        world = _world;
     }
 
     //todo for all objects
-    public void applyGravity(double diffSeconds) {
+    @Deprecated
+    private void applyGravity(double diffSeconds) {
         for(int i = 0; i < world.gameObjects.size(); i++) {
             GameObject obj = world.gameObjects.get(i);
 
@@ -34,10 +34,12 @@ public class Physics {
     }
 
     public static void applyGravity(GameObject obj, double diffSeconds){
-        obj.ySpeed += 1000*diffSeconds;
+        if(!obj.onGround && !obj.isFixed){
+            obj.ySpeed += fallSpeed*diffSeconds;
+        }
     }
 
-    public List<GameObject> getCollisions(GameObject obj) {
+    public static List<GameObject> getCollisions(GameObject obj) {
 
         List<GameObject> collidingObjects = new ArrayList<>();
 
@@ -52,7 +54,7 @@ public class Physics {
             //If horizontally overlapping
             if(obj.x + obj.width >= fixedObj.x && obj.x <= fixedObj.x + fixedObj.width) {
                 //If vertically overlapping
-                if(obj.y + obj.height > fixedObj.y && obj.y < fixedObj.y + fixedObj.height) {
+                if(obj.y + obj.height >= fixedObj.y && obj.y <= fixedObj.y + fixedObj.height) {
                     collidingObjects.add(fixedObj);
                 }
 
@@ -71,7 +73,7 @@ public class Physics {
             //If horizontally overlapping
             if(obj.x + obj.width >= gameObj.x && obj.x <= gameObj.x + gameObj.width) {
                 //If vertically overlapping
-                if(obj.y + obj.height > gameObj.y && obj.y < gameObj.y + gameObj.height) {
+                if(obj.y + obj.height >= gameObj.y && obj.y < gameObj.y + gameObj.height) {
                     collidingObjects.add(gameObj);
                 }
 

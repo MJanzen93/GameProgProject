@@ -13,8 +13,6 @@ public class ExplodeAbleBullet extends BulletObject {
     @Override
     public void move(double diffSeconds) {
         super.move(diffSeconds);
-        Physics.applyGravity(this, diffSeconds);
-
         if(hp <= 0){
             Explosion explosion = new Explosion(x,y, 200);
             explosion.explode();

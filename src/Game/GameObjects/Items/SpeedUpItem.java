@@ -1,6 +1,6 @@
 package Game.GameObjects.Items;
 
-import Game.GameObjects.CharacterObjects.CharacterObjects;
+import Game.GameObjects.CharacterObjects.CharacterObject;
 
 import java.awt.*;
 
@@ -11,7 +11,7 @@ public class SpeedUpItem extends ItemObject {
     }
 
     @Override
-    public void applyItem(CharacterObjects obj) {
+    public void applyItem(CharacterObject obj) {
         super.applyItem(obj);
         obj.xForce = 500;
     }

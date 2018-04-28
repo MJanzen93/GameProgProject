@@ -38,7 +38,8 @@ public class Main {
         World world = new World();
         world.setInputSystem(inputSystem);
 
-        GameObject.setPhysics(world.getPhysics());
+        //GameObject.setPhysics(world.getPhysics());
+        Physics.setWorld(world);
         GameObject.setWorld(world);
 
         WorldViewer wViewer = new WorldViewer(inputSystem);

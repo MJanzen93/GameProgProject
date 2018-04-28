@@ -1,6 +1,6 @@
 package Game.GameObjects.Items;
 
-import Game.GameObjects.CharacterObjects.CharacterObjects;
+import Game.GameObjects.CharacterObjects.CharacterObject;
 import Game.GameObjects.GameObject;
 
 import java.awt.*;
@@ -40,31 +40,31 @@ public abstract class ItemObject extends GameObject {
         return new DoubleDamageItem(0,0);
     }
 
-    public static ItemObject createHealthItem(){
-        return new HealthItem(0,0);
-    }
-
-    //todo create more Items
-
     @Override
     public void move(double diffSeconds) {
         super.move(diffSeconds);
     }
 
     @Override
-    public void draw(Graphics graphics) {
-        if(image == null){
-            int x = (int) (this.x - world.worldPartX);
-            int y = (int) (this.y - world.worldPartY);
+    public void checkCollision() {
+        super.checkCollision();
+    }
 
+    @Override
+    public void draw(Graphics graphics) {
+        int x = (int) (this.x - world.worldPartX);
+        int y = (int) (this.y - world.worldPartY);
+
+        if(image == null){
             graphics.setColor(COLOR);
             graphics.fillRect(x, y, width, height);
             graphics.setColor(Color.BLACK);
             graphics.drawRect(x, y, width, height);
-        }
+        }else
+            graphics.drawImage(image, x, y, null, null);
     }
 
-    public void applyItem(CharacterObjects obj){
+    public void applyItem(CharacterObject obj){
         hp = 0;
     }
 }

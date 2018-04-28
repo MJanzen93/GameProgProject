@@ -1,5 +1,7 @@
 package Game.GameObjects;
 
+import Game.GameObjects.CharacterObjects.Player;
+import Game.GameObjects.Items.SpeedUpItem;
 import Game.Physics;
 import Game.World;
 
@@ -29,7 +31,6 @@ public abstract class GameObject {
     public int width;
     public int height;
     //??
-    public static Physics physics;
     public static World world;
     //HP of object
     public boolean hasHP = false;
@@ -54,17 +55,14 @@ public abstract class GameObject {
         this.height = height;
     }
 
-    double oldX, oldY;
+    public double oldX, oldY;
 
     public void move(double diffSeconds) {
+        Physics.applyGravity(this, diffSeconds);
         oldX = x;
         oldY = y;
-
         x+=xSpeed*diffSeconds;
         y+=ySpeed*diffSeconds;
-
-        //todo anpassen
-        checkCollision();
     }
 
     public void draw(Graphics graphics){
@@ -92,23 +90,22 @@ public abstract class GameObject {
     }
 
     public void checkCollision(){
-        if(isSolid){  //-->collision with enemies
-            List<GameObject> collidingObjects = physics.getCollisions(this);
+        if(isSolid){
+            List<GameObject> collidingObjects = Physics.getCollisions(this);
 
             for(int i = 0; i < collidingObjects.size(); i++) {
                 GameObject collidingObject = collidingObjects.get(i);
 
                 if(collidingObject.isSolid) {
-                    //check if Game.GameObjects.CharacterObjects.Player is on Object
+                    //check if Game.GameObjects.CharacterObject.Player is on Object
                     if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
 
                         y = collidingObject.y - height;
                         ySpeed = 0;
                         onGround = true;
-                        jumping = false;
                     }
 
-                    //check if Game.GameObjects.CharacterObjects.Player is touching bottom side of object
+                    //check if Game.GameObjects.CharacterObject.Player is touching bottom side of object
                     if(y < collidingObject.y + collidingObject.height && oldY >= collidingObject.y + collidingObject.height && ySpeed <= 0) {
 
                         y = collidingObject.y + collidingObject.height;
@@ -144,9 +141,6 @@ public abstract class GameObject {
         }
     }
 
-    public static void setPhysics(Physics ph) {
-        physics = ph;
-    }
     public static void setWorld(World w) { world = w; }
 
     public void setColor(Color color) {

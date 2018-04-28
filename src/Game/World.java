@@ -23,8 +23,6 @@ public class World {
     /*LISTS*/
     public List<GameObject> bulletObjects;
 
-
-    private Physics physics;
     private InputSystem inputSystem;
     public int enemiesLeft = 4;
     private double diffSeconds;
@@ -42,7 +40,6 @@ public class World {
     private boolean GameOver = false;
 
     public World() {
-        physics = new Physics(this);
     }
 
     public void init()
@@ -70,7 +67,7 @@ public class World {
         //Bossroom
         fixedObjects.add(new FixedObject(2000, 0, 100, 700));
         //Door
-        fixedObjects.add(new FixedObject(2000, 700, 100, 50));
+        //fixedObjects.add(new FixedObject(2000, 700, 100, 50));
         fixedObjects.add(new FixedObject(3300, 0, 100, 700));
         fixedObjects.add(new FixedObject(2000, 0, 1300, 100));
 
@@ -147,25 +144,23 @@ public class World {
 
             for(int i = 0; i < gameObjects.size(); i++) {
                 gameObjects.get(i).move(diffSeconds);
-                if(gameObjects.get(i).hp <= 0) {
-                    if(gameObjects.get(i).hasHP) {
-                        enemiesLeft--;
-                    }
-                    gameObjects.remove(i);
-
+                gameObjects.get(i).checkCollision();
+                if(gameObjects.get(i).hp <= 0){
+                    gameObjects.remove(gameObjects.get(i));
                 }
             }
 
             for (int i = 0; i < bulletObjects.size(); i++) {
                 bulletObjects.get(i).move(diffSeconds);
-                if(bulletObjects.get(i).hp <= 0 && bulletObjects.get(i).hasHP){
+                bulletObjects.get(i).checkCollision();
+                if(bulletObjects.get(i).hp <= 0){
                     bulletObjects.remove(bulletObjects.get(i));
                 }
             }
 
             for (int i = 0; i < fixedObjects.size(); i++) {
                 fixedObjects.get(i).move(diffSeconds);
-                if(fixedObjects.get(i).hp <= 0 && fixedObjects.get(i).hasHP){
+                if(fixedObjects.get(i).hp <= 0){
                     fixedObjects.remove(fixedObjects.get(i));
                 }
             }
@@ -175,7 +170,7 @@ public class World {
             wViewer.clear();
 
 
-            physics.applyGravity(diffSeconds);
+            //physics.applyGravity(diffSeconds);
 
             for(int i = 0; i < gameObjects.size(); i++) {
                 wViewer.draw(gameObjects.get(i));
@@ -200,7 +195,7 @@ public class World {
                 player.x+=0.5;
                 player.height++;
                 player.y-=0.5;
-                player.checkCollision(oldX, oldY);
+                player.checkCollision();
             } else if (player.width < 30) {
                 double oldX = player.x;
                 double oldY = player.y;
@@ -208,9 +203,8 @@ public class World {
                 player.x-=0.5;
                 player.height--;
                 player.y+=0.5;
-                player.checkCollision(oldX, oldY);
+                player.checkCollision();
             }
-
         }
     }
 
@@ -250,7 +244,7 @@ public class World {
                 player.x-=0.5;
                 player.height--;
                 player.y+=0.5;
-                player.checkCollision(oldX, oldY);
+                player.checkCollision();
             }
         } else if (player.width > 30) {
             double oldX = player.x;
@@ -260,7 +254,7 @@ public class World {
             player.width--;
             player.height++;
             player.y--;
-            player.checkCollision(oldX, oldY);
+            player.checkCollision();
         }
     }
 
@@ -306,8 +300,5 @@ public class World {
             */
         }
     }
-
-
-    public Physics getPhysics() { return physics; }
 
 }

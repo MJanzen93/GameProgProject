@@ -1,6 +1,6 @@
 package Game.GameObjects.Items;
 
-import Game.GameObjects.CharacterObjects.CharacterObjects;
+import Game.GameObjects.CharacterObjects.CharacterObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -27,13 +27,10 @@ public class HealthItem extends ItemObject{
     @Override
     public void draw(Graphics graphics) {
         super.draw(graphics);
-        int x = (int) (this.x - world.worldPartX);
-        int y = (int) (this.y - world.worldPartY);
-        graphics.drawImage(image, x, y, null, null);
     }
 
     @Override
-    public void applyItem(CharacterObjects obj) {
+    public void applyItem(CharacterObject obj) {
         super.applyItem(obj);
         obj.hp = obj.maxHP;
     }

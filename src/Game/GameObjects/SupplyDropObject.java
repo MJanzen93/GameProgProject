@@ -38,7 +38,6 @@ public class SupplyDropObject extends GameObject {
             item.x = x;
             item.y = y;
             world.gameObjects.add(item);
-            world.gameObjects.remove(this);
         }
         if(hp == maxHP){
             ySpeed = 5000*diffSeconds;
@@ -46,11 +45,16 @@ public class SupplyDropObject extends GameObject {
     }
 
     @Override
+    public void checkCollision() {
+        super.checkCollision();
+    }
+
+    @Override
     public void draw(Graphics graphics) {
         super.draw(graphics);
         int x = (int) (this.x - world.worldPartX);
         int y = (int) (this.y - world.worldPartY);
-        if(!onGround && hp == maxHP){
+        if(!onGround && hp == maxHP && scaled != null){
             graphics.drawImage(scaled, x-scaled.getWidth(null)/2 + width/2, y-scaled.getHeight(null), null, null);
         }
         graphics.setColor(COLOR);

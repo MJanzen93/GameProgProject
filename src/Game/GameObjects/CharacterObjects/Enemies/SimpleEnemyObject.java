@@ -32,6 +32,11 @@ public class SimpleEnemyObject extends EnemyObject{
         }
     }
 
+    @Override
+    public void checkCollision() {
+        super.checkCollision();
+    }
+
     public void shootBullet() {
         ShootBullet bullet;
 

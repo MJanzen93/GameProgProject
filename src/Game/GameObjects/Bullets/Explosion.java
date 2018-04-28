@@ -12,7 +12,7 @@ public class Explosion extends GameObject {
         super(startX, startY, 0, 0);
         hasCollision = false;
         isSolid = false;
-        isFixed = false;
+        isFixed = true;
         this.radius = radius;
     }
 

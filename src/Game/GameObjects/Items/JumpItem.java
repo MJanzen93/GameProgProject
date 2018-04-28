@@ -1,6 +1,6 @@
 package Game.GameObjects.Items;
 
-import Game.GameObjects.CharacterObjects.CharacterObjects;
+import Game.GameObjects.CharacterObjects.CharacterObject;
 
 import java.awt.*;
 
@@ -11,8 +11,13 @@ public class JumpItem extends ItemObject {
     }
 
     @Override
-    public void applyItem(CharacterObjects obj) {
+    public void applyItem(CharacterObject obj) {
         super.applyItem(obj);
         obj.jumpForce = 1000;
+    }
+
+    @Override
+    public void checkCollision() {
+        super.checkCollision();
     }
 }

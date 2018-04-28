@@ -4,6 +4,7 @@ import Game.GameObjects.Bullets.BulletObject;
 import Game.GameObjects.Bullets.ShootBullet;
 import Game.GameObjects.GameObject;
 import Game.GameObjects.Items.*;
+import Game.Physics;
 
 import java.awt.*;
 import java.util.List;
@@ -16,8 +17,7 @@ public class StealerObject extends EnemyObject {
 
     @Override
     public void move(double diffSeconds) {
-        double oldX = x;
-        double oldY = y;
+        super.move(diffSeconds);
 
         double distanceToPlayer = world.player.x - x;
 
@@ -38,15 +38,11 @@ public class StealerObject extends EnemyObject {
             }
         }
 
+    }
 
-
-        x+=xSpeed*diffSeconds;
-        y+=ySpeed*diffSeconds;
-
-
-
-
-        List<GameObject> collidingObjects = physics.getCollisions(this);
+    @Override
+    public void checkCollision() {
+        List<GameObject> collidingObjects = Physics.getCollisions(this);
 
         for(int i = 0; i < collidingObjects.size(); i++) {
             Game.GameObjects.GameObject collidingObject = collidingObjects.get(i);
@@ -57,7 +53,7 @@ public class StealerObject extends EnemyObject {
                 item.applyItem(this);
             }
 
-            if(collidingObject.isSolid) {
+            if(collidingObject.isSolid && !collidingObject.isItem && !collidingObject.isEnemy) {
                 //check if Enemy is on Object
                 if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
 

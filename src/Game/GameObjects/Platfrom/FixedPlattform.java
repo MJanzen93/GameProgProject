@@ -37,4 +37,9 @@ public class FixedPlattform extends Plattform {
             }
         }
     }
+
+    @Override
+    public void checkCollision() {
+        super.checkCollision();
+    }
 }

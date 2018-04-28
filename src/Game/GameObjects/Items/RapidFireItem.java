@@ -1,6 +1,6 @@
 package Game.GameObjects.Items;
 
-import Game.GameObjects.CharacterObjects.CharacterObjects;
+import Game.GameObjects.CharacterObjects.CharacterObject;
 
 import java.awt.*;
 
@@ -11,13 +11,8 @@ public class RapidFireItem extends ItemObject {
     }
 
     @Override
-    public void applyItem(CharacterObjects obj) {
+    public void applyItem(CharacterObject obj) {
         super.applyItem(obj);
         obj.bulletCooldownfinal = 0.1;
-    }
-
-    @Override
-    public void move(double diffSeconds) {
-        super.move(diffSeconds);
     }
 }

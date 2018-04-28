@@ -1,6 +1,6 @@
 package Game.GameObjects.Items;
 
-import Game.GameObjects.CharacterObjects.CharacterObjects;
+import Game.GameObjects.CharacterObjects.CharacterObject;
 
 public class ShieldItem extends ItemObject {
 
@@ -9,9 +9,8 @@ public class ShieldItem extends ItemObject {
     }
 
     @Override
-    public void applyItem(CharacterObjects obj) {
+    public void applyItem(CharacterObject obj) {
         super.applyItem(obj);
-        //player.hasShield = true;
-        //player.shieldHp = player.width/2;
+        obj.hasShield = true;
     }
 }

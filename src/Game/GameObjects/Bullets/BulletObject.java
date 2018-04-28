@@ -1,6 +1,7 @@
 package Game.GameObjects.Bullets;
 
 import Game.GameObjects.GameObject;
+import Game.Physics;
 
 import java.awt.*;
 import java.util.List;
@@ -19,18 +20,23 @@ public abstract class BulletObject extends GameObject {
         hasHP = true;
         hp = 1;
         COLOR = new Color(144, 57, 0);
-        hasCollision = true;
+        hasCollision = false;
+        isSolid = false;
         isFixed = true;
     }
 
     public void move(double diffSeconds) {
-        //super.move(diffSeconds);
         range-=speed*diffSeconds;
         if(range < 0) {
             hp = 0;
         }
+        x+=Math.cos(alfa)*speed*diffSeconds;
+        y+=Math.sin(alfa)*speed*diffSeconds;
+    }
 
-        List<Game.GameObjects.GameObject> collidingObjects = physics.getCollisions(this);
+    @Override
+    public void checkCollision() {
+        List<Game.GameObjects.GameObject> collidingObjects = Physics.getCollisions(this);
         if(collidingObjects.size() > 0
                 && ((isPlayerBullet && !collidingObjects.get(0).isPlayer)
                 || (!isPlayerBullet && !collidingObjects.get(0).isEnemy && (collidingObjects.get(0).isPlayer
@@ -42,10 +48,6 @@ public abstract class BulletObject extends GameObject {
             }
 
         }
-
-        x+=Math.cos(alfa)*speed*diffSeconds;
-        y+=Math.sin(alfa)*speed*diffSeconds;
-
     }
 
     @Override
