@@ -1,5 +1,6 @@
 package Game;
 
+
 import Game.GameObjects.*;
 import Game.GameObjects.CharacterObjects.Player;
 import Game.GameObjects.CharacterObjects.Enemies.*;
@@ -7,10 +8,24 @@ import Game.GameObjects.Items.*;
 import Game.GameObjects.Platfrom.FixedPlattform;
 import Game.GameObjects.Weapons.Mine;
 
+
+import static java.lang.Thread.sleep;
+
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.Thread.sleep;
+import Game.GameObjects.FixedObject;
+import Game.GameObjects.GameObject;
+import Game.GameObjects.SupplyDropObject;
+import Game.GameObjects.CharacterObjects.Player;
+import Game.GameObjects.CharacterObjects.Enemies.BossObject;
+import Game.GameObjects.Enemies.Speedy;
+import Game.GameObjects.Items.HealthItem;
+import Game.GameObjects.Items.JumpItem;
+import Game.GameObjects.Items.RapidFireItem;
+import Game.GameObjects.Items.SpeedUpItem;
+import Game.GameObjects.Platfrom.FixedPlattform;
 
 public class World {
 
@@ -57,6 +72,7 @@ public class World {
 
         player = new Player(200, 500);
 
+
         //Ground
         fixedObjects.add(new FixedPlattform(0, 750, 2000, 300));
         fixedObjects.add(new FixedPlattform(2100, 750, 8000, 300));
@@ -68,9 +84,11 @@ public class World {
         fixedObjects.add(new FixedPlattform(0, 250, 600, 20));
         fixedObjects.add(new FixedPlattform(650, 250, 300, 20));
 
+
         //Bossroom
         fixedObjects.add(new FixedPlattform(2000, 0, 100, 700));
         //Door
+
         //fixedObjects.add(new FixedPlattform(2000, 700, 100, 50));
         fixedObjects.add(new FixedPlattform(3300, 0, 100, 700));
         fixedObjects.add(new FixedPlattform(2000, 0, 1300, 100));
@@ -78,6 +96,7 @@ public class World {
         fixedObjects.add(new FixedPlattform(2200, 550, 80, 30));
         fixedObjects.add(new FixedPlattform(2600, 550, 80, 30));
         fixedObjects.add(new FixedPlattform(3000, 550, 80, 30));
+
 
         //Enemies
         gameObjects.add(new SimpleEnemyObject(100, 200, 30, 30));
@@ -88,11 +107,16 @@ public class World {
         gameObjects.add(new SWATTeamMate(300, 500, 30, 30));
         gameObjects.add(new Exploder(1000,500,30,30));
 
+
         fixedObjects.add(new Mine(2200, 745));
         fixedObjects.add(new Mine(2300, 745));
         fixedObjects.add(new Mine(2400, 745));
         fixedObjects.add(new Mine(2500, 745));
         fixedObjects.add(new Mine(2600, 745));
+
+
+        gameObjects.add(new Speedy(0, 220, 30, 30,new FixedObject(0, 250, 600, 20)));//needs the object where he is on it
+        gameObjects.add(new Speedy(1150, 220, 30, 30,new FixedObject(550, 250, 600, 20)));//needs the object where he is on it
 
 
         //Boss
@@ -111,6 +135,7 @@ public class World {
         gameObjects.add(new ShieldItem(1500, 50));
 
 
+
         FixedPlattform f = new FixedPlattform(800,400,40,20);
         f.dropItem = true;
         f.destructible = true;
@@ -118,6 +143,7 @@ public class World {
         f.maxHP = 10;
         f.explodable = true;
         gameObjects.add(f);
+
 
         gameObjects.add(player);
 
@@ -214,7 +240,7 @@ public class World {
 
     //todo player.goLeft() ....
     public void processUserInput() {
-        if(inputSystem.leftPressed) {
+    	if(inputSystem.leftPressed) {
             player.goLeft();
         } else if (inputSystem.rightPressed) {
             player.goRight();

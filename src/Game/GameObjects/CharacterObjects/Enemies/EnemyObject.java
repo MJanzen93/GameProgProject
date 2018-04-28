@@ -11,7 +11,11 @@ import java.util.List;
 /**
  * Enemy
  */
-public abstract class EnemyObject extends CharacterObject {
+
+public abstract class EnemyObject extends CharacterObjects {
+	
+	public int touchDamge = 2;
+	public boolean isEnemyTouched = false;
 
     public EnemyObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
@@ -21,11 +25,14 @@ public abstract class EnemyObject extends CharacterObject {
         COLOR = new Color(190, 30, 30);
         isSolid = true;
         isEnemy= true;
+        
     }
 
     @Override
     public void move(double diffSeconds) {
+
         super.move(diffSeconds);
+
         if(dropItem){
             if(hp <= 0){
                 ItemObject item = ItemObject.createRandomItem();

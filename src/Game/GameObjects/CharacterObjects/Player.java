@@ -1,7 +1,12 @@
+<<<<<<< HEAD:src/Game/GameObjects/CharacterObjects/Player.java
 package Game.GameObjects.CharacterObjects;
 
 import Game.GameObjects.Bullets.ShootBullet;
 import Game.GameObjects.GameObject;
+=======
+package Game.GameObjects;
+
+>>>>>>> Resovled merg confilct:src/Game/GameObjects/Player.java
 import Game.GameObjects.Items.*;
 import Game.GameObjects.Missile;
 import Game.GameObjects.Weapons.WeaponObject;
@@ -11,12 +16,20 @@ import Game.Physics;
 import java.awt.*;
 import java.util.List;
 
+<<<<<<< HEAD:src/Game/GameObjects/CharacterObjects/Player.java
 public class Player extends CharacterObject {
+=======
+
+public class Player extends CharacterObjects{
+>>>>>>> Resovled merg confilct:src/Game/GameObjects/Player.java
 
     public int jumps = 2;
 
     public WeaponObject[] weapons;
     public WeaponObject currentWeapon;
+    
+    public double hitAlphaSpeed = 0;
+	public boolean hitFromObjectBool = false;
 
     public int missile = 1;
 
@@ -39,7 +52,9 @@ public class Player extends CharacterObject {
      */
     @Override
     public void move(double diffSeconds) {
+
         super.move(diffSeconds);
+
     }
 
     @Override
@@ -59,6 +74,7 @@ public class Player extends CharacterObject {
                 //if(collidingObject.canCollideWithPlayer)
                 if(collidingObject.isSolid && !collidingObject.isItem && !collidingObject.isEnemy) {
                     //check if Game.GameObjects.CharacterObject.Player is on Object
+
                     if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
 
                         y = collidingObject.y - height;
@@ -169,4 +185,21 @@ public class Player extends CharacterObject {
         world.gameObjects.add(new Missile(x+200,y-2000));
     }
 
+ // calculate the x speed when hit with an enemy
+ 	// the problem is when key is released or is pressed it will be either 0 or
+ 	// pressed XSpeed
+ 	private double calculateHitAlphaSpeed() {
+ 		// TODO Auto-generated method stub
+     	if(hitFromObjectBool) {
+     		if(hitAlphaSpeed >= 1000 && hitAlphaSpeed > 0)
+     			hitFromObjectBool = false;
+     		return hitAlphaSpeed = hitAlphaSpeed +60;
+     	} else {
+     		if(hitAlphaSpeed > 1000 || hitAlphaSpeed >= 10 ) {
+     	
+     			return hitAlphaSpeed = hitAlphaSpeed -10;
+     	}
+ 		return 0 ;
+ 	}
+ 	}
 }

@@ -25,6 +25,11 @@ public abstract class GameObject {
     //Object is player
     public boolean isPlayer = false;
     public boolean isEnemy = false;
+
+    
+    public boolean isCollidable = false;
+    //??
+    public boolean jumping = false;
     //Dimensions of object
     public int width;
     public int height;

@@ -51,7 +51,6 @@ public abstract class BulletObject extends GameObject {
                 if(collidingObjects.get(0).destructible) {
                     collidingObjects.get(0).hp -= damage;
                 }
-
             }
         }
     }
