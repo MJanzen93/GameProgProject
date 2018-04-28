@@ -1,7 +1,6 @@
 package Game.GameObjects.BackgroundObjects;
 
 import Game.GameObjects.GameObject;
-import Game.GameObjects.Platfrom.FixedObject;
 
 import java.awt.*;
 

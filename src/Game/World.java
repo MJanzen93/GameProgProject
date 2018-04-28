@@ -4,7 +4,6 @@ import Game.GameObjects.*;
 import Game.GameObjects.CharacterObjects.Player;
 import Game.GameObjects.CharacterObjects.Enemies.*;
 import Game.GameObjects.Items.*;
-import Game.GameObjects.Platfrom.FixedObject;
 import Game.GameObjects.Platfrom.FixedPlattform;
 
 import java.util.ArrayList;
@@ -17,11 +16,14 @@ public class World {
     private WorldViewer wViewer;
 
     public Player player;
-    public List<GameObject> gameObjects;
-    public List<GameObject> fixedObjects;
 
     /*LISTS*/
     public List<GameObject> bulletObjects;
+    public List<GameObject> gameObjects;
+    public List<GameObject> fixedObjects;
+
+    public List<List<GameObject>> allObjects;
+
 
     private InputSystem inputSystem;
     public int enemiesLeft = 4;
@@ -47,6 +49,7 @@ public class World {
         //todo
         //List<GameObject> gameObjects = MapParser.getGameObjects("");
 
+        allObjects = new ArrayList<>();
         gameObjects = new ArrayList<>();
         fixedObjects = new ArrayList<>();
         bulletObjects = new ArrayList<>();
@@ -54,22 +57,22 @@ public class World {
         player = new Player(200, 500);
 
         //Ground
-        fixedObjects.add(new FixedObject(0, 750, 2000, 300));
-        fixedObjects.add(new FixedObject(2100, 750, 8000, 300));
+        fixedObjects.add(new FixedPlattform(0, 750, 2000, 300));
+        fixedObjects.add(new FixedPlattform(2100, 750, 8000, 300));
 
         //Platforms
-        fixedObjects.add(new FixedObject(500, 700, 300, 50));
-        fixedObjects.add(new FixedObject(600, 600, 200, 30));
-        fixedObjects.add(new FixedObject(400, 400, 150, 20));
-        fixedObjects.add(new FixedObject(0, 250, 600, 20));
-        fixedObjects.add(new FixedObject(650, 250, 300, 20));
+        fixedObjects.add(new FixedPlattform(500, 700, 300, 50));
+        fixedObjects.add(new FixedPlattform(600, 600, 200, 30));
+        fixedObjects.add(new FixedPlattform(400, 400, 150, 20));
+        fixedObjects.add(new FixedPlattform(0, 250, 600, 20));
+        fixedObjects.add(new FixedPlattform(650, 250, 300, 20));
 
         //Bossroom
-        fixedObjects.add(new FixedObject(2000, 0, 100, 700));
+        fixedObjects.add(new FixedPlattform(2000, 0, 100, 700));
         //Door
-        //fixedObjects.add(new FixedObject(2000, 700, 100, 50));
-        fixedObjects.add(new FixedObject(3300, 0, 100, 700));
-        fixedObjects.add(new FixedObject(2000, 0, 1300, 100));
+        //fixedObjects.add(new FixedPlattform(2000, 700, 100, 50));
+        fixedObjects.add(new FixedPlattform(3300, 0, 100, 700));
+        fixedObjects.add(new FixedPlattform(2000, 0, 1300, 100));
 
         fixedObjects.add(new FixedPlattform(2200, 550, 80, 30));
         fixedObjects.add(new FixedPlattform(2600, 550, 80, 30));
@@ -105,9 +108,14 @@ public class World {
         f.hasHP = true;
         f.hp = 10;
         f.maxHP = 10;
+        f.explodable = true;
         gameObjects.add(f);
 
         gameObjects.add(player);
+
+        allObjects.add(gameObjects);
+        allObjects.add(fixedObjects);
+        allObjects.add(bulletObjects);
     }
 
     void run()
@@ -142,26 +150,14 @@ public class World {
 
             processUserInput();
 
-            for(int i = 0; i < gameObjects.size(); i++) {
-                gameObjects.get(i).move(diffSeconds);
-                gameObjects.get(i).checkCollision();
-                if(gameObjects.get(i).hp <= 0){
-                    gameObjects.remove(gameObjects.get(i));
-                }
-            }
-
-            for (int i = 0; i < bulletObjects.size(); i++) {
-                bulletObjects.get(i).move(diffSeconds);
-                bulletObjects.get(i).checkCollision();
-                if(bulletObjects.get(i).hp <= 0){
-                    bulletObjects.remove(bulletObjects.get(i));
-                }
-            }
-
-            for (int i = 0; i < fixedObjects.size(); i++) {
-                fixedObjects.get(i).move(diffSeconds);
-                if(fixedObjects.get(i).hp <= 0){
-                    fixedObjects.remove(fixedObjects.get(i));
+            //update all objects
+            for (int i = 0; i < allObjects.size(); i++){
+                for(int j = 0; j < allObjects.get(i).size(); j++){
+                    allObjects.get(i).get(j).move(diffSeconds);
+                    allObjects.get(i).get(j).checkCollision();
+                    if(allObjects.get(i).get(j).hp <= 0){
+                        allObjects.get(i).remove(allObjects.get(i).get(j));
+                    }
                 }
             }
 
@@ -169,18 +165,13 @@ public class World {
 
             wViewer.clear();
 
+            //draw all objects
+            for (int i = 0; i < allObjects.size(); i++){
+                for(int j = 0; j < allObjects.get(i).size(); j++){
+                    wViewer.draw(allObjects.get(i).get(j));
+                }
+            }
 
-            //physics.applyGravity(diffSeconds);
-
-            for(int i = 0; i < gameObjects.size(); i++) {
-                wViewer.draw(gameObjects.get(i));
-            }
-            for(int i = 0; i < fixedObjects.size(); i++) {
-                wViewer.draw(fixedObjects.get(i));
-            }
-            for(int i = 0; i < bulletObjects.size(); i++) {
-                wViewer.draw(bulletObjects.get(i));
-            }
             wViewer.redraw();
             //???
             if(player.bulletCooldown > 0) {
