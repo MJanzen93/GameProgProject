@@ -1,5 +1,7 @@
-package Game.GameObjects.Enemies;
+package Game.GameObjects.CharacterObjects.Enemies;
 
+import Game.GameObjects.Bullets.BulletObject;
+import Game.GameObjects.Bullets.ShootBullet;
 import Game.GameObjects.GameObject;
 import Game.GameObjects.Items.*;
 
@@ -101,9 +103,9 @@ public class StealerObject extends EnemyObject {
     }
 
     public void shootBullet() {
-        Game.GameObjects.BulletObject bullet;
+        ShootBullet bullet;
 
-        bullet = new Game.GameObjects.BulletObject(x + width/2, y + height/2, 5, 5);
+        bullet = new ShootBullet(x + width/2, y + height/2, 5, 5);
         bullet.alfa  =  Math.atan2(world.player.y - y, world.player.x - x);
 
         bullet.setIsPlayerBullet(false);

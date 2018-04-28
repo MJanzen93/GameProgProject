@@ -1,8 +1,11 @@
 package Game;
 
 import Game.GameObjects.*;
-import Game.GameObjects.Enemies.*;
+import Game.GameObjects.CharacterObjects.Player;
+import Game.GameObjects.CharacterObjects.Enemies.*;
 import Game.GameObjects.Items.*;
+import Game.GameObjects.Platfrom.FixedObject;
+import Game.GameObjects.Platfrom.FixedPlattform;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +39,8 @@ public class World {
     // defines maximum frame rate
     private static final int FRAME_MINIMUM_MILLIS = 10;
 
+    private boolean GameOver = false;
+
     public World() {
         physics = new Physics(this);
     }
@@ -43,7 +48,7 @@ public class World {
     public void init()
     {
         //todo
-        //GameObject[] gameObjects = MapParser.getGameObjects("");
+        //List<GameObject> gameObjects = MapParser.getGameObjects("");
 
         gameObjects = new ArrayList<>();
         fixedObjects = new ArrayList<>();
@@ -68,9 +73,10 @@ public class World {
         fixedObjects.add(new FixedObject(2000, 700, 100, 50));
         fixedObjects.add(new FixedObject(3300, 0, 100, 700));
         fixedObjects.add(new FixedObject(2000, 0, 1300, 100));
-        fixedObjects.add(new FixedObject(2200, 550, 80, 30));
-        fixedObjects.add(new FixedObject(2600, 550, 80, 30));
-        fixedObjects.add(new FixedObject(3000, 550, 80, 30));
+
+        fixedObjects.add(new FixedPlattform(2200, 550, 80, 30));
+        fixedObjects.add(new FixedPlattform(2600, 550, 80, 30));
+        fixedObjects.add(new FixedPlattform(3000, 550, 80, 30));
 
         //Enemies
         gameObjects.add(new SimpleEnemyObject(100, 200, 30, 30));
@@ -110,7 +116,7 @@ public class World {
     void run()
     {
         long lastTick = System.currentTimeMillis();
-        while(true)
+        while(!gameOver)
         {
             // calculate elapsed time
             //
@@ -157,7 +163,12 @@ public class World {
                 }
             }
 
-
+            for (int i = 0; i < fixedObjects.size(); i++) {
+                fixedObjects.get(i).move(diffSeconds);
+                if(fixedObjects.get(i).hp <= 0 && fixedObjects.get(i).hasHP){
+                    fixedObjects.remove(fixedObjects.get(i));
+                }
+            }
 
             adjustWorldPart();
 
@@ -226,9 +237,9 @@ public class World {
             player.bulletCooldown = player.bulletCooldownfinal; //?? in player ??
         }
 
-        if(player.missle > 0 && inputSystem.mousePressed && inputSystem.altPressed){
+        if(player.missile > 0 && inputSystem.mousePressed && inputSystem.altPressed){
             player.fireMissels(inputSystem);
-            player.missle--;
+            player.missile--;
         }
 
         if(inputSystem.downPressed) {

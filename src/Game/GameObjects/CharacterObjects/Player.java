@@ -1,7 +1,11 @@
-package Game.GameObjects;
+package Game.GameObjects.CharacterObjects;
 
 
+import Game.GameObjects.Bullets.BulletObject;
+import Game.GameObjects.Bullets.ShootBullet;
+import Game.GameObjects.GameObject;
 import Game.GameObjects.Items.*;
+import Game.GameObjects.Missile;
 import Game.GameObjects.Weapons.WeaponObject;
 import Game.InputSystem;
 
@@ -18,7 +22,7 @@ public class Player extends CharacterObjects{
     public boolean hasShield = false;
     public int shieldHp = 0;
 
-    public int missle = 1;
+    public int missile = 1;
 
     public Player(double startX, double startY) {
         super(startX, startY, 30, 30);
@@ -92,7 +96,7 @@ public class Player extends CharacterObjects{
                 }
 
                 if(collidingObject.isSolid && !collidingObject.isItem && !collidingObject.isEnemy) {
-                    //check if Game.GameObjects.Player is on Object
+                    //check if Game.GameObjects.CharacterObjects.Player is on Object
                     if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
 
                         y = collidingObject.y - height;
@@ -101,7 +105,7 @@ public class Player extends CharacterObjects{
                         jumping = false;
                     }
 
-                    //check if Game.GameObjects.Player is touching bottom side of object
+                    //check if Game.GameObjects.CharacterObjects.Player is touching bottom side of object
                     if(y < collidingObject.y + collidingObject.height && oldY >= collidingObject.y + collidingObject.height && ySpeed <= 0) {
 
                         y = collidingObject.y + collidingObject.height;
@@ -172,9 +176,9 @@ public class Player extends CharacterObjects{
      * Player shoots
      */
     public void shootBullet(InputSystem inputSystem){
-        BulletObject bullet;
+        ShootBullet bullet;
 
-        bullet = new BulletObject(x+width/2, y+height/2, 5, 5);
+        bullet = new ShootBullet(x+width/2, y+height/2, 5, 5);
         bullet.damage = damage;
         bullet.alfa  =  Math.atan2(inputSystem.mouseY+world.worldPartY - y-width/2, inputSystem.mouseX+world.worldPartX - x-height/2);
         bullet.setIsPlayerBullet(true);
@@ -185,11 +189,12 @@ public class Player extends CharacterObjects{
 
     public void fireMissels(InputSystem inputSystem){
         int x = (int) (inputSystem.mouseX + world.worldPartX);
-        System.out.println(x);
-        world.gameObjects.add(new Missile(x-200,-800, 10,10));
-        world.gameObjects.add(new Missile(x-100,-800, 10,10));
-        world.gameObjects.add(new Missile(x+100,-800, 10,10));
-        world.gameObjects.add(new Missile(x+200,-800, 10,10));
+        int y = (int) (inputSystem.mouseY + world.worldPartY);
+
+        world.gameObjects.add(new Missile(x-200,y-2000, 10,10));
+        world.gameObjects.add(new Missile(x-100,y-2000, 10,10));
+        world.gameObjects.add(new Missile(x+100,y-2000, 10,10));
+        world.gameObjects.add(new Missile(x+200,y-2000, 10,10));
     }
 
 }

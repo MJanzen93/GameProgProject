@@ -1,6 +1,6 @@
-package Game.GameObjects.Enemies;
+package Game.GameObjects.CharacterObjects.Enemies;
 
-import Game.GameObjects.Explosion;
+import Game.GameObjects.Bullets.Explosion;
 
 public class Exploder extends  EnemyObject {
     public Exploder(double startX, double startY, int width, int height) {

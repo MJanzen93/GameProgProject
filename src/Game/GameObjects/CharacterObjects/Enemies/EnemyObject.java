@@ -1,6 +1,6 @@
-package Game.GameObjects.Enemies;
+package Game.GameObjects.CharacterObjects.Enemies;
 
-import Game.GameObjects.CharacterObjects;
+import Game.GameObjects.CharacterObjects.CharacterObjects;
 import Game.GameObjects.GameObject;
 import Game.GameObjects.Items.ItemObject;
 
@@ -87,5 +87,21 @@ public abstract class EnemyObject extends CharacterObjects {
             onGround = true;
             jumping = false;
         }
+    }
+
+    public void idle(){
+
+    }
+
+    public void goLeft(){
+
+    }
+
+    public void goRight(){
+
+    }
+
+    public void jump(){
+
     }
 }

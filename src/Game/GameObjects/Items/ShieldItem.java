@@ -1,7 +1,6 @@
 package Game.GameObjects.Items;
 
-import Game.GameObjects.CharacterObjects;
-import Game.GameObjects.Player;
+import Game.GameObjects.CharacterObjects.CharacterObjects;
 
 public class ShieldItem extends ItemObject {
 

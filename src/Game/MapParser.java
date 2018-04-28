@@ -2,7 +2,7 @@ package Game;
 
 import Game.GameObjects.GameObject;
 import Game.GameObjects.Items.HealthItem;
-import Game.GameObjects.Player;
+import Game.GameObjects.CharacterObjects.Player;
 
 import java.io.*;
 import java.util.ArrayList;

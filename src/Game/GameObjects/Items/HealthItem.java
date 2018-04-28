@@ -1,9 +1,6 @@
 package Game.GameObjects.Items;
 
-import Game.GameObjects.BulletObject;
-import Game.GameObjects.CharacterObjects;
-import Game.GameObjects.Player;
-import Game.GameObjects.SupplyDropObject;
+import Game.GameObjects.CharacterObjects.CharacterObjects;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

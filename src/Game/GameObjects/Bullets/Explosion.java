@@ -1,4 +1,6 @@
-package Game.GameObjects;
+package Game.GameObjects.Bullets;
+
+import Game.GameObjects.GameObject;
 
 import java.awt.*;
 
@@ -18,12 +20,16 @@ public class Explosion extends GameObject {
     public void move(double diffSeconds) {
     }
 
+    @Override
+    public void draw(Graphics graphics) {
+    }
+
     public void explode(){
         hp = 0;
         for (int i = 0; i < 180; i++) {
             ExplosionBullet bullet = new ExplosionBullet(x, y, 5, 5);
             bullet.alfa = i*2;
-            bullet.range = radius;
+            bullet.range = radius-i;
             bullet.speed = 800;
             bullet.setIsPlayerBullet(true);
             world.bulletObjects.add(bullet);

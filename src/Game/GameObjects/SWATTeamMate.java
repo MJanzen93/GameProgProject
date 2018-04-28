@@ -1,6 +1,8 @@
 package Game.GameObjects;
 
-import Game.GameObjects.Enemies.EnemyObject;
+import Game.GameObjects.Bullets.BulletObject;
+import Game.GameObjects.Bullets.ShootBullet;
+import Game.GameObjects.CharacterObjects.Enemies.EnemyObject;
 
 public class SWATTeamMate extends GameObject {
 
@@ -41,9 +43,9 @@ public class SWATTeamMate extends GameObject {
     }
 
     public void shootBullet() {
-        Game.GameObjects.BulletObject bullet;
+        ShootBullet bullet;
 
-        bullet = new Game.GameObjects.BulletObject(x + width/2, y + height/2, 5, 5);
+        bullet = new ShootBullet(x + width/2, y + height/2, 5, 5);
         bullet.alfa  =  Math.atan2(enemyObject.y - y, enemyObject.x - x);
 
         bullet.setIsPlayerBullet(false);

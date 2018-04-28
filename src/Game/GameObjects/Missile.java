@@ -1,5 +1,7 @@
 package Game.GameObjects;
 
+import Game.GameObjects.Bullets.Explosion;
+
 import java.util.List;
 
 public class Missile extends GameObject {
@@ -24,7 +26,7 @@ public class Missile extends GameObject {
             GameObject collidingObject = collidingObjects.get(i);
 
             if (collidingObject.isSolid) { ;
-                //check if Game.GameObjects.Player is on Object
+                //check if Game.GameObjects.CharacterObjects.Player is on Object
                 if (y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
 
                     y = collidingObject.y - height;
@@ -35,7 +37,7 @@ public class Missile extends GameObject {
                     hp = 0;
                 }
 
-                //check if Game.GameObjects.Player is touching bottom side of object
+                //check if Game.GameObjects.CharacterObjects.Player is touching bottom side of object
                 if (y < collidingObject.y + collidingObject.height && oldY >= collidingObject.y + collidingObject.height && ySpeed <= 0) {
 
                     y = collidingObject.y + collidingObject.height;

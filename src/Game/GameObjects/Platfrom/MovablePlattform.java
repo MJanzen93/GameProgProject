@@ -1,4 +1,4 @@
-package Game.GameObjects;
+package Game.GameObjects.Platfrom;
 
 public class MovablePlattform extends Plattform {
 

@@ -1,4 +1,6 @@
-package Game.GameObjects;
+package Game.GameObjects.Platfrom;
+
+import Game.GameObjects.GameObject;
 
 public abstract class Plattform extends GameObject {
 

@@ -1,10 +1,10 @@
-package Game.GameObjects.Enemies;
+package Game.GameObjects.CharacterObjects.Enemies;
 
-import Game.GameObjects.BulletObject;
+import Game.GameObjects.Bullets.BulletObject;
+import Game.GameObjects.Bullets.ShootBullet;
 import Game.GameObjects.GameObject;
 
 import java.awt.*;
-import java.util.List;
 import java.util.Random;
 
 public class BossObject extends EnemyObject {
@@ -57,11 +57,11 @@ public class BossObject extends EnemyObject {
     }
 
     public void shootBullet() {
-        BulletObject bullet;
+        ShootBullet bullet;
 
         int randomOffset = rnd.nextInt(101)-50;
 
-        bullet = new Game.GameObjects.BulletObject(x + width/2, y + height/2, 15, 15);
+        bullet = new ShootBullet(x + width/2, y + height/2, 15, 15);
         bullet.alfa  =  Math.atan2(GameObject.world.player.y+randomOffset - y-height/2, GameObject.world.player.x - x-width/2);
         bullet.speed = 1000;
 
@@ -71,9 +71,9 @@ public class BossObject extends EnemyObject {
     }
 
     public void specialMove() {
-        Game.GameObjects.BulletObject bullet;
+        ShootBullet bullet;
 
-        bullet = new Game.GameObjects.BulletObject(x + width/2, y + height/2, 15, 15);
+        bullet = new ShootBullet(x + width/2, y + height/2, 15, 15);
         bullet.alfa  =  specialMoveTick*0.2;
         specialMoveTick++;
         specialMoveCooldown = 0.1;

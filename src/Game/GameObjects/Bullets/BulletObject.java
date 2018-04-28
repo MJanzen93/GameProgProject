@@ -1,34 +1,36 @@
-package Game.GameObjects;
+package Game.GameObjects.Bullets;
+
+import Game.GameObjects.GameObject;
 
 import java.awt.*;
 import java.util.List;
 
-public class ExplosionBullet extends GameObject{
+public abstract class BulletObject extends GameObject {
 
     public double alfa = 0;
     public double speed = 1000;
-    public double range = 20;
+    public double range = 2000;
     public boolean isPlayerBullet = false;
     public int damage = 1;
 
 
-    public ExplosionBullet(double startX, double startY, int width, int height) {
+    public BulletObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
         hasHP = true;
         hp = 1;
         COLOR = new Color(144, 57, 0);
-        isSolid = false;
-        hasCollision = false;
+        hasCollision = true;
+        isFixed = true;
     }
 
     public void move(double diffSeconds) {
-        super.move(diffSeconds);
+        //super.move(diffSeconds);
         range-=speed*diffSeconds;
-        if(range <= 0) {
+        if(range < 0) {
             hp = 0;
         }
 
-        List<GameObject> collidingObjects = physics.getCollisions(this);
+        List<Game.GameObjects.GameObject> collidingObjects = physics.getCollisions(this);
         if(collidingObjects.size() > 0
                 && ((isPlayerBullet && !collidingObjects.get(0).isPlayer)
                 || (!isPlayerBullet && !collidingObjects.get(0).isEnemy && (collidingObjects.get(0).isPlayer
@@ -43,6 +45,18 @@ public class ExplosionBullet extends GameObject{
 
         x+=Math.cos(alfa)*speed*diffSeconds;
         y+=Math.sin(alfa)*speed*diffSeconds;
+
+    }
+
+    @Override
+    public void draw(Graphics graphics) {
+        int x = (int) (this.x - world.worldPartX);
+        int y = (int) (this.y - world.worldPartY);
+
+        graphics.setColor(COLOR);
+        graphics.fillOval(x, y, width, height);
+        graphics.setColor(Color.BLACK);
+        graphics.drawOval(x, y, width, height);
     }
 
     public void setIsPlayerBullet(boolean isPlayerBullet) {
@@ -52,4 +66,5 @@ public class ExplosionBullet extends GameObject{
         }
 
     }
+
 }

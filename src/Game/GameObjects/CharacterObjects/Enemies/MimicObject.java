@@ -1,4 +1,4 @@
-package Game.GameObjects.Enemies;
+package Game.GameObjects.CharacterObjects.Enemies;
 
 public class MimicObject extends EnemyObject {
 

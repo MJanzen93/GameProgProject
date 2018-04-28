@@ -33,6 +33,10 @@ public class Physics {
         }
     }
 
+    public static void applyGravity(GameObject obj, double diffSeconds){
+        obj.ySpeed += 1000*diffSeconds;
+    }
+
     public List<GameObject> getCollisions(GameObject obj) {
 
         List<GameObject> collidingObjects = new ArrayList<>();

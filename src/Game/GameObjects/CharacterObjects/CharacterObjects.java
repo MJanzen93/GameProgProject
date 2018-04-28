@@ -1,4 +1,6 @@
-package Game.GameObjects;
+package Game.GameObjects.CharacterObjects;
+
+import Game.GameObjects.GameObject;
 
 /**
  * Idea: All Characters in the Game are extended from {@link CharacterObjects}

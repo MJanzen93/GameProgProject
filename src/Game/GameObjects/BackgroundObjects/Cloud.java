@@ -1,4 +1,4 @@
-package Game.GameObjects;
+package Game.GameObjects.BackgroundObjects;
 
 import java.awt.*;
 
