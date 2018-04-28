@@ -25,7 +25,7 @@ public class Player extends CharacterObject {
     public Player(double startX, double startY) {
         super(startX, startY, 30, 30);
         hasHP = true;
-        hp = 1000;
+        hp = 10;
         maxHP = 10;
         isPlayer = true;
         isSolid = true;
@@ -97,24 +97,34 @@ public class Player extends CharacterObject {
                     if(x + width > collidingObject.x && oldX + width <= collidingObject.x && xSpeed >= 0) {
                         x = collidingObject.x - width-1;
                         xSpeed = 0;
+                        if(ySpeed >= 0){
+                            ySpeed *= 0.5;
+                            jumping = false;
+                        }
                     }
 
                     //right side
                     if(x < collidingObject.x + collidingObject.width && oldX >= collidingObject.x + collidingObject.width && xSpeed <= 0) {
                         x = collidingObject.x + collidingObject.width;
                         xSpeed = 0;
+                        if(ySpeed >= 0){
+                            ySpeed *= 0.5;
+                            jumping = false;
+                        }
                     }
                 }
 
 
             }
 
+            /*
             if(y + height > 760){
                 y = 760-height;
                 ySpeed = 0;
                 onGround = true;
                 jumping = false;
             }
+            */
 
             if(collidingObjects.size() == 0) {
                 jumping = true;

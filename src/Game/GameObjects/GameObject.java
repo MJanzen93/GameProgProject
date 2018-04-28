@@ -132,12 +132,14 @@ public abstract class GameObject {
                 onGround = false;
             }
 
+            /*
             if(y + height > 760){
                 y = 760-height;
                 ySpeed = 0;
                 onGround = true;
                 jumping = false;
             }
+            */
         }
     }
 

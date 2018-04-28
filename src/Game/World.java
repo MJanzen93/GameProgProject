@@ -213,7 +213,7 @@ public class World {
             player.stop();
         }
 
-        if(inputSystem.upPressed && !player.jumping && player.onGround) {
+        if(inputSystem.upPressed && !player.jumping) {
             player.jump();
         }
 
