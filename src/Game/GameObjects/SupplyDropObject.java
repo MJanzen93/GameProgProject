@@ -17,7 +17,7 @@ public class SupplyDropObject extends GameObject {
 
     public SupplyDropObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
-        hasHP = true;
+        destructible = true;
         hp = 10;
         maxHP = 10;
         setColor(Color.ORANGE);

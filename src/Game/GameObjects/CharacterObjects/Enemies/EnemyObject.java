@@ -15,7 +15,7 @@ public abstract class EnemyObject extends CharacterObject {
 
     public EnemyObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
-        hasHP = true;
+        destructible = true;
         hp = 10;
         maxHP = 10;
         COLOR = new Color(190, 30, 30);

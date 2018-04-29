@@ -21,6 +21,10 @@ public abstract class ItemObject extends GameObject {
         random = new Random();
         isItem = true;
         isSolid = true;
+        hasCollision = true;
+        isFixed = false;
+        hp = 1;
+        destructible = false;
     }
 
     public static ItemObject createRandomItem(){

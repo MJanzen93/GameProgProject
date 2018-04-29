@@ -13,11 +13,19 @@ public class Explosion extends GameObject {
         hasCollision = false;
         isSolid = false;
         isFixed = true;
+        destructible = true;
+        hp = 1;
         this.radius = radius;
     }
 
     @Override
     public void move(double diffSeconds) {
+        super.move(diffSeconds);
+    }
+
+    @Override
+    public void checkCollision() {
+        super.checkCollision();
     }
 
     @Override

@@ -12,12 +12,13 @@ public abstract class BulletObject extends GameObject {
     public double speed = 1000;
     public double range = 2000;
     public boolean isPlayerBullet = false;
+    public boolean isEnemyBullet = false;
     public int damage = 1;
 
 
     public BulletObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
-        hasHP = true;
+        destructible = true;
         hp = 1;
         COLOR = new Color(144, 57, 0);
         hasCollision = false;
@@ -26,10 +27,12 @@ public abstract class BulletObject extends GameObject {
     }
 
     public void move(double diffSeconds) {
+        super.move(diffSeconds);
         range-=speed*diffSeconds;
         if(range < 0) {
             hp = 0;
         }
+
         x+=Math.cos(alfa)*speed*diffSeconds;
         y+=Math.sin(alfa)*speed*diffSeconds;
     }
@@ -43,7 +46,7 @@ public abstract class BulletObject extends GameObject {
                 || collidingObjects.get(0).isSolid)))
                 && !collidingObjects.get(0).isItem) {
             hp = 0;
-            if(collidingObjects.get(0).hasHP) {
+            if(collidingObjects.get(0).destructible) {
                 collidingObjects.get(0).hp -= damage;
             }
 

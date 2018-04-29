@@ -57,7 +57,7 @@ public class Camera extends JPanel {
 
 
         //Quick HP Bar drawing
-        if(gObj.hasHP && gObj.maxHP > gObj.hp) {
+        if(gObj.destructible && gObj.maxHP > gObj.hp) {
             int hp = gObj.hp;
             int maxHP = gObj.maxHP;
             if(gObj.maxHP < 30) {

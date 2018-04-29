@@ -1,6 +1,5 @@
 package Game.GameObjects.CharacterObjects.Enemies;
 
-import Game.GameObjects.Bullets.BulletObject;
 import Game.GameObjects.Bullets.ShootBullet;
 import Game.GameObjects.GameObject;
 
@@ -17,7 +16,7 @@ public class BossObject extends EnemyObject {
     public BossObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
         rnd = new Random();
-        hasHP = true;
+        destructible = true;
         hp = 50;
         maxHP = 50;
         dropItem = true;

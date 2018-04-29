@@ -105,7 +105,7 @@ public class World {
 
         FixedPlattform f = new FixedPlattform(800,400,40,20);
         f.dropItem = true;
-        f.hasHP = true;
+        f.destructible = true;
         f.hp = 10;
         f.maxHP = 10;
         f.explodable = true;

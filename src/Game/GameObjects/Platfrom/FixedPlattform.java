@@ -9,21 +9,11 @@ import java.awt.*;
 public class FixedPlattform extends Plattform {
     public FixedPlattform(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
-        isFixed = true;
-        isSolid = true;
-        COLOR = new Color(7, 120, 5);
     }
 
     @Override
     public void move(double diffSeconds) {
-        if(explodable){
-            if(hp <= 0){
-                Explosion explosion = new Explosion(x+ width/2,y + height/2,200);
-                explosion.explode();
-                GameObject.world.gameObjects.add(explosion);
-                GameObject.world.gameObjects.remove(this);
-            }
-        }
+        super.move(diffSeconds);
     }
 
     @Override

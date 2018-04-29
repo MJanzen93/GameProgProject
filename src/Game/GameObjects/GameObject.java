@@ -1,7 +1,6 @@
 package Game.GameObjects;
 
-import Game.GameObjects.CharacterObjects.Player;
-import Game.GameObjects.Items.SpeedUpItem;
+import Game.GameObjects.Bullets.Explosion;
 import Game.Physics;
 import Game.World;
 
@@ -33,7 +32,7 @@ public abstract class GameObject {
     //??
     public static World world;
     //HP of object
-    public boolean hasHP = false;
+    public boolean destructible = false;
     public int maxHP = 1;
     public int hp = 1;
     //Object has collions
@@ -63,6 +62,15 @@ public abstract class GameObject {
         oldY = y;
         x+=xSpeed*diffSeconds;
         y+=ySpeed*diffSeconds;
+
+        if(explodable){
+            if(hp <= 0){
+                Explosion explosion = new Explosion(x+ width/2,y + height/2,200);
+                explosion.explode();
+                GameObject.world.gameObjects.add(explosion);
+                GameObject.world.gameObjects.remove(this);
+            }
+        }
     }
 
     public void draw(Graphics graphics){
@@ -74,7 +82,7 @@ public abstract class GameObject {
         graphics.setColor(Color.BLACK);
         graphics.drawRect(x, y, width, height);
 
-        if(hasHP && this.maxHP > this.hp){
+        if(destructible && this.maxHP > this.hp){
 
             int hp = this.hp;
             int maxHP = this.maxHP;

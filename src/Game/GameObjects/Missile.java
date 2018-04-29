@@ -10,6 +10,8 @@ public class Missile extends GameObject {
         super(startX, startY, width, height);
         isFixed = false;
         isSolid = true;
+        destructible = true;
+        hp = 1;
         hasCollision = true;
     }
 

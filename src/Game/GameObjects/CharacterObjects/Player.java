@@ -24,7 +24,7 @@ public class Player extends CharacterObject {
 
     public Player(double startX, double startY) {
         super(startX, startY, 30, 30);
-        hasHP = true;
+        destructible = true;
         hp = 10;
         maxHP = 10;
         isPlayer = true;
