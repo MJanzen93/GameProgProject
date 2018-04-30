@@ -27,4 +27,10 @@ public class RapidFireItem extends ItemObject {
     public void draw(Graphics graphics) {
         super.draw(graphics);
     }
+
+    @Override
+    public void applyItem(CharacterObject obj) {
+        super.applyItem(obj);
+        obj.bulletCooldownfinal = 0.1;
+    }
 }
