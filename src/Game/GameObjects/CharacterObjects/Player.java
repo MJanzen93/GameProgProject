@@ -18,8 +18,6 @@ public class Player extends CharacterObject {
     public WeaponObject[] weapons;
     public WeaponObject currentWeapon;
 
-    public int shieldHp = 0;
-
     public int missile = 1;
 
     public Player(double startX, double startY) {
@@ -42,24 +40,6 @@ public class Player extends CharacterObject {
     @Override
     public void move(double diffSeconds) {
         super.move(diffSeconds);
-    }
-
-    @Override
-    public void draw(Graphics graphics) {
-        super.draw(graphics);
-        int x = (int) (this.x - world.worldPartX);
-        int y = (int) (this.y - world.worldPartY);
-
-        if(hasShield){
-            for (int i = 0; i < 25; i++){
-                graphics.setColor(new Color(0, 26,255, 200-i*4));
-                graphics.drawOval(x-width/2+i, y-height/2+i, width*2-i*2, height*2-i*2);
-            }
-        }
-        graphics.setColor(COLOR);
-        graphics.fillRect(x, y, width, height);
-        graphics.setColor(Color.BLACK);
-        graphics.drawRect(x, y, width, height);
     }
 
     @Override

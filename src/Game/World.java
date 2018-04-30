@@ -108,6 +108,7 @@ public class World {
         gameObjects.add(new HealthItem(1000, 50));
         gameObjects.add(new JumpItem(1200, 50));
         gameObjects.add(new SpeedUpItem(1300, 50));
+        gameObjects.add(new ShieldItem(1500, 50));
 
 
         FixedPlattform f = new FixedPlattform(800,400,40,20);
@@ -203,6 +204,7 @@ public class World {
                 player.y+=0.5;
                 player.checkCollision();
             }
+            System.out.println(1/diffSeconds + "FPS");
         }
     }
 

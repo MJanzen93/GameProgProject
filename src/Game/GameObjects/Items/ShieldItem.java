@@ -12,5 +12,6 @@ public class ShieldItem extends ItemObject {
     public void applyItem(CharacterObject obj) {
         super.applyItem(obj);
         obj.hasShield = true;
+        obj.destructible = false;
     }
 }

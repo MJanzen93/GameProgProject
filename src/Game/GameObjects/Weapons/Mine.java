@@ -19,6 +19,8 @@ public class Mine extends GameObject {
         destructible = false;
         hasCollision = true;
         hp = 1;
+        destructible = true;
+        maxHP = 1;
         setColor(new Color(0, 0, 0, 0));
     }
 

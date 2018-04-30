@@ -10,10 +10,11 @@ import java.io.IOException;
 import java.util.List;
 
 public class Missile extends GameObject {
+
     public Missile(double startX, double startY) {
         super(startX, startY, 30, 30);
         isFixed = false;
-        isSolid = true;
+        isSolid = false;
         destructible = true;
         hp = 1;
         try {
