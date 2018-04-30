@@ -1,7 +1,6 @@
 package Game.GameObjects.CharacterObjects;
 
 import Game.GameObjects.GameObject;
-import Game.Physics;
 
 import java.awt.*;
 

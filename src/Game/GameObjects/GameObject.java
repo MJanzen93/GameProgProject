@@ -27,7 +27,6 @@ public abstract class GameObject {
     public boolean isEnemy = false;
 
     
-    public boolean isCollidable = false;
     //??
     public boolean jumping = false;
     //Dimensions of object

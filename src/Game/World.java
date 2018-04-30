@@ -15,7 +15,6 @@ import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.List;
 
-import Game.GameObjects.FixedObject;
 import Game.GameObjects.GameObject;
 import Game.GameObjects.SupplyDropObject;
 import Game.GameObjects.CharacterObjects.Player;
@@ -96,6 +95,8 @@ public class World {
         fixedObjects.add(new FixedPlattform(2200, 550, 80, 30));
         fixedObjects.add(new FixedPlattform(2600, 550, 80, 30));
         fixedObjects.add(new FixedPlattform(3000, 550, 80, 30));
+        
+        fixedObjects.add(new FixedPlattform(4000, 550, 700, 30));
 
 
         //Enemies
@@ -108,6 +109,7 @@ public class World {
         gameObjects.add(new Exploder(1000,500,30,30));
 
 
+
         fixedObjects.add(new Mine(2200, 745));
         fixedObjects.add(new Mine(2300, 745));
         fixedObjects.add(new Mine(2400, 745));
@@ -115,8 +117,9 @@ public class World {
         fixedObjects.add(new Mine(2600, 745));
 
 
-        gameObjects.add(new Speedy(0, 220, 30, 30,new FixedObject(0, 250, 600, 20)));//needs the object where he is on it
-        gameObjects.add(new Speedy(1150, 220, 30, 30,new FixedObject(550, 250, 600, 20)));//needs the object where he is on it
+        gameObjects.add(new Speedy(0, 220, 30, 30,1000,new FixedPlattform(0, 250, 600, 20)));//needs the object where he is on it
+        gameObjects.add(new Speedy(4000, 510, 30, 30,1000,new FixedPlattform(4000, 550, 700, 30)));//needs the object where he is on it
+
 
 
         //Boss

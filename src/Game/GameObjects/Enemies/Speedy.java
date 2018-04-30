@@ -3,64 +3,72 @@ package Game.GameObjects.Enemies;
 import java.awt.Color;
 import java.util.List;
 
-import Game.GameObjects.FixedObject;
+import Game.Physics;
 import Game.GameObjects.GameObject;
+import Game.GameObjects.CharacterObjects.Enemies.EnemyObject;
+import Game.GameObjects.Platfrom.FixedPlattform;
 
 public class Speedy extends EnemyObject {
-	
-	FixedObject standingPlattform;
-	int counter = 1;
-	boolean stateBool = true;
 
-	public Speedy(double startX, double startY, int with, int height, FixedObject standingPlattform) {
+	FixedPlattform standingPlattform;
+	double counter = 0;
+	boolean stateBool = false;
+	int acceleration;
+	int changer;
+
+	public Speedy(double startX, double startY, int with, int height,int acceleration, FixedPlattform standingPlattform) {
 		super(startX, startY, with, height);
-		hasHP = false;
+		destructible = false;
 		setColor(Color.PINK);
-		isCollidable = true;
+		isSolid = true;
+		isFixed = false;
+		hasCollision = true;
 		xSpeed = 0;
 		isEnemyTouched = true;
+		this.acceleration = acceleration;
 		this.standingPlattform = standingPlattform;
 	}
 
 	// All this
 	public void move(double diffSeconds) {
-		double oldX = x;
-		double oldY = y;
+		super.move(diffSeconds);
 
-		x += xSpeed * diffSeconds;
-		y += ySpeed * diffSeconds;
-		
-		
-		double distanceToPlayer = world.player.x - x;
-		if(world.player.y<=(standingPlattform.y-standingPlattform.height) && Math.abs(distanceToPlayer)<standingPlattform.width && stateBool ) {
-			if(distanceToPlayer < 600 && x <= (standingPlattform.x+standingPlattform.width-this.width) ) {
-				System.out.println("first" + xSpeed);
-                xSpeed = 500;
-            } else {
-            	xSpeed = 0;
-            	stateBool = false;
-            }
-			
-		
+		if (counter > 0) {
+			counter = counter - diffSeconds;
+			stateBool = false;
+			if (x >= (standingPlattform.x + standingPlattform.width-50 ))
+				acceleration = -1000;
+			if (x <= standingPlattform.x+50)
+				acceleration = 1000;
+			touchDamge = 2;
+			return;
 		}
-		if(world.player.y<=(standingPlattform.y-standingPlattform.height) && Math.abs(distanceToPlayer)<standingPlattform.width && !stateBool ) {
-			System.out.println("Hieraw1 ");
-			if(distanceToPlayer > -600 && x > (standingPlattform.x+this.width) ) {
-				System.out.println(" " +x+ "  fd   "+standingPlattform.x+this.width);
-				
-                xSpeed = -500;
-                System.out.println("Hier 2 " + xSpeed);
-            } else {
-            	System.out.println("Hier 3");
-            	xSpeed = 0;
-            	stateBool = true;
-            }
+
+		if (world.player.y <= (standingPlattform.y - standingPlattform.height)
+				&& world.player.y >= (standingPlattform.y - standingPlattform.height - 10)
+				&& world.player.x <= (standingPlattform.x + standingPlattform.width)
+				&& world.player.x >= (standingPlattform.x)) {
+			xSpeed = acceleration;
+			stateBool = true;
+
+		} else {
+			if ((x <= (standingPlattform.x+(this.width/2) )) && stateBool) {
+				x=(standingPlattform.x);
+				xSpeed = 0;
+				counter = 2;
+			}else if( x >= (standingPlattform.x + standingPlattform.width - this.width) && stateBool){
+				x=(standingPlattform.x + standingPlattform.width - this.width);
+				xSpeed = 0;
+				counter = 2;
+			}
 		}
-		
-        
-		
-		
-		List<GameObject> collidingObjects = physics.getCollisions(this);
+
+	}
+
+	@Override
+	public void checkCollision() {
+		// TODO Auto-generated method stub
+		List<GameObject> collidingObjects = Physics.getCollisions(this);
 		for (int i = 0; i < collidingObjects.size(); i++) {
 			Game.GameObjects.GameObject collidingObject = collidingObjects.get(i);
 
@@ -89,6 +97,7 @@ public class Speedy extends EnemyObject {
 					x = collidingObject.x - width;
 					if (collidingObject.isPlayer) {
 						touchedPlayer();
+						touchDamge = 0;
 					}
 
 				}
@@ -99,31 +108,29 @@ public class Speedy extends EnemyObject {
 					x = collidingObject.x + collidingObject.width;
 					if (collidingObject.isPlayer) {
 						touchedPlayer();
+						touchDamge = 0;
 					}
 				}
 			}
 
 		}
-		
-		
 
 		if (collidingObjects.size() == 0) {
 			jumping = true;
 			onGround = false;
 		}
-
-		if (y + height > 760) {
-			y = 760 - height;
-			ySpeed = 0;
-			onGround = true;
-			jumping = false;
-		}
-
 	}
+
 	public void touchedPlayer() {
 		world.player.hitFromObjectBool = true;
 		world.player.ySpeed = -800;
-		world.player.hp -= 2;
+		if(acceleration> 0) {
+			world.player.hitSide = 1;
+		}else {
+			world.player.hitSide = -1;
+		}
+
+		world.player.hp -= touchDamge;
 	}
 
 }

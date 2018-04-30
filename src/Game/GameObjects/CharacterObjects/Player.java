@@ -1,27 +1,23 @@
-<<<<<<< HEAD:src/Game/GameObjects/CharacterObjects/Player.java
+
 package Game.GameObjects.CharacterObjects;
 
-import Game.GameObjects.Bullets.ShootBullet;
-import Game.GameObjects.GameObject;
-=======
-package Game.GameObjects;
-
->>>>>>> Resovled merg confilct:src/Game/GameObjects/Player.java
-import Game.GameObjects.Items.*;
-import Game.GameObjects.Missile;
-import Game.GameObjects.Weapons.WeaponObject;
-import Game.InputSystem;
-import Game.Physics;
-
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.List;
 
-<<<<<<< HEAD:src/Game/GameObjects/CharacterObjects/Player.java
-public class Player extends CharacterObject {
-=======
+import Game.InputSystem;
+import Game.Physics;
+import Game.GameObjects.GameObject;
+import Game.GameObjects.Missile;
+import Game.GameObjects.Bullets.Explosion;
+import Game.GameObjects.Bullets.ShootBullet;
+import Game.GameObjects.Enemies.Speedy;
+import Game.GameObjects.Items.ItemObject;
+import Game.GameObjects.Weapons.WeaponObject;
 
-public class Player extends CharacterObjects{
->>>>>>> Resovled merg confilct:src/Game/GameObjects/Player.java
+
+public class Player extends CharacterObject {
+
 
     public int jumps = 2;
 
@@ -29,6 +25,7 @@ public class Player extends CharacterObjects{
     public WeaponObject currentWeapon;
     
     public double hitAlphaSpeed = 0;
+    public double hitSide;
 	public boolean hitFromObjectBool = false;
 
     public int missile = 1;
@@ -52,8 +49,24 @@ public class Player extends CharacterObjects{
      */
     @Override
     public void move(double diffSeconds) {
+    	  Physics.applyGravity(this, diffSeconds);
+          oldX = x;
+          oldY = y;
+          
+          
+          x+=xSpeed*diffSeconds+(calculateHitAlphaSpeed(diffSeconds)*hitSide);
+          y+=ySpeed*diffSeconds;
 
-        super.move(diffSeconds);
+          if(explodable){
+              if(hp <= 0){
+                  Explosion explosion = new Explosion(x+ width/2,y + height/2,200,true);
+                  explosion.explode();
+                  GameObject.world.gameObjects.add(explosion);
+                  GameObject.world.gameObjects.remove(this);
+              }
+          }
+        
+        
 
     }
 
@@ -71,8 +84,9 @@ public class Player extends CharacterObjects{
                     item.applyItem(this);
                 }
 
-                //if(collidingObject.canCollideWithPlayer)
-                if(collidingObject.isSolid && !collidingObject.isItem && !collidingObject.isEnemy) {
+
+                if(collidingObject.isSolid && !collidingObject.isItem && !collidingObject.isEnemy || collidingObject instanceof Speedy ) {
+
                     //check if Game.GameObjects.CharacterObject.Player is on Object
 
                     if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
@@ -114,14 +128,6 @@ public class Player extends CharacterObjects{
 
             }
 
-            /*
-            if(y + height > 760){
-                y = 760-height;
-                ySpeed = 0;
-                onGround = true;
-                jumping = false;
-            }
-            */
 
             if(collidingObjects.size() == 0) {
                 jumping = true;
@@ -188,16 +194,17 @@ public class Player extends CharacterObjects{
  // calculate the x speed when hit with an enemy
  	// the problem is when key is released or is pressed it will be either 0 or
  	// pressed XSpeed
- 	private double calculateHitAlphaSpeed() {
+ 	private double calculateHitAlphaSpeed(double diffSeconds) {
  		// TODO Auto-generated method stub
      	if(hitFromObjectBool) {
-     		if(hitAlphaSpeed >= 1000 && hitAlphaSpeed > 0)
+     		System.out.println("Test 1111  "+ hitAlphaSpeed);
+     		if(hitAlphaSpeed >= (2000*diffSeconds))
      			hitFromObjectBool = false;
-     		return hitAlphaSpeed = hitAlphaSpeed +60;
+     		return hitAlphaSpeed = hitAlphaSpeed +(300*diffSeconds);
      	} else {
-     		if(hitAlphaSpeed > 1000 || hitAlphaSpeed >= 10 ) {
-     	
-     			return hitAlphaSpeed = hitAlphaSpeed -10;
+     		if(hitAlphaSpeed > (2000*diffSeconds) || hitAlphaSpeed > 0 ) {
+     			return hitAlphaSpeed = hitAlphaSpeed-(20*diffSeconds);
+     			
      	}
  		return 0 ;
  	}

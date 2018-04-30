@@ -12,7 +12,7 @@ import java.util.List;
  * Enemy
  */
 
-public abstract class EnemyObject extends CharacterObjects {
+public abstract class EnemyObject extends CharacterObject {
 	
 	public int touchDamge = 2;
 	public boolean isEnemyTouched = false;
@@ -86,8 +86,9 @@ public abstract class EnemyObject extends CharacterObjects {
             jumping = true;
             onGround = false;
         }
+        }
 
-    }
+
 
     public void idle(){
 

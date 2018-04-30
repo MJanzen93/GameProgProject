@@ -1,11 +1,16 @@
 package Game.GameObjects.CharacterObjects.Enemies;
 
+
 import Game.GameObjects.Bullets.ExplodeAbleBullet;
 import Game.GameObjects.Bullets.ShootBullet;
 import Game.GameObjects.GameObject;
 
 import java.awt.*;
+
 import java.util.Random;
+
+import Game.GameObjects.GameObject;
+import Game.GameObjects.Bullets.ShootBullet;
 
 public class BossObject extends EnemyObject {
 
