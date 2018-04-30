@@ -12,14 +12,12 @@ import java.util.List;
 
 import Game.GameObjects.GameObject;
 import Game.GameObjects.SupplyDropObject;
-import Game.GameObjects.CharacterObjects.Player;
 import Game.GameObjects.CharacterObjects.Enemies.BossObject;
-import Game.GameObjects.Enemies.Speedy;
+import Game.GameObjects.CharacterObjects.Enemies.Speedy;
 import Game.GameObjects.Items.HealthItem;
 import Game.GameObjects.Items.JumpItem;
 import Game.GameObjects.Items.RapidFireItem;
 import Game.GameObjects.Items.SpeedUpItem;
-import Game.GameObjects.Platfrom.FixedPlattform;
 
 import static java.lang.Thread.sleep;
 
@@ -258,8 +256,6 @@ public class World {
 
         if(inputSystem.downPressed) {
             if (player.width < 40) {
-                double oldX = player.x;
-                double oldY = player.y;
                 player.width++;
                 player.x-=0.5;
                 player.height--;
@@ -267,8 +263,6 @@ public class World {
                 player.checkCollision();
             }
         } else if (player.width > 30) {
-            double oldX = player.x;
-            double oldY = player.y;
             player.x+=0.5;
             player.y-=0.5;
             player.width--;

@@ -1,8 +1,6 @@
 
 package Game.GameObjects.CharacterObjects;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.util.List;
 
 import Game.InputSystem;
@@ -11,7 +9,7 @@ import Game.GameObjects.GameObject;
 import Game.GameObjects.Missile;
 import Game.GameObjects.Bullets.Explosion;
 import Game.GameObjects.Bullets.ShootBullet;
-import Game.GameObjects.Enemies.Speedy;
+import Game.GameObjects.CharacterObjects.Enemies.Speedy;
 import Game.GameObjects.Items.ItemObject;
 import Game.GameObjects.Weapons.WeaponObject;
 

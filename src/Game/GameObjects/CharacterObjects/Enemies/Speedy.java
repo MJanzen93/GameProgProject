@@ -1,4 +1,4 @@
-package Game.GameObjects.Enemies;
+package Game.GameObjects.CharacterObjects.Enemies;
 
 import java.awt.Color;
 import java.util.List;

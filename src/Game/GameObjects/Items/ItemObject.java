@@ -4,13 +4,12 @@ import Game.GameObjects.CharacterObjects.CharacterObject;
 import Game.GameObjects.GameObject;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.Random;
 
 public abstract class ItemObject extends GameObject {
 
-    public static int width = 20;
-    public static int height = 20;
+    public static int width = 30;
+    public static int height = 30;
 
     private static Random random;
 
@@ -53,5 +52,10 @@ public abstract class ItemObject extends GameObject {
 
     public void applyItem(CharacterObject obj){
         hp = 0;
+    }
+
+    @Override
+    public void draw(Graphics graphics) {
+        super.draw(graphics);
     }
 }
