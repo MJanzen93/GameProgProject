@@ -127,6 +127,7 @@ public class World {
         gameObjects.add(new SpeedUpItem(1300, 50));
         gameObjects.add(new ShieldItem(1500, 50));
         gameObjects.add(new MissileItem(1150,50));
+        gameObjects.add(new SWATItem(1050,50));
 
 
         FixedPlattform f = new FixedPlattform(800,400,40,20);
