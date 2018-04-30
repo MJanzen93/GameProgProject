@@ -3,9 +3,18 @@ package Game.GameObjects.CharacterObjects.Enemies;
 import Game.GameObjects.Bullets.Explosion;
 import Game.GameObjects.Bullets.ShootBullet;
 
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
+
 public class SimpleEnemyObject extends EnemyObject{
     public SimpleEnemyObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
+        try {
+            image = ImageIO.read(new File(".\\src\\Game\\Textures\\enemy.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

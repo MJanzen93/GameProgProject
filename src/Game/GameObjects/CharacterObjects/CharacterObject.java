@@ -63,9 +63,5 @@ public class CharacterObject extends GameObject {
                 graphics.drawOval(x-width/2+i, y-height/2+i, width*2-i*2, height*2-i*2);
             }
         }
-        graphics.setColor(COLOR);
-        graphics.fillRect(x, y, width, height);
-        graphics.setColor(Color.BLACK);
-        graphics.drawRect(x, y, width, height);
     }
 }
