@@ -19,7 +19,6 @@ public class Missile extends GameObject {
         hp = 1;
         try {
             image = ImageIO.read(new File(".\\src\\Game\\Textures\\bomb.png"));
-            image = image.getScaledInstance(width,height,0);
         } catch (IOException e) {
             e.printStackTrace();
         }

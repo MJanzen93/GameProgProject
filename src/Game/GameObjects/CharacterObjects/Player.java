@@ -28,8 +28,6 @@ public class Player extends CharacterObject {
     public double hitSide;
 	public boolean hitFromObjectBool = false;
 
-    public int missile = 1;
-
     public Player(double startX, double startY) {
         super(startX, startY, 30, 30);
         destructible = true;

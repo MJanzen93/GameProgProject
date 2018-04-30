@@ -27,6 +27,8 @@ public class CharacterObject extends GameObject {
 
     public int shieldDuration = 500;
 
+    public int missile = 1;
+
     public CharacterObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
     }

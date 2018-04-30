@@ -40,6 +40,7 @@ public class Explosion extends GameObject {
             bullet.alfa = i*2;
             bullet.range = radius-i;
             bullet.speed = 800;
+            bullet.setColor(Color.gray);
             bullet.setIsPlayerBullet(isPlayerExplosion);
             world.bulletObjects.add(bullet);
         }

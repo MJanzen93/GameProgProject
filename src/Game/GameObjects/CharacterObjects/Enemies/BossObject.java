@@ -37,9 +37,9 @@ public class BossObject extends EnemyObject {
 
         if(Math.abs(distanceToPlayer) < 500 || maxHP > hp) {
             if(distanceToPlayer > 250 ) {
-                xSpeed = 50;
+                xSpeed = 500;
             } else if(distanceToPlayer < -250) {
-                xSpeed = -50;
+                xSpeed = -500;
             } else {
                 xSpeed = 0;
             }

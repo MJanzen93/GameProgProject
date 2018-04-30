@@ -12,7 +12,7 @@ import java.util.List;
 public class StealerObject extends EnemyObject {
     public StealerObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
-        setColor(Color.BLACK);
+        setColor(new Color(54, 54, 54, 255));
     }
 
     @Override

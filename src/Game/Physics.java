@@ -61,7 +61,7 @@ public class Physics {
                 //If horizontally overlapping
                 if(obj.x + obj.width >= fixedObj.x && obj.x <= fixedObj.x + fixedObj.width) {
                     //If vertically overlapping
-                    if(obj.y + obj.height > fixedObj.y && obj.y < fixedObj.y + fixedObj.height) {
+                    if(obj.y + obj.height >= fixedObj.y && obj.y <= fixedObj.y + fixedObj.height) {
                         collidingObjects.add(fixedObj);
                     }
 
@@ -80,7 +80,7 @@ public class Physics {
                 //If horizontally overlapping
                 if(obj.x + obj.width >= gameObj.x && obj.x <= gameObj.x + gameObj.width) {
                     //If vertically overlapping
-                    if(obj.y + obj.height > gameObj.y && obj.y < gameObj.y + gameObj.height) {
+                    if(obj.y + obj.height >= gameObj.y && obj.y <= gameObj.y + gameObj.height) {
                         collidingObjects.add(gameObj);
                     }
 
