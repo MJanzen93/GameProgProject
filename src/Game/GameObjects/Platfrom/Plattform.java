@@ -11,7 +11,6 @@ public abstract class Plattform extends GameObject {
         isFixed = true;
         isSolid = true;
         explodable = false;
-        hasCollision = true;
         destructible = false;
         hp = 1;
         COLOR = new Color(7, 120, 5);

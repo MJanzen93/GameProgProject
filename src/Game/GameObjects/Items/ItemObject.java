@@ -14,14 +14,11 @@ public abstract class ItemObject extends GameObject {
 
     private static Random random;
 
-    BufferedImage image;
-
     public ItemObject(double startX, double startY) {
         super(startX, startY, width, height);
         random = new Random();
         isItem = true;
         isSolid = true;
-        hasCollision = true;
         isFixed = false;
         hp = 1;
         destructible = false;
@@ -52,20 +49,6 @@ public abstract class ItemObject extends GameObject {
     @Override
     public void checkCollision() {
         super.checkCollision();
-    }
-
-    @Override
-    public void draw(Graphics graphics) {
-        int x = (int) (this.x - world.worldPartX);
-        int y = (int) (this.y - world.worldPartY);
-
-        if(image == null){
-            graphics.setColor(COLOR);
-            graphics.fillRect(x, y, width, height);
-            graphics.setColor(Color.BLACK);
-            graphics.drawRect(x, y, width, height);
-        }else
-            graphics.drawImage(image, x, y, null, null);
     }
 
     public void applyItem(CharacterObject obj){

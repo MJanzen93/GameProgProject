@@ -31,7 +31,7 @@ public class Exploder extends  EnemyObject {
     }
 
     public void shootBullet() {
-        Explosion explosion = new Explosion(x+width/2,y+height/2,200);
+        Explosion explosion = new Explosion(x+width/2,y+height/2,200, false);
         hp = 0;
         explosion.explode();
     }

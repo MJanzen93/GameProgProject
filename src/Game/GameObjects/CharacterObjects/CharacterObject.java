@@ -22,6 +22,8 @@ public class CharacterObject extends GameObject {
 
     public boolean pickUpItem = false;
 
+    public boolean jumping = false;
+
     public CharacterObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
     }

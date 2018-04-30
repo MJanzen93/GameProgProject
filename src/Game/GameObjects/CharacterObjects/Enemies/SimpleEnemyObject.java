@@ -1,6 +1,6 @@
 package Game.GameObjects.CharacterObjects.Enemies;
 
-import Game.GameObjects.Bullets.BulletObject;
+import Game.GameObjects.Bullets.Explosion;
 import Game.GameObjects.Bullets.ShootBullet;
 
 public class SimpleEnemyObject extends EnemyObject{

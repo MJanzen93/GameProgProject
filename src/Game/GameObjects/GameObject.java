@@ -5,6 +5,7 @@ import Game.Physics;
 import Game.World;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.List;
 
 
@@ -24,18 +25,17 @@ public abstract class GameObject {
     //Object is player
     public boolean isPlayer = false;
     public boolean isEnemy = false;
-    //??
-    public boolean jumping = false;
     //Dimensions of object
     public int width;
     public int height;
-    //??
+
     public static World world;
     //HP of object
     public boolean destructible = false;
     public int maxHP = 1;
     public int hp = 1;
-    //Object has collions
+
+    //Object has collisions (theoretical)
     public boolean hasCollision = true;
     //Object is Item
     public boolean isItem = false;
@@ -46,6 +46,8 @@ public abstract class GameObject {
     public Color COLOR  = new Color(96,96,255);
 
     public boolean dropItem = false;
+
+    public Image image;
 
     public GameObject(double startX, double startY, int width, int height) {
         this.x = startX;
@@ -65,10 +67,8 @@ public abstract class GameObject {
 
         if(explodable){
             if(hp <= 0){
-                Explosion explosion = new Explosion(x+ width/2,y + height/2,200);
+                Explosion explosion = new Explosion(x+ width/2,y + height/2,200, false);
                 explosion.explode();
-                GameObject.world.gameObjects.add(explosion);
-                GameObject.world.gameObjects.remove(this);
             }
         }
     }
@@ -77,10 +77,13 @@ public abstract class GameObject {
         int x = (int) (this.x - world.worldPartX);
         int y = (int) (this.y - world.worldPartY);
 
-        graphics.setColor(COLOR);
-        graphics.fillRect(x, y, width, height);
-        graphics.setColor(Color.BLACK);
-        graphics.drawRect(x, y, width, height);
+        if(image == null){
+            graphics.setColor(COLOR);
+            graphics.fillRect(x, y, width, height);
+            graphics.setColor(Color.BLACK);
+            graphics.drawRect(x, y, width, height);
+        }else
+            graphics.drawImage(image, x, y, null, null);
 
         if(destructible && this.maxHP > this.hp){
 
@@ -136,7 +139,6 @@ public abstract class GameObject {
             }
 
             if(collidingObjects.size() == 0) {
-                jumping = true;
                 onGround = false;
             }
 

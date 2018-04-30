@@ -3,16 +3,25 @@ package Game.GameObjects;
 import Game.GameObjects.Bullets.Explosion;
 import Game.Physics;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class Missile extends GameObject {
-    public Missile(double startX, double startY, int width, int height) {
-        super(startX, startY, width, height);
+    public Missile(double startX, double startY) {
+        super(startX, startY, 30, 30);
         isFixed = false;
         isSolid = true;
         destructible = true;
         hp = 1;
-        hasCollision = true;
+        try {
+            image = ImageIO.read(new File(".\\src\\Game\\Textures\\bomb.png"));
+            image = image.getScaledInstance(width,height,0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -34,7 +43,7 @@ public class Missile extends GameObject {
                     y = collidingObject.y - height;
                     ySpeed = 0;
                     onGround = true;
-                    Explosion explosion = new Explosion(x,y,200);
+                    Explosion explosion = new Explosion(x,y,200, true);
                     explosion.explode();
                     hp = 0;
                 }

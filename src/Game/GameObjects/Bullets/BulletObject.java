@@ -18,11 +18,12 @@ public abstract class BulletObject extends GameObject {
 
     public BulletObject(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
-        destructible = true;
+        destructible = true; // or false does not matter, because bullets do not check collisions with each other
         hp = 1;
         COLOR = new Color(144, 57, 0);
-        hasCollision = false;
-        isSolid = false;
+
+        isSolid = true;
+
         isFixed = true;
     }
 
@@ -39,29 +40,25 @@ public abstract class BulletObject extends GameObject {
 
     @Override
     public void checkCollision() {
-        List<Game.GameObjects.GameObject> collidingObjects = Physics.getCollisions(this);
-        if(collidingObjects.size() > 0
-                && ((isPlayerBullet && !collidingObjects.get(0).isPlayer)
-                || (!isPlayerBullet && !collidingObjects.get(0).isEnemy && (collidingObjects.get(0).isPlayer
-                || collidingObjects.get(0).isSolid)))
-                && !collidingObjects.get(0).isItem) {
-            hp = 0;
-            if(collidingObjects.get(0).destructible) {
-                collidingObjects.get(0).hp -= damage;
-            }
+        if(isSolid){
+            List<Game.GameObjects.GameObject> collidingObjects = Physics.getCollisions(this);
+            if(collidingObjects.size() > 0
+                    && ((isPlayerBullet && !collidingObjects.get(0).isPlayer)
+                    || (!isPlayerBullet && !collidingObjects.get(0).isEnemy && (collidingObjects.get(0).isPlayer
+                    || collidingObjects.get(0).isSolid)))
+                    && !collidingObjects.get(0).isItem) {
+                hp = 0;
+                if(collidingObjects.get(0).destructible) {
+                    collidingObjects.get(0).hp -= damage;
+                }
 
+            }
         }
     }
 
     @Override
     public void draw(Graphics graphics) {
-        int x = (int) (this.x - world.worldPartX);
-        int y = (int) (this.y - world.worldPartY);
-
-        graphics.setColor(COLOR);
-        graphics.fillOval(x, y, width, height);
-        graphics.setColor(Color.BLACK);
-        graphics.drawOval(x, y, width, height);
+        super.draw(graphics);
     }
 
     public void setIsPlayerBullet(boolean isPlayerBullet) {

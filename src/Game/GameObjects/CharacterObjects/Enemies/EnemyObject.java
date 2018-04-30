@@ -80,12 +80,6 @@ public abstract class EnemyObject extends CharacterObject {
             onGround = false;
         }
 
-        if(y + height > 760){
-            y = 760-height;
-            ySpeed = 0;
-            onGround = true;
-            jumping = false;
-        }
     }
 
     public void idle(){

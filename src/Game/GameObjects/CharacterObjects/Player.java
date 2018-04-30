@@ -182,10 +182,10 @@ public class Player extends CharacterObject {
         int x = (int) (inputSystem.mouseX + world.worldPartX);
         int y = (int) (inputSystem.mouseY + world.worldPartY);
 
-        world.gameObjects.add(new Missile(x-200,y-2000, 10,10));
-        world.gameObjects.add(new Missile(x-100,y-2000, 10,10));
-        world.gameObjects.add(new Missile(x+100,y-2000, 10,10));
-        world.gameObjects.add(new Missile(x+200,y-2000, 10,10));
+        world.gameObjects.add(new Missile(x-200,y-2000));
+        world.gameObjects.add(new Missile(x-100,y-2000));
+        world.gameObjects.add(new Missile(x+100,y-2000));
+        world.gameObjects.add(new Missile(x+200,y-2000));
     }
 
 }

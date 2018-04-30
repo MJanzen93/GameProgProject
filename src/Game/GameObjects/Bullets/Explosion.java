@@ -7,15 +7,17 @@ import java.awt.*;
 public class Explosion extends GameObject {
 
     private int radius = 200;
+    private boolean isPlayerExplosion = false;
 
-    public Explosion(double startX, double startY, int radius) {
+    public Explosion(double startX, double startY, int radius, boolean isPlayerExplosion) {
         super(startX, startY, 0, 0);
         hasCollision = false;
         isSolid = false;
         isFixed = true;
-        destructible = true;
-        hp = 1;
+        destructible = false;
+        hp = 0;
         this.radius = radius;
+        this.isPlayerExplosion = isPlayerExplosion;
     }
 
     @Override
@@ -33,13 +35,12 @@ public class Explosion extends GameObject {
     }
 
     public void explode(){
-        hp = 0;
         for (int i = 0; i < 180; i++) {
             ExplosionBullet bullet = new ExplosionBullet(x, y, 5, 5);
             bullet.alfa = i*2;
             bullet.range = radius-i;
             bullet.speed = 800;
-            bullet.setIsPlayerBullet(true);
+            bullet.setIsPlayerBullet(isPlayerExplosion);
             world.bulletObjects.add(bullet);
         }
         /*

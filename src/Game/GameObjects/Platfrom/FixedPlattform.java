@@ -1,11 +1,5 @@
 package Game.GameObjects.Platfrom;
 
-import Game.GameObjects.Bullets.Explosion;
-import Game.GameObjects.GameObject;
-
-import java.awt.*;
-
-
 public class FixedPlattform extends Plattform {
     public FixedPlattform(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);

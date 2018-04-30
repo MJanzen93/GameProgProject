@@ -40,47 +40,55 @@ public class Physics {
         }
     }
 
+    /**
+     * Do not get collision with bullets each other
+     * @param obj
+     * @return
+     */
     public static List<GameObject> getCollisions(GameObject obj) {
 
         List<GameObject> collidingObjects = new ArrayList<>();
 
-        for(int i = 0; i < world.fixedObjects.size(); i++) {
+        if(obj.hasCollision){
+            for(int i = 0; i < world.fixedObjects.size(); i++) {
 
-            GameObject fixedObj = world.fixedObjects.get(i);
+                GameObject fixedObj = world.fixedObjects.get(i);
 
-            if(fixedObj == obj || !fixedObj.hasCollision) {
-                continue;
-            }
+                if(fixedObj == obj || !fixedObj.hasCollision) {
+                    continue;
+                }
 
-            //If horizontally overlapping
-            if(obj.x + obj.width >= fixedObj.x && obj.x <= fixedObj.x + fixedObj.width) {
-                //If vertically overlapping
-                if(obj.y + obj.height > fixedObj.y && obj.y < fixedObj.y + fixedObj.height) {
-                    collidingObjects.add(fixedObj);
+                //If horizontally overlapping
+                if(obj.x + obj.width >= fixedObj.x && obj.x <= fixedObj.x + fixedObj.width) {
+                    //If vertically overlapping
+                    if(obj.y + obj.height > fixedObj.y && obj.y < fixedObj.y + fixedObj.height) {
+                        collidingObjects.add(fixedObj);
+                    }
+
                 }
 
             }
 
-        }
+            for(int i = 0; i < world.gameObjects.size(); i++) {
 
-        for(int i = 0; i < world.gameObjects.size(); i++) {
+                GameObject gameObj = world.gameObjects.get(i);
 
-            GameObject gameObj = world.gameObjects.get(i);
+                if(gameObj == obj || !gameObj.hasCollision) {
+                    continue;
+                }
 
-            if(gameObj == obj || !gameObj.hasCollision) {
-                continue;
-            }
+                //If horizontally overlapping
+                if(obj.x + obj.width >= gameObj.x && obj.x <= gameObj.x + gameObj.width) {
+                    //If vertically overlapping
+                    if(obj.y + obj.height > gameObj.y && obj.y < gameObj.y + gameObj.height) {
+                        collidingObjects.add(gameObj);
+                    }
 
-            //If horizontally overlapping
-            if(obj.x + obj.width >= gameObj.x && obj.x <= gameObj.x + gameObj.width) {
-                //If vertically overlapping
-                if(obj.y + obj.height > gameObj.y && obj.y < gameObj.y + gameObj.height) {
-                    collidingObjects.add(gameObj);
                 }
 
             }
-
         }
+
         return collidingObjects;
     }
 }

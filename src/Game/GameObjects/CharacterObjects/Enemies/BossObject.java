@@ -1,5 +1,6 @@
 package Game.GameObjects.CharacterObjects.Enemies;
 
+import Game.GameObjects.Bullets.ExplodeAbleBullet;
 import Game.GameObjects.Bullets.ShootBullet;
 import Game.GameObjects.GameObject;
 
@@ -75,10 +76,11 @@ public class BossObject extends EnemyObject {
     }
 
     public void specialMove() {
-        ShootBullet bullet;
+        ExplodeAbleBullet bullet;
 
-        bullet = new ShootBullet(x + width/2, y + height/2, 15, 15);
+        bullet = new ExplodeAbleBullet(x + width/2, y + height/2, 15, 15);
         bullet.alfa  =  specialMoveTick*0.2;
+        bullet.range = 200;
         specialMoveTick++;
         specialMoveCooldown = 0.1;
         if(specialMoveTick*0.2 > Math.PI*4) {
@@ -88,7 +90,7 @@ public class BossObject extends EnemyObject {
         bullet.speed = 1000;
         bullet.setIsPlayerBullet(false);
 
-        GameObject.world.bulletObjects.add(bullet);
+        world.bulletObjects.add(bullet);
 
 
     }
