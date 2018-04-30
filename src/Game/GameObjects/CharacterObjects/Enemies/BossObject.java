@@ -70,7 +70,7 @@ public class BossObject extends EnemyObject {
         bullet.alfa  =  Math.atan2(GameObject.world.player.y+randomOffset - y-height/2, GameObject.world.player.x - x-width/2);
         bullet.speed = 1000;
 
-        bullet.setIsPlayerBullet(false);
+        bullet.isPlayerBullet = false;
 
         world.bulletObjects.add(bullet);
     }
@@ -88,7 +88,7 @@ public class BossObject extends EnemyObject {
             specialMoveTick = 0;
         }
         bullet.speed = 1000;
-        bullet.setIsPlayerBullet(false);
+        bullet.isPlayerBullet = true;
 
         world.bulletObjects.add(bullet);
 

@@ -49,6 +49,8 @@ public abstract class GameObject {
 
     public Image image;
 
+    public boolean canCollideWithPlayer = true;
+
     public GameObject(double startX, double startY, int width, int height) {
         this.x = startX;
         this.y = startY;

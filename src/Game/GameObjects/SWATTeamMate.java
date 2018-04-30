@@ -48,7 +48,7 @@ public class SWATTeamMate extends GameObject {
         bullet = new ShootBullet(x + width/2, y + height/2, 5, 5);
         bullet.alfa  =  Math.atan2(enemyObject.y - y, enemyObject.x - x);
 
-        bullet.setIsPlayerBullet(false);
+        bullet.isPlayerBullet = true;
 
         world.gameObjects.add(bullet);
     }

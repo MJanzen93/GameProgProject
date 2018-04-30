@@ -60,13 +60,4 @@ public abstract class BulletObject extends GameObject {
     public void draw(Graphics graphics) {
         super.draw(graphics);
     }
-
-    public void setIsPlayerBullet(boolean isPlayerBullet) {
-        this.isPlayerBullet = isPlayerBullet;
-        if(isPlayerBullet) {
-            COLOR = new Color(0, 72, 144);
-        }
-
-    }
-
 }

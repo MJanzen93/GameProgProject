@@ -21,6 +21,7 @@ public abstract class EnemyObject extends CharacterObject {
         COLOR = new Color(190, 30, 30);
         isSolid = true;
         isEnemy= true;
+        canCollideWithPlayer = false;
     }
 
     @Override

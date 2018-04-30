@@ -5,6 +5,7 @@ import Game.GameObjects.CharacterObjects.Player;
 import Game.GameObjects.CharacterObjects.Enemies.*;
 import Game.GameObjects.Items.*;
 import Game.GameObjects.Platfrom.FixedPlattform;
+import Game.GameObjects.Weapons.Mine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,6 +87,7 @@ public class World {
         gameObjects.add(new StealerObject(1700, 200, 30, 30));
         gameObjects.add(new SWATTeamMate(300, 500, 30, 30));
         gameObjects.add(new Exploder(1000,500,30,30));
+        fixedObjects.add(new Mine(600, 700-5));
 
 
         //Boss

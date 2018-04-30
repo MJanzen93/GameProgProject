@@ -76,7 +76,7 @@ public class Player extends CharacterObject {
                     item.applyItem(this);
                 }
 
-                if(collidingObject.isSolid && !collidingObject.isItem && !collidingObject.isEnemy) {
+                if(collidingObject.canCollideWithPlayer) {
                     //check if Game.GameObjects.CharacterObject.Player is on Object
                     if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
 
@@ -172,7 +172,7 @@ public class Player extends CharacterObject {
         bullet = new ShootBullet(x+width/2, y+height/2, 5, 5);
         bullet.damage = damage;
         bullet.alfa  =  Math.atan2(inputSystem.mouseY+world.worldPartY - y-width/2, inputSystem.mouseX+world.worldPartX - x-height/2);
-        bullet.setIsPlayerBullet(true);
+        bullet.isPlayerBullet = true;
         world.bulletObjects.add(bullet);
 
         //currentWeapon.shootBullet();

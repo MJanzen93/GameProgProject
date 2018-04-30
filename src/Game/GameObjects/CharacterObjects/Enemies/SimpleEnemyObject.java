@@ -43,7 +43,7 @@ public class SimpleEnemyObject extends EnemyObject{
         bullet = new ShootBullet(x + width/2, y + height/2, 5, 5);
         bullet.alfa  =  Math.atan2(world.player.y - y, world.player.x - x);
 
-        bullet.setIsPlayerBullet(false);
+        bullet.isPlayerBullet = false;
 
         world.bulletObjects.add(bullet);
     }
