@@ -20,7 +20,6 @@ public abstract class ItemObject extends GameObject {
         isItem = true;
         isSolid = true;
         isFixed = false;
-        canCollideWithPlayer = false;
         hp = 1;
         destructible = false;
     }

@@ -18,7 +18,6 @@ public class Mine extends GameObject {
         isSolid = false;
         destructible = false;
         hasCollision = true;
-        canCollideWithPlayer = false;
         hp = 1;
         setColor(new Color(0, 0, 0, 0));
     }
@@ -64,12 +63,6 @@ public class Mine extends GameObject {
             GameObject collidingObject = collidingObjects.get(i);
             if(collidingObject.isPlayer){
                 trigger = true;
-            }
-
-            if(collidingObject.isSolid){
-                ySpeed = 0;
-                xSpeed = 0;
-                onGround = true;
             }
         }
     }

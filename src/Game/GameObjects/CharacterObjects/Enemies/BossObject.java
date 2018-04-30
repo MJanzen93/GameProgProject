@@ -88,7 +88,7 @@ public class BossObject extends EnemyObject {
             specialMoveTick = 0;
         }
         bullet.speed = 1000;
-        bullet.isPlayerBullet = true;
+        bullet.isPlayerBullet = false;
 
         world.bulletObjects.add(bullet);
 

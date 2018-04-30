@@ -87,7 +87,12 @@ public class World {
         gameObjects.add(new StealerObject(1700, 200, 30, 30));
         gameObjects.add(new SWATTeamMate(300, 500, 30, 30));
         gameObjects.add(new Exploder(1000,500,30,30));
-        fixedObjects.add(new Mine(600, 700-5));
+
+        fixedObjects.add(new Mine(2200, 745));
+        fixedObjects.add(new Mine(2300, 745));
+        fixedObjects.add(new Mine(2400, 745));
+        fixedObjects.add(new Mine(2500, 745));
+        fixedObjects.add(new Mine(2600, 745));
 
 
         //Boss

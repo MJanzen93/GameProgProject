@@ -76,7 +76,8 @@ public class Player extends CharacterObject {
                     item.applyItem(this);
                 }
 
-                if(collidingObject.canCollideWithPlayer) {
+                //if(collidingObject.canCollideWithPlayer)
+                if(collidingObject.isSolid && !collidingObject.isItem && !collidingObject.isEnemy) {
                     //check if Game.GameObjects.CharacterObject.Player is on Object
                     if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
 
