@@ -13,7 +13,7 @@ public class HealthItem extends ItemObject{
         super(startX, startY);
         setColor(Color.red);
         try {
-            image = ImageIO.read(new File(".\\src\\Game\\Textures\\Health_Texture.png"));
+            image = ImageIO.read(new File(".\\src\\Game\\Textures\\health.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
