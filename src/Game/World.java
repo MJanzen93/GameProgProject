@@ -252,7 +252,6 @@ public class World {
 
         if(player.missile > 0 && inputSystem.mousePressed && inputSystem.altPressed){
             player.fireMissels(inputSystem);
-            player.missile--;
         }
 
         if(inputSystem.downPressed) {

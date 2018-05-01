@@ -2,7 +2,10 @@ package Game.GameObjects.CharacterObjects;
 
 import Game.GameObjects.GameObject;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Idea: All Characters in the Game are extended from {@link CharacterObject}

@@ -87,7 +87,7 @@ public abstract class GameObject {
             graphics.setColor(Color.BLACK);
             graphics.drawRect(x, y, width, height);
         }else
-            graphics.drawImage(image, x, y, null, null);
+            graphics.drawImage(image, x, y, width, height, null, null);
 
         if(destructible && this.maxHP > this.hp){
 

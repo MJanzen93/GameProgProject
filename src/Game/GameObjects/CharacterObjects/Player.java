@@ -1,6 +1,8 @@
 
 package Game.GameObjects.CharacterObjects;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import Game.InputSystem;
@@ -12,6 +14,8 @@ import Game.GameObjects.Bullets.ShootBullet;
 import Game.GameObjects.CharacterObjects.Enemies.Speedy;
 import Game.GameObjects.Items.ItemObject;
 import Game.GameObjects.Weapons.WeaponObject;
+
+import javax.imageio.ImageIO;
 
 
 public class Player extends CharacterObject {
@@ -26,6 +30,10 @@ public class Player extends CharacterObject {
     public double hitSide;
     public boolean hitFromObjectBool = false;
 
+
+    public int coolDownMissile = 200;
+    public boolean missileReady = false;
+
     public Player(double startX, double startY) {
         super(startX, startY, 30, 30);
         destructible = true;
@@ -37,6 +45,11 @@ public class Player extends CharacterObject {
         weapons = new WeaponObject[2];
         currentWeapon = null;
         hasShield = false;
+        try {
+            image = ImageIO.read(new File(".\\src\\Game\\Textures\\player.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -53,14 +66,20 @@ public class Player extends CharacterObject {
         x += xSpeed * diffSeconds + (calculateHitAlphaSpeed(diffSeconds) * hitSide);
         y += ySpeed * diffSeconds;
 
-        if(hasShield && shieldDuration <= 0) {
+        if (hasShield && shieldDuration <= 0) {
             hasShield = false;
             destructible = true;
             shieldDuration = 500;
         }
-        if(hasShield){
+        if (hasShield) {
             shieldDuration -= diffSeconds;
         }
+
+        if(coolDownMissile <= 0){
+            missileReady = true;
+        }else
+            coolDownMissile -= diffSeconds;
+
     }
 
     @Override
@@ -175,6 +194,12 @@ public class Player extends CharacterObject {
     }
 
     public void fireMissels(InputSystem inputSystem) {
+        if (!missileReady) {
+            return;
+        }
+        coolDownMissile = 200;
+        missileReady = false;
+
         int x = (int) (inputSystem.mouseX + world.worldPartX);
         int y = (int) (inputSystem.mouseY + world.worldPartY);
 
@@ -182,6 +207,8 @@ public class Player extends CharacterObject {
         world.gameObjects.add(new Missile(x - 100, y - 2000));
         world.gameObjects.add(new Missile(x + 100, y - 2000));
         world.gameObjects.add(new Missile(x + 200, y - 2000));
+
+        missile--;
     }
 
     // calculate the x speed when hit with an enemy
