@@ -1,5 +1,6 @@
 package Game.GameObjects.CharacterObjects.Enemies;
 
+import Game.AudioPlayer;
 import Game.GameObjects.Bullets.Explosion;
 import Game.GameObjects.Bullets.ShootBullet;
 
@@ -55,5 +56,6 @@ public class SimpleEnemyObject extends EnemyObject{
         bullet.isPlayerBullet = false;
 
         world.bulletObjects.add(bullet);
+        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\laser.wav",0.25);
     }
 }

@@ -1,6 +1,7 @@
 package Game.GameObjects.Items;
 
 import Game.GameObjects.CharacterObjects.CharacterObject;
+import Game.AudioPlayer;
 import Game.GameObjects.GameObject;
 
 import java.awt.*;
@@ -52,6 +53,7 @@ public abstract class ItemObject extends GameObject {
 
     public void applyItem(CharacterObject obj){
         hp = 0;
+        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\pickup.aiff",0.15);
     }
 
     @Override

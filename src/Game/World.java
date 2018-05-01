@@ -26,6 +26,8 @@ public class World {
     private WorldViewer wViewer;
 
     public Player player;
+    
+    public AudioPlayer backgroundPlayer;
 
     /*LISTS*/
     public List<GameObject> bulletObjects;
@@ -58,6 +60,10 @@ public class World {
     {
         //todo
         //List<GameObject> gameObjects = MapParser.getGameObjects("");
+    	
+    	//Backgound Musik player
+    	backgroundPlayer = new AudioPlayer();
+    	backgroundPlayer.backGroundMusic(".\\src\\Game\\Sounds\\megalovania.wav",0.25);
 
         allObjects = new ArrayList<>();
         gameObjects = new ArrayList<>();
@@ -207,23 +213,18 @@ public class World {
 
             //high ySpeed => get thinner
             if (Math.abs(player.ySpeed) > 500 && player.width > 20) {
-                double oldX = player.x;
-                double oldY = player.y;
                 player.width--;
                 player.x+=0.5;
                 player.height++;
                 player.y-=0.5;
                 player.checkCollision();
             } else if (player.width < 30) {
-                double oldX = player.x;
-                double oldY = player.y;
                 player.width++;
                 player.x-=0.5;
                 player.height--;
                 player.y+=0.5;
                 player.checkCollision();
             }
-            System.out.println(1/diffSeconds + "FPS");
         }
     }
 

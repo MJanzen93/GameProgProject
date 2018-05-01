@@ -4,6 +4,7 @@ import Game.GameObjects.Bullets.BulletObject;
 import Game.GameObjects.Bullets.ShootBullet;
 import Game.GameObjects.GameObject;
 import Game.GameObjects.Items.*;
+import Game.AudioPlayer;
 import Game.Physics;
 
 import java.awt.*;
@@ -106,5 +107,6 @@ public class StealerObject extends EnemyObject {
 
         bullet.isPlayerBullet = false;
         world.bulletObjects.add(bullet);
+        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\laser.wav",0.25);
     }
 }

@@ -3,6 +3,7 @@ package Game.GameObjects.CharacterObjects.Enemies;
 
 import Game.GameObjects.Bullets.ExplodeAbleBullet;
 import Game.GameObjects.Bullets.ShootBullet;
+import Game.AudioPlayer;
 import Game.GameObjects.GameObject;
 
 import java.awt.*;
@@ -78,6 +79,7 @@ public class BossObject extends EnemyObject {
         bullet.isPlayerBullet = false;
 
         world.bulletObjects.add(bullet);
+        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\laser.wav",0.25);
     }
 
     public void specialMove() {
@@ -96,6 +98,7 @@ public class BossObject extends EnemyObject {
         bullet.isPlayerBullet = false;
 
         world.bulletObjects.add(bullet);
+        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\laser.wav",0.25);
 
 
     }

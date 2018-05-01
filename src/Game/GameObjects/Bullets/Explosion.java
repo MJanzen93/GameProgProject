@@ -1,8 +1,13 @@
 package Game.GameObjects.Bullets;
 
+import Game.AudioPlayer;
 import Game.GameObjects.GameObject;
 
 import java.awt.*;
+import java.io.File;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
 
 public class Explosion extends GameObject {
 
@@ -62,5 +67,6 @@ public class Explosion extends GameObject {
             world.bulletObjects.add(bullet);
         }
         */
+        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\boom-bang.aiff",1.0);
     }
 }

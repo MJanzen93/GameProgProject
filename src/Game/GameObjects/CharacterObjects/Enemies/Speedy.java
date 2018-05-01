@@ -3,6 +3,7 @@ package Game.GameObjects.CharacterObjects.Enemies;
 import java.awt.Color;
 import java.util.List;
 
+import Game.AudioPlayer;
 import Game.Physics;
 import Game.GameObjects.GameObject;
 import Game.GameObjects.CharacterObjects.Enemies.EnemyObject;
@@ -55,11 +56,11 @@ public class Speedy extends EnemyObject {
 			if ((x <= (standingPlattform.x+(this.width/2) )) && stateBool) {
 				x=(standingPlattform.x);
 				xSpeed = 0;
-				counter = 2;
+				counter = 1;
 			}else if( x >= (standingPlattform.x + standingPlattform.width - this.width) && stateBool){
 				x=(standingPlattform.x + standingPlattform.width - this.width);
 				xSpeed = 0;
-				counter = 2;
+				counter = 1;
 			}
 		}
 
@@ -129,7 +130,7 @@ public class Speedy extends EnemyObject {
 		}else {
 			world.player.hitSide = -1;
 		}
-
+		AudioPlayer.shortSound(".\\src\\Game\\Sounds\\speedyClap.wav",0.15);
 		world.player.hp -= touchDamge;
 	}
 

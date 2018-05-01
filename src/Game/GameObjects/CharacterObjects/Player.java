@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import Game.AudioPlayer;
 import Game.InputSystem;
 import Game.Physics;
 import Game.GameObjects.GameObject;
@@ -169,7 +170,8 @@ public class Player extends CharacterObject {
         jumping = true;
         onGround = false;
         ySpeed = -jumpForce;
-    }
+        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\jump.wav",0.15);
+}
 
     /**
      * Player stops
@@ -189,6 +191,7 @@ public class Player extends CharacterObject {
         bullet.alfa = Math.atan2(inputSystem.mouseY + world.worldPartY - y - width / 2, inputSystem.mouseX + world.worldPartX - x - height / 2);
         bullet.isPlayerBullet = true;
         world.bulletObjects.add(bullet);
+        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\shot.wav",0.15);
 
         //currentWeapon.shootBullet();
     }
@@ -217,7 +220,6 @@ public class Player extends CharacterObject {
     private double calculateHitAlphaSpeed(double diffSeconds) {
         // TODO Auto-generated method stub
         if (hitFromObjectBool) {
-            System.out.println("Test 1111  " + hitAlphaSpeed);
             if (hitAlphaSpeed >= (2000 * diffSeconds))
                 hitFromObjectBool = false;
             return hitAlphaSpeed = hitAlphaSpeed + (300 * diffSeconds);
