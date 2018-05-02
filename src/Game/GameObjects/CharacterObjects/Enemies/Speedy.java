@@ -73,7 +73,7 @@ public class Speedy extends EnemyObject {
 		for (int i = 0; i < collidingObjects.size(); i++) {
 			Game.GameObjects.GameObject collidingObject = collidingObjects.get(i);
 
-			if (collidingObject.isSolid && !collidingObject.isItem) {
+			if (collidingObject.isSolid && !collidingObject.isItem && !collidingObject.isEnemy) {
 				// check if Enemy is on Object
 				if (y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
 

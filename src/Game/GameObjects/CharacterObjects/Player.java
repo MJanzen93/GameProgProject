@@ -191,7 +191,7 @@ public class Player extends CharacterObject {
         bullet.alfa = Math.atan2(inputSystem.mouseY + world.worldPartY - y - width / 2, inputSystem.mouseX + world.worldPartX - x - height / 2);
         bullet.isPlayerBullet = true;
         world.bulletObjects.add(bullet);
-        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\shot.wav",0.15);
+        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\shot.wav",0.05);
 
         //currentWeapon.shootBullet();
     }

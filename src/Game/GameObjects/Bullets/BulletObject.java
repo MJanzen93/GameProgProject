@@ -42,7 +42,7 @@ public abstract class BulletObject extends GameObject {
     public void checkCollision() {
         if(isSolid){
             List<Game.GameObjects.GameObject> collidingObjects = Physics.getCollisions(this);
-            if(collidingObjects.size() > 0
+            if(collidingObjects.size() > 0 && collidingObjects.get(0).isSolid
                     && ((isPlayerBullet && !collidingObjects.get(0).isPlayer)
                     || (!isPlayerBullet && !collidingObjects.get(0).isEnemy && (collidingObjects.get(0).isPlayer
                     || collidingObjects.get(0).isSolid)))

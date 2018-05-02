@@ -79,7 +79,7 @@ public class Boss1 extends EnemyObject {
         bullet.isPlayerBullet = false;
 
         world.bulletObjects.add(bullet);
-        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\laser.wav",0.25);
+        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\shot.wav",0.05);
     }
 
     public void specialMove() {
@@ -98,7 +98,7 @@ public class Boss1 extends EnemyObject {
         bullet.isPlayerBullet = false;
 
         world.bulletObjects.add(bullet);
-        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\laser.wav",0.25);
+        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\shot.wav",0.05);
 
 
     }

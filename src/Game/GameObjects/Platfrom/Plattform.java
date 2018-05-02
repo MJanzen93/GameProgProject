@@ -24,8 +24,6 @@ public abstract class Plattform extends GameObject {
 
     @Override
     public void checkCollision() {
-        if(!isFixed && isSolid){
-            super.checkCollision();
-        }
+        super.checkCollision();
     }
 }

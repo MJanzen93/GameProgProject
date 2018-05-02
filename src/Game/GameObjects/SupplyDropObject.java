@@ -23,8 +23,9 @@ public class SupplyDropObject extends GameObject {
         setColor(Color.ORANGE);
         isSolid  = true;
         try {
-            par = ImageIO.read(new File(".\\src\\Game\\Textures\\parachute.png"));
-            scaled = par.getScaledInstance(80,80, 0);
+            par = ImageIO.read(new File(".\\src\\Game\\Textures\\parachute2.png"));
+            scaled = par.getScaledInstance(160,160, 0);
+            image = ImageIO.read(new File(".\\src\\Game\\Textures\\SimpleCrate.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -57,10 +58,6 @@ public class SupplyDropObject extends GameObject {
         if(!onGround && hp == maxHP && scaled != null){
             graphics.drawImage(scaled, x-scaled.getWidth(null)/2 + width/2, y-scaled.getHeight(null), null, null);
         }
-        graphics.setColor(COLOR);
-        graphics.fillRect(x, y, width, height);
-        graphics.setColor(Color.BLACK);
-        graphics.drawRect(x, y, width, height);
     }
 
 }

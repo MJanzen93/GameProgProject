@@ -72,18 +72,10 @@ public class World {
 
         player = new Player(200, 500);
 
+        createWorld();
 
-        //Ground
-        fixedObjects.add(new FixedPlattform(0, 750, 2000, 300));
-        fixedObjects.add(new FixedPlattform(2100, 750, 8000, 300));
 
-        //Platforms
-        fixedObjects.add(new FixedPlattform(500, 700, 300, 50));
-        fixedObjects.add(new FixedPlattform(600, 600, 200, 30));
-        fixedObjects.add(new FixedPlattform(400, 400, 150, 20));
-        fixedObjects.add(new FixedPlattform(0, 250, 600, 20));
-        fixedObjects.add(new FixedPlattform(650, 250, 300, 20));
-
+        /*
         //Bossroom
         fixedObjects.add(new FixedPlattform(2000, 0, 100, 700));
         //Door
@@ -96,6 +88,36 @@ public class World {
         fixedObjects.add(new FixedPlattform(3000, 550, 80, 30));
 
         fixedObjects.add(new FixedPlattform(4000, 550, 700, 30));
+        */
+
+    }
+
+    void createWorld(){
+        //Ground
+        fixedObjects.add(new FixedPlattform(0, 750, 2000, 300));
+        fixedObjects.add(new FixedPlattform(2100, 750, 8000, 300));
+
+        //Platforms
+        fixedObjects.add(new FixedPlattform(500, 700, 300, 50));
+        fixedObjects.add(new FixedPlattform(600, 600, 200, 30));
+        fixedObjects.add(new FixedPlattform(400, 400, 150, 20));
+        fixedObjects.add(new FixedPlattform(0, 250, 600, 20));
+        fixedObjects.add(new FixedPlattform(650, 250, 300, 20));
+
+        //Mines
+        fixedObjects.add(new Mine(2200, 745));
+        fixedObjects.add(new Mine(2300, 745));
+        fixedObjects.add(new Mine(2400, 745));
+        fixedObjects.add(new Mine(2500, 745));
+        fixedObjects.add(new Mine(2600, 745));
+
+        FixedPlattform f = new FixedPlattform(800,400,40,20);
+        f.dropItem = true;
+        f.destructible = true;
+        f.hp = 10;
+        f.maxHP = 10;
+        f.explodable = true;
+        fixedObjects.add(f);
 
         //Enemies
         gameObjects.add(new SimpleEnemy(100, 200, 30, 30));
@@ -105,8 +127,8 @@ public class World {
         gameObjects.add(new Stealer(1700, 200, 30, 30));
         gameObjects.add(new SWATTeamMate(300, 500, 30, 30));
         gameObjects.add(new Exploder(1000,500,30,30));
-        
-        
+
+
         gameObjects.add(new FlyingEnemy(6000,550,30,30));
 
         fixedObjects.add(new Mine(2200, 745));
@@ -118,34 +140,17 @@ public class World {
 
         gameObjects.add(new Speedy(0, 220, 30, 30,1000,new FixedPlattform(0, 250, 600, 20)));//needs the object where he is on it
         gameObjects.add(new Speedy(4000, 510, 30, 30,1000,new FixedPlattform(4000, 550, 700, 30)));//needs the object where he is on it
-
-
-
-        //Boss
         gameObjects.add(new Boss1(2550, 300, 100, 100));
 
-        //RapidFireItem
-        gameObjects.add(new RapidFireItem(2610, 280));
-        gameObjects.add(new RapidFireItem(1010, 280));
-        gameObjects.add(new RapidFireItem(1010, 80));
-
+        //Item
         //SupplyDrop Test
-        gameObjects.add(new SupplyDropObject(1500, 300, 50, 50));
+        gameObjects.add(new SupplyDropObject(1500, -300, 50, 50));
         gameObjects.add(new HealthItem(1000, 50));
         gameObjects.add(new JumpItem(1200, 50));
         gameObjects.add(new SpeedUpItem(1300, 50));
         gameObjects.add(new ShieldItem(1500, 50));
         gameObjects.add(new MissileItem(1150,50));
         gameObjects.add(new SWATItem(1050,50));
-
-
-        FixedPlattform f = new FixedPlattform(800,400,40,20);
-        f.dropItem = true;
-        f.destructible = true;
-        f.hp = 10;
-        f.maxHP = 10;
-        f.explodable = true;
-        gameObjects.add(f);
 
         gameObjects.add(player);
 

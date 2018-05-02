@@ -7,13 +7,21 @@ import Game.GameObjects.Items.*;
 import Game.AudioPlayer;
 import Game.Physics;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class Stealer extends EnemyObject {
     public Stealer(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
         setColor(new Color(54, 54, 54, 255));
+        try {
+            image = ImageIO.read(new File(".\\src\\Game\\Textures\\stealer.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

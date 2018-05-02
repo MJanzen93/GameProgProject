@@ -7,11 +7,13 @@ public class FlyingEnemy extends EnemyObject {
 
 	public FlyingEnemy(double startX, double startY, int width, int height) {
 		super(startX, startY, width, height);
-
+		isSolid = false;
+		isFixed = true;
 	}
 
 	@Override
 	public void move(double diffSeconds) {
+		super.move(diffSeconds);
 		oldX = x;
 		oldY = y;
 		x += xSpeed * diffSeconds;
@@ -37,9 +39,6 @@ public class FlyingEnemy extends EnemyObject {
 
 	}
 
-	@Override
-	public void checkCollision() {
-	}
 
 	public void shootBullet() {
 		ShootBullet bullet;
