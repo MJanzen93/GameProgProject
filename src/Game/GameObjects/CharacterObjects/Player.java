@@ -214,11 +214,7 @@ public class Player extends CharacterObject {
         missile--;
     }
 
-    // calculate the x speed when hit with an enemy
-    // the problem is when key is released or is pressed it will be either 0 or
-    // pressed XSpeed
     private double calculateHitAlphaSpeed(double diffSeconds) {
-        // TODO Auto-generated method stub
         if (hitFromObjectBool) {
             if (hitAlphaSpeed >= (2000 * diffSeconds))
                 hitFromObjectBool = false;

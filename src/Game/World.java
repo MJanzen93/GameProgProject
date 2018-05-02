@@ -37,7 +37,7 @@ public class World {
     public List<List<GameObject>> allObjects;
 
 
-    private InputSystem inputSystem;
+    public InputSystem inputSystem;
     public int enemiesLeft = 4;
     private double diffSeconds;
     private double secondsPassed;
@@ -87,6 +87,7 @@ public class World {
         fixedObjects.add(new FixedPlattform(2600, 550, 80, 30));
         fixedObjects.add(new FixedPlattform(3000, 550, 80, 30));
 
+
         fixedObjects.add(new FixedPlattform(4000, 550, 700, 30));
         */
 
@@ -118,7 +119,8 @@ public class World {
         f.maxHP = 10;
         f.explodable = true;
         fixedObjects.add(f);
-
+ 
+        gameObjects.add(new SimpleEnemy(1100, 200, 30, 30));
         //Enemies
         gameObjects.add(new SimpleEnemy(100, 200, 30, 30));
         gameObjects.add(new SimpleEnemy(1100, 200, 30, 30));
@@ -138,10 +140,26 @@ public class World {
         fixedObjects.add(new Mine(2600, 745));
 
 
-        gameObjects.add(new Speedy(0, 220, 30, 30,1000,new FixedPlattform(0, 250, 600, 20)));//needs the object where he is on it
-        gameObjects.add(new Speedy(4000, 510, 30, 30,1000,new FixedPlattform(4000, 550, 700, 30)));//needs the object where he is on it
+        //Speedy Enemies
+        FixedPlattform speedyPlattform1 = new FixedPlattform(0, 250, 600, 20);
+        fixedObjects.add(speedyPlattform1);
+        gameObjects.add(new Speedy(0, 220, 30, 30,1000,speedyPlattform1));//needs the object where he is on it
+        FixedPlattform speedyPlattform2 = new FixedPlattform(4000, 550, 700, 30);
+        fixedObjects.add(speedyPlattform2);
+        gameObjects.add(new Speedy(4000, 510, 30, 30,1000,speedyPlattform2));//needs the object where he is on it
+
+        //Boss
         gameObjects.add(new Boss1(2550, 300, 100, 100));
 
+        
+        FixedPlattform MimicPlattform = new FixedPlattform(4000, 550, 700, 30);
+        fixedObjects.add(MimicPlattform);
+        gameObjects.add(new Mimic(4700-30, 510, 30, 30,MimicPlattform));
+        
+        
+        
+        
+        
         //Item
         //SupplyDrop Test
         gameObjects.add(new SupplyDropObject(1500, -300, 50, 50));
