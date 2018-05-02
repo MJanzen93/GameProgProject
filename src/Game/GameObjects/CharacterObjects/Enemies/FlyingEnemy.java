@@ -2,6 +2,11 @@ package Game.GameObjects.CharacterObjects.Enemies;
 
 import Game.AudioPlayer;
 import Game.GameObjects.Bullets.ShootBullet;
+import Game.GameObjects.GameObject;
+
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 
 public class FlyingEnemy extends EnemyObject {
 
@@ -10,6 +15,11 @@ public class FlyingEnemy extends EnemyObject {
 		isSolid = true;
 		isFixed = true;
 		hasCollision = true;
+		try {
+			image = ImageIO.read(new File(".\\src\\Game\\Textures\\bat.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -17,7 +27,7 @@ public class FlyingEnemy extends EnemyObject {
 		super.move(diffSeconds);
 
 		double diffX = x - world.player.x;
-		double diffY = y - world.player.y;
+		double diffY = y - world.player.y - world.player.height + 200;
 		double distanceToPlayer = Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
 
 		if (Math.abs(distanceToPlayer) < 800 || maxHP > hp) {
@@ -38,17 +48,5 @@ public class FlyingEnemy extends EnemyObject {
 
 	@Override
 	public void checkCollision() {
-	}
-
-	public void shootBullet() {
-		ShootBullet bullet;
-
-		bullet = new ShootBullet(x + width / 2, y + height / 2, 5, 5);
-		bullet.alfa = Math.atan2(world.player.y - y, world.player.x - x);
-
-		bullet.isPlayerBullet = false;
-
-		world.bulletObjects.add(bullet);
-		AudioPlayer.shortSound(".\\src\\Game\\Sounds\\laser.wav", 0.25);
 	}
 }

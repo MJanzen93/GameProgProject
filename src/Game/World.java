@@ -131,7 +131,7 @@ public class World {
         gameObjects.add(new Exploder(1000,500,30,30));
 
 
-        gameObjects.add(new FlyingEnemy(6000,550,30,30));
+        gameObjects.add(new FlyingEnemy(60,550,120,60));
 
         fixedObjects.add(new Mine(2200, 745));
         fixedObjects.add(new Mine(2300, 745));

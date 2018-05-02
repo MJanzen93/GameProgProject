@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class SimpleEnemy extends EnemyObject{
     public SimpleEnemy(double startX, double startY, int width, int height) {
-        super(startX, startY, width, height);
+        super(startX, startY, 50,50);
         try {
             image = ImageIO.read(new File(".\\src\\Game\\Textures\\enemy.png"));
         } catch (IOException e) {
@@ -45,17 +45,5 @@ public class SimpleEnemy extends EnemyObject{
     @Override
     public void checkCollision() {
         super.checkCollision();
-    }
-
-    public void shootBullet() {
-        ShootBullet bullet;
-
-        bullet = new ShootBullet(x + width/2, y + height/2, 5, 5);
-        bullet.alfa  =  Math.atan2(world.player.y - y, world.player.x - x);
-
-        bullet.isPlayerBullet = false;
-
-        world.bulletObjects.add(bullet);
-        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\shot.wav",0.05);
     }
 }

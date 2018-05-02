@@ -90,16 +90,4 @@ public class Mimic extends EnemyObject {
 		xSpeed = 0;
 	}
 
-	public void shootBullet() {
-		ShootBullet bullet;
-
-		bullet = new ShootBullet(x + width / 2, y + height / 2, 5, 5);
-		bullet.alfa = Math.atan2(world.player.y - y, world.player.x - x);
-
-		bullet.isPlayerBullet = false;
-
-		world.bulletObjects.add(bullet);
-		AudioPlayer.shortSound(".\\src\\Game\\Sounds\\shot.wav", 0.05);
-	}
-
 }

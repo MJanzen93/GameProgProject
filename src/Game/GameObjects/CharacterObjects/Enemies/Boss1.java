@@ -67,20 +67,6 @@ public class Boss1 extends EnemyObject {
         super.checkCollision();
     }
 
-    public void shootBullet() {
-        ShootBullet bullet;
-
-        int randomOffset = rnd.nextInt(101)-50;
-
-        bullet = new ShootBullet(x + width/2, y + height/2, 15, 15);
-        bullet.alfa  =  Math.atan2(GameObject.world.player.y+randomOffset - y-height/2, GameObject.world.player.x - x-width/2);
-        bullet.speed = 1000;
-
-        bullet.isPlayerBullet = false;
-
-        world.bulletObjects.add(bullet);
-        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\shot.wav",0.05);
-    }
 
     public void specialMove() {
         ExplodeAbleBullet bullet;
@@ -99,7 +85,5 @@ public class Boss1 extends EnemyObject {
 
         world.bulletObjects.add(bullet);
         AudioPlayer.shortSound(".\\src\\Game\\Sounds\\shot.wav",0.05);
-
-
     }
 }
