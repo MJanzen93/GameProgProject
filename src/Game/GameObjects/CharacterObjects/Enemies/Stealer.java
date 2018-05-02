@@ -10,8 +10,8 @@ import Game.Physics;
 import java.awt.*;
 import java.util.List;
 
-public class StealerObject extends EnemyObject {
-    public StealerObject(double startX, double startY, int width, int height) {
+public class Stealer extends EnemyObject {
+    public Stealer(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
         setColor(new Color(54, 54, 54, 255));
     }

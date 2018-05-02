@@ -13,14 +13,14 @@ import java.util.Random;
 import Game.GameObjects.GameObject;
 import Game.GameObjects.Bullets.ShootBullet;
 
-public class BossObject extends EnemyObject {
+public class Boss1 extends EnemyObject {
 
     public double bulletCooldown = 0;
     private Random rnd;
     private double specialMoveCooldown = 5;
     private int specialMoveTick = 0;
 
-    public BossObject(double startX, double startY, int width, int height) {
+    public Boss1(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
         rnd = new Random();
         destructible = true;

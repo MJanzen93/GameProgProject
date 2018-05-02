@@ -12,7 +12,7 @@ import java.util.List;
 
 import Game.GameObjects.GameObject;
 import Game.GameObjects.SupplyDropObject;
-import Game.GameObjects.CharacterObjects.Enemies.BossObject;
+import Game.GameObjects.CharacterObjects.Enemies.Boss1;
 import Game.GameObjects.CharacterObjects.Enemies.Speedy;
 import Game.GameObjects.Items.HealthItem;
 import Game.GameObjects.Items.JumpItem;
@@ -63,7 +63,7 @@ public class World {
     	
     	//Backgound Musik player
     	backgroundPlayer = new AudioPlayer();
-    	backgroundPlayer.backGroundMusic(".\\src\\Game\\Sounds\\megalovania.wav",0.25);
+    	//backgroundPlayer.backGroundMusic(".\\src\\Game\\Sounds\\megalovania.wav",0.25);
 
         allObjects = new ArrayList<>();
         gameObjects = new ArrayList<>();
@@ -98,13 +98,16 @@ public class World {
         fixedObjects.add(new FixedPlattform(4000, 550, 700, 30));
 
         //Enemies
-        gameObjects.add(new SimpleEnemyObject(100, 200, 30, 30));
-        gameObjects.add(new SimpleEnemyObject(1100, 200, 30, 30));
-        gameObjects.add(new SimpleEnemyObject(1400, 200, 30, 30));
-        gameObjects.add(new SimpleEnemyObject(1600, 200, 30, 30));
-        gameObjects.add(new StealerObject(1700, 200, 30, 30));
+        gameObjects.add(new SimpleEnemy(100, 200, 30, 30));
+        gameObjects.add(new SimpleEnemy(1100, 200, 30, 30));
+        gameObjects.add(new SimpleEnemy(1400, 200, 30, 30));
+        gameObjects.add(new SimpleEnemy(1600, 200, 30, 30));
+        gameObjects.add(new Stealer(1700, 200, 30, 30));
         gameObjects.add(new SWATTeamMate(300, 500, 30, 30));
         gameObjects.add(new Exploder(1000,500,30,30));
+        
+        
+        gameObjects.add(new FlyingEnemy(6000,550,30,30));
 
         fixedObjects.add(new Mine(2200, 745));
         fixedObjects.add(new Mine(2300, 745));
@@ -119,7 +122,7 @@ public class World {
 
 
         //Boss
-        gameObjects.add(new BossObject(2550, 300, 100, 100));
+        gameObjects.add(new Boss1(2550, 300, 100, 100));
 
         //RapidFireItem
         gameObjects.add(new RapidFireItem(2610, 280));
