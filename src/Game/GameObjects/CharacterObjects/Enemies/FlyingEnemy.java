@@ -31,9 +31,12 @@ public class FlyingEnemy extends EnemyObject {
 		double distanceToPlayer = Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
 
 		if (Math.abs(distanceToPlayer) < 800 || maxHP > hp) {
-			if (distanceToPlayer > 0) {
+			if (distanceToPlayer > 1) {
 				xSpeed = ((-1 / distanceToPlayer) * diffX) * 200;
 				ySpeed = ((-1 / distanceToPlayer) * diffY) * 200;
+			}else{
+				xSpeed = 0;
+				ySpeed = 0;
 			}
 
 			if (bulletCooldown > 0) {

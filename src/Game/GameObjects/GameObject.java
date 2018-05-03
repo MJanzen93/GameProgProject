@@ -1,5 +1,6 @@
 package Game.GameObjects;
 
+import Game.ConstantValues;
 import Game.GameObjects.Bullets.Explosion;
 import Game.Physics;
 import Game.World;
@@ -74,6 +75,10 @@ public abstract class GameObject {
                 Explosion explosion = new Explosion(x+ width/2,y + height/2,200, false);
                 explosion.explode();
             }
+        }
+
+        if(y >= ConstantValues.WORLD_HEIGHT){
+            hp = 0;
         }
     }
 

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.List;
 
 import Game.AudioPlayer;
+import Game.GameObjects.Bomber;
 import Game.InputSystem;
 import Game.Physics;
 import Game.GameObjects.GameObject;
@@ -203,13 +204,10 @@ public class Player extends CharacterObject {
         coolDownMissile = 200;
         missileReady = false;
 
-        int x = (int) (inputSystem.mouseX + world.worldPartX);
-        int y = (int) (inputSystem.mouseY + world.worldPartY);
-
-        world.gameObjects.add(new Missile(x - 200, y - 2000));
-        world.gameObjects.add(new Missile(x - 100, y - 2000));
-        world.gameObjects.add(new Missile(x + 100, y - 2000));
-        world.gameObjects.add(new Missile(x + 200, y - 2000));
+        //add new Bomber plane
+        Bomber bomber = new Bomber(world.worldPartX, world.worldPartY);
+        bomber.setPosition(inputSystem);
+        world.fixedObjects.add(bomber);
 
         missile--;
     }
