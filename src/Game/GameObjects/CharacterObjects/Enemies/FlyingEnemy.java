@@ -1,12 +1,9 @@
 package Game.GameObjects.CharacterObjects.Enemies;
 
-import Game.AudioPlayer;
-import Game.GameObjects.Bullets.ShootBullet;
-import Game.GameObjects.GameObject;
-
-import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class FlyingEnemy extends EnemyObject {
 
@@ -26,8 +23,9 @@ public class FlyingEnemy extends EnemyObject {
 	public void move(double diffSeconds) {
 		super.move(diffSeconds);
 
-		double diffX = x - world.player.x;
-		double diffY = y - world.player.y - world.player.height + 200;
+		double diffX = x - world.player.x - (this.width/2);
+		double diffY = y - world.player.y + (this.height/2);
+
 		double distanceToPlayer = Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
 
 		if (Math.abs(distanceToPlayer) < 800 || maxHP > hp) {

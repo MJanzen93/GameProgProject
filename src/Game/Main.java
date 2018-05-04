@@ -1,14 +1,15 @@
 package Game;
 
-import Game.GameObjects.GameObject;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
-import javax.swing.*;
-
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+import javax.swing.JFrame;
+
+import Game.GameObjects.GameObject;
 
 public class Main {
 

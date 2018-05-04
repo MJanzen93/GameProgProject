@@ -1,11 +1,9 @@
 package Game.GameObjects.CharacterObjects;
 
-import Game.GameObjects.GameObject;
+import java.awt.Color;
+import java.awt.Graphics;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import Game.GameObjects.GameObject;
 
 /**
  * Idea: All Characters in the Game are extended from {@link CharacterObject}
@@ -26,7 +24,7 @@ public class CharacterObject extends GameObject {
 
     public boolean pickUpItem = false;
 
-    public boolean jumping = false;
+    
 
     public int shieldDuration = 500;
 

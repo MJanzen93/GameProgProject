@@ -5,19 +5,18 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.imageio.ImageIO;
+
 import Game.AudioPlayer;
-import Game.GameObjects.Bomber;
 import Game.InputSystem;
 import Game.Physics;
+import Game.GameObjects.Bomber;
 import Game.GameObjects.GameObject;
-import Game.GameObjects.Missile;
-import Game.GameObjects.Bullets.Explosion;
+import Game.GameObjects.SWATTeamMate;
 import Game.GameObjects.Bullets.ShootBullet;
 import Game.GameObjects.CharacterObjects.Enemies.Speedy;
 import Game.GameObjects.Items.ItemObject;
 import Game.GameObjects.Weapons.WeaponObject;
-
-import javax.imageio.ImageIO;
 
 
 public class Player extends CharacterObject {
@@ -28,7 +27,7 @@ public class Player extends CharacterObject {
     public WeaponObject[] weapons;
     public WeaponObject currentWeapon;
 
-    public double hitAlphaSpeed = 0;
+    public double hitSpeed = 0;
     public double hitSide;
     public boolean hitFromObjectBool = false;
 
@@ -65,7 +64,7 @@ public class Player extends CharacterObject {
         oldX = x;
         oldY = y;
 
-        x += xSpeed * diffSeconds + (calculateHitAlphaSpeed(diffSeconds) * hitSide);
+        x += xSpeed * diffSeconds + (calculateHitSpeed(diffSeconds) * hitSide);
         y += ySpeed * diffSeconds;
 
         if (hasShield && shieldDuration <= 0) {
@@ -99,7 +98,7 @@ public class Player extends CharacterObject {
                 }
 
 
-                if (collidingObject.isSolid && !collidingObject.isItem && !collidingObject.isEnemy || collidingObject instanceof Speedy) {
+                if (collidingObject.isSolid && !collidingObject.isItem && !collidingObject.isEnemy && !(collidingObject instanceof SWATTeamMate) || collidingObject instanceof Speedy) {
 
                     //check if Game.GameObjects.CharacterObject.Player is on Object
 
@@ -141,12 +140,7 @@ public class Player extends CharacterObject {
 
 
             }
-
-
-            if (collidingObjects.size() == 0) {
-                jumping = true;
-                onGround = false;
-            }
+  
         }
     }
 
@@ -212,14 +206,14 @@ public class Player extends CharacterObject {
         missile--;
     }
 
-    private double calculateHitAlphaSpeed(double diffSeconds) {
+    private double calculateHitSpeed(double diffSeconds) {
         if (hitFromObjectBool) {
-            if (hitAlphaSpeed >= (2000 * diffSeconds))
+            if (hitSpeed >= (2000 * diffSeconds))
                 hitFromObjectBool = false;
-            return hitAlphaSpeed = hitAlphaSpeed + (300 * diffSeconds);
+            return hitSpeed = hitSpeed + (300 * diffSeconds);
         } else {
-            if (hitAlphaSpeed > (2000 * diffSeconds) || hitAlphaSpeed > 0) {
-                return hitAlphaSpeed = hitAlphaSpeed - (20 * diffSeconds);
+            if (hitSpeed > (2000 * diffSeconds) || hitSpeed > 0) {
+                return hitSpeed = hitSpeed - (20 * diffSeconds);
 
             }
             return 0;

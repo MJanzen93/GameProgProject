@@ -53,6 +53,7 @@ public abstract class GameObject {
     public boolean dropItem = false;
 
     public Image image;
+    
 
     public GameObject(double startX, double startY, int width, int height) {
         this.x = startX;
@@ -123,6 +124,7 @@ public abstract class GameObject {
                         y = collidingObject.y - height;
                         ySpeed = 0;
                         onGround = true;
+                        jumping = false;
                     }
 
                     //check if Game.GameObjects.CharacterObject.Player is touching bottom side of object

@@ -1,25 +1,28 @@
 package Game;
 
-import Game.GameObjects.*;
-import Game.GameObjects.CharacterObjects.Player;
-import Game.GameObjects.CharacterObjects.Enemies.*;
-import Game.GameObjects.Items.*;
-import Game.GameObjects.Platfrom.FixedPlattform;
-import Game.GameObjects.Weapons.Mine;
+import static java.lang.Thread.sleep;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import Game.GameObjects.GameObject;
+import Game.GameObjects.SWATTeamMate;
 import Game.GameObjects.SupplyDropObject;
+import Game.GameObjects.CharacterObjects.Player;
 import Game.GameObjects.CharacterObjects.Enemies.Boss1;
+import Game.GameObjects.CharacterObjects.Enemies.Exploder;
+import Game.GameObjects.CharacterObjects.Enemies.FlyingEnemy;
+import Game.GameObjects.CharacterObjects.Enemies.Mimic;
+import Game.GameObjects.CharacterObjects.Enemies.SimpleEnemy;
 import Game.GameObjects.CharacterObjects.Enemies.Speedy;
+import Game.GameObjects.CharacterObjects.Enemies.Stealer;
 import Game.GameObjects.Items.HealthItem;
 import Game.GameObjects.Items.JumpItem;
-import Game.GameObjects.Items.RapidFireItem;
+import Game.GameObjects.Items.MissileItem;
+import Game.GameObjects.Items.SWATItem;
+import Game.GameObjects.Items.ShieldItem;
 import Game.GameObjects.Items.SpeedUpItem;
-
-import static java.lang.Thread.sleep;
+import Game.GameObjects.Platfrom.FixedPlattform;
 
 public class World {
 
@@ -104,12 +107,13 @@ public class World {
         fixedObjects.add(new FixedPlattform(0, 250, 600, 20));
         fixedObjects.add(new FixedPlattform(650, 250, 300, 20));
 
-        //Mines
+     /*   //Mines
         fixedObjects.add(new Mine(2200, 745));
         fixedObjects.add(new Mine(2300, 745));
         fixedObjects.add(new Mine(2400, 745));
         fixedObjects.add(new Mine(2500, 745));
         fixedObjects.add(new Mine(2600, 745));
+        */
 
         FixedPlattform f = new FixedPlattform(800, 400, 40, 20);
         f.dropItem = true;
@@ -130,13 +134,8 @@ public class World {
         gameObjects.add(new Exploder(1000, 500, 30, 30));
 
 
-        gameObjects.add(new FlyingEnemy(60, 550, 120, 60));
 
-        fixedObjects.add(new Mine(2200, 745));
-        fixedObjects.add(new Mine(2300, 745));
-        fixedObjects.add(new Mine(2400, 745));
-        fixedObjects.add(new Mine(2500, 745));
-        fixedObjects.add(new Mine(2600, 745));
+        gameObjects.add(new FlyingEnemy(5000, 550, 120, 60));
 
 
         //Speedy Enemies
