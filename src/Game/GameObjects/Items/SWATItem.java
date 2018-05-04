@@ -32,7 +32,9 @@ public class SWATItem extends ItemObject{
     @Override
     public void applyItem(CharacterObject obj) {
         super.applyItem(obj);
-        world.gameObjects.add(new SWATTeamMate(world.player.x-world.player.width, world.player.y- world.player.height, 30, 30));
-        System.out.println("Nigger");
+        if(!world.player.mate) {
+        	 world.gameObjects.add(new SWATTeamMate(world.player.x-world.player.width, world.player.y- world.player.height, 30, 30));
+        	 world.player.mate = true;
+        }
     }
 }

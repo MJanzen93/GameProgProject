@@ -34,6 +34,9 @@ public class Player extends CharacterObject {
 
     public int coolDownMissile = 200;
     public boolean missileReady = false;
+    
+    public boolean mate = false;
+
 
     public Player(double startX, double startY) {
         super(startX, startY, 30, 30);
@@ -83,7 +86,8 @@ public class Player extends CharacterObject {
 
     }
 
-    @Override
+
+	@Override
     public void checkCollision() {
         if (isSolid) {
             List<GameObject> collidingObjects = Physics.getCollisions(this);
@@ -137,10 +141,8 @@ public class Player extends CharacterObject {
                         }
                     }
                 }
-
-
             }
-  
+
         }
     }
 

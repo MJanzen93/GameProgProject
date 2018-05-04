@@ -129,7 +129,7 @@ public class World {
 
         gameObjects.add(new SimpleEnemy(1100, 200, 30, 30));
         //Enemies
-        gameObjects.add(new SimpleEnemy(100, 200, 30, 30));
+       // gameObjects.add(new SimpleEnemy(100, 200, 30, 30));
         gameObjects.add(new SimpleEnemy(1100, 200, 30, 30));
         gameObjects.add(new SimpleEnemy(1400, 200, 30, 30));
         gameObjects.add(new SimpleEnemy(1600, 200, 30, 30));
@@ -168,6 +168,7 @@ public class World {
         gameObjects.add(new ShieldItem(1500, 50));
         gameObjects.add(new MissileItem(1150, 50));
         gameObjects.add(new SWATItem(1050, 50));
+        gameObjects.add(new SWATItem(1300, 50));
 
         gameObjects.add(player);
 
@@ -214,6 +215,8 @@ public class World {
                     allObjects.get(i).get(j).move(diffSeconds);
                     allObjects.get(i).get(j).checkCollision();
                     if (allObjects.get(i).get(j).hp <= 0) {
+                    	if(allObjects.get(i).get(j) instanceof SWATTeamMate)
+                    		player.mate = false;
                         allObjects.get(i).remove(allObjects.get(i).get(j));
                     }
                 }
