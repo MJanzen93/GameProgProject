@@ -24,6 +24,9 @@ import Game.GameObjects.Items.ShieldItem;
 import Game.GameObjects.Items.SpeedUpItem;
 import Game.GameObjects.Platfrom.FixedPlattform;
 
+import Game.GameObjects.Weapons.Mine;
+
+
 public class World {
 
     private WorldViewer wViewer;
@@ -107,13 +110,14 @@ public class World {
         fixedObjects.add(new FixedPlattform(0, 250, 600, 20));
         fixedObjects.add(new FixedPlattform(650, 250, 300, 20));
 
-     /*   //Mines
+   //Mines
         fixedObjects.add(new Mine(2200, 745));
         fixedObjects.add(new Mine(2300, 745));
         fixedObjects.add(new Mine(2400, 745));
         fixedObjects.add(new Mine(2500, 745));
         fixedObjects.add(new Mine(2600, 745));
-        */
+
+
 
         FixedPlattform f = new FixedPlattform(800, 400, 40, 20);
         f.dropItem = true;
@@ -130,7 +134,7 @@ public class World {
         gameObjects.add(new SimpleEnemy(1400, 200, 30, 30));
         gameObjects.add(new SimpleEnemy(1600, 200, 30, 30));
         gameObjects.add(new Stealer(1700, 200, 30, 30));
-        gameObjects.add(new SWATTeamMate(300, 500, 30, 30));
+
         gameObjects.add(new Exploder(1000, 500, 30, 30));
 
 

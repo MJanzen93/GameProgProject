@@ -28,15 +28,15 @@ public class SWATTeamMate extends GameObject {
 		super.move(diffSeconds);
 
 		double distanceToPlayer = world.player.x - x;
-
-		if (Math.abs(distanceToPlayer) < 400 || maxHP > hp) {
-			if (distanceToPlayer < 1000 && distanceToPlayer > 200) {
+		System.out.println(distanceToPlayer);
+		if (Math.abs(distanceToPlayer) < 1400) {
+			if (distanceToPlayer < 1200 && distanceToPlayer > 100) {
 				xSpeed = 300;
-			} else if (distanceToPlayer <= 200 && distanceToPlayer > (world.player.width * 2)) {
+			} else if (distanceToPlayer <= 100 && distanceToPlayer > (world.player.width * 2)) {
 				xSpeed = 100;
-			} else if (distanceToPlayer > -1000 && distanceToPlayer < -200) {
+			} else if (distanceToPlayer > -1200 && distanceToPlayer < -100) {
 				xSpeed = -300;
-			} else if (distanceToPlayer >= -200 && distanceToPlayer < -(world.player.width * 2)) {
+			} else if (distanceToPlayer >= -100 && distanceToPlayer < -(world.player.width * 2)) {
 				xSpeed = -100;
 			} else {
 				xSpeed = 0;
