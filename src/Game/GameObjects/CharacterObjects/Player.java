@@ -1,6 +1,7 @@
 
 package Game.GameObjects.CharacterObjects;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -79,9 +80,9 @@ public class Player extends CharacterObject {
             shieldDuration -= diffSeconds;
         }
 
-        if(coolDownMissile <= 0){
+        if (coolDownMissile <= 0) {
             missileReady = true;
-        }else
+        } else
             coolDownMissile -= diffSeconds;
 
     }
@@ -167,8 +168,12 @@ public class Player extends CharacterObject {
         jumping = true;
         onGround = false;
         ySpeed = -jumpForce;
-        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\jump.wav",0.15);
-}
+        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\jump.wav", 0.15);
+    }
+
+    public void fly(){
+        ySpeed = -500;
+    }
 
     /**
      * Player stops
@@ -188,8 +193,7 @@ public class Player extends CharacterObject {
         bullet.alfa = Math.atan2(inputSystem.mouseY + world.worldPartY - y - width / 2, inputSystem.mouseX + world.worldPartX - x - height / 2);
         bullet.isPlayerBullet = true;
         world.bulletObjects.add(bullet);
-        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\shot.wav",0.05);
-
+        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\shot.wav", 0.05);
         //currentWeapon.shootBullet();
     }
 

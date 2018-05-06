@@ -14,7 +14,7 @@ public class SupplyDropObject extends GameObject {
 
     private double fallSpeed = 50;
 
-    private BufferedImage par;
+    private Image par;
     private Image scaled;
 
     public SupplyDropObject(double startX, double startY, int width, int height) {
@@ -43,7 +43,7 @@ public class SupplyDropObject extends GameObject {
             world.gameObjects.add(item);
         }
         if(hp == maxHP){
-            ySpeed = 5000*diffSeconds;
+            ySpeed =5000*diffSeconds;
         }
     }
 

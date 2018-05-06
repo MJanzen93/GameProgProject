@@ -26,7 +26,7 @@ public class Bomber extends GameObject {
             bombCount--;
         }
         coolDown -= diffSeconds;
-        if(x >= (world.worldPartX + ConstantValues.WORLDPART_WIDTH)){
+        if(x >= (world.worldPartX + ConstantValues.WORLDPART_WIDTH) && bombCount <= 0){
             hp = 0;
         }
     }

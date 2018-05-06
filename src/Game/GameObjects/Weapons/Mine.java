@@ -53,7 +53,7 @@ public class Mine extends GameObject {
                 explosion.explode();
                 hp = 0;
             }
-            counter-= diffSeconds;
+            counter -= diffSeconds;
         }
     }
 

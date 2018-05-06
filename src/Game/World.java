@@ -106,7 +106,7 @@ public class World {
         //Platforms
         fixedObjects.add(new FixedPlattform(500, 700, 300, 50));
         fixedObjects.add(new FixedPlattform(600, 600, 200, 30));
-        fixedObjects.add(new FixedPlattform(400, 400, 150, 20));
+        fixedObjects.add(new FixedPlattform(400, 400, 150, 30));
         fixedObjects.add(new FixedPlattform(0, 250, 600, 20));
         fixedObjects.add(new FixedPlattform(650, 250, 300, 20));
 
