@@ -13,21 +13,10 @@ import java.util.Random;
 import Game.GameObjects.GameObject;
 import Game.GameObjects.Bullets.ShootBullet;
 
-public class Boss1 extends EnemyObject {
+public class SimpleBoss extends Boss {
 
-    public double bulletCooldown = 0;
-    private Random rnd;
-    private double specialMoveCooldown = 5;
-    private int specialMoveTick = 0;
-
-    public Boss1(double startX, double startY, int width, int height) {
+    public SimpleBoss(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
-        rnd = new Random();
-        destructible = true;
-        hp = 50;
-        maxHP = 50;
-        dropItem = true;
-        COLOR = new Color(108, 22, 22);
     }
 
     @Override
@@ -68,6 +57,7 @@ public class Boss1 extends EnemyObject {
     }
 
 
+    @Override
     public void specialMove() {
         ExplodeAbleBullet bullet;
 

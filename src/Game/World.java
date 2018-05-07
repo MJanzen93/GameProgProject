@@ -6,22 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Game.GameObjects.GameObject;
+import Game.GameObjects.Items.*;
 import Game.GameObjects.SWATTeamMate;
 import Game.GameObjects.SupplyDropObject;
 import Game.GameObjects.CharacterObjects.Player;
-import Game.GameObjects.CharacterObjects.Enemies.Boss1;
+import Game.GameObjects.CharacterObjects.Enemies.SimpleBoss;
 import Game.GameObjects.CharacterObjects.Enemies.Exploder;
 import Game.GameObjects.CharacterObjects.Enemies.FlyingEnemy;
 import Game.GameObjects.CharacterObjects.Enemies.Mimic;
 import Game.GameObjects.CharacterObjects.Enemies.SimpleEnemy;
 import Game.GameObjects.CharacterObjects.Enemies.Speedy;
 import Game.GameObjects.CharacterObjects.Enemies.Stealer;
-import Game.GameObjects.Items.HealthItem;
-import Game.GameObjects.Items.JumpItem;
-import Game.GameObjects.Items.MissileItem;
-import Game.GameObjects.Items.SWATItem;
-import Game.GameObjects.Items.ShieldItem;
-import Game.GameObjects.Items.SpeedUpItem;
 import Game.GameObjects.Platfrom.FixedPlattform;
 
 import Game.GameObjects.Weapons.Mine;
@@ -117,7 +112,7 @@ public class World {
         fixedObjects.add(new Mine(2500, 745));
         fixedObjects.add(new Mine(2600, 745));
 
-
+        fixedObjects.add(new Coin(900,400));
 
         FixedPlattform f = new FixedPlattform(800, 400, 40, 20);
         f.dropItem = true;
@@ -151,7 +146,7 @@ public class World {
         gameObjects.add(new Speedy(4000, 510, 30, 30, 1000, speedyPlattform2));//needs the object where he is on it
 
         //Boss
-        gameObjects.add(new Boss1(2550, 300, 100, 100));
+        gameObjects.add(new SimpleBoss(2550, 300, 100, 100));
 
 
         FixedPlattform MimicPlattform = new FixedPlattform(4000, 550, 700, 30);
