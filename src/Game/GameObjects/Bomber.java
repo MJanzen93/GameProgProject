@@ -3,6 +3,10 @@ package Game.GameObjects;
 import Game.ConstantValues;
 import Game.InputSystem;
 
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
+
 public class Bomber extends GameObject {
 
     private int bombX;
@@ -10,10 +14,15 @@ public class Bomber extends GameObject {
     private double coolDown = 0;
 
     public Bomber(double startX, double startY) {
-        super(startX, startY, 100, 20);
+        super(startX, startY, 155, 42);
         isSolid = false;
         hasCollision = false;
         isFixed = true;
+        try {
+            image = ImageIO.read(new File(".\\src\\Game\\Textures\\jet.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
