@@ -1,14 +1,16 @@
 package Game.GameObjects.Platfrom;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
 public class FixedPlattform extends Plattform {
-    public FixedPlattform(double startX, double startY, int width, int height) {
+
+    public FixedPlattform(double startX, double startY, int width, int height, String imagePath) {
         super(startX, startY, width, height);
         try {
-            image = ImageIO.read(new File(".\\src\\Game\\Textures\\platform2.jpeg"));
+            image = ImageIO.read(new File(".\\src\\Game\\Textures\\testPlatt.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -24,5 +26,11 @@ public class FixedPlattform extends Plattform {
         if(!isFixed && isSolid){
             super.checkCollision();
         }
+    }
+
+    public void draw(Graphics graphics){
+        int x = (int) (this.x - world.worldPartX);
+        int y = (int) (this.y - world.worldPartY);
+        graphics.drawImage(image, x, y, 50, 50, null, null);
     }
 }

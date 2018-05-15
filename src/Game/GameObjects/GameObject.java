@@ -74,6 +74,7 @@ public abstract class GameObject {
         if(explodable){
             if(hp <= 0){
                 Explosion explosion = new Explosion(x+ width/2,y + height/2,200, false);
+                world.fixedObjects.add(explosion);
                 explosion.explode();
             }
         }

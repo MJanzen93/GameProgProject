@@ -15,6 +15,7 @@ public class ExplodeAbleBullet extends BulletObject {
         super.move(diffSeconds);
         if(hp <= 0){
             Explosion explosion = new Explosion(x,y, 200, isPlayerBullet);
+            world.fixedObjects.add(explosion);
             explosion.explode();
         }
     }

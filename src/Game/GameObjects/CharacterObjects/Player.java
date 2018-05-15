@@ -205,7 +205,7 @@ public class Player extends CharacterObject {
         missileReady = false;
 
         //add new Bomber plane
-        Bomber bomber = new Bomber(world.worldPartX, world.worldPartY);
+        Bomber bomber = new Bomber(world.worldPartX - 200, world.worldPartY);
         bomber.setPosition(inputSystem);
         world.fixedObjects.add(bomber);
 

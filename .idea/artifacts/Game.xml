@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="Game">
+    <output-path>$USER_HOME$/Desktop</output-path>
+    <root id="root">
+      <element id="archive" name="GameProgProject.jar">
+        <element id="module-output" name="GameProgProject" />
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -19,4 +19,8 @@ public class ExplosionBullet extends BulletObject {
             COLOR = new Color(0, 72, 144);
         }
     }
+
+    @Override
+    public void draw(Graphics graphics) {
+    }
 }

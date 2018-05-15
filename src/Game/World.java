@@ -63,7 +63,7 @@ public class World {
 
         //Backgound Musik player
         backgroundPlayer = new AudioPlayer();
-        //backgroundPlayer.backGroundMusic(".\\src\\Game\\Sounds\\megalovania.wav",0.25);
+        backgroundPlayer.backGroundMusic(".\\src\\Game\\Sounds\\megalovania.wav",0.25);
 
         allObjects = new ArrayList<>();
         gameObjects = new ArrayList<>();
@@ -95,15 +95,20 @@ public class World {
 
     void createWorld() {
         //Ground
-        fixedObjects.add(new FixedPlattform(0, 750, 2000, 300));
-        fixedObjects.add(new FixedPlattform(2100, 750, 8000, 300));
+        fixedObjects.add(new FixedPlattform(0, 750, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
+        fixedObjects.add(new FixedPlattform(50, 750, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
+        fixedObjects.add(new FixedPlattform(100, 750, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
+        fixedObjects.add(new FixedPlattform(150, 750, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
+        fixedObjects.add(new FixedPlattform(200, 750, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
+        fixedObjects.add(new FixedPlattform(250, 750, 5000, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
+        fixedObjects.add(new FixedPlattform(2100, 750, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
 
         //Platforms
-        fixedObjects.add(new FixedPlattform(500, 700, 300, 50));
-        fixedObjects.add(new FixedPlattform(600, 600, 200, 30));
-        fixedObjects.add(new FixedPlattform(400, 400, 150, 30));
-        fixedObjects.add(new FixedPlattform(0, 250, 600, 20));
-        fixedObjects.add(new FixedPlattform(650, 250, 300, 20));
+        fixedObjects.add(new FixedPlattform(500, 700, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
+        fixedObjects.add(new FixedPlattform(600, 600, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
+        fixedObjects.add(new FixedPlattform(400, 400, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
+        fixedObjects.add(new FixedPlattform(0, 250, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
+        fixedObjects.add(new FixedPlattform(650, 250, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
 
    //Mines
         fixedObjects.add(new Mine(2200, 745));
@@ -114,7 +119,7 @@ public class World {
 
         fixedObjects.add(new Coin(900,400));
 
-        FixedPlattform f = new FixedPlattform(800, 400, 40, 20);
+        FixedPlattform f = new FixedPlattform(800, 400, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png");
         f.dropItem = true;
         f.destructible = true;
         f.hp = 10;
@@ -138,25 +143,23 @@ public class World {
 
 
         //Speedy Enemies
-        FixedPlattform speedyPlattform1 = new FixedPlattform(0, 250, 600, 20);
-        fixedObjects.add(speedyPlattform1);
+        FixedPlattform speedyPlattform1 = new FixedPlattform(0, 250, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png");
         gameObjects.add(new Speedy(0, 220, 30, 30, 1000, speedyPlattform1));//needs the object where he is on it
-        FixedPlattform speedyPlattform2 = new FixedPlattform(4000, 550, 700, 30);
-        fixedObjects.add(speedyPlattform2);
+        FixedPlattform speedyPlattform2 = new FixedPlattform(4000, 550, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png");
         gameObjects.add(new Speedy(4000, 510, 30, 30, 1000, speedyPlattform2));//needs the object where he is on it
 
         //Boss
         gameObjects.add(new SimpleBoss(2550, 300, 100, 100));
 
 
-        FixedPlattform MimicPlattform = new FixedPlattform(4000, 550, 700, 30);
+        FixedPlattform MimicPlattform = new FixedPlattform(4000, 550, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png");
         fixedObjects.add(MimicPlattform);
         gameObjects.add(new Mimic(4700 - 30, 510, 30, 30, MimicPlattform));
 
 
         //Item
         //SupplyDrop Test
-        gameObjects.add(new SupplyDropObject(1500, -300, 50, 50));
+        gameObjects.add(new SupplyDropObject(1200, -300, 50, 50));
         gameObjects.add(new HealthItem(1000, 50));
         gameObjects.add(new JumpItem(1200, 50));
         gameObjects.add(new SpeedUpItem(1300, 50));
@@ -248,6 +251,8 @@ public class World {
                 player.y += 0.5;
                 player.checkCollision();
             }
+            //print FPS
+            System.out.println(1000/diffMillis);
         }
     }
 

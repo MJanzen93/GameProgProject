@@ -44,6 +44,7 @@ public class Missile extends GameObject {
                     ySpeed = 0;
                     onGround = true;
                     Explosion explosion = new Explosion(x,y,200, true);
+                    world.fixedObjects.add(explosion);
                     explosion.explode();
                     hp = 0;
                 }

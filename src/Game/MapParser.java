@@ -15,10 +15,11 @@ public class MapParser {
 
     public static List<List<GameObject>> getGameObjects(String filename) throws IOException {
 
-        List<List<GameObject>> gameObjects = new ArrayList<>();
+        List<List<GameObject>> allObjects = new ArrayList<>();
 
         List<GameObject> fixedObjects = new ArrayList<>();
-        List<GameObject> movableObjects = new ArrayList<>();
+        List<GameObject> gameObejcts = new ArrayList<>();
+        List<GameObject> backgroundObjects = new ArrayList<>();
 
         BufferedReader br = new BufferedReader(new FileReader(new File(filename)));
         String result = "";
@@ -38,7 +39,7 @@ public class MapParser {
         }
 
         HealthItem item = new HealthItem(50,50);
-        return null;
+        return allObjects;
     }
 
     private static GameObject createGameObject(String line){

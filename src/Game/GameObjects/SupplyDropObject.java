@@ -45,6 +45,9 @@ public class SupplyDropObject extends GameObject {
         if(hp == maxHP){
             ySpeed =5000*diffSeconds;
         }
+        if(onGround){
+            scaled = null;
+        }
     }
 
     @Override
