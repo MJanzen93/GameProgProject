@@ -28,6 +28,8 @@ public class FixedPlattform extends Plattform {
         }
     }
 
+    //Tiles for platforms 50 x 50
+    //width and height is the collision box
     public void draw(Graphics graphics){
         int x = (int) (this.x - world.worldPartX);
         int y = (int) (this.y - world.worldPartY);

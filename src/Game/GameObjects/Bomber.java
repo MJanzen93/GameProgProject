@@ -10,7 +10,7 @@ import java.io.IOException;
 public class Bomber extends GameObject {
 
     private int bombX;
-    private int bombCount = 4;
+    private int bombCount = 5;
     private double coolDown = 0;
 
     public Bomber(double startX, double startY) {
@@ -28,10 +28,10 @@ public class Bomber extends GameObject {
     @Override
     public void move(double diffSeconds) {
         super.move(diffSeconds);
-        xSpeed = 500;
+        xSpeed = 1000;
         if(x >= bombX - 200 && coolDown <= 0 && bombCount > 0){
             world.gameObjects.add(new Missile(x + width/2 ,y + height));
-            coolDown = 0.2;
+            coolDown = 0.1;
             bombCount--;
         }
         coolDown -= diffSeconds;

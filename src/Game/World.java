@@ -213,8 +213,8 @@ public class World {
                     allObjects.get(i).get(j).move(diffSeconds);
                     allObjects.get(i).get(j).checkCollision();
                     if (allObjects.get(i).get(j).hp <= 0) {
-                    	if(allObjects.get(i).get(j) instanceof SWATTeamMate)
-                    		player.mate = false;
+                        if(allObjects.get(i).get(j) instanceof SWATTeamMate)
+                            player.mate = false;
                         allObjects.get(i).remove(allObjects.get(i).get(j));
                     }
                 }

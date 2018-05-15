@@ -50,6 +50,7 @@ public class Mine extends GameObject {
                 setColor(Color.red);
             if(counter <= 0){
                 Explosion explosion = new Explosion(x, y, 200, false);
+                world.fixedObjects.add(explosion);
                 explosion.explode();
                 hp = 0;
             }

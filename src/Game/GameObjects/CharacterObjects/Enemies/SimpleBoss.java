@@ -27,9 +27,9 @@ public class SimpleBoss extends Boss {
 
         if(Math.abs(distanceToPlayer) < 500 || maxHP > hp) {
             if(distanceToPlayer > 250 ) {
-                xSpeed = 500;
+                xSpeed = 100;
             } else if(distanceToPlayer < -250) {
-                xSpeed = -500;
+                xSpeed = -100;
             } else {
                 xSpeed = 0;
             }
