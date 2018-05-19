@@ -69,6 +69,11 @@ public abstract class EnemyObject extends CharacterObject {
                     ySpeed *= 0.99;
                 }
 
+                //Check vertical Collision again after setting Y
+                if(!(y + height > collidingObject.y && y < collidingObject.y + collidingObject.height)) {
+                    continue;
+                }
+
                 //left side
                 if (x + width > collidingObject.x && oldX + width <= collidingObject.x && xSpeed >= 0) {
                     x = collidingObject.x - width;

@@ -134,7 +134,7 @@ public abstract class GameObject {
                         y = collidingObject.y + collidingObject.height;
                         ySpeed *= 0.99;
                     }
-                    
+
                     //Check vertical Collision again after setting Y
                     if(!(y + height > collidingObject.y && y < collidingObject.y + collidingObject.height)) {
                         continue;
