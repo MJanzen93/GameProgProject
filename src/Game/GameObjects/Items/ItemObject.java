@@ -27,20 +27,24 @@ public abstract class ItemObject extends GameObject {
     }
 
     public static ItemObject createRandomItem(){
-        int num = random.nextInt(5);
+        int num = random.nextInt(7);
         switch (num){
             case 0:
                 return new HealthItem(0,0);
             case 1:
-                return new HealthItem(0,0);
+                return new DoubleDamageItem(0,0);
             case 2:
-                return new HealthItem(0,0);
+                return new JumpItem(0,0);
             case 3:
-                return new HealthItem(0,0);
+                return new MissileItem(0,0);
             case 4:
-                return new HealthItem(0,0);
+                return new RapidFireItem(0,0);
+            case 5:
+                return new ShieldItem(0,0);
+            case 6:
+                return new SpeedUpItem(0,0);
         }
-        return new DoubleDamageItem(0,0);
+        return new SWATItem(0,0);
     }
 
     @Override

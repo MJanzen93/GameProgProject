@@ -5,6 +5,8 @@ import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.List;
 
+import Game.GameObjects.BackgroundObjects.BackgroundObject;
+import Game.GameObjects.Crate;
 import Game.GameObjects.GameObject;
 import Game.GameObjects.Items.*;
 import Game.GameObjects.SWATTeamMate;
@@ -34,6 +36,7 @@ public class World {
     public List<GameObject> bulletObjects;
     public List<GameObject> gameObjects;
     public List<GameObject> fixedObjects;
+    public List<BackgroundObject> backgroundObjects;
 
     public List<List<GameObject>> allObjects;
 
@@ -69,6 +72,7 @@ public class World {
         gameObjects = new ArrayList<>();
         fixedObjects = new ArrayList<>();
         bulletObjects = new ArrayList<>();
+        backgroundObjects = new ArrayList<>();
 
         player = new Player(200, 500);
 
@@ -95,71 +99,66 @@ public class World {
 
     void createWorld() {
         //Ground
-        fixedObjects.add(new FixedPlattform(0, 750, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
-        fixedObjects.add(new FixedPlattform(50, 750, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
-        fixedObjects.add(new FixedPlattform(100, 750, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
-        fixedObjects.add(new FixedPlattform(150, 750, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
-        fixedObjects.add(new FixedPlattform(200, 750, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
-        fixedObjects.add(new FixedPlattform(250, 750, 5000, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
-        fixedObjects.add(new FixedPlattform(2100, 750, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
 
-        //Platforms
-        fixedObjects.add(new FixedPlattform(500, 700, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
-        fixedObjects.add(new FixedPlattform(600, 600, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
-        fixedObjects.add(new FixedPlattform(400, 400, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
-        fixedObjects.add(new FixedPlattform(0, 250, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
-        fixedObjects.add(new FixedPlattform(650, 250, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png"));
+        fixedObjects.add(new FixedPlattform(0, 750, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\1.png"));
+        fixedObjects.add(new FixedPlattform(50, 750, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\2.png"));
+        fixedObjects.add(new FixedPlattform(100, 750, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\2.png"));
+        fixedObjects.add(new FixedPlattform(150, 750, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\2.png"));
+        fixedObjects.add(new FixedPlattform(200, 750, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\3.png"));
 
-   //Mines
+        fixedObjects.add(new FixedPlattform(350, 750, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\1.png"));
+        for (int i = 0; i < 40; i++){
+            fixedObjects.add(new FixedPlattform(400 + 50*i, 750, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\2.png"));
+        }
+
+        fixedObjects.add(new FixedPlattform(1750, 600, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\4.png"));
+        fixedObjects.add(new FixedPlattform(1750, 550, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\4.png"));
+        fixedObjects.add(new FixedPlattform(1750, 650, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\12.png"));
+        fixedObjects.add(new FixedPlattform(1750, 500, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\1.png"));
+        fixedObjects.add(new FixedPlattform(1800, 500, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\2.png"));
+        fixedObjects.add(new FixedPlattform(1850, 500, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\3.png"));
+        fixedObjects.add(new FixedPlattform(1800, 650, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\9.png"));
+        fixedObjects.add(new FixedPlattform(1800, 600, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\5.png"));
+        fixedObjects.add(new FixedPlattform(1800, 550, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\5.png"));
+        fixedObjects.add(new FixedPlattform(1850, 650, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\13.png"));
+        fixedObjects.add(new FixedPlattform(1850, 600, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\6.png"));
+        fixedObjects.add(new FixedPlattform(1850, 550, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\6.png"));
+
+        //BackgroundObjects
+        backgroundObjects.add(new BackgroundObject(750, 654, ".\\src\\Game\\Textures\\objects\\Cactus (3).png"));
+        //backgroundObjects.add(new BackgroundObject(1150, 750,  ".\\src\\Game\\Textures\\objects\\Tree.png"));
+        backgroundObjects.add(new BackgroundObject(1400, 715, ".\\src\\Game\\Textures\\objects\\Skeleton.png"));
+        backgroundObjects.add(new BackgroundObject(200, 690, 60,60, ".\\src\\Game\\Textures\\objects\\SignArrow.png"));
+
+        //Mines
         fixedObjects.add(new Mine(2200, 745));
         fixedObjects.add(new Mine(2300, 745));
         fixedObjects.add(new Mine(2400, 745));
         fixedObjects.add(new Mine(2500, 745));
         fixedObjects.add(new Mine(2600, 745));
 
-        fixedObjects.add(new Coin(900,400));
 
-        FixedPlattform f = new FixedPlattform(800, 400, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png");
-        f.dropItem = true;
-        f.destructible = true;
-        f.hp = 10;
-        f.maxHP = 10;
-        f.explodable = true;
-        fixedObjects.add(f);
-
-        gameObjects.add(new SimpleEnemy(1100, 200, 30, 30));
         //Enemies
-       // gameObjects.add(new SimpleEnemy(100, 200, 30, 30));
         gameObjects.add(new SimpleEnemy(1100, 200, 30, 30));
         gameObjects.add(new SimpleEnemy(1400, 200, 30, 30));
         gameObjects.add(new SimpleEnemy(1600, 200, 30, 30));
+        gameObjects.add(new SimpleEnemy(1100, 200, 30, 30));
         gameObjects.add(new Stealer(1700, 200, 30, 30));
-
         gameObjects.add(new Exploder(1000, 500, 30, 30));
-
-
-
         gameObjects.add(new FlyingEnemy(5000, 550, 120, 60));
 
-
-        //Speedy Enemies
         FixedPlattform speedyPlattform1 = new FixedPlattform(0, 250, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png");
         gameObjects.add(new Speedy(0, 220, 30, 30, 1000, speedyPlattform1));//needs the object where he is on it
         FixedPlattform speedyPlattform2 = new FixedPlattform(4000, 550, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png");
         gameObjects.add(new Speedy(4000, 510, 30, 30, 1000, speedyPlattform2));//needs the object where he is on it
 
-        //Boss
-        gameObjects.add(new SimpleBoss(2550, 300, 100, 100));
-
+        gameObjects.add(new SimpleBoss(1250, 300, 100, 100));
 
         FixedPlattform MimicPlattform = new FixedPlattform(4000, 550, 50, 50, ".\\src\\Game\\Textures\\testPlatt.png");
         fixedObjects.add(MimicPlattform);
         gameObjects.add(new Mimic(4700 - 30, 510, 30, 30, MimicPlattform));
 
-
-        //Item
-        //SupplyDrop Test
-        gameObjects.add(new SupplyDropObject(1200, -300, 50, 50));
+        //Items
         gameObjects.add(new HealthItem(1000, 50));
         gameObjects.add(new JumpItem(1200, 50));
         gameObjects.add(new SpeedUpItem(1300, 50));
@@ -168,8 +167,15 @@ public class World {
         gameObjects.add(new SWATItem(1050, 50));
         gameObjects.add(new SWATItem(1300, 50));
 
+        gameObjects.add(new SupplyDropObject(1200, -300, 50, 50));
+        gameObjects.add(new Crate(650, 400));
+        gameObjects.add(new Crate(710, 400));
+        gameObjects.add(new Crate(680, 200));
+
+        //player
         gameObjects.add(player);
 
+        //add all together
         allObjects.add(gameObjects);
         allObjects.add(fixedObjects);
         allObjects.add(bulletObjects);
@@ -223,6 +229,11 @@ public class World {
             adjustWorldPart();
 
             wViewer.clear();
+
+            //draw BackgroundObjects
+            for (int i = 0; i < backgroundObjects.size(); i++){
+                wViewer.draw(backgroundObjects.get(i));
+            }
 
             //draw all objects
             for (int i = 0; i < allObjects.size(); i++) {

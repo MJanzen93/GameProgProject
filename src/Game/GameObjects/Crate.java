@@ -4,29 +4,21 @@ import Game.GameObjects.Items.ItemObject;
 import Game.Physics;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-public class SupplyDropObject extends GameObject {
-
-    private double fallSpeed = 50;
-
-    private Image par;
-    private Image scaled;
-
-    public SupplyDropObject(double startX, double startY, int width, int height) {
-        super(startX, startY, width, height);
+public class Crate extends GameObject {
+    public Crate(double startX, double startY) {
+        super(startX, startY, 50, 50);
         destructible = true;
         hp = 10;
         maxHP = 10;
-        setColor(Color.ORANGE);
-        isSolid  = true;
+
+        isSolid = true;
+        isFixed = false;
+
         try {
-            par = ImageIO.read(new File(".\\src\\Game\\Textures\\parachute2.png"));
-            scaled = par.getScaledInstance(160,160, 0);
             image = ImageIO.read(new File(".\\src\\Game\\Textures\\objects\\Crate.png"));
         } catch (IOException e) {
             e.printStackTrace();
@@ -41,12 +33,6 @@ public class SupplyDropObject extends GameObject {
             item.x = x;
             item.y = y;
             world.gameObjects.add(item);
-        }
-        if(hp == maxHP){
-            ySpeed =5000*diffSeconds;
-        }
-        if(onGround){
-            scaled = null;
         }
     }
 
@@ -95,15 +81,4 @@ public class SupplyDropObject extends GameObject {
 
         }
     }
-
-    @Override
-    public void draw(Graphics graphics) {
-        super.draw(graphics);
-        int x = (int) (this.x - world.worldPartX);
-        int y = (int) (this.y - world.worldPartY);
-        if(!onGround && hp == maxHP && scaled != null){
-            graphics.drawImage(scaled, x-scaled.getWidth(null)/2 + width/2, y-scaled.getHeight(null), null, null);
-        }
-    }
-
 }

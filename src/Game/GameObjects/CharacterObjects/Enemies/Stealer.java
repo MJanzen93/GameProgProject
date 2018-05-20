@@ -62,7 +62,7 @@ public class Stealer extends EnemyObject {
                 item.applyItem(this);
             }
 
-            if(collidingObject.isSolid && !collidingObject.isItem && !collidingObject.isEnemy) {
+            if(collidingObject.isSolid && !collidingObject.isItem) {
                 //check if Enemy is on Object
                 if(y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
 
@@ -102,13 +102,6 @@ public class Stealer extends EnemyObject {
         if(collidingObjects.size() == 0) {
             jumping = true;
             onGround = false;
-        }
-
-        if(y + height > 760){
-            y = 760-height;
-            ySpeed = 0;
-            onGround = true;
-            jumping = false;
         }
     }
 }

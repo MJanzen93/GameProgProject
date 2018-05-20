@@ -21,7 +21,7 @@ public class World {
 
     public void init(){
         gameObjects = new ArrayList<>();
-        gameObjects.add(new GameObject(100,100,100,100));
+        gameObjects.add(new GameObject(100,100,50,50));
         gameObjects.add(new GameObject(1000,100,100,100));
     }
 

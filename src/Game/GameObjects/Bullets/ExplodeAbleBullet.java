@@ -1,6 +1,9 @@
 package Game.GameObjects.Bullets;
 
+import Game.GameObjects.GameObject;
 import Game.Physics;
+
+import java.util.List;
 
 public class ExplodeAbleBullet extends BulletObject {
     public ExplodeAbleBullet(double startX, double startY, int width, int height) {

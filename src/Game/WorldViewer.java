@@ -31,7 +31,7 @@ public class WorldViewer extends JPanel {
         this.addMouseListener(inputSystem);
         this.addMouseMotionListener(inputSystem);
         try {
-            background = ImageIO.read(new File(".\\src\\Game\\Textures\\Background.jpeg"));
+            background = ImageIO.read(new File(".\\src\\Game\\Textures\\BG.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,11 +55,11 @@ public class WorldViewer extends JPanel {
     public void draw(GameObject gObj) {
         //check if obj is not in cameras view
         //For x
-        if (gObj.x + gObj.width < world.worldPartX && gObj.x > world.worldPartX + ConstantValues.WORLDPART_WIDTH) {
+        if ((gObj.x + gObj.width) < world.worldPartX || gObj.x > (world.worldPartX + ConstantValues.WORLDPART_WIDTH)) {
             return;
         }
         //for y
-        if (gObj.y + gObj.height < world.worldPartY && gObj.y > world.worldPartY + ConstantValues.WORLDPART_HEIGHT) {
+        if (gObj.y  < world.worldPartY - 100 || gObj.y > world.worldPartY + ConstantValues.WORLDPART_HEIGHT) {
             return;
         }
         gObj.draw(graphics);

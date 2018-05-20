@@ -20,7 +20,7 @@ public class CharacterObject extends GameObject {
 
     /*X and Y*/
     public int xForce = 300;
-    public int jumpForce = 800;
+    public int jumpForce = 750;
 
     public boolean pickUpItem = false;
 

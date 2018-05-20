@@ -18,7 +18,6 @@ public class Physics {
         world = _world;
     }
 
-    //todo for all objects
     @Deprecated
     private void applyGravity(double diffSeconds) {
         for(int i = 0; i < world.gameObjects.size(); i++) {
@@ -41,7 +40,6 @@ public class Physics {
     }
 
     /**
-     * Do not get collision with bullets each other
      * @param obj
      * @return
      */

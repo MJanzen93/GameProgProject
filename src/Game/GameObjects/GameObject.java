@@ -52,7 +52,7 @@ public abstract class GameObject {
 
     public boolean dropItem = false;
 
-    public Image image;
+    public BufferedImage image;
     
 
     public GameObject(double startX, double startY, int width, int height) {

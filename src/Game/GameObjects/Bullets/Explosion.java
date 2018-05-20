@@ -64,9 +64,6 @@ public class Explosion extends GameObject {
         if(delay <= 0 && imageC < 7){
             delay = 0.04;
             imageC++;
-        }else if(imageC >= 7){
-            hp = 0;
-            return;
         }
 
         if(imageC < 7){
@@ -78,7 +75,7 @@ public class Explosion extends GameObject {
     }
 
     public void explode(){
-        for (int i = 0; i < 180; i++) {
+        for (int i = 0; i < 90; i++) {
             ExplosionBullet bullet = new ExplosionBullet(x, y, 5, 5);
             bullet.alfa = i*2;
             bullet.range = radius-i;
