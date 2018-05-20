@@ -1,6 +1,5 @@
 package Game.GameObjects.CharacterObjects.Enemies;
 
-import Game.AudioPlayer;
 import Game.GameObjects.Bullets.Explosion;
 import Game.GameObjects.Bullets.ShootBullet;
 

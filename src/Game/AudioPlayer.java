@@ -10,7 +10,7 @@ import javax.sound.sampled.FloatControl;
 public class AudioPlayer {
 
     private Clip backRoundClip;
-
+    public static World world;
 
     public synchronized void backGroundMusic(String path, double gain) {
 
@@ -39,19 +39,20 @@ public class AudioPlayer {
     }
 
     public static synchronized void shortSound(String path, double gain) {
-
 		try {
+		
 			AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(path));
 			Clip clip = AudioSystem.getClip();
 			clip.open(inputStream);
 			// set Volume 0.0 min to 1.0 max
 			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);  
 			float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
+			System.out.println();
 			gainControl.setValue(dB);
 			
 			clip.start();
 		} catch (Exception e) {
-			System.err.println(e.getMessage());
+			e.printStackTrace();
 		}
 
     }
