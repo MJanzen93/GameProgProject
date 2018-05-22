@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Game.GameObjects.BackgroundObjects.BackgroundObject;
+import Game.GameObjects.CharacterObjects.Enemies.FlyingEnemy;
 import Game.GameObjects.CharacterObjects.Enemies.SimpleEnemy;
 import Game.GameObjects.Crate;
 import Game.GameObjects.GameObject;
@@ -86,6 +87,7 @@ public class MapParser {
                 String[] meta = part[0].split(" ");
                 String[] data = part[1].split(",");
 
+                //HARDCODED****
                 String[][] dataParts = new String[16][16];
 
                 for (int j = 0; j < 16; j++) {
@@ -93,6 +95,7 @@ public class MapParser {
                         dataParts[j][j2] = data[j*16+j2];
                     }
                 }
+                //***********
 
                 int xi = meta[1].length()-1;
                 int yi = meta[2].length()-1;
@@ -102,6 +105,8 @@ public class MapParser {
                 for (int j = 0; j < dataParts.length; j++) {
                     for (int j2 = 0; j2 < dataParts.length; j2++) {
                         switch (dataParts[j][j2]) {
+
+                            //EDIT
                             case "1":
                                 fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\1.png"));
                                 break;
@@ -198,12 +203,14 @@ public class MapParser {
                             case "32":
                                 fixedObjects.add(new Coin(x*50 +j2*50, y*50 + j*50+45 - 22));
                                 break;
+                            case "33":
+                                gameObjects.add(new FlyingEnemy(x*50 +j2*50, y*50 + j*50+45 - 22));
+                                break;
                         }
                     }
                 }
             }
         }
-
         return list;
     }
 }

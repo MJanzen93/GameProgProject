@@ -7,16 +7,18 @@ import javax.imageio.ImageIO;
 
 public class FlyingEnemy extends EnemyObject {
 
-	public FlyingEnemy(double startX, double startY, int width, int height) {
-		super(startX, startY, width, height);
+	public FlyingEnemy(double startX, double startY) {
+		super(startX, startY, 0, 0);
 		isSolid = true;
 		isFixed = true;
 		hasCollision = true;
 		try {
-			image = ImageIO.read(new File(".\\src\\Game\\Textures\\bat.png"));
+			image = ImageIO.read(new File(".\\src\\Game\\Textures\\bat(1).png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		width = image.getWidth();
+		height = image.getHeight();
 	}
 
 	@Override

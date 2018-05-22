@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class SimpleEnemy extends EnemyObject{
     public SimpleEnemy(double startX, double startY, int width, int height) {
-        super(startX, startY, 50,50);
+        super(startX, startY, 30,30);
         try {
             image = ImageIO.read(new File(".\\src\\Game\\Textures\\enemy.png"));
         } catch (IOException e) {
