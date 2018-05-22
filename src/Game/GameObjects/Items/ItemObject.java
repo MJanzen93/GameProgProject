@@ -14,11 +14,10 @@ public abstract class ItemObject extends GameObject {
     public static int width = 30;
     public static int height = 30;
 
-    private static Random random;
+    private static Random random = new Random();
 
     public ItemObject(double startX, double startY) {
         super(startX, startY, width, height);
-        random = new Random();
         isItem = true;
         isSolid = true;
         isFixed = false;

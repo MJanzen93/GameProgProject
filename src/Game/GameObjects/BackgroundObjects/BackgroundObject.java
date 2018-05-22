@@ -25,6 +25,8 @@ public class BackgroundObject extends GameObject {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        width = image.getWidth();
+        height = image.getHeight();
     }
 
     @Override
@@ -32,10 +34,7 @@ public class BackgroundObject extends GameObject {
         int x = (int) (this.x - world.worldPartX);
         int y = (int) (this.y - world.worldPartY);
 
-        if(width != 0 && height != 0){
-            graphics.drawImage(image, x, y, width, height, null);
-        }else
-            graphics.drawImage(image, x, y, null);
+        graphics.drawImage(image, x, y-image.getHeight()+50, width, height, null);
     }
 
     @Override

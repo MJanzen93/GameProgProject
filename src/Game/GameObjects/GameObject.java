@@ -63,6 +63,7 @@ public abstract class GameObject {
     }
 
     public double oldX, oldY;
+    public double lastySpeed;
 
     public void move(double diffSeconds) {
         Physics.applyGravity(this, diffSeconds);
@@ -70,6 +71,13 @@ public abstract class GameObject {
         oldY = y;
         x+=xSpeed*diffSeconds;
         y+=ySpeed*diffSeconds;
+
+        /* FALL DAMAGE
+        if(lastySpeed > 100 && onGround && destructible){
+            hp -= ySpeed*0.2;
+        }
+        lastySpeed = ySpeed;
+        */
 
         if(explodable){
             if(hp <= 0){

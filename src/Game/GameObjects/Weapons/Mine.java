@@ -9,8 +9,9 @@ import java.util.List;
 
 public class Mine extends GameObject {
 
-    private int counter = 100;
+    private double counter = 0.5;
     private boolean trigger = false;
+    private boolean blink = true;
 
     public Mine(double startX, double startY) {
         super(startX, startY, 10, 5);
@@ -30,10 +31,10 @@ public class Mine extends GameObject {
         int y = (int) (this.y - world.worldPartY);
 
         if(trigger){
-            graphics.setColor(COLOR);
-            graphics.fillRect(x, y, width, height);
             graphics.setColor(Color.BLACK);
             graphics.drawRect(x, y, width, height);
+            graphics.setColor(COLOR);
+            graphics.fillRect(x, y, width, height);
         }else{
             graphics.setColor(COLOR);
             graphics.fillRect(x, y, width, height);
@@ -44,10 +45,13 @@ public class Mine extends GameObject {
     public void move(double diffSeconds) {
         super.move(diffSeconds);
         if(trigger){
-            if(counter % 2 == 0){
+            if(blink){
                 setColor(Color.gray);
-            }else
+                blink = !blink;
+            }else {
                 setColor(Color.red);
+                blink = !blink;
+            }
             if(counter <= 0){
                 Explosion explosion = new Explosion(x, y, 200, false);
                 world.fixedObjects.add(explosion);

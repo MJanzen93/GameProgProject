@@ -52,17 +52,19 @@ public class WorldViewer extends JPanel {
         */
     }
 
-    public void draw(GameObject gObj) {
+    public boolean draw(GameObject gObj) {
         //check if obj is not in cameras view
         //For x
         if ((gObj.x + gObj.width) < world.worldPartX || gObj.x > (world.worldPartX + ConstantValues.WORLDPART_WIDTH)) {
-            return;
+            return false;
         }
         //for y
-        if (gObj.y  < world.worldPartY - 100 || gObj.y > world.worldPartY + ConstantValues.WORLDPART_HEIGHT) {
-            return;
+        if (gObj.y + gObj.height < world.worldPartY || gObj.y > world.worldPartY + ConstantValues.WORLDPART_HEIGHT +100) {
+            return false;
         }
+
         gObj.draw(graphics);
+        return true;
     }
 
     public void redraw() {
