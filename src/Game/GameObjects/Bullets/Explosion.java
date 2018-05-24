@@ -44,10 +44,15 @@ public class Explosion extends GameObject {
         }
     }
 
+    int i = 5;
+
     @Override
     public void move(double diffSeconds) {
         super.move(diffSeconds);
         delay -= diffSeconds;
+        world.worldPartX+= i;
+        world.worldPartY+= i;
+        i = -i;
     }
 
     @Override
