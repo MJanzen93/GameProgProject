@@ -7,6 +7,8 @@ import java.util.List;
 import Game.GameObjects.BackgroundObjects.BackgroundObject;
 import Game.GameObjects.CharacterObjects.Enemies.FlyingEnemy;
 import Game.GameObjects.CharacterObjects.Enemies.SimpleEnemy;
+import Game.GameObjects.CharacterObjects.Enemies.Spikes;
+import Game.GameObjects.CharacterObjects.Enemies.SpikesU;
 import Game.GameObjects.Crate;
 import Game.GameObjects.GameObject;
 import Game.GameObjects.CharacterObjects.Player;
@@ -201,10 +203,16 @@ public class MapParser {
                                 fixedObjects.add(new Mine(x*50 +j2*50, y*50 + j*50+45));
                                 break;
                             case "32":
-                                fixedObjects.add(new Coin(x*50 +j2*50, y*50 + j*50+45 - 22));
+                                fixedObjects.add(new Coin(x*50 +j2*50, y*50 + j*50));
                                 break;
                             case "33":
-                                gameObjects.add(new FlyingEnemy(x*50 +j2*50, y*50 + j*50+45 - 22));
+                                gameObjects.add(new FlyingEnemy(x*50 +j2*50, y*50 + j*50));
+                                break;
+                            case "34":
+                                gameObjects.add(new Spikes(x*50 +j2*50, y*50 + j*50, 50, 50));
+                                break;
+                            case "35":
+                                gameObjects.add(new SpikesU(x*50 +j2*50, y*50 + j*50, 50, 50));
                                 break;
                         }
                     }

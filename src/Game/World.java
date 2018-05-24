@@ -6,19 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Game.GameObjects.BackgroundObjects.BackgroundObject;
+import Game.GameObjects.CharacterObjects.Enemies.*;
 import Game.GameObjects.Crate;
 import Game.GameObjects.GameObject;
 import Game.GameObjects.Items.*;
 import Game.GameObjects.SWATTeamMate;
 import Game.GameObjects.SupplyDropObject;
 import Game.GameObjects.CharacterObjects.Player;
-import Game.GameObjects.CharacterObjects.Enemies.SimpleBoss;
-import Game.GameObjects.CharacterObjects.Enemies.Exploder;
-import Game.GameObjects.CharacterObjects.Enemies.FlyingEnemy;
-import Game.GameObjects.CharacterObjects.Enemies.Mimic;
-import Game.GameObjects.CharacterObjects.Enemies.SimpleEnemy;
-import Game.GameObjects.CharacterObjects.Enemies.Speedy;
-import Game.GameObjects.CharacterObjects.Enemies.Stealer;
 import Game.GameObjects.Platfrom.FixedPlattform;
 
 import Game.GameObjects.Weapons.Mine;
