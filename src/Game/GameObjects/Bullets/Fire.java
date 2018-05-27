@@ -1,14 +1,16 @@
 package Game.GameObjects.Bullets;
 
-import Game.GameObjects.CharacterObjects.Player;
-import Game.GameObjects.GameObject;
-import Game.Physics;
-
-import javax.imageio.ImageIO;
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
+import javax.imageio.ImageIO;
+
+import Game.Physics;
+import Game.GameObjects.GameObject;
+import Game.GameObjects.CharacterObjects.CharacterObject;
 
 public class Fire extends GameObject {
 
@@ -90,8 +92,8 @@ public class Fire extends GameObject {
         List<GameObject> collisions =Physics.getCollisions(this);
 
         for (int i = 0; i < collisions.size(); i++){
-            if(collisions.get(i).isPlayer){
-                Player player = (Player)collisions.get(i);
+            if(collisions.get(i).isPlayer || collisions.get(i).isEnemy){
+                CharacterObject player = (CharacterObject) collisions.get(i);
                 player.hp--;
             }
         }

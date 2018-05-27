@@ -15,10 +15,13 @@ public class FixedPlattform extends Plattform {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
+        
         /*Funny haha*/
-        //destructible = true;
-        //hp = 5;
-        //maxHP = 5;
+       // destructible = true;
+      //  hp = 5;
+       // maxHP = 5;
+        
     }
 
     @Override

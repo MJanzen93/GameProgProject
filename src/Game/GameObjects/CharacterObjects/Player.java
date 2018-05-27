@@ -1,7 +1,6 @@
 
 package Game.GameObjects.CharacterObjects;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -15,6 +14,7 @@ import Game.GameObjects.Bomber;
 import Game.GameObjects.GameObject;
 import Game.GameObjects.SWATTeamMate;
 import Game.GameObjects.Bullets.ShootBullet;
+import Game.GameObjects.CharacterObjects.Enemies.Mimic;
 import Game.GameObjects.CharacterObjects.Enemies.Speedy;
 import Game.GameObjects.Items.ItemObject;
 import Game.GameObjects.Weapons.WeaponObject;
@@ -103,7 +103,7 @@ public class Player extends CharacterObject {
                 }
 
 
-                if (collidingObject.isSolid && !collidingObject.isItem && !collidingObject.isEnemy && !(collidingObject instanceof SWATTeamMate) || collidingObject instanceof Speedy) {
+                if (collidingObject.isSolid && !collidingObject.isItem && !collidingObject.isEnemy && !(collidingObject instanceof SWATTeamMate) || collidingObject instanceof Speedy || collidingObject instanceof Mimic) {
 
                     //check if Game.GameObjects.CharacterObject.Player is on Object
 
@@ -230,17 +230,23 @@ public class Player extends CharacterObject {
         missile--;
     }
 
+
     private double calculateHitSpeed(double diffSeconds) {
         if (hitFromObjectBool) {
             if (hitSpeed >= (2000 * diffSeconds))
                 hitFromObjectBool = false;
-            return hitSpeed = hitSpeed + (300 * diffSeconds);
+            return hitSpeed = hitSpeed + (1000 * diffSeconds);
         } else {
-            if (hitSpeed > (2000 * diffSeconds) || hitSpeed > 0) {
-                return hitSpeed = hitSpeed - (20 * diffSeconds);
+            if ( hitSpeed > 0) {
+            	if(hitSpeed > (2000 * diffSeconds)-20) {
+            		return hitSpeed = hitSpeed - (100 * diffSeconds);
+            	}else {
+            		return hitSpeed = hitSpeed - (10 * diffSeconds);
+            	}
 
             }
             return 0;
         }
     }
+  
 }

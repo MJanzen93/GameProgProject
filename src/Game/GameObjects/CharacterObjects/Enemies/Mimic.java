@@ -1,18 +1,20 @@
 package Game.GameObjects.CharacterObjects.Enemies;
 
+import java.awt.Color;
+
 import Game.AudioPlayer;
-import Game.GameObjects.Bullets.ShootBullet;
 import Game.GameObjects.Platfrom.FixedPlattform;
 
 public class Mimic extends EnemyObject {
 
 	FixedPlattform standingPlattform;
 	
-	public Mimic(double startX, double startY, int width, int height, FixedPlattform standingPlattform) {
+	public Mimic(double startX, double startY, int width, int height, FixedPlattform standingPlattform, Color color) {
 		super(startX, startY, width, height);
 		this.standingPlattform = standingPlattform;
 		this.isSolid = true;
 		this.hasCollision = true;
+		this.COLOR = color;
 	}
 
 	@Override

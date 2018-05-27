@@ -1,15 +1,15 @@
 package Game;
 
-import Game.GameObjects.Bullets.Fire;
-import Game.GameObjects.CharacterObjects.Enemies.SimpleBoss;
-import Game.GameObjects.CharacterObjects.Player;
-import Game.GameObjects.GameObject;
-import Game.GameObjects.SWATTeamMate;
+
+import static java.lang.Thread.sleep;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.Thread.sleep;
+import Game.GameObjects.GameObject;
+import Game.GameObjects.SWATTeamMate;
+import Game.GameObjects.CharacterObjects.Player;
+
 
 
 public class World {
@@ -69,7 +69,7 @@ public class World {
 
     void createWorld() {
 
-        List<List<GameObject>> list = MapParser.getWorld1();
+        List<List<GameObject>> list = MapParser.desert2();
 
         fixedObjects = list.get(0);
         backgroundObjects = list.get(1);
@@ -84,7 +84,6 @@ public class World {
             }
         }
 
-        gameObjects.add(new SimpleBoss(7766, -105, 100, 100));
 
         allObjects.add(gameObjects);
         allObjects.add(fixedObjects);
@@ -187,6 +186,11 @@ public class World {
                 player.y += 0.5;
                 player.checkCollision();
             }
+
+            //print FPS
+           System.out.println(1000 / diffMillis);
+            //System.out.println("X: "+ player.x + "Y: "+ player.y);
+
 
         }
     }
