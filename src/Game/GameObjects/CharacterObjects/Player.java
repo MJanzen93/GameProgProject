@@ -188,7 +188,7 @@ public class Player extends CharacterObject {
         jumping = true;
         onGround = false;
         ySpeed = -jumpForce;
-        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\jump.wav", 0.15);
+        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\jump.wav", 0.99);
     }
 
     public void fly(){

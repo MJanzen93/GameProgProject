@@ -107,6 +107,6 @@ public class Explosion extends GameObject {
             world.bulletObjects.add(bullet);
         }
         */
-        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\boom-bang.aiff",1.0);
+        AudioPlayer.shortSound2(".\\src\\Game\\Sounds\\boom-bang.aiff",1.0, world.player.x - x,world.player.y - y);
     }
 }

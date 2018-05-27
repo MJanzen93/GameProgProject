@@ -60,7 +60,7 @@ public class World {
 
         //Backgound Musik player
         backgroundPlayer = new AudioPlayer();
-        backgroundPlayer.backGroundMusic(".\\src\\Game\\Sounds\\megalovania.wav",0.25);
+       // backgroundPlayer.backGroundMusic(".\\src\\Game\\Sounds\\megalovania.wav",0.25);
 
         allObjects = new ArrayList<>();
         gameObjects = new ArrayList<>();
@@ -171,7 +171,7 @@ public class World {
                 player.checkCollision();
             }
             //print FPS
-            System.out.println(1000/diffMillis);
+            //System.out.println(1000/diffMillis);
         }
     }
 

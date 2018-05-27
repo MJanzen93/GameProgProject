@@ -74,6 +74,6 @@ public class SimpleBoss extends Boss {
         bullet.isPlayerBullet = false;
 
         world.bulletObjects.add(bullet);
-        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\shot.wav",0.05);
+        AudioPlayer.shortSound2(".\\src\\Game\\Sounds\\shot.wav",0.05, world.player.x - x,world.player.y - y);
     }
 }
