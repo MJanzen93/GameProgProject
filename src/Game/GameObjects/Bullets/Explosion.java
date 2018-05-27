@@ -53,6 +53,14 @@ public class Explosion extends GameObject {
         world.worldPartX+= i;
         world.worldPartY+= i;
         i = -i;
+
+        if(delay <= 0 && imageC < 7){
+            delay = 0.04;
+            imageC++;
+        }
+        if(imageC >= 7){
+            hp = 0;
+        }
     }
 
     @Override
@@ -66,16 +74,7 @@ public class Explosion extends GameObject {
         int x = (int) (this.x - world.worldPartX);
         int y = (int) (this.y - world.worldPartY);
 
-        if(delay <= 0 && imageC < 7){
-            delay = 0.04;
-            imageC++;
-        }
-
-        if(imageC < 7){
-            graphics.drawImage(image[imageC], x-120, y-80, 240, 160, null);
-        }else{
-            hp = 0;
-        }
+        graphics.drawImage(image[imageC], x-120, y-80, 240, 160, null);
 
     }
 

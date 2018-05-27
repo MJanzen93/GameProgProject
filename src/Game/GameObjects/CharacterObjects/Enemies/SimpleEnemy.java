@@ -2,6 +2,8 @@ package Game.GameObjects.CharacterObjects.Enemies;
 
 import Game.GameObjects.Bullets.Explosion;
 import Game.GameObjects.Bullets.ShootBullet;
+import Game.GameObjects.Items.HealthItem;
+import Game.GameObjects.Items.ItemObject;
 
 import javax.imageio.ImageIO;
 import java.io.File;

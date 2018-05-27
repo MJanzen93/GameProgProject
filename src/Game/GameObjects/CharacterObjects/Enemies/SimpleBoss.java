@@ -52,12 +52,6 @@ public class SimpleBoss extends Boss {
     }
 
     @Override
-    public void checkCollision() {
-        super.checkCollision();
-    }
-
-
-    @Override
     public void specialMove() {
         ExplodeAbleBullet bullet;
 

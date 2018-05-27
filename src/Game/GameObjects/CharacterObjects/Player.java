@@ -86,9 +86,7 @@ public class Player extends CharacterObject {
             missileReady = true;
         } else
             coolDownMissile -= diffSeconds;
-
     }
-
 
 	@Override
     public void checkCollision() {

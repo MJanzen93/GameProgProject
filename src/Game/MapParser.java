@@ -52,6 +52,10 @@ public class MapParser {
         return new Player(0,0);
     }
 
+    public static List<List<GameObject>> getWorld1(){
+        return null;
+    }
+
     public static List<List<GameObject>> getPlatforms(){
         List<List<GameObject>> list = new ArrayList<>();
         List<GameObject> fixedObjects = new ArrayList<>();

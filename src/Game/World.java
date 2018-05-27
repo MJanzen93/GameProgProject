@@ -90,6 +90,8 @@ public class World {
             }
         }
 
+        gameObjects.add(new SimpleBoss(7766, -105, 100, 100));
+
         allObjects.add(gameObjects);
         allObjects.add(fixedObjects);
         allObjects.add(bulletObjects);

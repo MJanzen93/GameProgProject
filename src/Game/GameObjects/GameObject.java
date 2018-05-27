@@ -2,6 +2,7 @@ package Game.GameObjects;
 
 import Game.ConstantValues;
 import Game.GameObjects.Bullets.Explosion;
+import Game.GameObjects.Items.ItemObject;
 import Game.Physics;
 import Game.World;
 
