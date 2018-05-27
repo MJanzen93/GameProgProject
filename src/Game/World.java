@@ -1,21 +1,14 @@
 package Game;
 
-import static java.lang.Thread.sleep;
+import Game.GameObjects.CharacterObjects.Enemies.SimpleBoss;
+import Game.GameObjects.CharacterObjects.Player;
+import Game.GameObjects.GameObject;
+import Game.GameObjects.SWATTeamMate;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Game.GameObjects.BackgroundObjects.BackgroundObject;
-import Game.GameObjects.CharacterObjects.Enemies.*;
-import Game.GameObjects.Crate;
-import Game.GameObjects.GameObject;
-import Game.GameObjects.Items.*;
-import Game.GameObjects.SWATTeamMate;
-import Game.GameObjects.SupplyDropObject;
-import Game.GameObjects.CharacterObjects.Player;
-import Game.GameObjects.Platfrom.FixedPlattform;
-
-import Game.GameObjects.Weapons.Mine;
+import static java.lang.Thread.sleep;
 
 
 public class World {
@@ -60,7 +53,7 @@ public class World {
 
         //Backgound Musik player
         backgroundPlayer = new AudioPlayer();
-       // backgroundPlayer.backGroundMusic(".\\src\\Game\\Sounds\\megalovania.wav",0.25);
+        // backgroundPlayer.backGroundMusic(".\\src\\Game\\Sounds\\megalovania.wav",0.25);
 
         allObjects = new ArrayList<>();
         gameObjects = new ArrayList<>();
@@ -75,14 +68,14 @@ public class World {
 
     void createWorld() {
 
-        List<List<GameObject>> list = MapParser.getPlatforms();
+        List<List<GameObject>> list = MapParser.getWorld1();
 
         fixedObjects = list.get(0);
         backgroundObjects = list.get(1);
         gameObjects = list.get(2);
 
-        for (int i = 0; i < gameObjects.size(); i++){
-            if(gameObjects.get(i).isPlayer){
+        for (int i = 0; i < gameObjects.size(); i++) {
+            if (gameObjects.get(i).isPlayer) {
                 player.x = gameObjects.get(i).x;
                 player.y = gameObjects.get(i).y;
                 gameObjects.remove(i);
@@ -127,7 +120,7 @@ public class World {
                     allObjects.get(i).get(j).move(diffSeconds);
                     allObjects.get(i).get(j).checkCollision();
                     if (allObjects.get(i).get(j).hp <= 0) {
-                        if(allObjects.get(i).get(j) instanceof SWATTeamMate)
+                        if (allObjects.get(i).get(j) instanceof SWATTeamMate)
                             player.mate = false;
                         allObjects.get(i).remove(allObjects.get(i).get(j));
                     }
@@ -139,8 +132,8 @@ public class World {
             wViewer.clear();
 
             //draw BackgroundObjects
-            for (int i = 0; i < backgroundObjects.size(); i++){
-               wViewer.draw(backgroundObjects.get(i));
+            for (int i = 0; i < backgroundObjects.size(); i++) {
+                wViewer.draw(backgroundObjects.get(i));
             }
 
             //draw all objects
@@ -173,7 +166,7 @@ public class World {
                 player.checkCollision();
             }
             //print FPS
-            //System.out.println(1000/diffMillis);
+            System.out.println(1000 / diffMillis);
         }
     }
 
