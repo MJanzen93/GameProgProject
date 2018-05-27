@@ -13,7 +13,7 @@ public class AudioPlayer {
 
 
     public synchronized void backGroundMusic(String path, double gain) {
-/*
+
         try {
             stopSound();
             AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(path));
@@ -28,7 +28,6 @@ public class AudioPlayer {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-*/
     }
 
     private synchronized void stopSound() {
@@ -40,7 +39,7 @@ public class AudioPlayer {
     }
 
     public static synchronized void shortSound(String path, double gain) {
-        /*
+
 		try {
 			AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(path));
 			Clip clip = AudioSystem.getClip();
@@ -54,7 +53,7 @@ public class AudioPlayer {
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
-		*/
+
     }
 
 }

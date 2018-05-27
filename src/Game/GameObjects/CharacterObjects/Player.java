@@ -38,6 +38,9 @@ public class Player extends CharacterObject {
     
     public boolean mate = false;
 
+    public double oldWidth = 0;
+    public double oldHeight = 0;
+
 
     public Player(double startX, double startY) {
         super(startX, startY, 30, 30);
@@ -65,8 +68,7 @@ public class Player extends CharacterObject {
     @Override
     public void move(double diffSeconds) {
         Physics.applyGravity(this, diffSeconds);
-        oldX = x;
-        oldY = y;
+        saveOldPosition();
 
         x += xSpeed * diffSeconds + (calculateHitSpeed(diffSeconds) * hitSide);
         y += ySpeed * diffSeconds;
@@ -109,6 +111,11 @@ public class Player extends CharacterObject {
 
                     if (y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
 
+                        //safety check whether object is not just on left/right side of wall
+                        if (!(x < collidingObject.x + collidingObject.width && x > collidingObject.x || x + width > collidingObject.x && x + width < collidingObject.x + collidingObject.width)) {
+                            continue;
+                        }
+
                         y = collidingObject.y - height;
                         ySpeed = 0;
                         onGround = true;
@@ -128,7 +135,7 @@ public class Player extends CharacterObject {
                     }
 
                     //left side
-                    if (x + width > collidingObject.x && oldX + width <= collidingObject.x && xSpeed >= 0 ) {
+                    if (x + width > collidingObject.x && oldX + oldWidth <= collidingObject.x && xSpeed >= 0 ) {
                         x = collidingObject.x - width - 1;
                         xSpeed = 0;
                         if (ySpeed >= 0) {
@@ -151,6 +158,14 @@ public class Player extends CharacterObject {
 
         }
     }
+
+    public void saveOldPosition() {
+        this.oldX = x;
+        this.oldY = y;
+        this.oldWidth = width;
+        this.oldHeight = height;
+    }
+
 
     /**
      * Player goes left

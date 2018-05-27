@@ -156,12 +156,14 @@ public class World {
 
             //high ySpeed => get thinner
             if (Math.abs(player.ySpeed) > 500 && player.width > 20) {
+                player.saveOldPosition();
                 player.width--;
                 player.x += 0.5;
                 player.height++;
                 player.y -= 0.5;
                 player.checkCollision();
             } else if (player.width < 30) {
+                player.saveOldPosition();
                 player.width++;
                 player.x -= 0.5;
                 player.height--;
@@ -205,7 +207,7 @@ public class World {
             player.fireMissels(inputSystem);
         }
 
-        if (inputSystem.downPressed) {
+        if (inputSystem.downPressed && player.onGround) {
             if (player.width < 40) {
                 player.width++;
                 player.x -= 0.5;
