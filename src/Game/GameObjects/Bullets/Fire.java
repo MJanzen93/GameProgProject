@@ -1,21 +1,25 @@
 package Game.GameObjects.Bullets;
 
+import Game.GameObjects.CharacterObjects.Player;
 import Game.GameObjects.GameObject;
+import Game.Physics;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class Fire extends GameObject {
 
     private Image[] image;
     private int imageC = 0;
     private double delay = 0.04;
+    private double timeout = 0.1;
 
     public Fire(double startX, double startY) {
-        super(startX, startY, 0, 0);
-        hasCollision = false;
+        super(startX, startY+32, 150, 50);
+        hasCollision = true;
         isSolid = false;
         isFixed = true;
         destructible = false;
@@ -73,11 +77,24 @@ public class Fire extends GameObject {
         if(imageC >= 32){
            imageC = 0;
         }
+
+        timeout -= diffSeconds;
     }
 
     @Override
     public void checkCollision() {
-        super.checkCollision();
+        if(timeout > 0){
+            return;
+        }
+        timeout = 0.1;
+        List<GameObject> collisions =Physics.getCollisions(this);
+
+        for (int i = 0; i < collisions.size(); i++){
+            if(collisions.get(i).isPlayer){
+                Player player = (Player)collisions.get(i);
+                player.hp--;
+            }
+        }
     }
 
 
@@ -86,7 +103,7 @@ public class Fire extends GameObject {
         int x = (int) (this.x - world.worldPartX);
         int y = (int) (this.y - world.worldPartY);
 
-        graphics.drawImage(image[imageC], x, y, 150, 82, null);
+        graphics.drawImage(image[imageC], x, y-32, 150, 82, null);
 
     }
 }
