@@ -1,6 +1,8 @@
 
 package Game.GameObjects.CharacterObjects;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -41,6 +43,9 @@ public class Player extends CharacterObject {
     public double oldWidth = 0;
     public double oldHeight = 0;
 
+    public boolean parachute = false;
+    public boolean hasParachuteItem = false;
+    public BufferedImage parachuteImage;
 
     public Player(double startX, double startY) {
         super(startX, startY, 30, 30);
@@ -55,6 +60,7 @@ public class Player extends CharacterObject {
         hasShield = false;
         try {
             image = ImageIO.read(new File(".\\src\\Game\\Textures\\player.png"));
+            parachuteImage = ImageIO.read(new File(".\\src\\Game\\Textures\\parachute2.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -154,6 +160,17 @@ public class Player extends CharacterObject {
                 }
             }
 
+        }
+    }
+
+    @Override
+    public void draw(Graphics graphics) {
+        super.draw(graphics);
+        int x = (int) (this.x - world.worldPartX);
+        int y = (int) (this.y - world.worldPartY);
+
+        if(parachute && hasParachuteItem){
+            graphics.drawImage(parachuteImage, x-35, y-100, 100,100, null, null);
         }
     }
 
