@@ -1,5 +1,6 @@
 package Game;
 
+import Game.GameObjects.Bullets.Fire;
 import Game.GameObjects.CharacterObjects.Enemies.SimpleBoss;
 import Game.GameObjects.CharacterObjects.Player;
 import Game.GameObjects.GameObject;

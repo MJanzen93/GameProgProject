@@ -3,7 +3,7 @@ package Game;
 public final class ConstantValues
 {
     // size of the world
-    public static final int WORLD_WIDTH      = 20000;
+    public static final int WORLD_WIDTH      = 116000;
     public static final int WORLD_HEIGHT     = 4000;
     // size of the displayed part of the world
     public static int WORLDPART_WIDTH  = 1600;

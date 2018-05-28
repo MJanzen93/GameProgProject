@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Game.GameObjects.BackgroundObjects.BackgroundObject;
+import Game.GameObjects.Bullets.Fire;
 import Game.GameObjects.CharacterObjects.Enemies.FlyingEnemy;
 import Game.GameObjects.CharacterObjects.Enemies.SimpleEnemy;
 import Game.GameObjects.CharacterObjects.Enemies.Spikes;
@@ -212,7 +213,10 @@ public class MapParser {
                                 gameObjects.add(new Spikes(x*50 +j2*50, y*50 + j*50, 50, 50));
                                 break;
                             case "35":
-                                gameObjects.add(new SpikesU(x*50 +j2*50, y*50 + j*50, 50, 50));
+                                fixedObjects.add(new BackgroundObject(x*50 +j2*50, y*50 + j*50, 100, 100, ".\\src\\Game\\Textures\\flag.png"));
+                                break;
+                            case "36":
+                                fixedObjects.add(new Fire(x*50 +j2*50, y*50 + j*50 - 32));
                                 break;
                         }
                     }
@@ -384,7 +388,7 @@ public class MapParser {
                                 gameObjects.add(new Spikes(x*50 +j2*50, y*50 + j*50, 50, 50));
                                 break;
                             case "35":
-                                gameObjects.add(new SpikesU(x*50 +j2*50, y*50 + j*50, 50, 50));
+                                fixedObjects.add(new BackgroundObject(x*50 +j2*50, y*50 + j*50, 100, 100, ".\\src\\Game\\Textures\\flag.png"));
                                 break;
                         }
                     }
