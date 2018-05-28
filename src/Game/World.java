@@ -89,7 +89,27 @@ public class World {
         allObjects.add(gameObjects);
         allObjects.add(fixedObjects);
         allObjects.add(bulletObjects);
+
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //print FPS
+                diffMillis = 1;
+                while(true){
+                    System.out.println(1000 / diffMillis);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        });
+        t.start();
     }
+
+    long diffMillis = 1;
 
     void run() {
         long lastTick = System.currentTimeMillis();
@@ -97,7 +117,7 @@ public class World {
             // calculate elapsed time
             //
             long currentTick = System.currentTimeMillis();
-            long diffMillis = (currentTick - lastTick);
+            diffMillis = (currentTick - lastTick);
 
             if (diffMillis < FRAME_MINIMUM_MILLIS) {
                 try {
@@ -150,6 +170,7 @@ public class World {
                 player.bulletCooldown -= diffSeconds;
             }
 
+
             //high ySpeed => get thinner
             if (Math.abs(player.ySpeed) > 500 && player.width > 20) {
                 player.saveOldPosition();
@@ -166,8 +187,7 @@ public class World {
                 player.y += 0.5;
                 player.checkCollision();
             }
-            //print FPS
-            System.out.println(1000 / diffMillis);
+
         }
     }
 

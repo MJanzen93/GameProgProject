@@ -111,54 +111,54 @@ public class MapParser {
 
                             //EDIT
                             case "1":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\1.png"));
+                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\1.png"));
                                 break;
                             case "2":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\2.png"));
+                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\2.png"));
                                 break;
                             case "3":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\3.png"));
+                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\3.png"));
                                 break;
                             case "4":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\4.png"));
+                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\4.png"));
                                 break;
                             case "5":
-                                FixedPlattform f = new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\5.png");
+                                FixedPlattform f = new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\5.png");
                                 f.hasCollision = false;
                                 fixedObjects.add(f);
                                 break;
                             case "6":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\6.png"));
+                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\6.png"));
                                 break;
                             case "7":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\7.png"));
+                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\7.png"));
                                 break;
                             case "8":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\8.png"));
+                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\8.png"));
                                 break;
                             case "9":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\9.png"));
+                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\9.png"));
                                 break;
                             case "10":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\10.png"));
+                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\10.png"));
                                 break;
                             case "11":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\11.png"));
+                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\11.png"));
                                 break;
                             case "12":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\12.png"));
+                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\12.png"));
                                 break;
                             case "13":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\13.png"));
+                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\13.png"));
                                 break;
                             case "14":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\14.png"));
+                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\14.png"));
                                 break;
                             case "15":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\15.png"));
+                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\15.png"));
                                 break;
                             case "16":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\16.png"));
+                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\16.png"));
                                 break;
                             case "17":
                                 gameObjects.add(new Crate(x*50 +j2*50, y*50 + j*50));
