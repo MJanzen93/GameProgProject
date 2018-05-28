@@ -69,7 +69,7 @@ public class World {
 
     void createWorld() {
 
-        List<List<GameObject>> list = MapParser.desert2();
+        List<List<GameObject>> list = MapParser.desert1();
 
         fixedObjects = list.get(0);
         backgroundObjects = list.get(1);
@@ -226,6 +226,12 @@ public class World {
         if (player.missile > 0 && inputSystem.mousePressed && inputSystem.altPressed) {
             player.fireMissels(inputSystem);
         }
+
+        if(player.hasParachuteItem && inputSystem.downPressed && !player.onGround){
+            player.parachute = true;
+            player.ySpeed = 50;
+        }else
+            player.parachute = false;
 
         if (inputSystem.downPressed && player.onGround) {
             if (player.width < 40) {
