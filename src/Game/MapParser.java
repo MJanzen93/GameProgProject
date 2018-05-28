@@ -123,7 +123,9 @@ public class MapParser {
                                 fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\4.png"));
                                 break;
                             case "5":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\5.png"));
+                                FixedPlattform f = new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\5.png");
+                                f.hasCollision = false;
+                                fixedObjects.add(f);
                                 break;
                             case "6":
                                 fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\6.png"));
