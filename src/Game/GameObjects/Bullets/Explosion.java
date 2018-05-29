@@ -58,7 +58,7 @@ public class Explosion extends GameObject {
         world.worldPartY+= i;
         i = -i;
 
-        animation.move(diffSeconds);
+        animation.update(diffSeconds);
     }
 
     @Override

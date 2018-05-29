@@ -326,6 +326,7 @@ public class MapParser {
                             case "5":
                                 FixedPlattform f = new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\5.png");
                                 f.hasCollision = false;
+                                f.isSolid = false;
                                 fixedObjects.add(f);
                                 break;
                             case "6":
@@ -368,8 +369,7 @@ public class MapParser {
                                 gameObjects.add(new SimpleEnemy(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50));
                                 break;
                             case "19":
-                                //gameObjects.add(new Player(x*50 +j2*50, y*50 + j*50));
-                                gameObjects.add(new Player(774.199999999, y * 50 + j * 50));
+                                gameObjects.add(new Player(x*50 +j2*50, y*50 + j*50));
                                 break;
                             case "20":
                                 backgroundObjects.add(new BackgroundObject(x * 50 + j2 * 50, y * 50 + j * 50, ".\\src\\Game\\Textures\\objects\\Bush (1).png"));

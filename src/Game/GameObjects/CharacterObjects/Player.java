@@ -78,6 +78,7 @@ public class Player extends CharacterObject {
         saveOldPosition();
 
         //high ySpeed => get thinner
+
         if (Math.abs(ySpeed) > 500 && width > 20) {
             width--;
             x += 0.5;
@@ -89,6 +90,7 @@ public class Player extends CharacterObject {
             height--;
             y += 0.5;
         }
+
 
         x += xSpeed * diffSeconds + (calculateHitSpeed(diffSeconds) * hitSide);
         y += ySpeed * diffSeconds;
@@ -112,6 +114,10 @@ public class Player extends CharacterObject {
     public void checkCollision() {
         if (isSolid) {
             List<GameObject> collidingObjects = Physics.getCollisions(this);
+
+            if(collidingObjects.size() == 0){
+                onGround = false;
+            }
 
             for (int i = 0; i < collidingObjects.size(); i++) {
                 GameObject collidingObject = collidingObjects.get(i);

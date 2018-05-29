@@ -10,8 +10,8 @@ public class Animation{
     private int numImages;
     private int currImage = 0;
 
-    private double currSpeed = 0.04;
-    private double speed = 0.04;
+    private double currSpeed;
+    public double speed = 0.04;
     public boolean repeat = false;
 
     private GameObject object;
@@ -20,13 +20,10 @@ public class Animation{
         this.images = images;
         numImages = images.length;
         object = gameObject;
+        currSpeed = speed;
     }
 
-    public void setSpeed(double _speed){
-        speed = _speed;
-    }
-
-    public void move(double diffSeconds){
+    public void update(double diffSeconds){
         currSpeed -= diffSeconds;
 
         if(currSpeed <= 0 && currImage < numImages){

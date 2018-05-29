@@ -72,7 +72,7 @@ public class Fire extends GameObject {
     public void move(double diffSeconds) {
         super.move(diffSeconds);
 
-        animation.move(diffSeconds);
+        animation.update(diffSeconds);
 
         timeout -= diffSeconds;
     }

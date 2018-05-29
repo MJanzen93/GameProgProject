@@ -69,7 +69,7 @@ public class World {
 
     void createWorld() {
 
-        List<List<GameObject>> list = MapParser.desert2();
+        List<List<GameObject>> list = MapParser.desert3();
 
         fixedObjects = list.get(0);
         backgroundObjects = list.get(1);
@@ -218,6 +218,8 @@ public class World {
         }else
             player.parachute = false;
 
+        /*Buggy with parachute*/
+        /*
         if (inputSystem.downPressed && player.onGround) {
             if (player.width < 40) {
                 player.width++;
@@ -234,6 +236,7 @@ public class World {
             player.y--;
             player.checkCollision();
         }
+        */
     }
 
     // adjust the displayed pane of the world according to Avatar and Bounds
