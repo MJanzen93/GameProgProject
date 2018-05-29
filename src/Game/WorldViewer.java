@@ -19,7 +19,7 @@ public class WorldViewer extends JPanel {
     private Graphics graphics;
     private World world;
 
-    private Image background;
+    public Image background;
 
 
     public WorldViewer(InputSystem inputSystem) {

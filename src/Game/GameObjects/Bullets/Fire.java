@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import Game.Animation;
 import Game.Physics;
 import Game.GameObjects.GameObject;
 import Game.GameObjects.CharacterObjects.CharacterObject;
@@ -15,8 +16,6 @@ import Game.GameObjects.CharacterObjects.CharacterObject;
 public class Fire extends GameObject {
 
     private Image[] image;
-    private int imageC = 0;
-    private double delay = 0.04;
     private double timeout = 0.1;
 
     public Fire(double startX, double startY) {
@@ -63,22 +62,17 @@ public class Fire extends GameObject {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        animation = new Animation(image, this);
+        animation.repeat = true;
     }
 
-    int i = 5;
+    Animation animation;
 
     @Override
     public void move(double diffSeconds) {
         super.move(diffSeconds);
-        delay -= diffSeconds;
 
-        if(delay <= 0 && imageC < 32){
-            delay = 0.04;
-            imageC++;
-        }
-        if(imageC >= 32){
-           imageC = 0;
-        }
+        animation.move(diffSeconds);
 
         timeout -= diffSeconds;
     }
@@ -99,13 +93,11 @@ public class Fire extends GameObject {
         }
     }
 
-
     @Override
     public void draw(Graphics graphics) {
         int x = (int) (this.x - world.worldPartX);
         int y = (int) (this.y - world.worldPartY);
 
-        graphics.drawImage(image[imageC], x, y-32, 150, 82, null);
-
+        animation.draw(graphics,x,y-32, 150, 82);
     }
 }

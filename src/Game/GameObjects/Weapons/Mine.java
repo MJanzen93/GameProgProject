@@ -15,12 +15,11 @@ public class Mine extends GameObject {
 
     public Mine(double startX, double startY) {
         super(startX, startY, 10, 5);
-        isFixed = true;
+        isFixed = false;
         isSolid = false;
-        destructible = false;
+        destructible = true;
         hasCollision = true;
         hp = 1;
-        destructible = true;
         maxHP = 1;
         setColor(new Color(0, 0, 0, 0));
     }
@@ -43,7 +42,7 @@ public class Mine extends GameObject {
 
     @Override
     public void move(double diffSeconds) {
-        super.move(diffSeconds);
+        //super.move(diffSeconds);
         if(trigger){
             if(blink){
                 setColor(Color.gray);

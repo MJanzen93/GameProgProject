@@ -45,7 +45,7 @@ public class Player extends CharacterObject {
     public double oldHeight = 0;
 
     public boolean parachute = false;
-    public boolean hasParachuteItem = true;
+    public boolean hasParachuteItem = false;
     public BufferedImage parachuteImage;
 
     public Player(double startX, double startY) {

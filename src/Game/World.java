@@ -54,7 +54,7 @@ public class World {
 
         //Backgound Musik player
         backgroundPlayer = new AudioPlayer();
-         backgroundPlayer.backGroundMusic(".\\src\\Game\\Sounds\\megalovania.wav",0.05);
+        // backgroundPlayer.backGroundMusic(".\\src\\Game\\Sounds\\megalovania.wav",0.25);
 
         allObjects = new ArrayList<>();
         gameObjects = new ArrayList<>();
@@ -69,7 +69,7 @@ public class World {
 
     void createWorld() {
 
-        List<List<GameObject>> list = MapParser.desert3();
+        List<List<GameObject>> list = MapParser.desert2();
 
         fixedObjects = list.get(0);
         backgroundObjects = list.get(1);
@@ -95,7 +95,7 @@ public class World {
                 //print FPS
                 diffMillis = 1;
                 while(true){
-                    //System.out.println(1000 / diffMillis);
+                    System.out.println(1000 / diffMillis);
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {

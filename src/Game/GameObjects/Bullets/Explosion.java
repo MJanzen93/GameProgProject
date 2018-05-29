@@ -1,5 +1,6 @@
 package Game.GameObjects.Bullets;
 
+import Game.Animation;
 import Game.AudioPlayer;
 import Game.GameObjects.GameObject;
 
@@ -42,9 +43,12 @@ public class Explosion extends GameObject {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        animation = new Animation(image, this);
+        animation.repeat = false;
     }
 
     int i = 5;
+    Animation animation;
 
     @Override
     public void move(double diffSeconds) {
@@ -54,13 +58,7 @@ public class Explosion extends GameObject {
         world.worldPartY+= i;
         i = -i;
 
-        if(delay <= 0 && imageC < 7){
-            delay = 0.04;
-            imageC++;
-        }
-        if(imageC >= 7){
-            hp = 0;
-        }
+        animation.move(diffSeconds);
     }
 
     @Override
@@ -74,8 +72,7 @@ public class Explosion extends GameObject {
         int x = (int) (this.x - world.worldPartX);
         int y = (int) (this.y - world.worldPartY);
 
-        graphics.drawImage(image[imageC], x-120, y-80, 240, 160, null);
-
+        animation.draw(graphics, x-120, y-80, 240, 160);
     }
 
     public void explode(){

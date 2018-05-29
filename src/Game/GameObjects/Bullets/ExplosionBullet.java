@@ -15,9 +15,6 @@ public class ExplosionBullet extends BulletObject {
 
     public void setIsPlayerBullet(boolean isPlayerBullet) {
         this.isPlayerBullet = isPlayerBullet;
-        if(isPlayerBullet) {
-            COLOR = new Color(0, 72, 144);
-        }
     }
 
     @Override
