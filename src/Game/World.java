@@ -54,7 +54,7 @@ public class World {
 
         //Backgound Musik player
         backgroundPlayer = new AudioPlayer();
-        // backgroundPlayer.backGroundMusic(".\\src\\Game\\Sounds\\megalovania.wav",0.25);
+         backgroundPlayer.backGroundMusic(".\\src\\Game\\Sounds\\megalovania.wav",0.05);
 
         allObjects = new ArrayList<>();
         gameObjects = new ArrayList<>();
@@ -69,7 +69,7 @@ public class World {
 
     void createWorld() {
 
-        List<List<GameObject>> list = MapParser.desert1();
+        List<List<GameObject>> list = MapParser.desert3();
 
         fixedObjects = list.get(0);
         backgroundObjects = list.get(1);
@@ -95,7 +95,7 @@ public class World {
                 //print FPS
                 diffMillis = 1;
                 while(true){
-                    System.out.println(1000 / diffMillis);
+                    //System.out.println(1000 / diffMillis);
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
@@ -170,25 +170,10 @@ public class World {
             }
 
 
-            //high ySpeed => get thinner
-            if (Math.abs(player.ySpeed) > 500 && player.width > 20) {
-                player.saveOldPosition();
-                player.width--;
-                player.x += 0.5;
-                player.height++;
-                player.y -= 0.5;
-                player.checkCollision();
-            } else if (player.width < 30) {
-                player.saveOldPosition();
-                player.width++;
-                player.x -= 0.5;
-                player.height--;
-                player.y += 0.5;
-                player.checkCollision();
-            }
+
 
             //print FPS
-           System.out.println(1000 / diffMillis);
+           //System.out.println(1000 / diffMillis);
             //System.out.println("X: "+ player.x + "Y: "+ player.y);
 
 

@@ -34,8 +34,8 @@ public abstract class BulletObject extends GameObject {
             hp = 0;
         }
 
-        x+=Math.cos(alfa)*speed*diffSeconds;
-        y+=Math.sin(alfa)*speed*diffSeconds;
+        xSpeed=Math.cos(alfa)*speed;
+        ySpeed=Math.sin(alfa)*speed;
     }
 
     @Override
@@ -48,6 +48,7 @@ public abstract class BulletObject extends GameObject {
                     || collidingObjects.get(0).isSolid)))
                     && !collidingObjects.get(0).isItem) {
                 hp = 0;
+
                 if(collidingObjects.get(0).destructible) {
                     collidingObjects.get(0).hp -= damage;
                 }

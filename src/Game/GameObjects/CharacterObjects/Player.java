@@ -10,6 +10,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 import Game.AudioPlayer;
+import Game.GameObjects.Platfrom.FixedPlattform;
 import Game.InputSystem;
 import Game.Physics;
 import Game.GameObjects.Bomber;
@@ -76,6 +77,19 @@ public class Player extends CharacterObject {
         Physics.applyGravity(this, diffSeconds);
         saveOldPosition();
 
+        //high ySpeed => get thinner
+        if (Math.abs(ySpeed) > 500 && width > 20) {
+            width--;
+            x += 0.5;
+            height++;
+            y -= 0.5;
+        } else if (width < 30) {
+            width++;
+            x -= 0.5;
+            height--;
+            y += 0.5;
+        }
+
         x += xSpeed * diffSeconds + (calculateHitSpeed(diffSeconds) * hitSide);
         y += ySpeed * diffSeconds;
 
@@ -112,22 +126,42 @@ public class Player extends CharacterObject {
                 if (collidingObject.isSolid && !collidingObject.isItem && !collidingObject.isEnemy && !(collidingObject instanceof SWATTeamMate) || collidingObject instanceof Speedy || collidingObject instanceof Mimic) {
 
                     //check if Game.GameObjects.CharacterObject.Player is on Object
+                    if (y + height > collidingObject.y && oldY + oldHeight <= collidingObject.y && ySpeed >= 0) {
 
-                    if (y + height > collidingObject.y && oldY + height <= collidingObject.y && ySpeed >= 0) {
+                        if(collidingObject instanceof FixedPlattform) {
+                            FixedPlattform collidingPlatform = (FixedPlattform) collidingObject;
+                            if(!collidingPlatform.platformType.contains("Top")) {
+                                continue;
+                            }
+                        }
+
+                        /*//safety check whether object is not just on left/right side of wall
+                        if (!(x < collidingObject.x + collidingObject.width && x > collidingObject.x || x + width > collidingObject.x && x + width < collidingObject.x + collidingObject.width)) {
+                            continue;
+                        }*/
+
+                        y = collidingObject.y - height;
+                        ySpeed = 0;
+                        onGround = true;
+                        jumping = false;
+                    } else {
+                        System.out.println("test");
+                    }
+
+                    //check if Game.GameObjects.CharacterObject.Player is touching bottom side of object
+                    if (y < collidingObject.y + collidingObject.height && oldY >= collidingObject.y + collidingObject.height && ySpeed <= 0) {
 
                         //safety check whether object is not just on left/right side of wall
                         if (!(x < collidingObject.x + collidingObject.width && x > collidingObject.x || x + width > collidingObject.x && x + width < collidingObject.x + collidingObject.width)) {
                             continue;
                         }
 
-                        y = collidingObject.y - height;
-                        ySpeed = 0;
-                        onGround = true;
-                        jumping = false;
-                    }
-
-                    //check if Game.GameObjects.CharacterObject.Player is touching bottom side of object
-                    if (y < collidingObject.y + collidingObject.height && oldY >= collidingObject.y + collidingObject.height && ySpeed <= 0) {
+                        if(collidingObject instanceof FixedPlattform) {
+                            FixedPlattform collidingPlatform = (FixedPlattform) collidingObject;
+                            if(!collidingPlatform.platformType.contains("Bottom")) {
+                                continue;
+                            }
+                        }
 
                         y = collidingObject.y + collidingObject.height;
                         ySpeed *= 0.99;
@@ -142,19 +176,30 @@ public class Player extends CharacterObject {
                     if (x + width > collidingObject.x && oldX + oldWidth <= collidingObject.x && xSpeed >= 0 ) {
                         x = collidingObject.x - width - 1;
                         xSpeed = 0;
-                        if (ySpeed >= 0) {
-                            ySpeed *= 0.5;
-                            jumping = false;
+                        if(collidingObject instanceof FixedPlattform) {
+                            FixedPlattform collidingPlatform = (FixedPlattform) collidingObject;
+                            if(collidingPlatform.platformType.contains("Left")){
+                                if (ySpeed >= 0) {
+                                    ySpeed *= 0.5;
+                                    jumping = false;
+                                }
+                            }
                         }
+
                     }
 
                     //right side
                     if (x < collidingObject.x + collidingObject.width && oldX >= collidingObject.x + collidingObject.width && xSpeed <= 0) {
                         x = collidingObject.x + collidingObject.width;
                         xSpeed = 0;
-                        if (ySpeed >= 0) {
-                            ySpeed *= 0.5;
-                            jumping = false;
+                        if(collidingObject instanceof FixedPlattform) {
+                            FixedPlattform collidingPlatform = (FixedPlattform) collidingObject;
+                            if(collidingPlatform.platformType.contains("Right")){
+                                if (ySpeed >= 0) {
+                                    ySpeed *= 0.5;
+                                    jumping = false;
+                                }
+                            }
                         }
                     }
                 }

@@ -43,6 +43,8 @@ public abstract class GameObject {
 
     //Object has collisions (theoretical)
     public boolean hasCollision = true;
+    public boolean colVertical = false;
+    public boolean colHorizontal = false;
     //Object is Item
     public boolean isItem = false;
 

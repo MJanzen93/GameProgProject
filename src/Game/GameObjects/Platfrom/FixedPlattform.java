@@ -8,6 +8,8 @@ import java.io.IOException;
 
 public class FixedPlattform extends Plattform {
 
+    public String platformType = "";
+
     public FixedPlattform(double startX, double startY, int width, int height, String imagePath) {
         super(startX, startY, width, height);
         try {
@@ -22,6 +24,23 @@ public class FixedPlattform extends Plattform {
       //  hp = 5;
        // maxHP = 5;
         
+    }
+
+    public FixedPlattform(double startX, double startY, int width, int height, String imagePath, String platformType) {
+        super(startX, startY, width, height);
+        this.platformType = platformType;
+        try {
+            image = ImageIO.read(new File(imagePath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        /*Funny haha*/
+        // destructible = true;
+        //  hp = 5;
+        // maxHP = 5;
+
     }
 
     @Override
