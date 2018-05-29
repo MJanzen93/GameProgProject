@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="240" height="120" tilewidth="50" tileheight="50" infinite="1" nextobjectid="1">
- <layer name="Kachelebene 1" width="240" height="120">
-  <data encoding="csv"/>
- </layer>
-</map>

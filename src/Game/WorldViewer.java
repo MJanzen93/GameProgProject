@@ -30,13 +30,8 @@ public class WorldViewer extends JPanel {
         this.addKeyListener(inputSystem);
         this.addMouseListener(inputSystem);
         this.addMouseMotionListener(inputSystem);
-        try {
-            background = ImageIO.read(new File(".\\src\\Game\\Textures\\BG.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+}
 
-    }
 
     public void clear() {
         //graphics.setColor(new Color(192, 253, 255));

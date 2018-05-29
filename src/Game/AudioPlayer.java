@@ -65,7 +65,7 @@ public class AudioPlayer {
 			// set Volume 0.0 min to 1.0 max
 			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 			float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
-			if(80>calculateVolume(Math.abs(distanceX), Math.abs(distanceY))) {
+			if(80>dB-calculateVolume(Math.abs(distanceX), Math.abs(distanceY))) {
 					gainControl.setValue(dB - calculateVolume(Math.abs(distanceX), Math.abs(distanceY)));
 					clip.start();
 			}

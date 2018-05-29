@@ -43,20 +43,20 @@ public class SWATItem extends ItemObject {
 			world.gameObjects.add(new SWATTeamMate(world.player.x - world.player.width,
 					world.player.y - world.player.height, 30, 30));
 			world.player.mate = true;
-		} else {
+		} else if(obj instanceof Stealer) {
 			Random rn = new Random();
 			switch (rn.nextInt(5)) {
 			case 0:
-				new SimpleEnemy(obj.x + 30, obj.y - 20, 30, 30);
+				world.gameObjects.add(new SimpleEnemy(obj.x + 30, obj.y - 20, 30, 30));
 				break;
 			case 1:
-				new FlyingEnemy(obj.x + 30, obj.y - 50);
+				world.gameObjects.add(new FlyingEnemy(obj.x + 30, obj.y - 50));
 				break;
 			case 2:
-				new Stealer(obj.x + 30, obj.y - 20, 30, 30);
+				world.gameObjects.add(new Stealer(obj.x + 30, obj.y - 20, 30, 30));
 				break;
 			case 3:
-				new Exploder(obj.x + 30, obj.y - 20, 30, 30);
+				world.gameObjects.add(new Exploder(obj.x + 30, obj.y - 20, 30, 30));
 				break;
 			}
 		}

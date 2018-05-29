@@ -1,14 +1,16 @@
 package Game.GameObjects.CharacterObjects.Enemies;
 
-import Game.GameObjects.CharacterObjects.Player;
-import Game.GameObjects.GameObject;
-import Game.Physics;
-
-import javax.imageio.ImageIO;
-import java.awt.*;
+import java.awt.Graphics2D;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
+import javax.imageio.ImageIO;
+
+import Game.Physics;
+import Game.GameObjects.GameObject;
+import Game.GameObjects.SWATTeamMate;
+import Game.GameObjects.CharacterObjects.Player;
 
 public class Spikes extends GameObject {
 
@@ -49,13 +51,19 @@ public class Spikes extends GameObject {
         List<GameObject> collisions =Physics.getCollisions(this);
 
         for (int i = 0; i < collisions.size(); i++){
-            if(collisions.get(i).isPlayer){
+            if(collisions.get(i) instanceof Player){
                 Player player = (Player)collisions.get(i);
                 if(player.destructible){
                     player.hp --;
                     player.ySpeed = -800;
-                }
+                }  
             }
+            if(collisions.get(i) instanceof SWATTeamMate){
+            	SWATTeamMate SWATTeamMate = (SWATTeamMate)collisions.get(i);
+               
+                	SWATTeamMate.hp --;
+                	SWATTeamMate.ySpeed = -800;
         }
     }
+}
 }

@@ -1,6 +1,7 @@
 package Game.GameObjects.Bullets;
 
 import Game.GameObjects.GameObject;
+import Game.GameObjects.SWATTeamMate;
 import Game.GameObjects.Platfrom.FixedPlattform;
 import Game.Physics;
 
@@ -34,11 +35,9 @@ public class ShootBullet extends BulletObject {
     public void checkCollision() {
         if(isSolid){
             List<GameObject> collidingObjects = Physics.getCollisions(this);
-            if(collidingObjects.size() > 0 && collidingObjects.get(0).isSolid
-                    && ((isPlayerBullet && !collidingObjects.get(0).isPlayer)
-                    || (!isPlayerBullet && !collidingObjects.get(0).isEnemy && (collidingObjects.get(0).isPlayer
-                    || collidingObjects.get(0).isSolid)))
-                    && !collidingObjects.get(0).isItem) {
+            if(collidingObjects.size() > 0 && collidingObjects.get(0).isSolid&& ((isPlayerBullet && !collidingObjects.get(0).isPlayer)|| (!isPlayerBullet && !collidingObjects.get(0).isEnemy 
+            		&& (collidingObjects.get(0).isPlayer|| collidingObjects.get(0).isSolid)))
+                    && !collidingObjects.get(0).isItem&&!(isPlayerBullet && collidingObjects.get(0) instanceof SWATTeamMate)) {
                 hp = 0;
                 if(collidingObjects.get(0) instanceof FixedPlattform) {
 

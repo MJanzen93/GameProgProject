@@ -3,10 +3,15 @@ package Game;
 
 import static java.lang.Thread.sleep;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import Game.GameObjects.CharacterObjects.Enemies.MiniEnemy;
+
+import javax.imageio.ImageIO;
+
 import Game.GameObjects.GameObject;
 import Game.GameObjects.Platfrom.Plattform;
 import Game.GameObjects.SWATTeamMate;
@@ -70,7 +75,18 @@ public class World {
     }
 
     void createWorld() {
-        List<List<GameObject>> list = MapParser.desert2();
+
+
+
+        List<List<GameObject>> list = MapParser.summer1();
+        try {
+			//wViewer.background = ImageIO.read(new File(".\\src\\Game\\Textures\\DBG.png"));
+			wViewer.background = ImageIO.read(new File(".\\src\\Game\\Textures\\SBG.png"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
 
         fixedObjects = list.get(0);
         backgroundObjects = list.get(1);
@@ -95,7 +111,7 @@ public class World {
                 //print FPS
                 diffMillis = 1;
                 while(true){
-                    System.out.println(1000 / diffMillis);
+                    //System.out.println(1000 / diffMillis);
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
@@ -119,7 +135,7 @@ public class World {
             diffMillis = (currentTick - lastTick);
 
             if (diffMillis < FRAME_MINIMUM_MILLIS) {
-                try {
+               try {
                     sleep(FRAME_MINIMUM_MILLIS - diffMillis);
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -180,7 +196,7 @@ public class World {
 
             //print FPS
            //System.out.println(1000 / diffMillis);
-            //System.out.println("X: "+ player.x + "Y: "+ player.y);
+            System.out.println("X: "+ player.x + "Y: "+ player.y);
 
 
             if(gameOver) {
@@ -227,7 +243,7 @@ public class World {
 
         if(player.hasParachuteItem && inputSystem.downPressed && !player.onGround){
             player.parachute = true;
-            player.ySpeed = 50;
+            player.ySpeed = 110;
         }else
             player.parachute = false;
 
