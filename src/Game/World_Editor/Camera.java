@@ -10,7 +10,7 @@ public class Camera extends JPanel {
             GraphicsEnvironment.getLocalGraphicsEnvironment().
                     getDefaultScreenDevice().getDefaultConfiguration();
     private BufferedImage imageBuffer;
-    private Graphics      graphics;
+    private Graphics2D     graphics;
     private World world;
 
 
@@ -19,7 +19,7 @@ public class Camera extends JPanel {
         this.setSize(ConstantValues.WORLDPART_WIDTH,ConstantValues.WORLDPART_HEIGHT);
         imageBuffer = graphicsConf.createCompatibleImage(
                 this.getWidth(), this.getHeight());
-        graphics = imageBuffer.getGraphics();
+        graphics = (Graphics2D) imageBuffer.getGraphics();
         this.addKeyListener(inputSystem);
         this.addMouseListener(inputSystem);
         this.addMouseMotionListener(inputSystem);

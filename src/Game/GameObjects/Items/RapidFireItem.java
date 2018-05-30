@@ -24,7 +24,7 @@ public class RapidFireItem extends ItemObject {
     }
 
     @Override
-    public void draw(Graphics graphics) {
+    public void draw(Graphics2D graphics) {
         super.draw(graphics);
     }
 

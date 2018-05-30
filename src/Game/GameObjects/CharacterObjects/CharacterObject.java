@@ -1,7 +1,6 @@
 package Game.GameObjects.CharacterObjects;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
 
 import Game.GameObjects.GameObject;
 
@@ -53,7 +52,7 @@ public class CharacterObject extends GameObject {
     }
 
     @Override
-    public void draw(Graphics graphics) {
+    public void draw(Graphics2D graphics) {
         super.draw(graphics);
         int x = (int) (this.x - world.worldPartX);
         int y = (int) (this.y - world.worldPartY);

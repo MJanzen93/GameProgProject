@@ -1,6 +1,6 @@
 package Game.GameObjects.Items;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
@@ -32,7 +32,7 @@ public class SWATItem extends ItemObject {
 	}
 
 	@Override
-	public void draw(Graphics graphics) {
+	public void draw(Graphics2D graphics) {
 		super.draw(graphics);
 	}
 

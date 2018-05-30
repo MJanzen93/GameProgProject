@@ -57,7 +57,7 @@ public abstract class BulletObject extends GameObject {
     }
 
     @Override
-    public void draw(Graphics graphics) {
+    public void draw(Graphics2D graphics) {
         super.draw(graphics);
     }
 }

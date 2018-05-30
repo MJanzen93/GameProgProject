@@ -50,7 +50,7 @@ public class Animation{
         }
     }
 
-    public void draw(Graphics graphics, int x, int y, int width, int height){
+    public void draw(Graphics2D graphics, int x, int y, int width, int height){
         if(useFlippedImages){
             graphics.drawImage(flippedImages[currImage],x, y, width, height, null);
         } else {

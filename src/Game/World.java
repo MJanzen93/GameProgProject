@@ -53,6 +53,7 @@ public class World {
 
     public void init() {
 
+
         //Backgound Musik player
         backgroundPlayer = new AudioPlayer();
         // backgroundPlayer.backGroundMusic(".\\src\\Game\\Sounds\\megalovania.wav",0.25);
@@ -69,7 +70,7 @@ public class World {
     }
 
     void createWorld() {
-        List<List<GameObject>> list = MapParser.desert2();
+        List<List<GameObject>> list = MapParser.desert3();
 
         fixedObjects = list.get(0);
         backgroundObjects = list.get(1);
@@ -230,14 +231,12 @@ public class World {
         }else
             player.parachute = false;
 
-        /*Buggy with parachute*/
-        /*
         if (inputSystem.downPressed && player.onGround) {
             if (player.width < 40) {
                 player.width++;
                 player.x -= 0.5;
                 player.height--;
-                player.y += 0.5;
+                player.y += 1;
                 player.checkCollision();
             }
         } else if (player.width > 30) {
@@ -248,7 +247,6 @@ public class World {
             player.y--;
             player.checkCollision();
         }
-        */
     }
 
     // adjust the displayed pane of the world according to Avatar and Bounds

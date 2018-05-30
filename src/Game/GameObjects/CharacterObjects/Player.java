@@ -42,8 +42,14 @@ public class Player extends CharacterObject {
     
     public boolean mate = false;
 
+    private double[] oldXArr;
+    private double[] oldYArr;
+
     public double oldWidth = 0;
     public double oldHeight = 0;
+
+    private double[] oldWidthArr;
+    private double[] oldHeightArr;
 
     public boolean parachute = false;
     public boolean hasParachuteItem = false;
@@ -51,6 +57,10 @@ public class Player extends CharacterObject {
 
     public Player(double startX, double startY) {
         super(startX, startY, 30, 30);
+        oldXArr = new double[]{x, x, x, x, x, x, x, x, x, x};
+        oldYArr = new double[]{y, y, y, y, y, y, y, y, y, y};
+        oldWidthArr = new double[]{width, width, width, width, width, width, width, width, width, width};
+        oldHeightArr = new double[]{height, height, height, height, height, height, height, height, height, height};
         destructible = true;
         hp = 10;
         maxHP = 10;
@@ -214,21 +224,51 @@ public class Player extends CharacterObject {
     }
 
     @Override
-    public void draw(Graphics graphics) {
+    public void draw(Graphics2D graphics) {
+        if(Math.abs(xForce) > 300) {
+            float alpha = 0f;
+            for(int i = this.oldXArr.length-1; i >= 0; i--) {
+                alpha += 0.05;
+                graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+                graphics.drawImage(image, (int) (this.oldXArr[i] - world.worldPartX), (int) (this.oldYArr[i] - world.worldPartY), (int) this.oldWidthArr[i], (int) this.oldHeightArr[i], null, null);
+            }
+            graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
+        }
+
         super.draw(graphics);
+
         int x = (int) (this.x - world.worldPartX);
         int y = (int) (this.y - world.worldPartY);
 
         if(parachute && hasParachuteItem){
             graphics.drawImage(parachuteImage, x-35, y-100, 100,100, null, null);
         }
+
+
     }
 
     public void saveOldPosition() {
-        this.oldX = x;
-        this.oldY = y;
-        this.oldWidth = width;
-        this.oldHeight = height;
+        this.oldX = this.x;
+        this.oldY = this.y;
+
+
+        if(xForce > 300 || xSpeed > 300) {
+            for(int i = this.oldXArr.length-1; i > 0; i--) {
+                this.oldXArr[i] = this.oldXArr[i-1];
+                this.oldYArr[i] = this.oldYArr[i-1];
+                this.oldWidthArr[i] = this.oldWidthArr[i-1];
+                this.oldHeightArr[i] = this.oldHeightArr[i-1];
+            }
+            this.oldXArr[0] = this.x;
+            this.oldYArr[0] = this.y;
+            this.oldWidthArr[0] = this.width;
+            this.oldHeightArr[0] = this.height;
+        }
+
+
+
+        this.oldWidth = this.width;
+        this.oldHeight = this.height;
     }
 
 
