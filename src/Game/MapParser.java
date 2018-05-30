@@ -485,14 +485,14 @@ public class MapParser {
 
                             //EDIT
                             case "1":
-                                FixedPlattform fp14 = new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\14.png");
+                                FixedPlattform fp14 = new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\14.png", "TopLeftBottom");
                                 fp14.destructible = true;
                                 fp14.hp = 5;
                                 fp14.maxHP = 5;
                                 fixedObjects.add(fp14);
                                 break;
                             case "2":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\14.png"));
+                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\14.png", "TopLeftBottom"));
                                 break;
                             case "3":
                                 fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\10.png", "TopRight"));

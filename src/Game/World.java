@@ -8,6 +8,7 @@ import java.util.List;
 
 import Game.GameObjects.CharacterObjects.Enemies.MiniEnemy;
 import Game.GameObjects.GameObject;
+import Game.GameObjects.Platfrom.Plattform;
 import Game.GameObjects.SWATTeamMate;
 import Game.GameObjects.CharacterObjects.Player;
 
@@ -70,7 +71,7 @@ public class World {
 
     void createWorld() {
 
-        List<List<GameObject>> list = MapParser.desert3();
+        List<List<GameObject>> list = MapParser.desert2();
 
         fixedObjects = list.get(0);
         backgroundObjects = list.get(1);
@@ -148,6 +149,9 @@ public class World {
                     if (allObjects.get(i).get(j).hp <= 0) {
                         if (allObjects.get(i).get(j) instanceof SWATTeamMate)
                             player.mate = false;
+                        if(allObjects.get(i).get(j) instanceof Plattform) {
+                            ((Plattform) allObjects.get(i).get(j)).breakApart();
+                        }
                         allObjects.get(i).remove(allObjects.get(i).get(j));
                     }
                 }

@@ -40,12 +40,34 @@ public class ShootBullet extends BulletObject {
                     } else if(collidingPlatform.y + collidingPlatform.height < oldY && collidingPlatform.platformType.contains("Bottom")) {
                         hitDir = "Bottom";
                     }
-                    /*
-                    world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
-                    world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
-                    world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
-                    world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
-                    */
+
+                    /*if(!hitDir.equals("")) {
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                        world.fixedObjects.add(new Spark(x+ width/2,y + height/2, xSpeed, ySpeed, collidingPlatform, hitDir));
+                    }*/
+
                 }
 
 

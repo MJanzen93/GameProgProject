@@ -29,6 +29,10 @@ public class BackgroundObject extends GameObject {
         height = image.getHeight();
     }
 
+    public BackgroundObject(double startX, double startY) {
+        super(startX, startY, 0, 0);
+    }
+
     @Override
     public void draw(Graphics graphics) {
         int x = (int) (this.x - world.worldPartX);

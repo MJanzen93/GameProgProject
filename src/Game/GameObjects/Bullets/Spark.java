@@ -39,7 +39,11 @@ public class Spark extends GameObject {
     public void move(double diffSeconds) {
         super.move(diffSeconds);
         delay -= diffSeconds;
+
         fadingTime -= diffSeconds;
+        if(fadingTime < 0) {
+            fadingTime = 0;
+        }
     }
 
 
@@ -63,8 +67,8 @@ public class Spark extends GameObject {
 
         xPoints[0] = x;
         yPoints[0] = y;
-        int inc = -1;
-        /*if(xDir == 0) {
+        /*int inc = -1;
+        if(xDir == 0) {
             if(yDir > 0) {
                 inc = 1;
             }
@@ -83,22 +87,33 @@ public class Spark extends GameObject {
 
         }*/
         if(hitDir.equals("Top") || hitDir.equals("Bottom")) {
-            if(yDir > 0) {
-                inc = 1;
-            }
             for(int i = 1; i < 10; i++) {
-                xPoints[i] = x-(int)(xDir/200*i);
-                yPoints[i] = y+(int)(yDir/200*i*particleOffset/10);
+                yPoints[i] = +(int)(yDir/200*i*particleOffset/10);
+                xPoints[i] = -(int)(xDir/200*i)+yPoints[i];
             }
         } else if(hitDir.equals("Left") || hitDir.equals("Right")) {
-            if(xDir > 0) {
-                inc = 1;
-            }
             for(int i = 1; i < 10; i++) {
-                xPoints[i] = x+(int)(xDir/200*i*particleOffset/10);
-                yPoints[i] = y-(int)(yDir/200*i);
+                xPoints[i] = +(int)(xDir/200*i*particleOffset/10);
+                yPoints[i] = -(int)(yDir/200*i);
             }
 
+        }
+
+        int[] xPoints2 = new int[20];
+        int[] yPoints2 = new int[20];
+
+        xPoints2[0] = x;
+        yPoints2[0] = y;
+        for(int i = 1; i < 10; i++) {
+            xPoints2[i] = xPoints[i]/2;
+            yPoints2[i] = yPoints[i]/2;
+        }
+
+        for(int i = 1; i < 10; i++) {
+            xPoints[i] += x;
+            yPoints[i] += y;
+            xPoints2[i] += x;
+            yPoints2[i] += y;
         }
 
 
@@ -113,12 +128,11 @@ public class Spark extends GameObject {
 
 
 
-
-        if(fadingTime > 0) {
-            if(imageC < 10){
+        if(fadingTime > 0 || imageC < 10) {
                 graphics.setColor(new Color(255, 0, 0, (int)(fadingTime*100)));
                 graphics.drawPolyline(xPoints, yPoints, imageC);
-            }
+                graphics.setColor(new Color(255, 255, 0, (int)(fadingTime*100)));
+                graphics.drawPolyline(xPoints2, yPoints2, imageC);
         }else{
             hp = 0;
         }

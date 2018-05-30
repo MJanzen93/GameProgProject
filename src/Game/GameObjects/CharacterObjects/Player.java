@@ -150,8 +150,6 @@ public class Player extends CharacterObject {
                         ySpeed = 0;
                         onGround = true;
                         jumping = false;
-                    } else {
-                        System.out.println("test");
                     }
 
                     //check if Game.GameObjects.CharacterObject.Player is touching bottom side of object

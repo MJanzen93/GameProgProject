@@ -1,5 +1,6 @@
 package Game.GameObjects.Platfrom;
 
+import Game.GameObjects.BackgroundObjects.BrokenPart;
 import Game.GameObjects.GameObject;
 
 import java.awt.*;
@@ -25,5 +26,12 @@ public abstract class Plattform extends GameObject {
     @Override
     public void checkCollision() {
         super.checkCollision();
+    }
+
+    public void breakApart() {
+        world.fixedObjects.add(new BrokenPart(this, 1));
+        world.fixedObjects.add(new BrokenPart(this, 2));
+        world.fixedObjects.add(new BrokenPart(this, 3));
+        world.fixedObjects.add(new BrokenPart(this, 4));
     }
 }
