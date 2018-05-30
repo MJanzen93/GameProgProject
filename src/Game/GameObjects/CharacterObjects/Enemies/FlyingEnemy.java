@@ -1,11 +1,13 @@
 package Game.GameObjects.CharacterObjects.Enemies;
 
 import Game.Animation;
+import Game.GameObjects.BackgroundObjects.BrokenPart;
 import Game.GameObjects.Bullets.SpiderBullet;
 
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import javax.imageio.ImageIO;
 
@@ -16,7 +18,7 @@ public class FlyingEnemy extends EnemyObject {
 	private Image[] images;
 
 	public FlyingEnemy(double startX, double startY) {
-		super(startX+115, startY+86, 70, 50);
+		super(startX, startY, 130, 90);
 		isSolid = true;
 		isFixed = true;
 		hasCollision = true;
@@ -29,27 +31,12 @@ public class FlyingEnemy extends EnemyObject {
 		//width = image.getWidth();
 		//height = image.getHeight();
 
+		DecimalFormat dFormat = new DecimalFormat("00");
+
 		try {
-			images[0] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_00_delay-0.04s.gif"));
-			images[1] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_01_delay-0.04s.gif"));
-			images[2] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_02_delay-0.04s.gif"));
-			images[3] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_03_delay-0.04s.gif"));
-			images[4] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_04_delay-0.04s.gif"));
-			images[5] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_05_delay-0.04s.gif"));
-			images[6] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_06_delay-0.04s.gif"));
-			images[7] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_07_delay-0.04s.gif"));
-			images[8] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_08_delay-0.04s.gif"));
-			images[9] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_09_delay-0.04s.gif"));
-			images[10] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_10_delay-0.04s.gif"));
-			images[11] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_11_delay-0.04s.gif"));
-			images[12] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_12_delay-0.04s.gif"));
-			images[13] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_13_delay-0.04s.gif"));
-			images[14] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_14_delay-0.04s.gif"));
-			images[15] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_15_delay-0.04s.gif"));
-			images[16] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_16_delay-0.04s.gif"));
-			images[17] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_17_delay-0.04s.gif"));
-			images[18] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_18_delay-0.04s.gif"));
-			images[19] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_19_delay-0.04s.gif"));
+			for(int i = 0; i < images.length; i++) {
+				images[i] = ImageIO.read(new File(".\\src\\Game\\Textures\\BatAnimation\\frame_" + dFormat.format(i) + ".png"));
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -91,7 +78,16 @@ public class FlyingEnemy extends EnemyObject {
 			}
 		}
 
+		if(xSpeed < 0) {
+			animation.useFlippedImages = true;
+		} else if (xSpeed > 0) {
+			animation.useFlippedImages = false;
+		}
 		animation.update(diffSeconds);
+
+		if(hp <= 0) {
+			breakApart();
+		}
 
 	}
 
@@ -100,7 +96,10 @@ public class FlyingEnemy extends EnemyObject {
 		int x = (int) (this.x - world.worldPartX);
 		int y = (int) (this.y - world.worldPartY);
 
-		animation.draw(graphics, x-115, y-86, 300, 223);
+		graphics.setColor(Color.RED);
+		graphics.drawRect(x, y, width, height);
+
+		animation.draw(graphics, x-70, y-30, 284, 210);
 
 
 		if(destructible && this.maxHP > this.hp){
@@ -130,5 +129,12 @@ public class FlyingEnemy extends EnemyObject {
 
 	@Override
 	public void checkCollision() {
+	}
+
+	public void breakApart() {
+		world.fixedObjects.add(new BrokenPart(this, 1));
+		world.fixedObjects.add(new BrokenPart(this, 2));
+		world.fixedObjects.add(new BrokenPart(this, 3));
+		world.fixedObjects.add(new BrokenPart(this, 4));
 	}
 }

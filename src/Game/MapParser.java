@@ -155,7 +155,7 @@ public class MapParser {
                                 fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\8.png", "TopLeft"));
                                 break;
                             case "9":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\9.png", "Bottom"));
+                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\9.png", "TopBottom"));
                                 break;
                             case "10":
                                 fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\10.png", "TopRight"));
@@ -333,7 +333,7 @@ public class MapParser {
                                 fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\8.png"));
                                 break;
                             case "9":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\9.png", "Bottom"));
+                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\9.png", "TopBottom"));
                                 break;
                             case "10":
                                 fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\10.png"));
@@ -507,7 +507,7 @@ public class MapParser {
                                 fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\8.png", "TopLeft"));
                                 break;
                             case "7":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\9.png", "Bottom"));
+                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\9.png", "TopBottom"));
                                 break;
                             case "8":
                                 fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\4.png", "Left"));

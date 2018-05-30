@@ -41,6 +41,7 @@ public class World {
     public double worldPartY = 0;
 
     private boolean gameOver;
+    private double gameOverTime = 3;
 
     // defines maximum frame rate
     private static final int FRAME_MINIMUM_MILLIS = 1;
@@ -71,7 +72,7 @@ public class World {
 
     void createWorld() {
 
-        List<List<GameObject>> list = MapParser.desert3();
+        List<List<GameObject>> list = MapParser.desert2();
 
         fixedObjects = list.get(0);
         backgroundObjects = list.get(1);
@@ -119,7 +120,7 @@ public class World {
 
     void run() {
         long lastTick = System.currentTimeMillis();
-        while (!gameOver) {
+        while (true) {
             // calculate elapsed time
             //
             long currentTick = System.currentTimeMillis();
@@ -149,8 +150,11 @@ public class World {
                     if (allObjects.get(i).get(j).hp <= 0) {
                         if (allObjects.get(i).get(j) instanceof SWATTeamMate)
                             player.mate = false;
-                        if(allObjects.get(i).get(j) instanceof Plattform) {
+                        /*if(allObjects.get(i).get(j) instanceof Plattform) {
                             ((Plattform) allObjects.get(i).get(j)).breakApart();
+                        }*/
+                        if(player.hp == 0){
+                            gameOver = true;
                         }
                         allObjects.get(i).remove(allObjects.get(i).get(j));
                     }
@@ -187,6 +191,13 @@ public class World {
             //System.out.println("X: "+ player.x + "Y: "+ player.y);
 
 
+            if(gameOver) {
+                gameOverTime -= diffSeconds;
+            }
+
+            if(gameOverTime < 0) {
+                return;
+            }
         }
     }
 

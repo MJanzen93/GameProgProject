@@ -21,6 +21,9 @@ public abstract class Plattform extends GameObject {
     @Override
     public void move(double diffSeconds) {
         super.move(diffSeconds);
+        if(hp == 0) {
+            breakApart();
+        }
     }
 
     @Override
