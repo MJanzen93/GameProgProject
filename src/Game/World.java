@@ -87,12 +87,6 @@ public class World {
             }
         }
 
-        gameObjects.add(new MiniEnemy(50, - 15));
-        gameObjects.add(new MiniEnemy(100, - 15));
-        gameObjects.add(new MiniEnemy(150, - 15));
-        gameObjects.add(new MiniEnemy(200, - 15));
-        gameObjects.add(new MiniEnemy(250, - 15));
-
         allObjects.add(gameObjects);
         allObjects.add(fixedObjects);
         allObjects.add(bulletObjects);
