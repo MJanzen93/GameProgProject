@@ -101,7 +101,7 @@ public class FlyingEnemy extends EnemyObject {
 		int y = (int) (this.y - world.worldPartY);
 
 		animation.draw(graphics, x-115, y-86, 300, 223);
-		
+
 
 		if(destructible && this.maxHP > this.hp){
 

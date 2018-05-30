@@ -4,15 +4,13 @@ import Game.Animation;
 import Game.AudioPlayer;
 import Game.GameObjects.GameObject;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
-import javax.imageio.ImageIO;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-
-public class Explosion extends GameObject {
+public class Explosion2 extends GameObject {
 
     private int radius = 200;
     private boolean isPlayerExplosion = false;
@@ -22,7 +20,7 @@ public class Explosion extends GameObject {
     int i = 5;
     private Animation animation;
 
-    public Explosion(double startX, double startY, int radius, boolean isPlayerExplosion) {
+    public Explosion2(double startX, double startY, int radius, boolean isPlayerExplosion) {
         super(startX, startY, 0, 0);
         hasCollision = false;
         isSolid = false;
@@ -31,17 +29,20 @@ public class Explosion extends GameObject {
         hp = 1;
         this.radius = radius;
         this.isPlayerExplosion = isPlayerExplosion;
-        image = new Image[7];
+        image = new Image[40];
+
+        DecimalFormat format = new DecimalFormat("00");
 
         try {
             for (int i = 0; i < image.length; i++){
-                image[i] = ImageIO.read(new File(".\\src\\Game\\Textures\\ExplosionAnimation\\frame_" + i + "_delay-0.1s.gif"));
+                image[i] = ImageIO.read(new File(".\\src\\Game\\Textures\\ExplosionAnimation2\\frame_" + format.format(i) + "_delay-0.04s.gif"));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         animation = new Animation(image, this);
         animation.repeat = false;
+        animation.speed = 0.01;
     }
 
     @Override
@@ -65,7 +66,7 @@ public class Explosion extends GameObject {
         int x = (int) (this.x - world.worldPartX);
         int y = (int) (this.y - world.worldPartY);
 
-        animation.draw(graphics, x-120, y-80, 240, 160);
+        animation.draw(graphics, x-125, y-125, 240, 160);
     }
 
     public void explode(){

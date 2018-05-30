@@ -1,6 +1,7 @@
 package Game.GameObjects.Weapons;
 
 import Game.GameObjects.Bullets.Explosion;
+import Game.GameObjects.Bullets.Explosion2;
 import Game.GameObjects.GameObject;
 import Game.Physics;
 
@@ -52,7 +53,7 @@ public class Mine extends GameObject {
                 blink = !blink;
             }
             if(counter <= 0){
-                Explosion explosion = new Explosion(x, y, 200, false);
+                Explosion2 explosion = new Explosion2(x, y, 200, false);
                 world.fixedObjects.add(explosion);
                 explosion.explode();
                 hp = 0;
