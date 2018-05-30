@@ -1,11 +1,15 @@
 package Game.GameObjects.CharacterObjects.Enemies;
 
+import Game.GameObjects.Bullets.SpiderBullet;
+
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
 public class FlyingEnemy extends EnemyObject {
+
+	public double specialMoveCooldown = 3;
 
 	public FlyingEnemy(double startX, double startY) {
 		super(startX, startY, 0, 0);
@@ -45,8 +49,25 @@ public class FlyingEnemy extends EnemyObject {
 				bulletCooldown = 1;
 				shootBullet();
 			}
+
+			if(specialMoveCooldown > 0) {
+				specialMoveCooldown -= diffSeconds;
+			} else {
+				specialMove();
+				specialMoveCooldown = 3;
+			}
 		}
 
+	}
+
+	private void specialMove(){
+		//SpiderBullet
+		SpiderBullet bullet1 = new SpiderBullet(x + width/2, y + height/2, 5, 5);
+		bullet1.alfa  =  Math.atan2(world.player.y + world.player.height/2 - y-height/2, world.player.x + world.player.width/2 - x-width/2);
+		bullet1.range = 500;
+		bullet1.speed = 1000;
+		bullet1.isPlayerBullet = false;
+		world.gameObjects.add(bullet1);
 	}
 
 	@Override

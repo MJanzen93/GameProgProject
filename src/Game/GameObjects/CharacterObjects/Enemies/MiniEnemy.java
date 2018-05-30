@@ -26,10 +26,10 @@ public class MiniEnemy extends EnemyObject {
         double distanceToPlayer = world.player.x - x;
 
         if(Math.abs(distanceToPlayer) < 500 || maxHP > hp) {
-            if (distanceToPlayer > 0) {
-                xSpeed = 100;
+            if (distanceToPlayer > 1) {
+                xSpeed = 250;
             } else if (distanceToPlayer < 0) {
-                xSpeed = -100;
+                xSpeed = -250;
             } else {
                 xSpeed = 0;
             }
