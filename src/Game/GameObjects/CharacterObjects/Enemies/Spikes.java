@@ -51,8 +51,10 @@ public class Spikes extends GameObject {
         for (int i = 0; i < collisions.size(); i++){
             if(collisions.get(i).isPlayer){
                 Player player = (Player)collisions.get(i);
-                player.hp --;
-                player.ySpeed = -800;
+                if(player.destructible){
+                    player.hp --;
+                    player.ySpeed = -800;
+                }
             }
         }
     }

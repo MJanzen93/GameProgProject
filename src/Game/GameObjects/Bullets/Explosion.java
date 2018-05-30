@@ -18,8 +18,9 @@ public class Explosion extends GameObject {
     private boolean isPlayerExplosion = false;
 
     private Image[] image;
-    private int imageC = 0;
-    private double delay = 0.04;
+
+    int i = 5;
+    private Animation animation;
 
     public Explosion(double startX, double startY, int radius, boolean isPlayerExplosion) {
         super(startX, startY, 0, 0);
@@ -47,13 +48,9 @@ public class Explosion extends GameObject {
         animation.repeat = false;
     }
 
-    int i = 5;
-    Animation animation;
-
     @Override
     public void move(double diffSeconds) {
         super.move(diffSeconds);
-        delay -= diffSeconds;
         world.worldPartX+= i;
         world.worldPartY+= i;
         i = -i;

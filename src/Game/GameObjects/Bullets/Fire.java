@@ -18,6 +18,8 @@ public class Fire extends GameObject {
     private Image[] image;
     private double timeout = 0.1;
 
+    private Animation animation;
+
     public Fire(double startX, double startY) {
         super(startX, startY+32, 150, 50);
         hasCollision = true;
@@ -66,8 +68,6 @@ public class Fire extends GameObject {
         animation.repeat = true;
     }
 
-    Animation animation;
-
     @Override
     public void move(double diffSeconds) {
         super.move(diffSeconds);
@@ -88,7 +88,9 @@ public class Fire extends GameObject {
         for (int i = 0; i < collisions.size(); i++){
             if(collisions.get(i).isPlayer || collisions.get(i).isEnemy){
                 CharacterObject player = (CharacterObject) collisions.get(i);
-                player.hp--;
+                if(player.destructible){
+                    player.hp--;
+                }
             }
         }
     }
