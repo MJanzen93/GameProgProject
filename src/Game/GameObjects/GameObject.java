@@ -1,6 +1,7 @@
 package Game.GameObjects;
 
 import Game.ConstantValues;
+import Game.GameObjects.BackgroundObjects.BrokenPart;
 import Game.GameObjects.Bullets.Explosion;
 import Game.GameObjects.Items.ItemObject;
 import Game.Physics;

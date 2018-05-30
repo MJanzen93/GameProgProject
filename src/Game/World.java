@@ -71,7 +71,7 @@ public class World {
 
     void createWorld() {
 
-        List<List<GameObject>> list = MapParser.desert2();
+        List<List<GameObject>> list = MapParser.desert3();
 
         fixedObjects = list.get(0);
         backgroundObjects = list.get(1);

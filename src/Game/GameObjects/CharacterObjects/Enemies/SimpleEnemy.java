@@ -1,5 +1,6 @@
 package Game.GameObjects.CharacterObjects.Enemies;
 
+import Game.GameObjects.BackgroundObjects.BrokenPart;
 import Game.GameObjects.Bullets.Explosion;
 import Game.GameObjects.Bullets.ShootBullet;
 import Game.GameObjects.Items.HealthItem;

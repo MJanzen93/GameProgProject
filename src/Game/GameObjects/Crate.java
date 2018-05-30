@@ -1,5 +1,6 @@
 package Game.GameObjects;
 
+import Game.GameObjects.BackgroundObjects.BrokenPart;
 import Game.GameObjects.Items.ItemObject;
 import Game.Physics;
 
@@ -19,7 +20,7 @@ public class Crate extends GameObject {
         isFixed = false;
 
         try {
-            image = ImageIO.read(new File(".\\src\\Game\\Textures\\objects\\Crate.png"));
+            image = ImageIO.read(new File(".\\src\\Game\\Textures\\objects\\Resized\\Crate.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -33,6 +34,13 @@ public class Crate extends GameObject {
             item.x = x;
             item.y = y;
             world.gameObjects.add(item);
+        }
+
+        if(hp <= 0){
+            world.fixedObjects.add(new BrokenPart(this, 1));
+            world.fixedObjects.add(new BrokenPart(this, 2));
+            world.fixedObjects.add(new BrokenPart(this, 3));
+            world.fixedObjects.add(new BrokenPart(this, 4));
         }
     }
 

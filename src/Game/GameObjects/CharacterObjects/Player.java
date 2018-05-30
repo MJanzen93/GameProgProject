@@ -10,6 +10,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 import Game.AudioPlayer;
+import Game.GameObjects.BackgroundObjects.BrokenPart;
 import Game.GameObjects.Platfrom.FixedPlattform;
 import Game.InputSystem;
 import Game.Physics;
