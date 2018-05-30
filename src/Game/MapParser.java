@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Game.GameObjects.CharacterObjects.Enemies.*;
 import Game.GameObjects.Crate;
 import Game.GameObjects.GameObject;
 import Game.GameObjects.BackgroundObjects.BackgroundObject;
@@ -17,13 +18,6 @@ import Game.GameObjects.Bullets.Fire;
 
 import Game.GameObjects.CharacterObjects.Player;
 
-import Game.GameObjects.CharacterObjects.Enemies.FlyingEnemy;
-import Game.GameObjects.CharacterObjects.Enemies.Mimic;
-import Game.GameObjects.CharacterObjects.Enemies.SimpleBoss;
-import Game.GameObjects.CharacterObjects.Enemies.SimpleEnemy;
-import Game.GameObjects.CharacterObjects.Enemies.Speedy;
-import Game.GameObjects.CharacterObjects.Enemies.Spikes;
-import Game.GameObjects.CharacterObjects.Enemies.SpikesU;
 import Game.GameObjects.Items.Coin;
 import Game.GameObjects.Items.HealthItem;
 import Game.GameObjects.Platfrom.FixedPlattform;
@@ -421,6 +415,9 @@ public class MapParser {
                                 break;
                             case "36":
                                 fixedObjects.add(new Fire(x * 50 + j2 * 50, y * 50 + j * 50 - 32));
+                                break;
+                            case "37":
+                                gameObjects.add(new MiniEnemy(x * 50 + j2 * 50, y * 50 + j * 50));
                                 break;
                         }
                     }

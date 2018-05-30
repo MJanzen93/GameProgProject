@@ -8,14 +8,20 @@ import Game.GameObjects.Items.ItemObject;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 public class SimpleEnemy extends EnemyObject{
     public SimpleEnemy(double startX, double startY, int width, int height) {
-        super(startX, startY, 30,30);
+        super(startX, startY, 35,35);
         try {
             image = ImageIO.read(new File(".\\src\\Game\\Textures\\enemy.png"));
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        Random random = new Random();
+        int r = random.nextInt(4);
+        if(r == 3){
+            dropItem = true;
         }
     }
 

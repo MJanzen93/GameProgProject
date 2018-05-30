@@ -6,6 +6,7 @@ import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.List;
 
+import Game.GameObjects.CharacterObjects.Enemies.MiniEnemy;
 import Game.GameObjects.GameObject;
 import Game.GameObjects.SWATTeamMate;
 import Game.GameObjects.CharacterObjects.Player;
@@ -84,6 +85,11 @@ public class World {
             }
         }
 
+        gameObjects.add(new MiniEnemy(50, - 15));
+        gameObjects.add(new MiniEnemy(100, - 15));
+        gameObjects.add(new MiniEnemy(150, - 15));
+        gameObjects.add(new MiniEnemy(200, - 15));
+        gameObjects.add(new MiniEnemy(250, - 15));
 
         allObjects.add(gameObjects);
         allObjects.add(fixedObjects);
