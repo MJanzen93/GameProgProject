@@ -1,6 +1,7 @@
 package Game.GameObjects.CharacterObjects.Enemies;
 
 import Game.AudioPlayer;
+import Game.GameObjects.CharacterObjects.CharacterObject;
 import Game.GameObjects.CharacterObjects.Player;
 import Game.GameObjects.GameObject;
 import Game.Physics;
@@ -51,7 +52,7 @@ public class MiniEnemy extends EnemyObject {
         List<GameObject> collidingObjects = Physics.getCollisions(this);
         for (int i = 0; i < collidingObjects.size(); i++){
             if(collidingObjects.get(i).isPlayer && collidingObjects.get(i).destructible){
-                Player player = (Player) collidingObjects.get(i);
+                CharacterObject player = (CharacterObject) collidingObjects.get(i);
                 player.hp--;
                 hp = 0;
             }

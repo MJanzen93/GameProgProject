@@ -17,29 +17,27 @@ public class Main {
     public static void main(String[] args) {
 
 
+        JFrame gameFrame = new JFrame("Game.World");
 
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        gameFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        gameFrame.setSize(ConstantValues.WORLDPART_WIDTH,ConstantValues.WORLDPART_HEIGHT);
+
+        //set Fullscreen
+        ConstantValues.WORLDPART_WIDTH = screenSize.width;
+        ConstantValues.WORLDPART_HEIGHT = screenSize.height;
+        gameFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        gameFrame.getRootPane().addComponentListener(new ComponentAdapter() {
+            public void componentResized(ComponentEvent e) {
+                ConstantValues.WORLDPART_WIDTH = gameFrame.getWidth();
+                ConstantValues.WORLDPART_HEIGHT = gameFrame.getHeight();
+            }
+        });
 
 
         while(true) {
-
-            JFrame gameFrame = new JFrame("Game.World");
-
-            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-            gameFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-            gameFrame.setSize(ConstantValues.WORLDPART_WIDTH,ConstantValues.WORLDPART_HEIGHT);
-
-            //set Fullscreen
-            ConstantValues.WORLDPART_WIDTH = screenSize.width;
-            ConstantValues.WORLDPART_HEIGHT = screenSize.height;
-            gameFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
-            gameFrame.getRootPane().addComponentListener(new ComponentAdapter() {
-                public void componentResized(ComponentEvent e) {
-                    ConstantValues.WORLDPART_WIDTH = gameFrame.getWidth();
-                    ConstantValues.WORLDPART_HEIGHT = gameFrame.getHeight();
-                }
-            });
 
             InputSystem inputSystem = new InputSystem();
             World world = new World();

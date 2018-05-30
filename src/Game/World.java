@@ -52,8 +52,6 @@ public class World {
     }
 
     public void init() {
-        //todo
-        //List<GameObject> gameObjects = MapParser.getGameObjects("");
 
         //Backgound Musik player
         backgroundPlayer = new AudioPlayer();
@@ -71,7 +69,6 @@ public class World {
     }
 
     void createWorld() {
-
         List<List<GameObject>> list = MapParser.desert2();
 
         fixedObjects = list.get(0);

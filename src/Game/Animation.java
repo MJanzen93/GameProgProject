@@ -56,9 +56,5 @@ public class Animation{
         } else {
             graphics.drawImage(images[currImage],x, y, width, height, null);
         }
-        graphics.setColor(Color.BLUE);
-        graphics.drawRect(x, y, width, height);
-
     }
-
 }

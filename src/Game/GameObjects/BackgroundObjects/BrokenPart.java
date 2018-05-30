@@ -2,6 +2,7 @@ package Game.GameObjects.BackgroundObjects;
 
 import Game.ConstantValues;
 import Game.GameObjects.GameObject;
+import Game.GameObjects.Platfrom.FixedPlattform;
 import Game.Physics;
 
 import java.awt.*;
@@ -18,6 +19,8 @@ public class BrokenPart extends BackgroundObject {
 
         BufferedImage originImage = originObject.image;
         this.isFixed = false;
+        isSolid = false;
+        hasCollision = false;
 
         switch(part) {
             case 1:
@@ -58,8 +61,6 @@ public class BrokenPart extends BackgroundObject {
     public void draw(Graphics graphics) {
         int x = (int) (this.x - world.worldPartX);
         int y = (int) (this.y - world.worldPartY);
-
-
 
         graphics.drawImage(this.image, x, y, this.image.getWidth(), this.image.getHeight(), null);
     }

@@ -121,7 +121,6 @@ public abstract class GameObject {
             graphics.setColor(new Color(0, 0, 0));
             graphics.drawRect((int)x+this.width/2-maxHP/2, (int)y-30, maxHP, 10);
         }
-
     }
 
     public void checkCollision(){

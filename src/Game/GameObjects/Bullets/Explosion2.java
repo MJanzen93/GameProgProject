@@ -21,7 +21,7 @@ public class Explosion2 extends GameObject {
     private Animation animation;
 
     public Explosion2(double startX, double startY, int radius, boolean isPlayerExplosion) {
-        super(startX, startY, 0, 0);
+        super(startX, startY-15, 0, 0);
         hasCollision = false;
         isSolid = false;
         isFixed = true;
@@ -74,7 +74,7 @@ public class Explosion2 extends GameObject {
             ExplosionBullet bullet = new ExplosionBullet(x, y, 5, 5);
             bullet.alfa = i*2;
             bullet.range = radius-i;
-            bullet.speed = 800;
+            bullet.speed = 200;
             bullet.setColor(Color.gray);
             bullet.setIsPlayerBullet(isPlayerExplosion);
             world.bulletObjects.add(bullet);

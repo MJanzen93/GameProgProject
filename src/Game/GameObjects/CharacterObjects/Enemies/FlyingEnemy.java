@@ -43,6 +43,7 @@ public class FlyingEnemy extends EnemyObject {
 
 		animation = new Animation(images, this);
 		animation.repeat = true;
+		animation.speed = 0.03;
 	}
 
 	@Override
@@ -96,8 +97,10 @@ public class FlyingEnemy extends EnemyObject {
 		int x = (int) (this.x - world.worldPartX);
 		int y = (int) (this.y - world.worldPartY);
 
+		/*HitBox*/
 		graphics.setColor(Color.RED);
 		graphics.drawRect(x, y, width, height);
+
 
 		animation.draw(graphics, x-70, y-30, 284, 210);
 
