@@ -26,7 +26,7 @@ public class Main {
 
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-            //gameFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+            gameFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
             gameFrame.setSize(ConstantValues.WORLDPART_WIDTH,ConstantValues.WORLDPART_HEIGHT);
 
             //set Fullscreen
