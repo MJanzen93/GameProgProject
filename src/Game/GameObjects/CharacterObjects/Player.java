@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import Game.Animation;
 import Game.AudioPlayer;
 import Game.GameObjects.BackgroundObjects.BrokenPart;
 import Game.GameObjects.Platfrom.FixedPlattform;
@@ -52,8 +53,11 @@ public class Player extends CharacterObject {
     private double[] oldHeightArr;
 
     public boolean parachute = false;
-    public boolean hasParachuteItem = false;
+    public boolean hasParachuteItem = true;
     public BufferedImage parachuteImage;
+
+    private Image[] images;
+    private Animation animation;
 
     public Player(double startX, double startY) {
         super(startX, startY, 30, 30);
@@ -73,9 +77,18 @@ public class Player extends CharacterObject {
         try {
             image = ImageIO.read(new File(".\\src\\Game\\Textures\\player.png"));
             parachuteImage = ImageIO.read(new File(".\\src\\Game\\Textures\\parachute2.png"));
+
+            images = new Image[4];
+            for (int i = 0; i < images.length; i++){
+                images[i] = ImageIO.read(new File(".\\src\\Game\\Textures\\DragonAnimation\\frame_" + i + "_delay-0.1s.gif"));
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        animation = new Animation(images, this);
+        animation.repeat = true;
+        animation.useFlippedImages = true;
     }
 
     /**
@@ -119,6 +132,8 @@ public class Player extends CharacterObject {
             missileReady = true;
         } else
             coolDownMissile -= diffSeconds;
+
+        //animation.update(diffSeconds);
     }
 
 	@Override
@@ -236,15 +251,14 @@ public class Player extends CharacterObject {
         }
 
         super.draw(graphics);
-
         int x = (int) (this.x - world.worldPartX);
         int y = (int) (this.y - world.worldPartY);
+
+        //animation.draw(graphics,x,y, width, height);
 
         if(parachute && hasParachuteItem){
             graphics.drawImage(parachuteImage, x-35, y-100, 100,100, null, null);
         }
-
-
     }
 
     public void saveOldPosition() {

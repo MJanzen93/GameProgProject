@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
 
 public class Explosion2 extends GameObject {
 
-    private int radius = 200;
+    private int radius;
     private boolean isPlayerExplosion = false;
 
     private Image[] image;
@@ -74,7 +74,7 @@ public class Explosion2 extends GameObject {
             ExplosionBullet bullet = new ExplosionBullet(x, y, 5, 5);
             bullet.alfa = i*2;
             bullet.range = radius-i;
-            bullet.speed = 200;
+            bullet.speed = 400;
             bullet.setColor(Color.gray);
             bullet.setIsPlayerBullet(isPlayerExplosion);
             world.bulletObjects.add(bullet);

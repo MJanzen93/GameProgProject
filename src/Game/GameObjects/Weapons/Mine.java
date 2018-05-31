@@ -53,7 +53,7 @@ public class Mine extends GameObject {
                 blink = !blink;
             }
             if(counter <= 0){
-                Explosion2 explosion = new Explosion2(x, y, 200, false);
+                Explosion2 explosion = new Explosion2(x, y, 150, false);
                 world.fixedObjects.add(explosion);
                 explosion.explode();
                 hp = 0;

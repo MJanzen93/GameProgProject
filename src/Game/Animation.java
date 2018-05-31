@@ -18,6 +18,7 @@ public class Animation{
     public double speed = 0.04;
     public boolean repeat = false;
     public boolean useFlippedImages = false;
+    private boolean flip = false;
 
     private GameObject object;
 
@@ -48,11 +49,20 @@ public class Animation{
         }else if(currImage >= numImages && repeat){
             currImage = 0;
         }
+
+        if(object.xSpeed < 0){
+            flip = true;
+        }else if(object.xSpeed > 0){
+            flip = false;
+        }
     }
 
     public void draw(Graphics2D graphics, int x, int y, int width, int height){
         if(useFlippedImages){
-            graphics.drawImage(flippedImages[currImage],x, y, width, height, null);
+            if(flip){
+                graphics.drawImage(flippedImages[currImage],x, y, width, height, null);
+            }else
+                graphics.drawImage(images[currImage],x, y, width, height, null);
         } else {
             graphics.drawImage(images[currImage],x, y, width, height, null);
         }
