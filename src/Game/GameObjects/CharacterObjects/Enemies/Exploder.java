@@ -1,10 +1,18 @@
 package Game.GameObjects.CharacterObjects.Enemies;
 
+import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import Game.GameObjects.Bullets.Explosion;
 
 public class Exploder extends  EnemyObject {
     public Exploder(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
+        this.COLOR = Color.ORANGE;
+       
     }
 
     @Override

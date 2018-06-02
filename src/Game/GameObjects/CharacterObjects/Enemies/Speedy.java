@@ -1,7 +1,11 @@
 package Game.GameObjects.CharacterObjects.Enemies;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+
+import javax.imageio.ImageIO;
 
 import Game.AudioPlayer;
 import Game.Physics;
@@ -20,7 +24,7 @@ public class Speedy extends EnemyObject {
 	public Speedy(double startX, double startY, int with, int height,int acceleration, FixedPlattform standingPlattform) {
 		super(startX, startY, with, height);
 		destructible = false;
-		setColor(Color.PINK);
+		this.COLOR= Color.PINK;
 		isSolid = true;
 		isFixed = false;
 		hasCollision = true;
@@ -28,6 +32,7 @@ public class Speedy extends EnemyObject {
 		isEnemyTouched = true;
 		this.acceleration = acceleration;
 		this.standingPlattform = standingPlattform;
+		
 	}
 
 	// All this

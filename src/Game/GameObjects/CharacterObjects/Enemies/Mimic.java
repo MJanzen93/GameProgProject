@@ -1,6 +1,10 @@
 package Game.GameObjects.CharacterObjects.Enemies;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import Game.AudioPlayer;
 import Game.GameObjects.Platfrom.FixedPlattform;
@@ -9,12 +13,13 @@ public class Mimic extends EnemyObject {
 
 	FixedPlattform standingPlattform;
 	
-	public Mimic(double startX, double startY, int width, int height, FixedPlattform standingPlattform, Color color) {
+	public Mimic(double startX, double startY, int width, int height, FixedPlattform standingPlattform) {
 		super(startX, startY, width, height);
 		this.standingPlattform = standingPlattform;
 		this.isSolid = true;
 		this.hasCollision = true;
-		this.COLOR = color;
+		this.COLOR = Color.YELLOW;
+		
 	}
 
 	@Override

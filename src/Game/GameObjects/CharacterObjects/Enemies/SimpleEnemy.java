@@ -7,6 +7,8 @@ import Game.GameObjects.Items.HealthItem;
 import Game.GameObjects.Items.ItemObject;
 
 import javax.imageio.ImageIO;
+
+import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
@@ -14,6 +16,7 @@ import java.util.Random;
 public class SimpleEnemy extends EnemyObject{
     public SimpleEnemy(double startX, double startY, int width, int height) {
         super(startX, startY, 35,35);
+        this.COLOR  = Color.PINK;
         try {
             image = ImageIO.read(new File(".\\src\\Game\\Textures\\enemy.png"));
         } catch (IOException e) {

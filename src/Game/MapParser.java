@@ -14,6 +14,7 @@ import Game.GameObjects.GameObject;
 import Game.GameObjects.BackgroundObjects.BackgroundObject;
 import Game.GameObjects.Bullets.Fire;
 import Game.GameObjects.CharacterObjects.Player;
+import Game.GameObjects.CharacterObjects.Enemies.Exploder;
 import Game.GameObjects.CharacterObjects.Enemies.FlyingEnemy;
 import Game.GameObjects.CharacterObjects.Enemies.Mimic;
 import Game.GameObjects.CharacterObjects.Enemies.MiniEnemy;
@@ -85,7 +86,7 @@ public class MapParser {
         FixedPlattform plat1Speedy2 = new FixedPlattform(6050, 940, 890, 20, "");
         gameObjects.add(new Speedy(6930, 900, 30, 30, -1000, plat1Speedy2));
         FixedPlattform plat1Mimic = new FixedPlattform(7850, 850, 1660, 20, "");
-        gameObjects.add(new Mimic(9470, 790, 30, 30, plat1Mimic, Color.YELLOW));
+        gameObjects.add(new Mimic(9470, 790, 30, 30, plat1Mimic));
 
 
         //Items
@@ -642,10 +643,18 @@ public static List<List<GameObject>> summer1(){
         gameObjects.add(new HealthItem(9150,-1550));
         
         
+       
         gameObjects.add(new ParachuteItem(8100,-3460));
         
         //Enemies
         gameObjects.add(new Stealer(1900,-250,30,30));
+        gameObjects.add(new Exploder(3690,-230,30,30));
+        gameObjects.add(new Exploder(4270,-560,30,30));
+        gameObjects.add(new Exploder(4910,-420,30,30));
+        gameObjects.add(new Exploder(7950,-3460,30,30));
+        
+        FixedPlattform plat1Mimic = new FixedPlattform(3810, -260, 2050, 20, "");
+        gameObjects.add(new Mimic(5850, -310, 30, 30, plat1Mimic));
         
 
         FileReader fr;
