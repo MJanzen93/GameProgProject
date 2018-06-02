@@ -9,6 +9,7 @@ public abstract class Boss extends EnemyObject {
     public Random rnd;
     public double specialMoveCooldown = 5;
     public int specialMoveTick = 0;
+    public boolean stronger = false;
 
     public Boss(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);

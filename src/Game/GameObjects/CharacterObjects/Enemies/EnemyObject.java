@@ -5,6 +5,7 @@ import Game.GameObjects.Bullets.ShootBullet;
 import Game.GameObjects.CharacterObjects.CharacterObject;
 import Game.GameObjects.GameObject;
 import Game.GameObjects.Items.ItemObject;
+import Game.GameObjects.Items.RapidFireItem;
 import Game.Physics;
 
 import java.awt.*;

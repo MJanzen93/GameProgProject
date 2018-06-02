@@ -47,6 +47,7 @@ public abstract class ItemObject extends GameObject {
         }
         return new SWATItem(0,0);
     }
+    
 
     @Override
     public void move(double diffSeconds) {

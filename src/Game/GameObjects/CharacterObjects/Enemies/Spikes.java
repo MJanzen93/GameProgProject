@@ -16,13 +16,17 @@ public class Spikes extends GameObject {
 
     private double timeout = 1;
 
-    public Spikes(double startX, double startY, int width, int height) {
+    public Spikes(double startX, double startY, int width, int height, boolean upOrDown) {
         super(startX, startY+30, width, 20);
         isFixed = true;
         isSolid = true;
 
         try {
-            image = ImageIO.read(new File(".\\src\\Game\\Textures\\spikes.png"));
+        	if(upOrDown)
+        		image = ImageIO.read(new File(".\\src\\Game\\Textures\\spikes.png"));
+        	else
+        		image = ImageIO.read(new File(".\\src\\Game\\Textures\\respikesU.png"));
+        		
         } catch (IOException e) {
             e.printStackTrace();
         }
