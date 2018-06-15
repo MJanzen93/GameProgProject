@@ -1,6 +1,5 @@
 package Game;
 
-import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,6 +14,7 @@ import Game.GameObjects.BackgroundObjects.BackgroundObject;
 import Game.GameObjects.Bullets.Fire;
 import Game.GameObjects.CharacterObjects.Player;
 import Game.GameObjects.CharacterObjects.Enemies.Exploder;
+import Game.GameObjects.CharacterObjects.Enemies.FinalBoss;
 import Game.GameObjects.CharacterObjects.Enemies.FlyingEnemy;
 import Game.GameObjects.CharacterObjects.Enemies.Mimic;
 import Game.GameObjects.CharacterObjects.Enemies.MiniEnemy;
@@ -22,6 +22,7 @@ import Game.GameObjects.CharacterObjects.Enemies.SimpleBoss;
 import Game.GameObjects.CharacterObjects.Enemies.SimpleEnemy;
 import Game.GameObjects.CharacterObjects.Enemies.Speedy;
 import Game.GameObjects.CharacterObjects.Enemies.Spikes;
+import Game.GameObjects.CharacterObjects.Enemies.SpikesU;
 import Game.GameObjects.CharacterObjects.Enemies.Stealer;
 import Game.GameObjects.Items.Coin;
 import Game.GameObjects.Items.HealthItem;
@@ -244,7 +245,7 @@ public class MapParser {
                                 backgroundObjects.add(new BackgroundObject(x * 50 + j2 * 50, y * 50 + j * 50, ".\\src\\Game\\Textures\\objects\\Stone.png"));
                                 break;
                             case "34":
-                                gameObjects.add(new Spikes(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50,true));
+                                gameObjects.add(new Spikes(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50));
                                 break;
                             case "35":
                                 backgroundObjects.add(new BackgroundObject(x * 50 + j2 * 50, y * 50 + j * 50, ".\\src\\Game\\Textures\\flag.png"));
@@ -402,7 +403,7 @@ public class MapParser {
                             fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50 - 50, 100, 100, ".\\\\src\\\\Game\\\\Textures\\\\flag.png"));
                             break;
                         case "26":
-                            gameObjects.add(new Spikes(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50,true));
+                            gameObjects.add(new Spikes(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50));
                             break;
                         case "27":
                             gameObjects.add(new FlyingEnemy(x * 50 + j2 * 50, y * 50 + j * 50));
@@ -586,7 +587,7 @@ return list;
                                 gameObjects.add(new FlyingEnemy(x * 50 + j2 * 50, y * 50 + j * 50));
                                 break;
                             case "34":
-                                gameObjects.add(new Spikes(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50,true));
+                                gameObjects.add(new Spikes(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50));
                                 break;
                             case "35":
                                 fixedObjects.add(new BackgroundObject(x * 50 + j2 * 50, y * 50 + j * 50, 100, 100, ".\\src\\Game\\Textures\\flag.png"));
@@ -785,7 +786,7 @@ public static List<List<GameObject>> summer1(){
                                 fixedObjects.add(new Coin(x*50 +j2*50, y*50 + j*50));
                                 break;
                             case "31":
-                                gameObjects.add(new Spikes(x*50 +j2*50, y*50 + j*50, 50, 50,true));
+                                gameObjects.add(new Spikes(x*50 +j2*50, y*50 + j*50, 50, 50));
                                 break;   
                             case "32":
                             	fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50-50, 100, 100, ".\\src\\Game\\Textures\\flag.png"));  
@@ -845,6 +846,9 @@ public static List<List<GameObject>> summer2(){
     simpleBoss.hp = 25;
     gameObjects.add(simpleBoss);
     
+    
+    FinalBoss finalBoss = new FinalBoss(6800, -860, 100, 100);
+    gameObjects.add(finalBoss);
 
     FileReader fr;
 
@@ -907,7 +911,7 @@ public static List<List<GameObject>> summer2(){
                             fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\4.png","RightLeft"));
                             break;
                         case "5":
-                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\5.png","RightLeft"));
+                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\5.png","TopBottomRightLeft"));
                             break;
                         case "6":
                             fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\6.png","RightLeft"));
@@ -919,7 +923,7 @@ public static List<List<GameObject>> summer2(){
                             fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\8.png"));
                             break;
                         case "9":
-                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\9.png","Bottom"));
+                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\9.png","TopBottom"));
                             break;
                         case "10":
                             fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\10.png"));
@@ -985,7 +989,7 @@ public static List<List<GameObject>> summer2(){
                             fixedObjects.add(new Coin(x*50 +j2*50, y*50 + j*50));
                             break;
                         case "31":
-                            gameObjects.add(new Spikes(x*50 +j2*50, y*50 + j*50, 50, 50,true));
+                            gameObjects.add(new Spikes(x*50 +j2*50, y*50 + j*50, 50, 50));
                             break;   
                         case "32":
                         	fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50-50, 100, 100, ".\\src\\Game\\Textures\\flag.png"));  
@@ -1012,7 +1016,7 @@ public static List<List<GameObject>> summer2(){
                             backgroundObjects.add(new BackgroundObject(x*50 +j2*50, y*50 + j*50, ".\\src\\Game\\Textures\\summer\\Object\\Sign_1.png"));
                             break;
                         case "40":
-                            backgroundObjects.add(new Spikes(x*50 +j2*50, y*50 + j*50, 50, 50,false));
+                            backgroundObjects.add(new SpikesU(x*50 +j2*50, y*50 + j*50, 50, 50));
                             break;
                         
                         

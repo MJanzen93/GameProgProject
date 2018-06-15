@@ -13,6 +13,7 @@ public class SimpleBoss extends Boss {
 
     public SimpleBoss(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
+        this.maxHP = 25;
     }
 
     @Override
@@ -20,7 +21,6 @@ public class SimpleBoss extends Boss {
         super.move(diffSeconds);
 
         double distanceToPlayer = GameObject.world.player.x - x;
-
         if(Math.abs(distanceToPlayer) < 500 || maxHP > hp) {
            if(stronger) {
         	   if(distanceToPlayer > 50 ) {

@@ -78,7 +78,7 @@ public class World {
 
 
 
-        List<List<GameObject>> list = MapParser.desert3();
+        List<List<GameObject>> list = MapParser.summer2();
         try {
 			//wViewer.background = ImageIO.read(new File(".\\src\\Game\\Textures\\DBG.png"));
 			wViewer.background = ImageIO.read(new File(".\\src\\Game\\Textures\\SBG.png"));
