@@ -25,60 +25,13 @@ public class FinalBoss extends Boss {
     public void move(double diffSeconds) {
         super.move(diffSeconds);
 
-        if(randomBool == false) {
-        	random = rnd.nextInt(3)+1;
-        	
-        }
         
-      
-        if(random == 1) {
-        	pattern1(diffSeconds);
-        } else if(random == 2) {
-        	
-        }else {
-        	
-        }
-      
-        
-        if(bulletCooldown > 0) {
-            bulletCooldown -= diffSeconds;
-
-        } else {
-            bulletCooldown = 0.3;
-            shootBullet();
-        }
            
     }
     
     
     public void pattern1(double diffSeconds) {
-    	randomBool = true;
-    	isSolid = true;
-		isFixed = true;
-		hasCollision = false;
-    	if(xDropPosition){
-    	 diffX = x - world.player.x - (this.width/2);
-    	}
-		double diffY = 860 - this.height;
-
-		double distanceToPoint = Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
-		
-		if(drop) {
-		if (distanceToPoint > 1) {
-			xSpeed = ((-1 / distanceToPoint) * diffX) * 200;
-			ySpeed = ((-1 / distanceToPoint) * diffY) * 200;
-		}else{
-			xSpeed = 0;
-			ySpeed = 0;
-			drop = true;
-		} 
-		}
-		else {
-			isSolid = true;
-    		isFixed = true;
-    		this.y+=ySpeed*diffSeconds + 30;
-    		System.out.println("WAS");
-		}
+    	
     }
     
     public void drop() {
