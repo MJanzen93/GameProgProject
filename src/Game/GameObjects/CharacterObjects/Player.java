@@ -66,8 +66,8 @@ public class Player extends CharacterObject {
         oldWidthArr = new double[]{width, width, width, width, width, width, width, width, width, width};
         oldHeightArr = new double[]{height, height, height, height, height, height, height, height, height, height};
         destructible = true;
-        hp = 10;
-        maxHP = 10;
+        hp = 50;
+        maxHP = 50;
         isPlayer = true;
         isSolid = true;
         //COLOR = new Color(0, 217, 241);
@@ -289,15 +289,15 @@ public class Player extends CharacterObject {
     /**
      * Player goes left
      */
-    public void goLeft() {
-        xSpeed = -xForce;
+    public void goLeft(double multiplier) {
+        xSpeed = multiplier * -xForce;
     }
 
     /**
      * Player goes right
      */
-    public void goRight() {
-        xSpeed = xForce;
+    public void goRight(double multiplier) {
+        xSpeed = multiplier * xForce;
     }
 
     /**
@@ -330,10 +330,25 @@ public class Player extends CharacterObject {
         bullet = new ShootBullet(x + width / 2, y + height / 2, 5, 5);
         bullet.damage = damage;
         bullet.alfa = Math.atan2(inputSystem.mouseY + world.worldPartY - y - width / 2, inputSystem.mouseX + world.worldPartX - x - height / 2);
+        System.out.println("alfa: " + bullet.alfa);
         bullet.isPlayerBullet = true;
         world.bulletObjects.add(bullet);
         AudioPlayer.shortSound(".\\src\\Game\\Sounds\\shot.wav", 0.05);
         //currentWeapon.shootBullet();
+    }
+
+    public void shootBullet(double degrees) {
+        ShootBullet bullet;
+
+        bullet = new ShootBullet(x + width / 2, y + height / 2, 5, 5);
+        bullet.damage = damage;
+        bullet.alfa = degrees * (Math.PI / 180) - (Math.PI/2);
+
+        System.out.println("alfa: " + bullet.alfa);
+        System.out.println("degree: " + degrees);
+        bullet.isPlayerBullet = true;
+        world.bulletObjects.add(bullet);
+        AudioPlayer.shortSound(".\\src\\Game\\Sounds\\shot.wav", 0.05);
     }
 
     public void fireMissels(InputSystem inputSystem) {
@@ -345,7 +360,11 @@ public class Player extends CharacterObject {
 
         //add new Bomber plane
         Bomber bomber = new Bomber(world.worldPartX - 200, world.worldPartY);
-        bomber.setPosition(inputSystem);
+        if(inputSystem.yPressed) {
+            bomber.x = world.player.x - 10;
+        } else {
+            bomber.setPosition(inputSystem);
+        }
         world.fixedObjects.add(bomber);
 
         missile--;

@@ -196,7 +196,7 @@ public class World {
 
             //print FPS
            //System.out.println(1000 / diffMillis);
-            System.out.println("X: "+ player.x + "Y: "+ player.y);
+           // System.out.println("X: "+ player.x + "Y: "+ player.y);
 
 
             if(gameOver) {
@@ -218,13 +218,12 @@ public class World {
         this.inputSystem = inputSystem;
     }
 
-    //todo player.goLeft() ....
     public void processUserInput() {
         if (inputSystem.leftPressed) {
-            player.goLeft();
+            player.goLeft(inputSystem.moveMagnitude);
         } else if (inputSystem.rightPressed) {
-            player.goRight();
-        } else if ((!inputSystem.leftPressed || !inputSystem.rightPressed) && player.xSpeed != 0) {
+            player.goRight(inputSystem.moveMagnitude);
+        } else if ((!inputSystem.leftPressed || !inputSystem.rightPressed) && player.xSpeed != 0){
             player.stop();
         }
 
@@ -237,8 +236,17 @@ public class World {
             player.bulletCooldown = player.bulletCooldownfinal; //?? in player ??
         }
 
-        if (player.missile > 0 && inputSystem.mousePressed && inputSystem.altPressed) {
+        if(inputSystem.shootMagnitude > 0.25 && player.bulletCooldown <= 0 && !inputSystem.altPressed) {
+            player.shootBullet(inputSystem.shootDirection);
+            player.bulletCooldown = player.bulletCooldownfinal;
+        }
+
+        if (player.missile > 0 && ((inputSystem.mousePressed && inputSystem.altPressed) || inputSystem.yPressed)) {
             player.fireMissels(inputSystem);
+        }
+
+        if (player.missile > 0 && inputSystem.yPressed) {
+
         }
 
         if(player.hasParachuteItem && inputSystem.downPressed && !player.onGround){

@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="jaw">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/Game/controllerlib/jaw.jar!/" />
+      <root url="file://$PROJECT_DIR$/src/Game/controllerlib" />
+    </CLASSES>
+    <JAVADOC />
+    <NATIVE>
+      <root url="file://$PROJECT_DIR$/src/Game/controllerlib" />
+    </NATIVE>
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/src/Game/controllerlib" recursive="false" />
+  </library>
+</component>
