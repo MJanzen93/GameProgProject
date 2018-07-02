@@ -2,6 +2,7 @@ package Game.GameObjects.CharacterObjects;
 
 import java.awt.*;
 
+import Game.GameObjects.Bullets.Fire2;
 import Game.GameObjects.GameObject;
 
 /**
@@ -23,7 +24,8 @@ public class CharacterObject extends GameObject {
 
     public boolean pickUpItem = false;
 
-    
+
+    private boolean isBurning = false;
 
     public int shieldDuration = 500;
 
@@ -63,5 +65,11 @@ public class CharacterObject extends GameObject {
                 graphics.drawOval(x-width/2+i, y-height/2+i, width*2-i*2, height*2-i*2);
             }
         }
+    }
+
+    public void castBurningEffect() {
+        isBurning = true;
+        Fire2 fire = new Fire2(this);
+        world.gameObjects.add(fire);
     }
 }

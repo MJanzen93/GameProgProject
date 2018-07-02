@@ -63,6 +63,7 @@ public class Fire extends GameObject {
                 CharacterObject player = (CharacterObject) collisions.get(i);
                 if(player.destructible){
                     player.hp--;
+                    player.castBurningEffect();
                 }
             }
         }

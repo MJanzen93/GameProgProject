@@ -71,12 +71,12 @@ public class FlyingEnemy extends EnemyObject {
 				shootBullet();
 			}
 
-			if(specialMoveCooldown > 0) {
+			/*if(specialMoveCooldown > 0) {
 				specialMoveCooldown -= diffSeconds;
 			} else {
 				specialMove();
 				specialMoveCooldown = 3;
-			}
+			}*/
 		}
 
 		if(xSpeed < 0) {

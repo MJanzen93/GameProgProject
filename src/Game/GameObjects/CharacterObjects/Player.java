@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 import Game.Animation;
 import Game.AudioPlayer;
 import Game.GameObjects.BackgroundObjects.BrokenPart;
-import Game.GameObjects.Platfrom.FixedPlattform;
+import Game.GameObjects.Platfrom.FixedPlatform;
 import Game.InputSystem;
 import Game.Physics;
 import Game.GameObjects.Bomber;
@@ -148,6 +148,12 @@ public class Player extends CharacterObject {
             for (int i = 0; i < collidingObjects.size(); i++) {
                 GameObject collidingObject = collidingObjects.get(i);
 
+                if(collidingObject instanceof FixedPlatform) {
+                    if(((FixedPlatform) collidingObject).isGoalFlag) {
+                        world.nextLevel = true;
+                    }
+                }
+
                 //apply Item
                 if (collidingObject.isItem) {
                     ItemObject item = (ItemObject) collidingObject;
@@ -160,8 +166,8 @@ public class Player extends CharacterObject {
                     //check if Game.GameObjects.CharacterObject.Player is on Object
                     if (y + height > collidingObject.y && oldY + oldHeight <= collidingObject.y && ySpeed >= 0) {
 
-                        if(collidingObject instanceof FixedPlattform) {
-                            FixedPlattform collidingPlatform = (FixedPlattform) collidingObject;
+                        if(collidingObject instanceof FixedPlatform) {
+                            FixedPlatform collidingPlatform = (FixedPlatform) collidingObject;
                             if(!collidingPlatform.platformType.contains("Top")) {
                                 continue;
                             }
@@ -186,8 +192,8 @@ public class Player extends CharacterObject {
                             continue;
                         }
 
-                        if(collidingObject instanceof FixedPlattform) {
-                            FixedPlattform collidingPlatform = (FixedPlattform) collidingObject;
+                        if(collidingObject instanceof FixedPlatform) {
+                            FixedPlatform collidingPlatform = (FixedPlatform) collidingObject;
                             if(!collidingPlatform.platformType.contains("Bottom")) {
                                 continue;
                             }
@@ -206,8 +212,8 @@ public class Player extends CharacterObject {
                     if (x + width > collidingObject.x && oldX + oldWidth <= collidingObject.x && xSpeed >= 0 ) {
                         x = collidingObject.x - width - 1;
                         xSpeed = 0;
-                        if(collidingObject instanceof FixedPlattform) {
-                            FixedPlattform collidingPlatform = (FixedPlattform) collidingObject;
+                        if(collidingObject instanceof FixedPlatform) {
+                            FixedPlatform collidingPlatform = (FixedPlatform) collidingObject;
                             if(collidingPlatform.platformType.contains("Left")){
                                 if (ySpeed >= 0) {
                                     ySpeed *= 0.5;
@@ -222,8 +228,8 @@ public class Player extends CharacterObject {
                     if (x < collidingObject.x + collidingObject.width && oldX >= collidingObject.x + collidingObject.width && xSpeed <= 0) {
                         x = collidingObject.x + collidingObject.width;
                         xSpeed = 0;
-                        if(collidingObject instanceof FixedPlattform) {
-                            FixedPlattform collidingPlatform = (FixedPlattform) collidingObject;
+                        if(collidingObject instanceof FixedPlatform) {
+                            FixedPlatform collidingPlatform = (FixedPlatform) collidingObject;
                             if(collidingPlatform.platformType.contains("Right")){
                                 if (ySpeed >= 0) {
                                     ySpeed *= 0.5;
@@ -330,7 +336,6 @@ public class Player extends CharacterObject {
         bullet = new ShootBullet(x + width / 2, y + height / 2, 5, 5);
         bullet.damage = damage;
         bullet.alfa = Math.atan2(inputSystem.mouseY + world.worldPartY - y - width / 2, inputSystem.mouseX + world.worldPartX - x - height / 2);
-        System.out.println("alfa: " + bullet.alfa);
         bullet.isPlayerBullet = true;
         world.bulletObjects.add(bullet);
         AudioPlayer.shortSound(".\\src\\Game\\Sounds\\shot.wav", 0.05);
@@ -344,8 +349,6 @@ public class Player extends CharacterObject {
         bullet.damage = damage;
         bullet.alfa = degrees * (Math.PI / 180) - (Math.PI/2);
 
-        System.out.println("alfa: " + bullet.alfa);
-        System.out.println("degree: " + degrees);
         bullet.isPlayerBullet = true;
         world.bulletObjects.add(bullet);
         AudioPlayer.shortSound(".\\src\\Game\\Sounds\\shot.wav", 0.05);

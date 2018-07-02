@@ -11,17 +11,17 @@ import Game.AudioPlayer;
 import Game.Physics;
 import Game.GameObjects.GameObject;
 import Game.GameObjects.CharacterObjects.Enemies.EnemyObject;
-import Game.GameObjects.Platfrom.FixedPlattform;
+import Game.GameObjects.Platfrom.FixedPlatform;
 
 public class Speedy extends EnemyObject {
 
-	FixedPlattform standingPlattform;
+	FixedPlatform standingPlatform;
 	double counter = 0;
 	boolean stateBool = false;
 	int acceleration;
 	int changer;
 	//accelaration spawn right= -1000 spawn left=1000
-	public Speedy(double startX, double startY, int with, int height,int acceleration, FixedPlattform standingPlattform) {
+	public Speedy(double startX, double startY, int with, int height,int acceleration, FixedPlatform standingPlatform) {
 		super(startX, startY, with, height);
 		destructible = false;
 		this.COLOR= Color.PINK;
@@ -31,7 +31,7 @@ public class Speedy extends EnemyObject {
 		xSpeed = 0;
 		isEnemyTouched = true;
 		this.acceleration = acceleration;
-		this.standingPlattform = standingPlattform;
+		this.standingPlatform = standingPlatform;
 		
 	}
 
@@ -42,30 +42,30 @@ public class Speedy extends EnemyObject {
 		if (counter > 0) {
 			counter = counter - diffSeconds;
 			stateBool = false;
-			if (x >= (standingPlattform.x + standingPlattform.width-50 ))
+			if (x >= (standingPlatform.x + standingPlatform.width-50 ))
 				acceleration = -1000;
-			if (x <= standingPlattform.x+50)
+			if (x <= standingPlatform.x+50)
 				acceleration = 1000;
 			touchDamge = 2;
 			return;
 		}
 
-		if (world.player.y <= (standingPlattform.y - standingPlattform.height)
-				&& world.player.y >= (standingPlattform.y - standingPlattform.height - 10)
-				&& world.player.x <= (standingPlattform.x + standingPlattform.width)
-				&& world.player.x >= (standingPlattform.x)) {
+		if (world.player.y <= (standingPlatform.y - standingPlatform.height)
+				&& world.player.y >= (standingPlatform.y - standingPlatform.height - 10)
+				&& world.player.x <= (standingPlatform.x + standingPlatform.width)
+				&& world.player.x >= (standingPlatform.x)) {
 			xSpeed = acceleration;
 			stateBool = true;
 
 		} else {
-			if ((x <= (standingPlattform.x+(this.width/2) )) && stateBool) {
-				x=(standingPlattform.x);
-				y=(standingPlattform.y-20);
+			if ((x <= (standingPlatform.x+(this.width/2) )) && stateBool) {
+				x=(standingPlatform.x);
+				y=(standingPlatform.y-20);
 				xSpeed = 0;
 				counter = 1;
-			}else if( x >= (standingPlattform.x + standingPlattform.width - this.width) && stateBool){
-				x=(standingPlattform.x + standingPlattform.width - this.width);
-				y=(standingPlattform.y-20);
+			}else if( x >= (standingPlatform.x + standingPlatform.width - this.width) && stateBool){
+				x=(standingPlatform.x + standingPlatform.width - this.width);
+				y=(standingPlatform.y-20);
 				xSpeed = 0;
 				counter = 1;
 			}

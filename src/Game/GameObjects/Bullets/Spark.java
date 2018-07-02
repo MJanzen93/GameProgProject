@@ -2,7 +2,7 @@ package Game.GameObjects.Bullets;
 
 import Game.AudioPlayer;
 import Game.GameObjects.GameObject;
-import Game.GameObjects.Platfrom.FixedPlattform;
+import Game.GameObjects.Platfrom.FixedPlatform;
 
 import java.awt.*;
 import java.util.Random;
@@ -17,10 +17,10 @@ public class Spark extends GameObject {
     double yDir;
     Random rnd;
     int particleOffset;
-    FixedPlattform collidingPlatform;
+    FixedPlatform collidingPlatform;
     String hitDir;
 
-    public Spark(double startX, double startY, double bulletXSpeed, double bulletYSpeed, FixedPlattform collidingPlatform, String hitDir) {
+    public Spark(double startX, double startY, double bulletXSpeed, double bulletYSpeed, FixedPlatform collidingPlatform, String hitDir) {
         super(startX, startY, 0, 0);
         hasCollision = false;
         isSolid = false;

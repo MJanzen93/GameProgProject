@@ -7,15 +7,15 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import Game.AudioPlayer;
-import Game.GameObjects.Platfrom.FixedPlattform;
+import Game.GameObjects.Platfrom.FixedPlatform;
 
 public class Mimic extends EnemyObject {
 
-	FixedPlattform standingPlattform;
+	FixedPlatform standingPlatform;
 	
-	public Mimic(double startX, double startY, int width, int height, FixedPlattform standingPlattform) {
+	public Mimic(double startX, double startY, int width, int height, FixedPlatform standingPlatform) {
 		super(startX, startY, width, height);
-		this.standingPlattform = standingPlattform;
+		this.standingPlatform = standingPlatform;
 		this.isSolid = true;
 		this.hasCollision = true;
 		this.COLOR = Color.YELLOW;
@@ -25,9 +25,9 @@ public class Mimic extends EnemyObject {
 	@Override
 	public void move(double diffSeconds) {
 		super.move(diffSeconds);
-		if (world.player.x <= (standingPlattform.x + standingPlattform.width)
-				&& world.player.x >= (standingPlattform.x)&&(world.player.y <= (standingPlattform.y - standingPlattform.height)
-				&& world.player.y >= (standingPlattform.y - standingPlattform.height - 1000))) {
+		if (world.player.x <= (standingPlatform.x + standingPlatform.width)
+				&& world.player.x >= (standingPlatform.x)&&(world.player.y <= (standingPlatform.y - standingPlatform.height)
+				&& world.player.y >= (standingPlatform.y - standingPlatform.height - 1000))) {
 			if (world.inputSystem.leftPressed) {
 				goLeft();
 			} else if (world.inputSystem.rightPressed) {
@@ -43,11 +43,11 @@ public class Mimic extends EnemyObject {
 				shootBullet();
 			}
 			
-			if ((x <= standingPlattform.x) ) {
-				x=(standingPlattform.x);
+			if ((x <= standingPlatform.x) ) {
+				x=(standingPlatform.x);
 				
-			}else if( x >= standingPlattform.x + standingPlattform.width - this.width){
-				x=(standingPlattform.x + standingPlattform.width - this.width);
+			}else if( x >= standingPlatform.x + standingPlatform.width - this.width){
+				x=(standingPlatform.x + standingPlatform.width - this.width);
 				
 			}
 		} else {

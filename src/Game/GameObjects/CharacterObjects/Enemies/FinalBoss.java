@@ -64,14 +64,6 @@ public class FinalBoss extends Boss {
             bullet1.speed = 1000;
             bullet1.isPlayerBullet = false;
             world.gameObjects.add(bullet1);
-        }else {
-        	//SpiderBullet
-            SpiderBullet bullet1 = new SpiderBullet(x + width/2, y + height/2, 5, 5);
-            bullet1.alfa  =  specialMoveTick*0.2;
-            bullet1.range = 200;
-            bullet1.speed = 1000;
-            bullet1.isPlayerBullet = false;
-            world.gameObjects.add(bullet1);
         }
         AudioPlayer.shortSound2(".\\src\\Game\\Sounds\\shot.wav",0.05, world.player.x - x,world.player.y - y);
     }

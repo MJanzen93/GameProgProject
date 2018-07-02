@@ -2,7 +2,6 @@ package Game.GameObjects.BackgroundObjects;
 
 import Game.ConstantValues;
 import Game.GameObjects.GameObject;
-import Game.GameObjects.Platfrom.FixedPlattform;
 import Game.Physics;
 
 import java.awt.*;
@@ -51,7 +50,6 @@ public class BrokenPart extends BackgroundObject {
 
         AffineTransform tx = new AffineTransform();
         tx.rotate(0.1, image.getWidth() / 2, image.getHeight() / 2);
-
 
         op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
 

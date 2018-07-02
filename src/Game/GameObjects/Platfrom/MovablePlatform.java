@@ -5,11 +5,11 @@ import Game.Physics;
 
 import java.util.List;
 
-public class MovablePlattform extends Plattform {
+public class MovablePlatform extends Platform {
 
     private int counter = 0;
 
-    public MovablePlattform(double startX, double startY, int width, int height) {
+    public MovablePlatform(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
     }
 

@@ -8,15 +8,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Game.GameObjects.CharacterObjects.Enemies.MiniEnemy;
 
 import javax.imageio.ImageIO;
 
 import Game.GameObjects.GameObject;
-import Game.GameObjects.Platfrom.Plattform;
 import Game.GameObjects.SWATTeamMate;
 import Game.GameObjects.CharacterObjects.Player;
-
 
 
 public class World {
@@ -45,15 +42,19 @@ public class World {
     public double worldPartX = 0;
     public double worldPartY = 0;
 
-    private boolean gameOver;
+    public boolean gameOver;
     private double gameOverTime = 3;
+    private boolean fpsThreadRunning = true;
 
     // defines maximum frame rate
     private static final int FRAME_MINIMUM_MILLIS = 1;
 
     private boolean GameOver = false;
+    private int level;
+    public boolean nextLevel = false;
 
-    public World() {
+    public World(int level) {
+        this.level = level;
     }
 
     public void init() {
@@ -61,7 +62,7 @@ public class World {
 
         //Backgound Musik player
         backgroundPlayer = new AudioPlayer();
-        //backgroundPlayer.backGroundMusic(".\\src\\Game\\Sounds\\megalovania.wav",0.25);
+        backgroundPlayer.backGroundMusic(".\\src\\Game\\Sounds\\megalovania.wav",0.25);
 
         allObjects = new ArrayList<>();
         gameObjects = new ArrayList<>();
@@ -76,12 +77,28 @@ public class World {
 
     void createWorld() {
 
+        List<List<GameObject>> list = null;
+        switch(level) {
+            case 1:
+                list = MapParser.desert1();
+                break;
+            case 2:
+                list = MapParser.desert2();
+                break;
+            case 3:
+                list = MapParser.desert3();
+                break;
+            case 4:
+                list = MapParser.summer1();
+                break;
+            case 5:
+                list = MapParser.summer2();
+                break;
+        }
 
-
-        List<List<GameObject>> list = MapParser.summer2();
         try {
-			//wViewer.background = ImageIO.read(new File(".\\src\\Game\\Textures\\DBG.png"));
-			wViewer.background = ImageIO.read(new File(".\\src\\Game\\Textures\\SBG.png"));
+			wViewer.background = ImageIO.read(new File(".\\src\\Game\\Textures\\DBG.png"));
+			//wViewer.background = ImageIO.read(new File(".\\src\\Game\\Textures\\SBG.png"));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -105,12 +122,12 @@ public class World {
         allObjects.add(fixedObjects);
         allObjects.add(bulletObjects);
 
-        Thread t = new Thread(new Runnable() {
+        Thread fpsThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 //print FPS
                 diffMillis = 1;
-                while(true){
+                while(fpsThreadRunning){
                     //System.out.println(1000 / diffMillis);
                     try {
                         Thread.sleep(1000);
@@ -121,7 +138,7 @@ public class World {
 
             }
         });
-        t.start();
+        fpsThread.start();
     }
 
     long diffMillis = 1;
@@ -158,8 +175,8 @@ public class World {
                     if (allObjects.get(i).get(j).hp <= 0) {
                         if (allObjects.get(i).get(j) instanceof SWATTeamMate)
                             player.mate = false;
-                        /*if(allObjects.get(i).get(j) instanceof Plattform) {
-                            ((Plattform) allObjects.get(i).get(j)).breakApart();
+                        /*if(allObjects.get(i).get(j) instanceof Platform) {
+                            ((Platform) allObjects.get(i).get(j)).breakApart();
                         }*/
                         if(player.hp == 0){
                             gameOver = true;
@@ -199,11 +216,18 @@ public class World {
            // System.out.println("X: "+ player.x + "Y: "+ player.y);
 
 
+            if(player.y > ConstantValues.WORLD_HEIGHT) {
+                System.out.println("Game Over");
+                gameOver = true;
+            }
+
             if(gameOver) {
                 gameOverTime -= diffSeconds;
             }
 
-            if(gameOverTime < 0) {
+            if(gameOverTime < 0 || nextLevel) {
+                fpsThreadRunning = false;
+                backgroundPlayer.stopSound();
                 return;
             }
         }
@@ -219,6 +243,9 @@ public class World {
     }
 
     public void processUserInput() {
+        if(gameOver) {
+            return;
+        }
         if (inputSystem.leftPressed) {
             player.goLeft(inputSystem.moveMagnitude);
         } else if (inputSystem.rightPressed) {

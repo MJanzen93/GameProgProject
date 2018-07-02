@@ -9,6 +9,7 @@ import java.io.IOException;
 
 public class BackgroundObject extends GameObject {
 
+
     public BackgroundObject(double startX, double startY, int width, int height, String imagePath) {
         super(startX, startY, width, height);
         try {

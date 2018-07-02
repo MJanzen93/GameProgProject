@@ -2,15 +2,16 @@ package Game.GameObjects.Platfrom;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class FixedPlattform extends Plattform {
+public class FixedPlatform extends Platform {
 
     public String platformType = "";
 
-    public FixedPlattform(double startX, double startY, int width, int height, String imagePath) {
+    public boolean isGoalFlag = false;
+
+    public FixedPlatform(double startX, double startY, int width, int height, String imagePath) {
         super(startX, startY, width, height);
         try {
             image = ImageIO.read(new File(imagePath));
@@ -18,15 +19,21 @@ public class FixedPlattform extends Plattform {
             e.printStackTrace();
         }
         
-        
-        /*Funny haha*/
-       // destructible = true;
-      //  hp = 5;
-       // maxHP = 5;
-        
     }
 
-    public FixedPlattform(double startX, double startY, int width, int height, String imagePath, String platformType) {
+    public FixedPlatform(double startX, double startY, int width, int height, String imagePath, boolean isGoalFlag) {
+        super(startX, startY, width, height);
+        try {
+            image = ImageIO.read(new File(imagePath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        this.isGoalFlag = isGoalFlag;
+
+    }
+
+    public FixedPlatform(double startX, double startY, int width, int height, String imagePath, String platformType) {
         super(startX, startY, width, height);
         this.platformType = platformType;
         try {

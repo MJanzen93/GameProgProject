@@ -5,9 +5,9 @@ import Game.GameObjects.GameObject;
 
 import java.awt.*;
 
-public abstract class Plattform extends GameObject {
+public abstract class Platform extends GameObject {
 
-    public Plattform(double startX, double startY, int width, int height) {
+    public Platform(double startX, double startY, int width, int height) {
         super(startX, startY, width, height);
         isFixed = true;
         isSolid = true;

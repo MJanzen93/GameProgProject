@@ -30,7 +30,7 @@ public class AudioPlayer {
 		}
 	}
 
-	private synchronized void stopSound() {
+	public synchronized void stopSound() {
 		if (backRoundClip != null) {
 			backRoundClip.stop();
 			backRoundClip.close();

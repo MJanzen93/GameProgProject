@@ -31,7 +31,7 @@ import Game.GameObjects.Items.ParachuteItem;
 import Game.GameObjects.Items.RapidFireItem;
 import Game.GameObjects.Items.SWATItem;
 import Game.GameObjects.Items.SpeedUpItem;
-import Game.GameObjects.Platfrom.FixedPlattform;
+import Game.GameObjects.Platfrom.FixedPlatform;
 import Game.GameObjects.Weapons.Mine;
 
 public class MapParser {
@@ -82,11 +82,11 @@ public class MapParser {
         list.add(gameObjects);
 
         //Enemies
-        FixedPlattform plat1Speedy = new FixedPlattform(4650, -10, 1140, 20, "");
+        FixedPlatform plat1Speedy = new FixedPlatform(4650, -10, 1140, 20, "");
         gameObjects.add(new Speedy(5760, -50, 30, 30, -1000, plat1Speedy));
-        FixedPlattform plat1Speedy2 = new FixedPlattform(6050, 940, 890, 20, "");
+        FixedPlatform plat1Speedy2 = new FixedPlatform(6050, 940, 890, 20, "");
         gameObjects.add(new Speedy(6930, 900, 30, 30, -1000, plat1Speedy2));
-        FixedPlattform plat1Mimic = new FixedPlattform(7850, 850, 1660, 20, "");
+        FixedPlatform plat1Mimic = new FixedPlatform(7850, 850, 1660, 20, "");
         gameObjects.add(new Mimic(9470, 790, 30, 30, plat1Mimic));
 
 
@@ -144,54 +144,54 @@ public class MapParser {
 
                             //EDIT
                             case "1":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\1.png", "TopLeft"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\1.png", "TopLeft"));
                                 break;
                             case "2":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\2.png", "Top"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\2.png", "Top"));
                                 break;
                             case "3":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\3.png", "TopRight"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\3.png", "TopRight"));
                                 break;
                             case "4":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\4.png", "Left"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\4.png", "Left"));
                                 break;
                             case "5":
-                                FixedPlattform f = new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\5.png");
+                                FixedPlatform f = new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\5.png");
                                 f.hasCollision = false;
                                 fixedObjects.add(f);
                                 break;
                             case "6":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\6.png", "Right"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\6.png", "Right"));
                                 break;
                             case "7":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\7.png", "Top"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\7.png", "Top"));
                                 break;
                             case "8":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\8.png", "TopLeft"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\8.png", "TopLeft"));
                                 break;
                             case "9":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\9.png", "TopBottom"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\9.png", "TopBottom"));
                                 break;
                             case "10":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\10.png", "TopRight"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\10.png", "TopRight"));
                                 break;
                             case "11":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\11.png", "Top"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\11.png", "Top"));
                                 break;
                             case "12":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\12.png", "BottomLeft"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\12.png", "BottomLeft"));
                                 break;
                             case "13":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\13.png", "BottomRight"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\13.png", "BottomRight"));
                                 break;
                             case "14":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\14.png", "TopBottomLeft"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\14.png", "TopBottomLeft"));
                                 break;
                             case "15":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\15.png", "TopBottom"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\15.png", "TopBottom"));
                                 break;
                             case "16":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\16.png", "TopBottomRight"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\16.png", "TopBottomRight"));
                                 break;
                             case "17":
                                 gameObjects.add(new Crate(x * 50 + j2 * 50, y * 50 + j * 50));
@@ -248,7 +248,7 @@ public class MapParser {
                                 gameObjects.add(new Spikes(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50));
                                 break;
                             case "35":
-                                backgroundObjects.add(new BackgroundObject(x * 50 + j2 * 50, y * 50 + j * 50, ".\\src\\Game\\Textures\\flag.png"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 100, 100, ".\\src\\Game\\Textures\\flag.png", true));
                                 break;
 
                         }
@@ -316,66 +316,66 @@ public class MapParser {
                         switch (dataParts[j][j2]) {
 
                         case "1":
-                            FixedPlattform fp14 = new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\14.png", "TopLeftBottom");
+                            FixedPlatform fp14 = new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\14.png", "TopLeftBottom");
                             fp14.destructible = true;
                             fp14.hp = 5;
                             fp14.maxHP = 5;
                             fixedObjects.add(fp14);
                             break;
                         case "2":
-                            fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\14.png", "TopLeftBottom"));
+                            fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\14.png", "TopLeftBottom"));
                             break;
                         case "3":
-                            fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\10.png", "TopRight"));
+                            fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\10.png", "TopRight"));
                             break;
                         case "4":
-                            fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\5.png"));
+                            fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\5.png"));
                             break;
                         case "5":
-                            fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\6.png", "Right"));
+                            fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\6.png", "Right"));
                             break;
                         case "6":
-                            fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\8.png", "TopLeft"));
+                            fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\8.png", "TopLeft"));
                             break;
                         case "7":
-                            fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\9.png", "TopBottom"));
+                            fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\9.png", "TopBottom"));
                             break;
                         case "8":
-                            fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\4.png", "Left"));
+                            fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\4.png", "Left"));
                             break;
                         case "9":
-                            fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\2.png", "Top"));
+                            fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\2.png", "Top"));
                             break;
                         case "10":
-                            fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\3.png", "TopRight"));
+                            fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\3.png", "TopRight"));
                             break;
                         case "11":
-                            fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\16.png", "TopBottomRight"));
+                            fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\16.png", "TopBottomRight"));
                             break;
                         case "12":
-                            fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\1.png", "TopLeft"));
+                            fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\1.png", "TopLeft"));
                             break;
                         case "13":
-                            fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\11.png", "Top"));
+                            fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\11.png", "Top"));
                             break;
                         case "14":
-                            fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\13.png", "BottomRight"));
+                            fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\13.png", "BottomRight"));
                             break;
                         case "15":
-                            fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\15.png", "TopBottom"));
+                            fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\15.png", "TopBottom"));
                             break;
                         case "16":
                             backgroundObjects.add(new BackgroundObject(x * 50 + j2 * 50, y * 50 + j * 50, ".\\src\\Game\\Textures\\objects\\Grass (2).png"));
                             break;
                         case "17":
-                            FixedPlattform fp15 = new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\15.png", "TopBottom");
+                            FixedPlatform fp15 = new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\15.png", "TopBottom");
                             fp15.destructible = true;
                             fp15.hp = 5;
                             fp15.maxHP = 5;
                             fixedObjects.add(fp15);
                             break;
                         case "18":
-                            FixedPlattform fp16 = new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\16.png", "TopBottomRightLeft");
+                            FixedPlatform fp16 = new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\16.png", "TopBottomRightLeft");
                             fp16.destructible = true;
                             fp16.hp = 5;
                             fp16.maxHP = 5;
@@ -400,7 +400,7 @@ public class MapParser {
                             fixedObjects.add(new Mine(x * 50 + j2 * 50 + 20, y * 50 + j * 50 + 45));
                             break;
                         case "25":
-                            fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50 - 50, 100, 100, ".\\\\src\\\\Game\\\\Textures\\\\flag.png"));
+                            fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50 - 50, 100, 100, ".\\\\src\\\\Game\\\\Textures\\\\flag.png", true));
                             break;
                         case "26":
                             gameObjects.add(new Spikes(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50));
@@ -485,55 +485,55 @@ return list;
 
                             //EDIT
                             case "1":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\1.png", "TopLeft"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\1.png", "TopLeft"));
                                 break;
                             case "2":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\2.png", "Top"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\2.png", "Top"));
                                 break;
                             case "3":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\3.png", "TopRight"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\3.png", "TopRight"));
                                 break;
                             case "4":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\4.png", "Left"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\4.png", "Left"));
                                 break;
                             case "5":
-                                FixedPlattform f = new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\5.png");
+                                FixedPlatform f = new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\5.png");
                                 f.hasCollision = false;
                                 f.isSolid = false;
                                 fixedObjects.add(f);
                                 break;
                             case "6":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\6.png", "Right"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\6.png", "Right"));
                                 break;
                             case "7":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\7.png", "Top"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\7.png", "Top"));
                                 break;
                             case "8":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\8.png"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\8.png"));
                                 break;
                             case "9":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\9.png", "TopBottom"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\9.png", "TopBottom"));
                                 break;
                             case "10":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\10.png"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\10.png"));
                                 break;
                             case "11":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\11.png", "Top"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\11.png", "Top"));
                                 break;
                             case "12":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\12.png", "BottomLeft"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\12.png", "BottomLeft"));
                                 break;
                             case "13":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\13.png", "BottomRight"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50, ".\\src\\Game\\Textures\\platformTiles\\Resized\\13.png", "BottomRight"));
                                 break;
                             case "14":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\14.png", "TopBottomLeft"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\14.png", "TopBottomLeft"));
                                 break;
                             case "15":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\15.png", "TopBottom"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\15.png", "TopBottom"));
                                 break;
                             case "16":
-                                fixedObjects.add(new FixedPlattform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\16.png", "TopBottomRight"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 50, 36, ".\\src\\Game\\Textures\\platformTiles\\Resized\\16.png", "TopBottomRight"));
                                 break;
                             case "17":
                                 gameObjects.add(new Crate(x * 50 + j2 * 50, y * 50 + j * 50));
@@ -590,7 +590,7 @@ return list;
                                 gameObjects.add(new Spikes(x * 50 + j2 * 50, y * 50 + j * 50, 50, 50));
                                 break;
                             case "35":
-                                fixedObjects.add(new BackgroundObject(x * 50 + j2 * 50, y * 50 + j * 50, 100, 100, ".\\src\\Game\\Textures\\flag.png"));
+                                fixedObjects.add(new FixedPlatform(x * 50 + j2 * 50, y * 50 + j * 50, 100, 100, ".\\src\\Game\\Textures\\flag.png", true));
                                 break;
                             case "36":
                                 fixedObjects.add(new Fire(x * 50 + j2 * 50, y * 50 + j * 50 - 32));
@@ -643,7 +643,7 @@ public static List<List<GameObject>> summer1(){
         gameObjects.add(new Exploder(4910,-420,30,30));
         gameObjects.add(new Exploder(7950,-3460,30,30));
         
-        FixedPlattform plat1Mimic = new FixedPlattform(3810, -260, 2050, 20, "");
+        FixedPlatform plat1Mimic = new FixedPlatform(3810, -260, 2050, 20, "");
         gameObjects.add(new Mimic(5850, -310, 30, 30, plat1Mimic));
         
 
@@ -696,58 +696,58 @@ public static List<List<GameObject>> summer1(){
 
                             //EDIT
                             case "1":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\1.png","TopRightLeft"));
+                                fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\1.png","TopRightLeft"));
                                 break;
                             case "2":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\2.png","TopRightLeft"));
+                                fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\2.png","TopRightLeft"));
                                 break;
                             case "3":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\3.png","TopRightLeft"));
+                                fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\3.png","TopRightLeft"));
                                 break;
                             case "4":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\4.png","RightLeft"));
+                                fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\4.png","RightLeft"));
                                 break;
                             case "5":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\5.png"));
+                                fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\5.png"));
                                 break;
                             case "6":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\6.png","RightLeft"));
+                                fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\6.png","RightLeft"));
                                 break;
                             case "7":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\7.png","TopRightLeft"));
+                                fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\7.png","TopRightLeft"));
                                 break;
                             case "8":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\8.png"));
+                                fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\8.png"));
                                 break;
                             case "9":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\9.png","Bottom"));
+                                fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\9.png","Bottom"));
                                 break;
                             case "10":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\10.png"));
+                                fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\10.png"));
                                 break;
                             case "11":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\11.png","TopRightLeft"));
+                                fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\11.png","TopRightLeft"));
                                 break;
                             case "12":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\12.png","Right"));
+                                fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\12.png","Right"));
                                 break;
                             case "13":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 36,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\13.png","TopBottomRight"));
+                                fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 36,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\13.png","TopBottomRight"));
                                 break;
                             case "14":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 36,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\14.png","TopBottom"));
+                                fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 36,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\14.png","TopBottom"));
                                 break;
                             case "15":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 36,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\15.png","TopBottomLeft"));
+                                fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 36,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\15.png","TopBottomLeft"));
                                 break;
                             case "16":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\16.png","LeftBottom"));
+                                fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\16.png","LeftBottom"));
                                 break;
                             case "17":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50+11, 50, 39,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\17.png"));
+                                fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50+11, 50, 39,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\17.png"));
                                 break;
                             case "18":
-                                fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\18.png"));
+                                fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\18.png"));
                                 break;
                             case "19":
                                 backgroundObjects.add(new BackgroundObject(x*50 +j2*50, y*50 + j*50,   ".\\src\\Game\\Textures\\summer\\Object\\mushroom_1.png"));
@@ -789,7 +789,7 @@ public static List<List<GameObject>> summer1(){
                                 gameObjects.add(new Spikes(x*50 +j2*50, y*50 + j*50, 50, 50));
                                 break;   
                             case "32":
-                            	fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50-50, 100, 100, ".\\src\\Game\\Textures\\flag.png"));  
+                            	fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50-50, 100, 100, ".\\src\\Game\\Textures\\flag.png", true));
                                 break;
                             case "33":
                                 fixedObjects.add(new Fire(x*50 +j2*50, y*50 + j*50 - 32));
@@ -899,52 +899,52 @@ public static List<List<GameObject>> summer2(){
 
                         //EDIT
                         case "1":
-                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\1.png","TopRightLeft"));
+                            fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\1.png","TopRightLeft"));
                             break;
                         case "2":
-                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\2.png","TopRightLeft"));
+                            fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\2.png","TopRightLeft"));
                             break;
                         case "3":
-                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\3.png","TopRightLeft"));
+                            fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\3.png","TopRightLeft"));
                             break;
                         case "4":
-                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\4.png","RightLeft"));
+                            fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\4.png","RightLeft"));
                             break;
                         case "5":
-                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\5.png","TopBottomRightLeft"));
+                            fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\5.png","TopBottomRightLeft"));
                             break;
                         case "6":
-                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\6.png","RightLeft"));
+                            fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\6.png","RightLeft"));
                             break;
                         case "7":
-                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\7.png","TopRightLeft"));
+                            fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\7.png","TopRightLeft"));
                             break;
                         case "8":
-                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\8.png"));
+                            fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\8.png"));
                             break;
                         case "9":
-                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\9.png","TopBottom"));
+                            fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\9.png","TopBottom"));
                             break;
                         case "10":
-                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\10.png"));
+                            fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\10.png"));
                             break;
                         case "11":
-                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\11.png","TopRightLeft"));
+                            fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50, ".\\src\\Game\\Textures\\summer\\resizedTiles\\11.png","TopRightLeft"));
                             break;
                         case "12":
-                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\12.png","Right"));
+                            fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\12.png","Right"));
                             break;
                         case "13":
-                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 36,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\13.png","TopBottomRight"));
+                            fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 36,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\13.png","TopBottomRight"));
                             break;
                         case "14":
-                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 36,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\14.png","TopBottom"));
+                            fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 36,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\14.png","TopBottom"));
                             break;
                         case "15":
-                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 36,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\15.png","TopBottomLeft"));
+                            fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 36,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\15.png","TopBottomLeft"));
                             break;
                         case "16":
-                            fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50, 50, 50,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\16.png","LeftBottom"));
+                            fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50, 50, 50,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\16.png","LeftBottom"));
                             break;
                         case "17":
                             fixedObjects.add(new BackgroundObject(x*50 +j2*50, y*50 + j*50+11, 50, 39,  ".\\src\\Game\\Textures\\summer\\resizedTiles\\17.png"));
@@ -992,7 +992,7 @@ public static List<List<GameObject>> summer2(){
                             gameObjects.add(new Spikes(x*50 +j2*50, y*50 + j*50, 50, 50));
                             break;   
                         case "32":
-                        	fixedObjects.add(new FixedPlattform(x*50 +j2*50, y*50 + j*50-50, 100, 100, ".\\src\\Game\\Textures\\flag.png"));  
+                        	fixedObjects.add(new FixedPlatform(x*50 +j2*50, y*50 + j*50-50, 100, 100, ".\\src\\Game\\Textures\\flag.png", true));
                             break;
                         case "33":
                             fixedObjects.add(new Fire(x*50 +j2*50, y*50 + j*50 - 32));

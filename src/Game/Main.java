@@ -8,9 +8,10 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.WindowEvent;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import Game.GameObjects.GameObject;
+import Game.Menu.GameMenu;
 
 public class Main {
 
@@ -37,29 +38,49 @@ public class Main {
         });
 
 
+
+        JPanel menu = new GameMenu();
+        gameFrame.getContentPane().add(menu);
+        gameFrame.setVisible(true);
+        int clickedPanel;
+        int level = 1;
         while(true) {
+            clickedPanel = ((GameMenu) menu).clickedPanel;
+            if(clickedPanel != 100) {
+                System.out.print("");
+            }
+            if(clickedPanel == 100) {
+                InputSystem inputSystem = new InputSystem();
+                World world = new World(level);
+                world.setInputSystem(inputSystem);
 
-            InputSystem inputSystem = new InputSystem();
-            World world = new World();
-            world.setInputSystem(inputSystem);
+                //GameObject.setPhysics(world.getPhysics());
+                Physics.setWorld(world);
+                GameObject.setWorld(world);
 
-            //GameObject.setPhysics(world.getPhysics());
-            Physics.setWorld(world);
-            GameObject.setWorld(world);
+                WorldViewer wViewer = new WorldViewer(inputSystem);
+                wViewer.setFocusable(true);
+                wViewer.setWorld(world);
+                gameFrame.setContentPane(wViewer);
 
-            WorldViewer wViewer = new WorldViewer(inputSystem);
-            wViewer.setFocusable(true);
-            wViewer.setWorld(world);
-            gameFrame.setContentPane(wViewer);
-
-            gameFrame.setVisible(true);
+                gameFrame.setVisible(true);
 
 
-            world.setGraphicSystem(wViewer);
-            world.init();
-            world.run();
+                world.setGraphicSystem(wViewer);
+                world.init();
+                world.run();
+                if(world.gameOver) {
+                    menu = new GameMenu();
+                    gameFrame.getContentPane().removeAll();
+                    gameFrame.setContentPane(menu);
+                    gameFrame.setVisible(true);
+                    ((GameMenu) menu).clickedPanel = 0;
+                }
+                if(world.nextLevel) {
+                    level++;
+                }
+            }
 
-            gameFrame.dispatchEvent(new WindowEvent(gameFrame, WindowEvent.WINDOW_CLOSING));
         }
 
 

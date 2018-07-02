@@ -189,13 +189,11 @@ public class InputSystem implements KeyListener, MouseListener, MouseMotionListe
 
     @Override
     public void leftThumbMagnitude(double v) {
-        System.out.println("magnitude: " + v);
         moveMagnitude = v;
     }
 
     @Override
     public void leftThumbDirection(double v) {
-        System.out.println("direction: " + v);
         if(moveMagnitude > 0.25) { //deadzone of the stick
             if (v < 135 && v <= 135) {
                 rightPressed = true;
